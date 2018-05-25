@@ -1,6 +1,6 @@
 ﻿namespace Restaurante
 {
-    partial class Login
+    partial class Form1
     {
         /// <summary>
         /// Variable del diseñador necesaria.

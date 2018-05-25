@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7E6A7FBD-5E38-42AC-B9E2-7DE7899AF3D2}</ProjectGuid>
+    <ProjectGuid>{1A8A4838-EE6C-400F-B4E1-D0A5E4B3C800}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Restaurante</RootNamespace>
     <AssemblyName>Restaurante</AssemblyName>
@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Login.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
