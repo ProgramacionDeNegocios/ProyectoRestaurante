@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Restaurante
 {
-    public partial class UsuarioEliminar : Form
+    public partial class MenuPrincipal : Form
     {
-        public UsuarioEliminar()
+        public MenuPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
         }
     }
 }
