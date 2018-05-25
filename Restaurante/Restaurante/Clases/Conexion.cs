@@ -10,7 +10,7 @@ namespace Restaurante.Clases
     class Conexion
     {
         // Creamos el string de conexion.
-        public SqlConnection conn = new SqlConnection(@"server = (local)\SQLEXPRESS;
+        public SqlConnection conexion = new SqlConnection(@"server = (local)\SQLEXPRESS;
                 integrated security = true; database = DBRestaurante;");
 
         //Creamos el metodo para abrir la conecion con la base de datos
@@ -18,7 +18,7 @@ namespace Restaurante.Clases
         {
             try
             {
-                conn.Open();
+                conexion.Open();
             }
             catch (SqlException)
             {
@@ -31,7 +31,7 @@ namespace Restaurante.Clases
         {
             try
             {
-                conn.Close();
+                conexion.Close();
             }
             catch (SqlException)
             {
