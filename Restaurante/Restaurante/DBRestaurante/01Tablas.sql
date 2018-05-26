@@ -22,7 +22,7 @@ CREATE TABLE Restaurante.Usuarios(
 GO
 
 CREATE TABLE Restaurante.Area(
-	id INT IDENTITY(1,100), -- indes de la tupla
+	id INT IDENTITY(1,100), -- index de la tupla
 	nombre NVARCHAR(30) --nombre del area de trabajo
 );
 GO

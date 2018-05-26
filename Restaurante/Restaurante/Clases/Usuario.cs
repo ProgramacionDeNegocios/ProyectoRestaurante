@@ -13,25 +13,23 @@ namespace Restaurante.Clases
         public int id { get; set; }
         public string usuario { get; set; }
         public string clave { get; set; }
-        public int tipoArea { get; set; }
+        public int idArea { get; set; }
 
-        public Usuario ObtenerUsuario (){
+        public void ObtenerUsuario (string usuarioRe, string claveRe){
             Conexion conexion = new Conexion();
-            string sql = @"SELECT id, usuario, clave, tipoArea FROM Restaurante.Usuario WHERE usuario = " + usuario + " AND clave != '" + clave + "';";
+            string sql = @"SELECT id, usuario, clave, idArea FROM Restaurante.Usuarios WHERE usuario = '" + usuarioRe + "' AND clave = '" + claveRe + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
                 conexion.Abrir();
                 SqlDataReader dr = cmd.ExecuteReader();
-                Usuario usuario = new Usuario();
                 while (dr.Read())
                 {
-                    usuario.id = dr.GetInt32(0);
-                    usuario.usuario = dr.GetString(1);
-                    usuario.clave = dr.GetString(2);
-                    usuario.tipoArea = dr.GetInt32(3);
+                    this.id = dr.GetInt32(0);
+                    this.usuario = dr.GetString(1);
+                    this.clave = dr.GetString(2);
+                    this.idArea = dr.GetInt32(3);
                 }
-                return usuario;
             }
             catch (SqlException)
             {

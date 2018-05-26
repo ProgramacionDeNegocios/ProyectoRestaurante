@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace Restaurante
 {
     public partial class UsuarioLogin : Form
     {
+        Clases.Conexion conexion = new Clases.Conexion();
+        Clases.Usuario usuario = new Clases.Usuario();
         public UsuarioLogin()
         {
             InitializeComponent();
@@ -29,14 +33,57 @@ namespace Restaurante
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MenuPrincipal menuPrincipal = new MenuPrincipal();
-            menuPrincipal.ShowDialog();
-            this.Hide();
+            if (ValidacionCampos())
+            {
+                errorProvider1.Clear();
+                usuario.ObtenerUsuario(txtUsuario.Text.Trim(), txtClave.Text.Trim());
+                if (usuario.usuario != txtUsuario.Text.Trim() || usuario.clave != txtClave.Text.Trim())
+                {
+                    errorProvider1.Clear();
+                    errorProvider1.SetError(txtUsuario, "El usuario '" + txtUsuario.Text.ToUpper() + "' no existe ó la clave ingresada es incorrecta");
+                    LimpiarFormulario();
+                }
+                else
+                {
+                    MenuPrincipal menuPrincipal = new MenuPrincipal();
+                    menuPrincipal.ShowDialog();
+                    this.Hide();
+                }
+                
+
+            }
+            
+        }
+
+        private Boolean ValidacionCampos()
+        {
+            if (txtUsuario.Text == string.Empty)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtUsuario, "Ingrese el nombre del usuario");
+                return false;
+            }
+            else if (txtClave.Text == string.Empty)
+            {
+                errorProvider1.Clear();
+                errorProvider1.SetError(txtClave, "Ingrese la clave del usuario");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         private void UsuarioLogin_Load(object sender, EventArgs e)
         {
+            LimpiarFormulario();
+        }
 
+        private void LimpiarFormulario()
+        {
+            txtUsuario.Text = "";
+            txtClave.Text = "";
         }
 
         
