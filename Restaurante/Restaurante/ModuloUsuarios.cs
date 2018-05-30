@@ -16,5 +16,10 @@ namespace Restaurante
         {
             InitializeComponent();
         }
+
+        private void ModuloUsuarios_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
