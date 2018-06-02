@@ -13,6 +13,9 @@ GO
 CREATE SCHEMA Restaurante
 GO
 
+CREATE SCHEMA Acceso
+GO
+
 /*
 	contiene todos los usuarios que manejaran el sistema en las diferentes
 	areas del restaurante, teniendo acceso solo a lo pertinente segun sea
@@ -20,14 +23,26 @@ GO
 
 	esta tabla es manejada solo por el administrador principal
 */
-CREATE TABLE Restaurante.Usuarios(
+CREATE TABLE Acceso.Usuarios(
 	id  INT IDENTITY (1,100) NOT NULL, --index de los usuarios
 	nombre NVARCHAR(25) NOT NULL,	--primer nombre del usuario
 	apellido NVARCHAR(25) NOT NULL, --primer apellido del usuario
 	usuario NVARCHAR(20) NOT NULL,	--Primera letra del nombre en mayusculas más el apellido
 							--eje: Pedro Picapiedra (PPicapiedra)
-	clave NVARCHAR(20) NOT NULL, --clace de acceso
-	idArea INT  NOT NULL--codigo del area de trabajo a la cual pertenece
+	clave NVARCHAR(20) NOT NULL, --clave de acceso
+	idAcceso INT  NOT NULL--codigo del area de trabajo a la cual pertenece
+);
+GO
+
+/*
+	esta tabla controlara los modulos que seran disponibles por cada departamento
+*/
+CREATE TABLE Acceso.TipoAcceso(
+	id INT IDENTITY (1,10) NOT NULL,
+	departamento NVARCHAR(20)
+	/*
+		falta colorcar los campos de los modulos a los cuales tendra acceso
+	*/
 );
 GO
 
@@ -48,7 +63,7 @@ GO
 	van insertadas en esta tabla
 */
 CREATE TABLE Restaurante.Mesas(
-	idMeza INT IDENTITY (1, 100) NOT NULL, --index de las mesas
+	id INT IDENTITY (1, 100) NOT NULL, --index de las mesas
 	idArea INT NOT NULL,
 	estado NVARCHAR(21) NOT NULL --estados que puede tener una mesa
 						--libre, ocupado, reservado, saliendo
@@ -60,7 +75,7 @@ GO
 	contiene la informacion de las personas que serviran la comida
 */
 CREATE TABLE Restaurante.Meseros(
-	idMesero INT IDENTITY(1,10) NOT NULL,	--index del mesero
+	id INT IDENTITY(1,10) NOT NULL,	--index del mesero
 	nombre NVARCHAR (25) NOT NULL,			--primer nombre
 	apellido NVARCHAR (25) NOT NULL			--primer apellido
 );
@@ -72,7 +87,7 @@ GO
 	los esta atendiendo
 */
 CREATE TABLE Restaurante.Pedidos(
-	idPedido INT IDENTITY (1, 100000) NOT NULL,	--index del pedido
+	id INT IDENTITY (1, 100000) NOT NULL,	--index del pedido
 	Fecha DATETIME NOT NULL,						--fecha y hora en la que se realizo el pedido 
 	idMesa INT NOT NULL,							--identificador de la mesa donde se entregara el pedido
 	NombreCliente NVARCHAR (20),		--nombre de la persona que realizo el pedido
@@ -86,7 +101,7 @@ GO
 	respectivo precio y la descripcion exacta del producto
 */
 CREATE TABLE Restaurante.MenuBebidas(
-	idBebida INT IDENTITY (1,99) NOT NULL, --index de la bebida
+	id INT IDENTITY (1,99) NOT NULL, --index de la bebida
 	descripcion NVARCHAR(60) NOT NULL,	--descripcion exacta del producto
 	precio INT
 );
@@ -111,7 +126,7 @@ GO
 	respectivo precio y la descripcion exacta del producto
 */
 CREATE TABLE Restaurante.MenuPlato(
-	idPlaro INT IDENTITY (1,99) NOT NULL, --index del plato
+	idPlato INT IDENTITY (1,99) NOT NULL, --index del plato
 	descripcion NVARCHAR(60) NOT NULL,	--descripcion exacta del plato
 	precio INT
 );
