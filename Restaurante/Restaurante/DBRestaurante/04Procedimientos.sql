@@ -44,3 +44,14 @@ BEGIN
 END
 GO
 
+CREATE PROCEDURE SP_BuscarUsuario
+(
+	@usuario NVARCHAR(25)
+)
+AS
+BEGIN
+	DECLARE @existe INT
+	SELECT @existe = COUNT(Restaurante.Usuarios.usuario) FROM Restaurante.Usuarios WHERE usuario = @usuario;
+	RETURN @existe;
+END
+
