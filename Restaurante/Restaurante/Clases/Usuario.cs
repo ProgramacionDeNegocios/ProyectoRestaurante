@@ -17,7 +17,7 @@ namespace Restaurante.Clases
 
         public void ObtenerUsuario (string usuarioRe, string claveRe){
             Conexion conexion = new Conexion();
-            string sql = @"SELECT id, usuario, clave, idArea FROM Restaurante.Usuarios WHERE usuario = '" + usuarioRe + "' AND clave = '" + claveRe + "';";
+            string sql = @"SELECT id, usuario, clave, idAcceso FROM Acceso.Usuarios WHERE usuario = '" + usuarioRe + "' AND clave = '" + claveRe + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
