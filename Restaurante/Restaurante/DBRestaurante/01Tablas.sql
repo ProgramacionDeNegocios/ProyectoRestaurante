@@ -1,7 +1,8 @@
-USE master
-GO
-
-DROP DATABASE DBRestaurante
+IF EXISTS(SELECT * FROM DBO.SYSDATABASES WHERE NAME = 'DBRestaurante')
+    BEGIN
+		USE MASTER
+        DROP DATABASE DBRestaurante 
+    END
 GO
 
 CREATE DATABASE DBRestaurante
@@ -10,10 +11,13 @@ GO
 USE DBRestaurante
 GO
 
-CREATE SCHEMA Restaurante
+CREATE SCHEMA Restaurante --contiene todas las tablas del sistemas
 GO
 
-CREATE SCHEMA Acceso
+CREATE SCHEMA Utilidad --contiene las funciones que realizaremos
+GO
+
+CREATE SCHEMA Acceso --Contiene la informacion de acceso de los usuarios
 GO
 
 /*
@@ -23,27 +27,38 @@ GO
 
 	esta tabla es manejada solo por el administrador principal
 */
-CREATE TABLE Acceso.Usuarios(
-	id  INT IDENTITY (1,100) NOT NULL, --index de los usuarios
-	nombre NVARCHAR(25) NOT NULL,	--primer nombre del usuario
-	apellido NVARCHAR(25) NOT NULL, --primer apellido del usuario
-	usuario NVARCHAR(20) NOT NULL,	--Primera letra del nombre en mayusculas más el apellido
-							--eje: Pedro Picapiedra (PPicapiedra)
-	clave NVARCHAR(20) NOT NULL, --clave de acceso
-	idAcceso INT  NOT NULL--codigo del area de trabajo a la cual pertenece
-);
+IF OBJECT_ID('Acceso.Usuarios')	IS NOT NULL
+	DROP TABLE Acceso.Usuarios
+ELSE
+	BEGIN
+		CREATE TABLE Acceso.Usuarios(
+			id  INT IDENTITY (1,100) NOT NULL, --index de los usuarios
+			nombre NVARCHAR(25) NOT NULL,	--primer nombre del usuario
+			apellido NVARCHAR(25) NOT NULL, --primer apellido del usuario
+			usuario NVARCHAR(20) NOT NULL,	--Primera letra del nombre en mayusculas más el apellido
+									--eje: Pedro Picapiedra (PPicapiedra)
+			clave NVARCHAR(20) NOT NULL, --clave de acceso
+			idAcceso INT  NOT NULL--codigo del area de trabajo a la cual pertenece
+		);
+	END
 GO
 
 /*
 	esta tabla controlara los modulos que seran disponibles por cada departamento
 */
-CREATE TABLE Acceso.TipoAcceso(
-	id INT IDENTITY (1,10) NOT NULL,
-	departamento NVARCHAR(20)
-	/*
-		falta colorcar los campos de los modulos a los cuales tendra acceso
-	*/
-);
+IF OBJECT_ID('Acceso.TipoAcceso')	IS NOT NULL
+	DROP TABLE Acceso.TipoAcceso
+ELSE
+	BEGIN
+		CREATE TABLE Acceso.TipoAcceso(
+			id INT IDENTITY (1,10) NOT NULL,
+			departamento NVARCHAR(20),
+			moduloUsuario BIT
+			/*
+				falta colorcar los campos de los modulos a los cuales tendra acceso
+			*/
+		);
+	END
 GO
 
 
@@ -52,33 +67,75 @@ GO
 
 	ejemplo: area verde, segunda planta, piscina, primera planta
 */
-CREATE TABLE Restaurante.Areas(
-	id INT IDENTITY(1,100) NOT NULL, -- index de la tupla
-	nombre NVARCHAR(50) NOT NULL --nombre del area dentro del restaurante
-);
+IF OBJECT_ID('Restaurante.Areas')	IS NOT NULL
+	DROP TABLE Restaurante.Areas
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.Areas(
+			id INT IDENTITY(1,100) NOT NULL, -- index de la tupla
+			nombre NVARCHAR(50) NOT NULL --nombre del area dentro del restaurante
+		);
+	END
 GO
 
 /*
 	cada area tiene relacionadas cierta cantidad de mesas que 
 	van insertadas en esta tabla
 */
-CREATE TABLE Restaurante.Mesas(
-	id INT IDENTITY (1, 100) NOT NULL, --index de las mesas
-	idArea INT NOT NULL,
-	estado NVARCHAR(21) NOT NULL --estados que puede tener una mesa
-						--libre, ocupado, reservado, saliendo
-);
+IF OBJECT_ID('Restaurante.Mesas')	IS NOT NULL
+	DROP TABLE Restaurante.Mesas
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.Mesas(
+			id INT IDENTITY (1, 100) NOT NULL, --index de las mesas
+			idArea INT NOT NULL,
+			estado NVARCHAR(21) NOT NULL --estados que puede tener una mesa
+								--libre, ocupado, reservado, saliendo
+		);
+	END
 GO
 
+IF OBJECT_ID('Restaurante.MesasReservadas')	IS NOT NULL
+	DROP TABLE Restaurante.MesasReservadas
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.MesasReservadas(
+			idMesaReservada INT IDENTITY(1,1) NOT NULL,
+			idMesa INT,
+			idReservacion INT
+		)
+	END
+GO
+
+
+
+IF OBJECT_ID('Restaurante.Reservacion')	IS NOT NULL
+	DROP TABLE Restaurante.Reservacion
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.Reservacion(
+			idReservacion INT IDENTITY(1,1) NOT NULL,
+			idUsuario INT NOT NULL,
+			nombre NVARCHAR(50) NOT NULL,
+			fechaReservacio date,
+			fechaAgendada date,
+		)
+	END
+GO
 
 /*
 	contiene la informacion de las personas que serviran la comida
 */
-CREATE TABLE Restaurante.Meseros(
-	id INT IDENTITY(1,10) NOT NULL,	--index del mesero
-	nombre NVARCHAR (25) NOT NULL,			--primer nombre
-	apellido NVARCHAR (25) NOT NULL			--primer apellido
-);
+IF OBJECT_ID('Restaurante.Meseros')	IS NOT NULL
+	DROP TABLE Restaurante.Meseros
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.Meseros(
+			id INT IDENTITY(1,10) NOT NULL,	--index del mesero
+			nombre NVARCHAR (25) NOT NULL,			--primer nombre
+			apellido NVARCHAR (25) NOT NULL			--primer apellido
+		);
+	END
 GO
 
 /*
@@ -86,70 +143,43 @@ GO
 	a que mesa se dirige el pedido y el mesero que 
 	los esta atendiendo
 */
-CREATE TABLE Restaurante.Pedidos(
-	id INT IDENTITY (1, 100000) NOT NULL,	--index del pedido
-	Fecha DATETIME NOT NULL,						--fecha y hora en la que se realizo el pedido 
-	idMesa INT NOT NULL,							--identificador de la mesa donde se entregara el pedido
-	NombreCliente NVARCHAR (20),		--nombre de la persona que realizo el pedido
-	idMesero INT NOT NULL						--identificador del mesero que atendera la mesa
-);
+IF OBJECT_ID('Restaurante.Pedidos')	IS NOT NULL
+	DROP TABLE Restaurante.Pedidos
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.Pedidos(
+			id INT IDENTITY (1, 100000) NOT NULL,	--index del pedido
+			Fecha DATETIME NOT NULL,						--fecha y hora en la que se realizo el pedido 
+			idMesa INT NOT NULL,							--identificador de la mesa donde se entregara el pedido
+			NombreCliente NVARCHAR (50),		--nombre de la persona que realizo el pedido
+			idMesero INT NOT NULL						--identificador del mesero que atendera la mesa
+		);
+	END
 GO
 
-
-/*
-	contiene todas las bebidas disponibles en el menu con su
-	respectivo precio y la descripcion exacta del producto
-*/
-CREATE TABLE Restaurante.MenuBebidas(
-	id INT IDENTITY (1,99) NOT NULL, --index de la bebida
-	descripcion NVARCHAR(60) NOT NULL,	--descripcion exacta del producto
-	precio INT
-);
+IF OBJECT_ID('Restaurante.Facturas')	IS NOT NULL
+	DROP TABLE Restaurante.Facturas
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.Facturas(
+			idFactura INT IDENTITY(1,1) NOT NULL,
+			idPedido INT NOT NULL,
+			iva DECIMAL(4,4),
+			total DECIMAL NOT NULL
+		);
+	END
 GO
 
-/*
-	agregamos los pedidos de bebida en nuestro pedido original,
-	creamos esta tabla para tratar a los refrescos por aparte de
-	los insumos alimenticios
-*/
-CREATE TABLE Restaurante.PedidoBebidas(
-	idPedidoBebida INT IDENTITY (1, 100000) NOT NULL,
-	idPedido INT NOT NULL,
-	idBebida INT NOT NULL,
-	cantidad INT NOT NULL
-);
+IF OBJECT_ID('Restaurante.DetallePedidos')	IS NOT NULL
+	DROP TABLE Restaurante.DetallePedidos
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.DetallePedidos(
+			idDetallePedido INT IDENTITY (1,1) NOT NULL,
+			idPedido INT NOT NULL,
+			idInventario INT NOT NULL,
+			cantidad INT NOT NULL,
+		);
+	END
 GO
 
-
-/*
-	contiene todas las bebidas disponibles en el menu con su
-	respectivo precio y la descripcion exacta del producto
-*/
-CREATE TABLE Restaurante.MenuPlato(
-	idPlato INT IDENTITY (1,99) NOT NULL, --index del plato
-	descripcion NVARCHAR(60) NOT NULL,	--descripcion exacta del plato
-	precio INT
-);
-GO
-
-
-/*
-	agregamos los pedidos de comida en nuestro pedido original,
-	creamos esta tabla para tratar a los alimentos por aparte de
-	las bebidas
-*/
-CREATE TABLE Restaurante.PedidoPlato(
-	idPedidoPlato INT IDENTITY (1, 100000) NOT NULL,
-	idPedido INT NOT NULL,
-	idPlato INT NOT NULL,
-	cantidad INT NOT NULL
-);
-GO
-
-
-/*
-	el id del pedido de la bebida esta demas ya que lo podemos hacer solamente 
-	con el id del pedido ya que es el mismo pedido
-
-	consultar con los compañeros ¿si lo vamos a quitar?
-*/

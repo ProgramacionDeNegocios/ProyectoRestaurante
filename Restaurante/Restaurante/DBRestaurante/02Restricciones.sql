@@ -1,5 +1,3 @@
-USE DBRestaurante
-GO
 
 --DEFINICION DE LLAVES PRIMARIAS
 ALTER TABLE Acceso.Usuarios
@@ -19,7 +17,7 @@ GO
 
 ALTER TABLE Restaurante.Mesas
 	ADD CONSTRAINT PK_Restaurante_Mesas_id$Y$idArea
-		PRIMARY KEY NONCLUSTERED (id, idArea)
+		PRIMARY KEY NONCLUSTERED (id)
 GO
 
 ALTER TABLE Restaurante.Meseros
@@ -27,26 +25,70 @@ ALTER TABLE Restaurante.Meseros
 		PRIMARY KEY NONCLUSTERED (id)
 GO
 
+ALTER TABLE Restaurante.MesasReservadas
+	ADD CONSTRAINT PK_Restaurante_MesasReservadas_idMesaReservada
+		PRIMARY KEY NONCLUSTERED (idMesaReservada)
+GO 
+
 ALTER TABLE Restaurante.Pedidos
-	ADD CONSTRAINT PK_Restaurante_Pedidos_id$Y$idMesa
-		PRIMARY KEY NONCLUSTERED (id, idMesa)
+	ADD CONSTRAINT PK_Restaurante_Pedidos_id
+		PRIMARY KEY CLUSTERED (id)
+GO 
+
+ALTER TABLE Restaurante.Reservacion
+	ADD CONSTRAINT PK_Restaurante_Reservacion_idReservacion
+		PRIMARY KEY CLUSTERED (idReservacion)
 GO
 
-ALTER TABLE Restaurante.MenuBebidas
-	ADD CONSTRAINT PK_Restaurante_MenuBebidas_id
-		PRIMARY KEY (id)
+ALTER TABLE Restaurante.DetallePedidos
+	ADD CONSTRAINT PK_Restaurante_DetallePedidos_idDetallePedidos
+		PRIMARY KEY CLUSTERED (idDetallePedido)
 GO
 
-ALTER TABLE Restaurante.PedidoBebidas
-	ADD CONSTRAINT PK_Restaurante_PedidoBebidas_idPedido$Y$idBebida
-		PRIMARY KEY(idPedido, idBebida)
+ALTER TABLE Restaurante.Facturas
+	ADD CONSTRAINT PK_Restaurante_Factura_idFactura
+		PRIMARY KEY CLUSTERED (idFactura)
 GO
 
-ALTER TABLE Restaurante.MenuPlato
-	ADD CONSTRAINT PK_Restaurante_MenuPlato_idPlato
-		PRIMARY KEY (idPlato)
+
+
+--DEFINICION DE LLAVES FORANEAS
+ALTER TABLE Acceso.Usuarios
+	ADD CONSTRAINT FK_Acceso_TipoAcceso_id$tiene$Acceso_Usuarios_id
+		FOREIGN KEY	(idAcceso)
+			REFERENCES Acceso.TipoAcceso(id);
+
+ALTER TABLE Restaurante.Mesas
+	ADD CONSTRAINT FK_Restaurante_Mesas_id$TieneUna$Restaurante_Areas_id
+		FOREIGN KEY (idArea)
+			REFERENCES Restaurante.Areas(id);
+
+ALTER TABLE Restaurante.MesasReservadas
+	ADD CONSTRAINT FK_Restaurante_MesasReservadas_id$TieneUna$Restaurante_Mesas_idMesa
+		FOREIGN KEY (idMesa)
+			REFERENCES Restaurante.Mesas(id);
+
+
+ALTER TABLE Restaurante.Pedidos
+	ADD CONSTRAINT FK_Restaurante_Pedido_idMesa$TieneUna$Restaurante_Mesas_id
+		FOREIGN KEY	(idMesa)
+			REFERENCES Restaurante.Mesas(id);
 GO
 
-ALTER TABLE Restaurante.PedidoPlato
-	ADD CONSTRAINT PK_Restaurante_PedidosPlato_idPedido$Y$idPlato
-		PRIMARY KEY (idPedido, idPlato)
+ALTER TABLE Restaurante.MesasReservadas
+	ADD CONSTRAINT FK_Restaurante_Reservacion_idReservacion$PuedeTener$MesasReservadas_idReservacion
+		FOREIGN KEY (idReservacion)
+			REFERENCES Restaurante.Reservacion(idReservacion)
+GO
+
+ALTER TABLE Restaurante.Pedidos
+	ADD CONSTRAINT FK_Restaurante_Meseros_id$HacenMuchos$Pedidos_id
+		FOREIGN KEY (idMesero)
+			REFERENCES Restaurante.Meseros(id)
+GO
+
+ALTER TABLE	Restaurante.DetallePedidos
+	ADD CONSTRAINT FK_Restaurante_DetallePedidos_idPedido$EstanEn$Restaurante_Pedidos_id
+		FOREIGN KEY (idPedido)
+			REFERENCES Restaurante.Pedidos(id)
+GO

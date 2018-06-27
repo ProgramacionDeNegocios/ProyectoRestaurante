@@ -23,7 +23,7 @@ BEGIN
 		BEGIN
 			SET @usuario = UPPER(LEFT(@nombre, 1)) + Utilidad.NombrePropios(@apellido)
 
-			SELECT @existe = COUNT(Restaurante.Usuarios.usuario) FROM Restaurante.Usuarios WHERE usuario = @usuario;
+			SELECT @existe = COUNT(Acceso.Usuarios.usuario) FROM Acceso.Usuarios WHERE usuario = @usuario;
 			IF (@existe > 0)
 				BEGIN
 					RAISERROR(N'Ya existe un usuario con el nombre  "%s %s"', 16, 1, @nombre, @apellido);
@@ -31,7 +31,7 @@ BEGIN
 				END 	
 			ELSE
 				BEGIN
-					INSERT INTO Restaurante.Usuarios(nombre, apellido, usuario, clave, idArea)
+					INSERT INTO Acceso.Usuarios(nombre, apellido, usuario, clave, idAcceso)
 						VALUES (	Utilidad.NombrePropios(@nombre),
 									Utilidad.NombrePropios(@apellido), 
 									@usuario, 
@@ -54,4 +54,3 @@ BEGIN
 	SELECT @existe = COUNT(Restaurante.Usuarios.usuario) FROM Restaurante.Usuarios WHERE usuario = @usuario;
 	RETURN @existe;
 END
-
