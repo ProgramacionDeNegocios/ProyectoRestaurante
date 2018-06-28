@@ -183,3 +183,70 @@ ELSE
 	END
 GO
 
+IF OBJECT_ID('Restaurante.Inventario')	IS NOT NULL
+	DROP TABLE Restaurante.Inventario
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.Inventario(
+			idInventario INT IDENTITY NOT NULL,
+			descripcion	NVARCHAR(100) NOT NULL,
+			costo DECIMAL(4,2) NOT NULL,
+			precioVenta DECIMAL(4,2) NOT NULL,
+			cantidad DECIMAL(4,2) NOT NULL,
+			idTipoProducto INT NOT NULL,
+			idInsumo INT NOT NULL,
+			idProveedor INT NOT NULL
+		);
+	END
+GO
+
+IF OBJECT_ID('Restaurante.TipoProducto')	IS NOT NULL
+	DROP TABLE Restaurante.TipoProducto
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.TipoProducto(
+			idTipoProducto INT IDENTITY NOT NULL,
+			nombre NVARCHAR(100)
+		);
+	END
+GO
+
+IF OBJECT_ID('Restaurante.Insumos')	IS NOT NULL
+	DROP TABLE Restaurante.Insumos
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.Insumos(
+			idInsumo INT IDENTITY NOT NULL,
+			nombre NVARCHAR(100) NOT NULL,
+			costo DECIMAL(4,2) NOT NULL,
+			idTipoUnidad INT NOT NULL,
+			descripcion NVARCHAR(200) NOT NULL,
+			idProveedor INT
+		);
+	END
+GO
+
+IF OBJECT_ID('Restaurante.Proveedores')	IS NOT NULL
+	DROP TABLE Restaurante.Proveedores
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.Proveedores(
+			idProveedor INT IDENTITY NOT NULL,
+			nombre NVARCHAR(100) NOT NULL,
+			telefono NVARCHAR(9) NOT NULL,
+			direccion NVARCHAR(300)
+		);
+	END
+GO
+
+IF OBJECT_ID('Restaurante.TipoUnidad')	IS NOT NULL
+	DROP TABLE Restaurante.TipoUnidad
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.TipoUnidad(
+			idTipoUnidad INT IDENTITY NOT NULL,
+			descripcion NVARCHAR(100)
+		);
+	END
+GO
+

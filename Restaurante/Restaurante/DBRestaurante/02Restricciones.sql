@@ -50,6 +50,31 @@ ALTER TABLE Restaurante.Facturas
 		PRIMARY KEY CLUSTERED (idFactura)
 GO
 
+ALTER TABLE Restaurante.Inventario
+	ADD CONSTRAINT PK_Restaurante_Inventario_idInventario
+		PRIMARY KEY CLUSTERED(idInventario)
+GO
+
+ALTER TABLE Restaurante.TipoProducto
+	ADD CONSTRAINT PK_Restaurante_TipoProducto_idTipoProducto
+		PRIMARY KEY CLUSTERED(idTipoProducto)
+GO
+
+ALTER TABLE Restaurante.Insumos
+	ADD CONSTRAINT PK_Restaurante_Insumos_idInsumo
+		PRIMARY KEY CLUSTERED(idInsumo)
+GO
+
+ALTER TABLE Restaurante.Proveedores
+	ADD CONSTRAINT PK_Restaurante_Proveedores_idProovedor
+		PRIMARY KEY CLUSTERED(idProveedor)
+GO
+
+ALTER TABLE Restaurante.TipoUnidad
+	ADD CONSTRAINT PK_Restaurante_TipoUnidad_idTipoUnidad
+		PRIMARY KEY CLUSTERED(idTipoUnidad)
+GO
+
 
 
 --DEFINICION DE LLAVES FORANEAS
@@ -91,4 +116,40 @@ ALTER TABLE	Restaurante.DetallePedidos
 	ADD CONSTRAINT FK_Restaurante_DetallePedidos_idPedido$EstanEn$Restaurante_Pedidos_id
 		FOREIGN KEY (idPedido)
 			REFERENCES Restaurante.Pedidos(id)
+GO
+
+ALTER TABLE	Restaurante.Facturas
+	ADD CONSTRAINT FK_Restaurante_Facturas_idFactura$TieneUn$Restaurante_Pedidos_idPedido
+		FOREIGN KEY (idPedido)
+			REFERENCES Restaurante.Pedidos(id)
+GO
+
+ALTER TABLE	Restaurante.DetallePedidos
+	ADD CONSTRAINT FK_Restaurante_DetallePedidos_idPedido$EstanEn$Restaurante_Inventario_idinventario
+		FOREIGN KEY (idInventario)
+			REFERENCES Restaurante.Inventario(idInventario)
+GO
+
+ALTER TABLE	Restaurante.Inventario
+	ADD CONSTRAINT FK_Restaurante_Inventario_idInventario$TienenUn$Restaurante_TipoProducto_idTipoPRoducto
+		FOREIGN KEY (idTipoProducto)
+			REFERENCES Restaurante.TipoProducto(idTipoProducto)
+GO
+
+ALTER TABLE	Restaurante.Insumos
+	ADD CONSTRAINT FK_Restaurante_Proveedores_idProveedor$TienenVarios$Restaurante_Inventario_idInventario
+		FOREIGN KEY (idProveedor)
+			REFERENCES Restaurante.Proveedores(idProveedor)
+GO
+
+ALTER TABLE	Restaurante.Inventario
+	ADD CONSTRAINT FK_Restaurante_Proveedores_idProveedor$TienenVarios$Restaurante_Insumo_idInsumo
+		FOREIGN KEY (idProveedor)
+			REFERENCES Restaurante.Proveedores(idProveedor)
+GO
+
+ALTER TABLE	Restaurante.Insumos
+	ADD CONSTRAINT FK_Restaurante_Insumos_idInsumo$TienenUn$Restaurante_TipoUnidad_idTipoUnidad
+		FOREIGN KEY (idTipoUnidad)
+			REFERENCES Restaurante.TipoUnidad(idTipoUnidad)
 GO
