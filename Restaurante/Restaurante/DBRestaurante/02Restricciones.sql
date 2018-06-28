@@ -75,6 +75,12 @@ ALTER TABLE Restaurante.TipoUnidad
 		PRIMARY KEY CLUSTERED(idTipoUnidad)
 GO
 
+ALTER TABLE Restaurante.InsumosProductos
+	ADD CONSTRAINT PK_Restaurante_InsumosProductos_idInsumoProducto
+		PRIMARY KEY CLUSTERED(idInsumoProducto)
+GO
+
+
 
 
 --DEFINICION DE LLAVES FORANEAS
@@ -152,4 +158,16 @@ ALTER TABLE	Restaurante.Insumos
 	ADD CONSTRAINT FK_Restaurante_Insumos_idInsumo$TienenUn$Restaurante_TipoUnidad_idTipoUnidad
 		FOREIGN KEY (idTipoUnidad)
 			REFERENCES Restaurante.TipoUnidad(idTipoUnidad)
+GO
+
+ALTER TABLE Restaurante.InsumosProductos
+	ADD CONSTRAINT FK_Restaurante_InsumosProductos_idInsumoProducto$EstaEn$Restaurante_Insumos_idInsumo
+		FOREIGN KEY	(idInsumo)
+			REFERENCES Restaurante.Insumos(idInsumo);
+GO
+
+ALTER TABLE Restaurante.InsumosProductos
+	ADD CONSTRAINT FK_Restaurante_InsumosProductos_idInsumoProducto$Tiene$Restaurante_Inventario_idInventario
+		FOREIGN KEY	(idInventario)
+			REFERENCES Restaurante.Inventario(idInventario);
 GO
