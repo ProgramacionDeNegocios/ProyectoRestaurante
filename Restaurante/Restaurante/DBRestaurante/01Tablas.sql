@@ -164,6 +164,7 @@ ELSE
 		CREATE TABLE Restaurante.Facturas(
 			idFactura INT IDENTITY(1,1) NOT NULL,
 			idPedido INT NOT NULL,
+			idUsuario INT NOT NULL,
 			iva DECIMAL(4,4),
 			total DECIMAL NOT NULL
 		);

@@ -171,3 +171,9 @@ ALTER TABLE Restaurante.InsumosProductos
 		FOREIGN KEY	(idInventario)
 			REFERENCES Restaurante.Inventario(idInventario);
 GO
+
+ALTER TABLE Restaurante.Facturas
+	ADD CONSTRAINT FK_Restaurante_Facturas_idFactura$TieneUn$Restaurante_Usuario_id
+		FOREIGN KEY (idUsuario)
+			REFERENCES Acceso.Usuarios(id)
+GO

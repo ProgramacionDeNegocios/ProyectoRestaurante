@@ -1,6 +1,18 @@
 USE DBRestaurante
 GO
 
+CREATE PROCEDURE SP_BuscarUsuario
+(
+	@usuario NVARCHAR(25)
+)
+AS
+BEGIN
+	DECLARE @existe INT
+	SELECT @existe = COUNT(Restaurante.Usuarios.usuario) FROM Restaurante.Usuarios WHERE usuario = @usuario;
+	RETURN @existe;
+END
+GO
+
 CREATE PROCEDURE SP_InsertarUsuario
 (
 	@nombre	NVARCHAR(25),
@@ -44,13 +56,27 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE SP_BuscarUsuario
+/*
+CREATE PROCEDURE SP_ModificarUsuario
 (
-	@usuario NVARCHAR(25)
+	--parametros que recibe
 )
 AS
 BEGIN
-	DECLARE @existe INT
-	SELECT @existe = COUNT(Restaurante.Usuarios.usuario) FROM Restaurante.Usuarios WHERE usuario = @usuario;
-	RETURN @existe;
+	--cuerpo de procedimiento
 END
+GO
+*/
+
+/*
+CREATE PROCEDURE SP_EliminarUsuario
+(
+	--parametros que recibe
+)
+AS
+BEGIN
+	--cuerpo de procedimiento
+END
+GO
+*/
+
