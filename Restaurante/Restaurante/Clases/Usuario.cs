@@ -28,7 +28,7 @@ namespace Restaurante.Clases
                     this.id = dr.GetInt32(0);
                     this.usuario = dr.GetString(1);
                     this.clave = dr.GetString(2);
-                    this.idArea = dr.GetInt32(3);
+                    //this.idArea = dr.GetInt32(3);
                 }
             }
             catch (SqlException)
