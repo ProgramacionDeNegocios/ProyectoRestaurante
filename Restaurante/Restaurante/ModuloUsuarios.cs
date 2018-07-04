@@ -21,11 +21,18 @@ namespace Restaurante
 
         private void ModuloUsuarios_Load(object sender, EventArgs e)
         {
+            
             CargarDGWUsuarios();
             CargarCMBDepartamento();
-
+            ResetFormulario();
         }
 
+        private void ResetFormulario()
+        {
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtClave.Text = "";
+        }
 
         private void CargarCMBDepartamento()
         {
@@ -81,9 +88,9 @@ namespace Restaurante
             this.Close();
         }
 
-        private void cmbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnSalir_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show(cmbDepartamento.ValueMember);
+
         }
     }
 }

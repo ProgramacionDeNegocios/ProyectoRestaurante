@@ -42,20 +42,23 @@
             this.grpNuevoUsuario = new System.Windows.Forms.GroupBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnPermisos = new System.Windows.Forms.Button();
             this.grpUsuarios = new System.Windows.Forms.GroupBox();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsuarios)).BeginInit();
             this.grpNuevoUsuario.SuspendLayout();
             this.grpUsuarios.SuspendLayout();
             this.pnlTitulo.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(18, 24);
+            this.btnAgregar.Location = new System.Drawing.Point(15, 54);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 0;
@@ -64,7 +67,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(18, 69);
+            this.btnModificar.Location = new System.Drawing.Point(15, 83);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 1;
@@ -73,7 +76,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(18, 113);
+            this.btnEliminar.Location = new System.Drawing.Point(15, 112);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 2;
@@ -102,11 +105,10 @@
             // 
             this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartamento.FormattingEnabled = true;
-            this.cmbDepartamento.Location = new System.Drawing.Point(109, 116);
+            this.cmbDepartamento.Location = new System.Drawing.Point(109, 119);
             this.cmbDepartamento.Name = "cmbDepartamento";
             this.cmbDepartamento.Size = new System.Drawing.Size(192, 21);
             this.cmbDepartamento.TabIndex = 5;
-            this.cmbDepartamento.SelectedIndexChanged += new System.EventHandler(this.cmbDepartamento_SelectedIndexChanged);
             // 
             // lblDepartamento
             // 
@@ -126,10 +128,11 @@
             this.btnSalir.TabStop = false;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(109, 85);
+            this.txtClave.Location = new System.Drawing.Point(109, 93);
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(192, 20);
             this.txtClave.TabIndex = 8;
@@ -154,9 +157,10 @@
             // 
             // grpNuevoUsuario
             // 
+            this.grpNuevoUsuario.Controls.Add(this.pictureBox1);
             this.grpNuevoUsuario.Controls.Add(this.txtApellido);
             this.grpNuevoUsuario.Controls.Add(this.lblApellido);
-            this.grpNuevoUsuario.Controls.Add(this.btnBuscar);
+            this.grpNuevoUsuario.Controls.Add(this.btnPermisos);
             this.grpNuevoUsuario.Controls.Add(this.txtNombre);
             this.grpNuevoUsuario.Controls.Add(this.txtClave);
             this.grpNuevoUsuario.Controls.Add(this.lblDepartamento);
@@ -172,7 +176,7 @@
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(109, 56);
+            this.txtApellido.Location = new System.Drawing.Point(109, 57);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(192, 20);
             this.txtApellido.TabIndex = 14;
@@ -180,20 +184,20 @@
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
-            this.lblApellido.Location = new System.Drawing.Point(35, 59);
+            this.lblApellido.Location = new System.Drawing.Point(35, 57);
             this.lblApellido.Name = "lblApellido";
             this.lblApellido.Size = new System.Drawing.Size(44, 13);
             this.lblApellido.TabIndex = 13;
             this.lblApellido.Text = "Apellido";
             // 
-            // btnBuscar
+            // btnPermisos
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(330, 26);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(71, 27);
-            this.btnBuscar.TabIndex = 12;
-            this.btnBuscar.Text = "Nuevo";
-            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnPermisos.Location = new System.Drawing.Point(327, 119);
+            this.btnPermisos.Name = "btnPermisos";
+            this.btnPermisos.Size = new System.Drawing.Size(98, 23);
+            this.btnPermisos.TabIndex = 12;
+            this.btnPermisos.Text = "Permisos";
+            this.btnPermisos.UseVisualStyleBackColor = true;
             // 
             // grpUsuarios
             // 
@@ -215,13 +219,31 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnNuevo);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnModificar);
             this.panel1.Controls.Add(this.btnAgregar);
-            this.panel1.Location = new System.Drawing.Point(486, 71);
+            this.panel1.Location = new System.Drawing.Point(486, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(102, 161);
+            this.panel1.Size = new System.Drawing.Size(102, 162);
             this.panel1.TabIndex = 16;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(327, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(98, 94);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(15, 25);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.TabIndex = 16;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
             // 
             // ModuloUsuarios
             // 
@@ -232,7 +254,9 @@
             this.Controls.Add(this.pnlTitulo);
             this.Controls.Add(this.grpUsuarios);
             this.Controls.Add(this.grpNuevoUsuario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModuloUsuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UsuarioMenu";
             this.Load += new System.EventHandler(this.ModuloUsuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsuarios)).EndInit();
@@ -241,6 +265,7 @@
             this.grpUsuarios.ResumeLayout(false);
             this.pnlTitulo.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -259,11 +284,13 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.DataGridView dgwUsuarios;
         private System.Windows.Forms.GroupBox grpNuevoUsuario;
-        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnPermisos;
         private System.Windows.Forms.GroupBox grpUsuarios;
         private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }
