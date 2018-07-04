@@ -35,9 +35,9 @@ namespace Restaurante.Clases
                     this.departamento = dr.GetInt32(3);
                 }
             }
-            catch (SqlException)
+            catch (System.Data.SqlClient.SqlException ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {
