@@ -46,8 +46,8 @@ namespace Restaurante
                 else
                 {
                     MenuPrincipal menuPrincipal = new MenuPrincipal();
-                    menuPrincipal.ShowDialog();
                     this.Hide();
+                    menuPrincipal.ShowDialog();
                 }
                 
 
@@ -86,6 +86,18 @@ namespace Restaurante
             txtClave.Text = "";
         }
 
-        
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar))
+            {
+                errorProvider1.Clear();
+            }
+            else
+            {
+                e.Handled = true;
+                errorProvider1.SetError(txtUsuario, "Solo se permiten letras en el Usuario");
+                errorProvider1.GetError(txtUsuario);
+            }
+        }
     }
 }
