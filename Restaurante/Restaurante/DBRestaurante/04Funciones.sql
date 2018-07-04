@@ -1,8 +1,6 @@
 USE DBRestaurante
 GO
 
-CREATE SCHEMA Utilidad
-GO
 
 CREATE FUNCTION Utilidad.NombrePropios
 (

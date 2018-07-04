@@ -35,10 +35,10 @@ ELSE
 			id  INT IDENTITY (1,100) NOT NULL, --index de los usuarios
 			nombre NVARCHAR(25) NOT NULL,	--primer nombre del usuario
 			apellido NVARCHAR(25) NOT NULL, --primer apellido del usuario
-			usuario NVARCHAR(20) NOT NULL,	--Primera letra del nombre en mayusculas más el apellido
+			usuario NVARCHAR(26) NOT NULL,	--Primera letra del nombre en mayusculas más el apellido
 									--eje: Pedro Picapiedra (PPicapiedra)
 			clave NVARCHAR(20) NOT NULL, --clave de acceso
-			idAcceso INT  NOT NULL--codigo del area de trabajo a la cual pertenece
+			departamento INT  NOT NULL--codigo del area de trabajo a la cual pertenece
 		);
 	END
 GO
