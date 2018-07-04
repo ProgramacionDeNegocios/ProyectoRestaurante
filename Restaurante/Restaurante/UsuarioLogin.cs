@@ -36,19 +36,28 @@ namespace Restaurante
             if (ValidacionCampos())
             {
                 errorProvider1.Clear();
-                usuario.ObtenerUsuario(txtUsuario.Text.Trim(), txtClave.Text.Trim());
-                if (usuario.usuario != txtUsuario.Text.Trim() || usuario.clave != txtClave.Text.Trim())
+                try
                 {
-                    errorProvider1.Clear();
-                    errorProvider1.SetError(txtUsuario, "El usuario '" + txtUsuario.Text.ToUpper() + "' no existe ó la clave ingresada es incorrecta");
-                    LimpiarFormulario();
+                    usuario.ObtenerUsuario(txtUsuario.Text.Trim(), txtClave.Text.Trim());
+                    if (usuario.usuario != txtUsuario.Text.Trim() || usuario.clave != txtClave.Text.Trim())
+                    {
+                        errorProvider1.Clear();
+                        errorProvider1.SetError(txtUsuario, "El usuario '" + txtUsuario.Text.ToUpper() + "' no existe ó la clave ingresada es incorrecta");
+                        LimpiarFormulario();
+                    }
+                    else
+                    {
+                        MenuPrincipal menuPrincipal = new MenuPrincipal();
+                        this.Hide();
+                        menuPrincipal.ShowDialog();
+                    }
                 }
-                else
+                catch(SqlException ex)
                 {
-                    MenuPrincipal menuPrincipal = new MenuPrincipal();
-                    this.Hide();
-                    menuPrincipal.ShowDialog();
+                    MessageBox.Show(ex.ToString(),"ERROR DE CONEXION", MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+
                 }
+                
                 
 
             }

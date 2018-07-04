@@ -31,9 +31,9 @@ namespace Restaurante.Clases
                     //this.idArea = dr.GetInt32(3);
                 }
             }
-            catch (SqlException)
+            catch (System.Data.SqlClient.SqlException ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {
