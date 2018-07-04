@@ -1,3 +1,5 @@
+USE DBRestaurante
+GO
 
 --DEFINICION DE LLAVES PRIMARIAS
 ALTER TABLE Acceso.Usuarios
@@ -86,7 +88,7 @@ GO
 --DEFINICION DE LLAVES FORANEAS
 ALTER TABLE Acceso.Usuarios
 	ADD CONSTRAINT FK_Acceso_TipoAcceso_id$tiene$Acceso_Usuarios_id
-		FOREIGN KEY	(idAcceso)
+		FOREIGN KEY	(departamento)
 			REFERENCES Acceso.TipoAcceso(id);
 
 ALTER TABLE Restaurante.Mesas

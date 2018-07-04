@@ -17,14 +17,14 @@ CREATE PROCEDURE SP_InsertarUsuario
 (
 	@nombre	NVARCHAR(25),
 	@apellido NVARCHAR(25),
-	@usuario NVARCHAR(20),
 	@clave NVARCHAR(20),
-	@idArea INT
+	@departamento INT
 
 )
 AS
 BEGIN
 	DECLARE @existe int;
+	DECLARE @Usuario nVarchar(26);
 	SET @existe = 0;
 	IF (@nombre = '' OR @apellido = '')
 		BEGIN
@@ -43,12 +43,12 @@ BEGIN
 				END 	
 			ELSE
 				BEGIN
-					INSERT INTO Acceso.Usuarios(nombre, apellido, usuario, clave, idAcceso)
+					INSERT INTO Acceso.Usuarios(nombre, apellido, usuario, clave, departamento)
 						VALUES (	Utilidad.NombrePropios(@nombre),
 									Utilidad.NombrePropios(@apellido), 
 									@usuario, 
 									@clave, 
-									@idArea)
+									@departamento)
 					RETURN 1
 				END
 			
