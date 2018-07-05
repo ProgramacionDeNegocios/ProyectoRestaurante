@@ -40,20 +40,20 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.dgwUsuarios = new System.Windows.Forms.DataGridView();
             this.grpNuevoUsuario = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
             this.btnPermisos = new System.Windows.Forms.Button();
             this.grpUsuarios = new System.Windows.Forms.GroupBox();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsuarios)).BeginInit();
             this.grpNuevoUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpUsuarios.SuspendLayout();
             this.pnlTitulo.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregar
@@ -64,6 +64,7 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
@@ -174,6 +175,14 @@
             this.grpNuevoUsuario.TabStop = false;
             this.grpNuevoUsuario.Text = "Información del Usuario";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(327, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(98, 94);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(109, 57);
@@ -228,14 +237,6 @@
             this.panel1.Size = new System.Drawing.Size(102, 162);
             this.panel1.TabIndex = 16;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(327, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(98, 94);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnNuevo
             // 
             this.btnNuevo.Location = new System.Drawing.Point(15, 25);
@@ -262,10 +263,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsuarios)).EndInit();
             this.grpNuevoUsuario.ResumeLayout(false);
             this.grpNuevoUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpUsuarios.ResumeLayout(false);
             this.pnlTitulo.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

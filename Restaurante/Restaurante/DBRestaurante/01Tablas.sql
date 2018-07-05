@@ -32,7 +32,7 @@ IF OBJECT_ID('Acceso.Usuarios')	IS NOT NULL
 ELSE
 	BEGIN
 		CREATE TABLE Acceso.Usuarios(
-			id  INT IDENTITY (1,100) NOT NULL, --index de los usuarios
+			id  INT IDENTITY (1,1) NOT NULL, --index de los usuarios
 			nombre NVARCHAR(25) NOT NULL,	--primer nombre del usuario
 			apellido NVARCHAR(25) NOT NULL, --primer apellido del usuario
 			usuario NVARCHAR(26) NOT NULL,	--Primera letra del nombre en mayusculas más el apellido

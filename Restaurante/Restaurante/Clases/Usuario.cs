@@ -53,17 +53,19 @@ namespace Restaurante.Clases
             {
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("Nombre", SqlDbType.NVarChar, 25));
-                cmd.Parameters["Nombre"].Value = this.nombre;
+                cmd.Parameters["nombre"].Value = this.nombre;
                 cmd.Parameters.Add(new SqlParameter("Apellido", SqlDbType.NVarChar, 25));
-                cmd.Parameters["Apellido"].Value = this.apellido;
+                cmd.Parameters["apellido"].Value = this.apellido;
                 cmd.Parameters.Add(new SqlParameter("Clave", SqlDbType.NVarChar, 20));
-                cmd.Parameters["Clave"].Value = this.clave;
+                cmd.Parameters["clave"].Value = this.clave;
+                cmd.Parameters.Add(new SqlParameter("Departamento", SqlDbType.Int));
+                cmd.Parameters["departamento"].Value = this.departamento;
                 cmd.ExecuteNonQuery();
 
             }
-            catch
+            catch(SqlException ex)
             {
-                
+                throw ex;
             }
             finally
             {

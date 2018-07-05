@@ -22,7 +22,6 @@ namespace Restaurante
         private void ModuloUsuarios_Load(object sender, EventArgs e)
         {
             
-            CargarDGWUsuarios();
             CargarCMBDepartamento();
             ResetFormulario();
         }
@@ -32,6 +31,9 @@ namespace Restaurante
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtClave.Text = "";
+            cmbDepartamento.SelectedValue = "";
+            dgwUsuarios.DataSource = "";
+            CargarDGWUsuarios();
         }
 
         private void CargarCMBDepartamento()
@@ -90,7 +92,33 @@ namespace Restaurante
 
         private void btnSalir_Click_1(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Clases.Usuario usuario = new Clases.Usuario();
+            Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
+            tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
+            MessageBox.Show(cmbDepartamento.SelectedValue.ToString());
+            MessageBox.Show(Convert.ToString(tipoAcceso.id));
+            usuario.nombre = txtNombre.Text;
+            usuario.apellido = txtApellido.Text;
+            usuario.clave = txtClave.Text;
+            usuario.departamento = tipoAcceso.id;
+            try
+            {
+                usuario.Agregar();
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ResetFormulario();
+            }
+            
         }
     }
 }
