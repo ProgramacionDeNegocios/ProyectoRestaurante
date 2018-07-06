@@ -14,6 +14,7 @@ namespace Restaurante
 {
     public partial class ModuloUsuarios : Form
     {
+        private string usuario;
         public ModuloUsuarios()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace Restaurante
             cmbDepartamento.SelectedValue = "";
             dgwUsuarios.DataSource = "";
             CargarDGWUsuarios();
+            dgwUsuariosEstilo(dgwUsuarios);
         }
 
         private void CargarCMBDepartamento()
@@ -97,15 +99,14 @@ namespace Restaurante
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Clases.Usuario usuario = new Clases.Usuario();
             Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
             tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
-            MessageBox.Show(cmbDepartamento.SelectedValue.ToString());
-            MessageBox.Show(Convert.ToString(tipoAcceso.id));
-            usuario.nombre = txtNombre.Text;
-            usuario.apellido = txtApellido.Text;
-            usuario.clave = txtClave.Text;
-            usuario.departamento = tipoAcceso.id;
+
+            Clases.Usuario usuario = new Clases.Usuario(
+                txtNombre.Text,
+                txtApellido.Text,
+                txtClave.Text,
+                tipoAcceso.id);
             try
             {
                 usuario.Agregar();
@@ -119,6 +120,53 @@ namespace Restaurante
                 ResetFormulario();
             }
             
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
+            tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
+
+            Clases.Usuario usuario = new Clases.Usuario(
+                this.usuario,
+                txtNombre.Text,
+                txtApellido.Text,
+                txtClave.Text,
+                tipoAcceso.id);
+            try
+            {
+                usuario.Modificar();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.usuario = null;
+                ResetFormulario();
+            }
+        }
+
+
+        private void dgwUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Clases.Usuario usuario = new Clases.Usuario();
+            usuario.ObtenerUsuario(dgwUsuarios.Rows[e.RowIndex].Cells["Usuario"].Value.ToString());
+            dgwUsuarios.Select();
+            txtNombre.Text = usuario.nombre;
+            txtApellido.Text = usuario.apellido;
+            txtClave.Text = usuario.clave;
+            this.usuario = usuario.usuario;
+            cmbDepartamento.SelectedIndex = usuario.departamento - 1;
+        }
+
+        private void dgwUsuariosEstilo(DataGridView dgw)
+        {
+            dgw.DefaultCellStyle.BackColor = Color.LightBlue;
+            dgw.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+
+
         }
     }
 }

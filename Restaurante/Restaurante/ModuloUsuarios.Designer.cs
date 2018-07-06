@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -44,14 +45,12 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
             this.btnPermisos = new System.Windows.Forms.Button();
-            this.grpUsuarios = new System.Windows.Forms.GroupBox();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsuarios)).BeginInit();
             this.grpNuevoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.grpUsuarios.SuspendLayout();
             this.pnlTitulo.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +73,7 @@
             this.btnModificar.TabIndex = 1;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -147,14 +147,36 @@
             // 
             // dgwUsuarios
             // 
-            this.dgwUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgwUsuarios.Location = new System.Drawing.Point(3, 16);
+            this.dgwUsuarios.AllowUserToAddRows = false;
+            this.dgwUsuarios.AllowUserToDeleteRows = false;
+            this.dgwUsuarios.AllowUserToResizeRows = false;
+            this.dgwUsuarios.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgwUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgwUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dgwUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgwUsuarios.ColumnHeadersHeight = 30;
+            this.dgwUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgwUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgwUsuarios.EnableHeadersVisualStyles = false;
+            this.dgwUsuarios.Location = new System.Drawing.Point(34, 263);
             this.dgwUsuarios.MultiSelect = false;
             this.dgwUsuarios.Name = "dgwUsuarios";
             this.dgwUsuarios.ReadOnly = true;
+            this.dgwUsuarios.RowHeadersVisible = false;
+            this.dgwUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwUsuarios.ShowEditingIcon = false;
             this.dgwUsuarios.Size = new System.Drawing.Size(539, 186);
             this.dgwUsuarios.TabIndex = 12;
+            this.dgwUsuarios.TabStop = false;
+            this.dgwUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwUsuarios_CellClick);
             // 
             // grpNuevoUsuario
             // 
@@ -208,16 +230,6 @@
             this.btnPermisos.Text = "Permisos";
             this.btnPermisos.UseVisualStyleBackColor = true;
             // 
-            // grpUsuarios
-            // 
-            this.grpUsuarios.Controls.Add(this.dgwUsuarios);
-            this.grpUsuarios.Location = new System.Drawing.Point(34, 257);
-            this.grpUsuarios.Name = "grpUsuarios";
-            this.grpUsuarios.Size = new System.Drawing.Size(545, 205);
-            this.grpUsuarios.TabIndex = 14;
-            this.grpUsuarios.TabStop = false;
-            this.grpUsuarios.Text = "Usuarios en el sistema";
-            // 
             // pnlTitulo
             // 
             this.pnlTitulo.Controls.Add(this.btnSalir);
@@ -251,9 +263,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 474);
+            this.Controls.Add(this.dgwUsuarios);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTitulo);
-            this.Controls.Add(this.grpUsuarios);
             this.Controls.Add(this.grpNuevoUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModuloUsuarios";
@@ -264,7 +276,6 @@
             this.grpNuevoUsuario.ResumeLayout(false);
             this.grpNuevoUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.grpUsuarios.ResumeLayout(false);
             this.pnlTitulo.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -286,7 +297,6 @@
         private System.Windows.Forms.DataGridView dgwUsuarios;
         private System.Windows.Forms.GroupBox grpNuevoUsuario;
         private System.Windows.Forms.Button btnPermisos;
-        private System.Windows.Forms.GroupBox grpUsuarios;
         private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtApellido;

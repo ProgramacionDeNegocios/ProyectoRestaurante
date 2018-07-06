@@ -36,7 +36,7 @@ namespace Restaurante
             if (ValidacionCampos())
             {
                 errorProvider1.Clear();
-                usuario.ObtenerUsuario(txtUsuario.Text.Trim(), txtClave.Text.Trim());
+                usuario.ObtenerUsuario(txtUsuario.Text.Trim());
                 if (usuario.usuario != txtUsuario.Text.Trim() || usuario.clave != txtClave.Text.Trim())
                 {
                     errorProvider1.Clear();
