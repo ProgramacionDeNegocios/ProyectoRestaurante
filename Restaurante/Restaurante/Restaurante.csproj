@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Conexion.cs" />
+    <Compile Include="Clases\TipoAcceso.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -40,20 +41,18 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.dgwUsuarios = new System.Windows.Forms.DataGridView();
             this.grpNuevoUsuario = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
             this.btnPermisos = new System.Windows.Forms.Button();
-            this.grpUsuarios = new System.Windows.Forms.GroupBox();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsuarios)).BeginInit();
             this.grpNuevoUsuario.SuspendLayout();
-            this.grpUsuarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlTitulo.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregar
@@ -64,6 +63,7 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
@@ -73,6 +73,7 @@
             this.btnModificar.TabIndex = 1;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
@@ -82,6 +83,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // lblNombre
             // 
@@ -103,7 +105,9 @@
             // 
             // cmbDepartamento
             // 
+            this.cmbDepartamento.BackColor = System.Drawing.Color.White;
             this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartamento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cmbDepartamento.FormattingEnabled = true;
             this.cmbDepartamento.Location = new System.Drawing.Point(109, 119);
             this.cmbDepartamento.Name = "cmbDepartamento";
@@ -142,18 +146,41 @@
             this.txtNombre.Location = new System.Drawing.Point(109, 27);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(192, 20);
-            this.txtNombre.TabIndex = 11;
+            this.txtNombre.TabIndex = 1;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // dgwUsuarios
             // 
-            this.dgwUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgwUsuarios.Location = new System.Drawing.Point(3, 16);
+            this.dgwUsuarios.AllowUserToAddRows = false;
+            this.dgwUsuarios.AllowUserToDeleteRows = false;
+            this.dgwUsuarios.AllowUserToResizeRows = false;
+            this.dgwUsuarios.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgwUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgwUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dgwUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgwUsuarios.ColumnHeadersHeight = 30;
+            this.dgwUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgwUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dgwUsuarios.EnableHeadersVisualStyles = false;
+            this.dgwUsuarios.Location = new System.Drawing.Point(34, 263);
             this.dgwUsuarios.MultiSelect = false;
             this.dgwUsuarios.Name = "dgwUsuarios";
             this.dgwUsuarios.ReadOnly = true;
+            this.dgwUsuarios.RowHeadersVisible = false;
+            this.dgwUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwUsuarios.ShowEditingIcon = false;
             this.dgwUsuarios.Size = new System.Drawing.Size(539, 186);
             this.dgwUsuarios.TabIndex = 12;
+            this.dgwUsuarios.TabStop = false;
+            this.dgwUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwUsuarios_CellClick);
             // 
             // grpNuevoUsuario
             // 
@@ -174,12 +201,21 @@
             this.grpNuevoUsuario.TabStop = false;
             this.grpNuevoUsuario.Text = "Información del Usuario";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(327, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(98, 94);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(109, 57);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(192, 20);
             this.txtApellido.TabIndex = 14;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // lblApellido
             // 
@@ -198,16 +234,6 @@
             this.btnPermisos.TabIndex = 12;
             this.btnPermisos.Text = "Permisos";
             this.btnPermisos.UseVisualStyleBackColor = true;
-            // 
-            // grpUsuarios
-            // 
-            this.grpUsuarios.Controls.Add(this.dgwUsuarios);
-            this.grpUsuarios.Location = new System.Drawing.Point(34, 257);
-            this.grpUsuarios.Name = "grpUsuarios";
-            this.grpUsuarios.Size = new System.Drawing.Size(545, 205);
-            this.grpUsuarios.TabIndex = 14;
-            this.grpUsuarios.TabStop = false;
-            this.grpUsuarios.Text = "Usuarios en el sistema";
             // 
             // pnlTitulo
             // 
@@ -228,14 +254,6 @@
             this.panel1.Size = new System.Drawing.Size(102, 162);
             this.panel1.TabIndex = 16;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(327, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(98, 94);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnNuevo
             // 
             this.btnNuevo.Location = new System.Drawing.Point(15, 25);
@@ -244,15 +262,16 @@
             this.btnNuevo.TabIndex = 16;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // ModuloUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 474);
+            this.Controls.Add(this.dgwUsuarios);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTitulo);
-            this.Controls.Add(this.grpUsuarios);
             this.Controls.Add(this.grpNuevoUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModuloUsuarios";
@@ -262,10 +281,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsuarios)).EndInit();
             this.grpNuevoUsuario.ResumeLayout(false);
             this.grpNuevoUsuario.PerformLayout();
-            this.grpUsuarios.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlTitulo.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -285,7 +303,6 @@
         private System.Windows.Forms.DataGridView dgwUsuarios;
         private System.Windows.Forms.GroupBox grpNuevoUsuario;
         private System.Windows.Forms.Button btnPermisos;
-        private System.Windows.Forms.GroupBox grpUsuarios;
         private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtApellido;
