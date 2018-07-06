@@ -101,15 +101,31 @@ BEGIN
 END
 GO
 
-/*
 CREATE PROCEDURE SP_EliminarUsuario
 (
-	--parametros que recibe
+	@usuario NVARCHAR(26)
+
 )
 AS
 BEGIN
-	--cuerpo de procedimiento
+	DECLARE @existe int;
+	SET @existe = 0;
+
+			SELECT @existe = COUNT(Acceso.Usuarios.usuario) FROM Acceso.Usuarios WHERE usuario = @usuario;
+			IF (@existe = 0)
+				BEGIN
+					RAISERROR(N'No existe un usuario con el nombre "', 16, 1);
+					RETURN 0
+				END 	
+			ELSE
+				BEGIN
+					DELETE FROM Acceso.Usuarios	WHERE usuario = @usuario;
+					RETURN 1
+				END
+			
+		
 END
 GO
-*/
+
+EXEC SP_EliminarUsuario  'GGfg'
 

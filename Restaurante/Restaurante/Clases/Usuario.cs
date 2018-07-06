@@ -18,6 +18,11 @@ namespace Restaurante.Clases
         public int departamento { get; set; }
 
         public Usuario() { }
+
+        public Usuario(string usuario)
+        {
+            this.usuario = usuario;
+        }
         public Usuario(string nombre, string apellido, string clave, int departamento)
         {
             this.nombre = nombre;
@@ -109,6 +114,29 @@ namespace Restaurante.Clases
                 cmd.Parameters["clave"].Value = this.clave;
                 cmd.Parameters.Add(new SqlParameter("Departamento", SqlDbType.Int));
                 cmd.Parameters["departamento"].Value = this.departamento;
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+
+        public void Eliminar()
+        {
+            Clases.Conexion conexion = new Clases.Conexion();
+            SqlCommand cmd = new SqlCommand("SP_EliminarUsuario", conexion.conexion);
+            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                conexion.Abrir();
+                cmd.Parameters.Add(new SqlParameter("Usuario", SqlDbType.VarChar, 26));
+                cmd.Parameters["usuario"].Value = this.usuario;
                 cmd.ExecuteNonQuery();
 
             }

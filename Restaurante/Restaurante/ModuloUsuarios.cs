@@ -29,6 +29,8 @@ namespace Restaurante
 
         private void ResetFormulario()
         {
+            this.usuario = null;
+
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtClave.Text = "";
@@ -36,6 +38,21 @@ namespace Restaurante
             dgwUsuarios.DataSource = "";
             CargarDGWUsuarios();
             dgwUsuariosEstilo(dgwUsuarios);
+
+           
+            btnNuevo.Enabled = true;
+            btnAgregar.Enabled = true;
+            btnModificar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnPermisos.Enabled = false;
+
+            txtNombre.Enabled = true;
+            txtApellido.Enabled = true;
+            txtClave.Enabled = true;
+            cmbDepartamento.Enabled = true;
+
+            txtNombre.Focus();
+            
         }
 
         private void CargarCMBDepartamento()
@@ -99,52 +116,58 @@ namespace Restaurante
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
-            tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
-
-            Clases.Usuario usuario = new Clases.Usuario(
-                txtNombre.Text,
-                txtApellido.Text,
-                txtClave.Text,
-                tipoAcceso.id);
+           
             try
             {
+                Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
+                tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
+
+                Clases.Usuario usuario = new Clases.Usuario(
+                    txtNombre.Text,
+                    txtApellido.Text,
+                    txtClave.Text,
+                    tipoAcceso.id);
+
                 usuario.Agregar();
+                ResetFormulario();
             }
             catch(SqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally
+            catch(NullReferenceException)
             {
-                ResetFormulario();
+                MessageBox.Show("Escoja el departamento al cual pertenece el usuario");
             }
             
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
-            tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
 
-            Clases.Usuario usuario = new Clases.Usuario(
-                this.usuario,
-                txtNombre.Text,
-                txtApellido.Text,
-                txtClave.Text,
-                tipoAcceso.id);
-            try
+            DialogResult respuesta = MessageBox.Show("Está seguro de modificar al usuario","Modificar Usuario",MessageBoxButtons.YesNo , MessageBoxIcon.Question);
+            if (respuesta.ToString() == "Yes")
             {
-                usuario.Modificar();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                this.usuario = null;
-                ResetFormulario();
+                
+                try
+                {
+                    Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
+                    tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
+
+                    Clases.Usuario usuario = new Clases.Usuario(
+                        this.usuario,
+                        txtNombre.Text,
+                        txtApellido.Text,
+                        txtClave.Text,
+                        tipoAcceso.id);
+
+                    usuario.Modificar();
+                    ResetFormulario();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -159,6 +182,12 @@ namespace Restaurante
             txtClave.Text = usuario.clave;
             this.usuario = usuario.usuario;
             cmbDepartamento.SelectedIndex = usuario.departamento - 1;
+
+            btnNuevo.Enabled = true;
+            btnAgregar.Enabled = false;
+            btnModificar.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnPermisos.Enabled = true;
         }
 
         private void dgwUsuariosEstilo(DataGridView dgw)
@@ -167,6 +196,62 @@ namespace Restaurante
             dgw.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
 
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            ResetFormulario();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            DialogResult respuesta = MessageBox.Show("Está seguro de eliminar al usuario" + this.usuario, "Modificar Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta.ToString() == "Yes")
+            {
+                Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
+                tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
+
+                Clases.Usuario usuario = new Clases.Usuario(
+                    this.usuario);
+                try
+                {
+                    usuario.Eliminar();
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    this.usuario = null;
+                    ResetFormulario();
+                }
+            }
         }
     }
 }
