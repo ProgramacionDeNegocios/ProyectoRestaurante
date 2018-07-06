@@ -50,6 +50,8 @@ namespace Restaurante
                         MenuPrincipal menuPrincipal = new MenuPrincipal();
                         this.Hide();
                         menuPrincipal.ShowDialog();
+                        this.Show();
+                        LimpiarFormulario();
                     }
                 }
                 catch(SqlException ex)

@@ -21,5 +21,16 @@ namespace Restaurante
         {
 
         }
+
+        private void btnModuloUsuarios_Click(object sender, EventArgs e)
+        {
+            ModuloUsuarios moduloUsuario = new ModuloUsuarios();
+            moduloUsuario.ShowDialog();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
