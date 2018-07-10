@@ -10,7 +10,7 @@ namespace Restaurante.Clases
     class Conexion
     {
         // Creamos el string de conexion.
-        public SqlConnection conexion = new SqlConnection(@"server = (local)\SQLEXPRESS;
+        public SqlConnection conexion = new SqlConnection(@"server = (local);
                 integrated security = true; database = DBRestaurante;");
 
         //Creamos el metodo para abrir la conecion con la base de datos

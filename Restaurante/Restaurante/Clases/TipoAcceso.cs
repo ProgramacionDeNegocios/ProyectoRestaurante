@@ -11,8 +11,16 @@ namespace Restaurante.Clases
     {
         public int id { get; set; }
         public string departamento { get; set; }
+
+        //Agregar las propediades para definir a los modulos a los que tenra acceso
         
-        public void ObtenerPorDepartamento( string departamentoRe)
+
+        public TipoAcceso(int id, string departamento)
+        {
+            this.id = id;
+            this.departamento = departamento;
+        }
+        public void ObtenerAreaPorDepartamento( string departamentoRe)
         {
             Conexion conexion = new Conexion();
             string sql = @"SELECT id, departamento FROM Acceso.TipoAcceso WHERE departamento = '" + departamentoRe + "'";
@@ -35,6 +43,18 @@ namespace Restaurante.Clases
             {
                 conexion.Cerrar();
             }
+        }
+        public void Agregar()
+        {
+
+        }
+        public void Modificar()
+        {
+
+        }
+        public void Eliminar()
+        {
+
         }
     }
 }
