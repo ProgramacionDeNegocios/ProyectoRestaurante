@@ -126,6 +126,204 @@ BEGIN
 		
 END
 GO
+CREATE PROCEDURE SP_AgregarTipoAcceso
+(
+)
+AS
+BEGIN
+END
+GO
 
-EXEC SP_EliminarUsuario  'GGfg'
+CREATE PROCEDURE SP_ModificarTipoAcceso
+(
+)
+AS
+BEGIN
+END
+GO
 
+CREATE PROCEDURE SP_EliminarTipoAcceso
+(
+)
+AS 
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_AgregarProveedor
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_ModificarProveedor
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_EliminarProveedor
+(
+	@idProveedor INT
+)
+AS
+BEGIN
+	DELETE FROM Restaurante.Proveedores WHERE idProveedor = @idProveedor;
+END
+GO
+
+CREATE PROCEDURE SP_AgregarMesero
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_ModificarMesero
+(
+)
+AS
+BEGIN 
+END
+GO
+
+CREATE PROCEDURE SP_EliminarMesero
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_AgregarArea
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_ModificarArea
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_EliminarArea
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_AgregarMesa
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_ModificarMesa
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_EliminarMesa
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_AgregarPedido
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_ModificarPedido
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_EliminarPedido
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_AgregarFactura
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_AgregarInventario
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_ModificarInventario
+(
+)
+AS 
+BEGIN 
+END
+GO
+
+CREATE PROCEDURE SP_EliminarInventario
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_AgregarInsumo
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_ModificarInsumo
+(
+)
+AS
+BEGIN
+END
+GO
+
+CREATE PROCEDURE SP_EliminarInsumo
+(
+)
+AS
+BEGIN
+END
+GO
