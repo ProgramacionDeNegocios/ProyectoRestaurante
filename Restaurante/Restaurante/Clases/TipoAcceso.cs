@@ -20,6 +20,8 @@ namespace Restaurante.Clases
             this.id = id;
             this.departamento = departamento;
         }
+
+        public TipoAcceso() { }
         public void ObtenerAreaPorDepartamento( string departamentoRe)
         {
             Conexion conexion = new Conexion();
