@@ -13,7 +13,7 @@ namespace Restaurante.Clases
         public string departamento { get; set; }
 
         //Agregar las propediades para definir a los modulos a los que tenra acceso
-        
+        public TipoAcceso() { }
 
         public TipoAcceso(int id, string departamento)
         {
@@ -24,6 +24,7 @@ namespace Restaurante.Clases
         {
             Conexion conexion = new Conexion();
             string sql = @"SELECT id, departamento FROM Acceso.TipoAcceso WHERE departamento = '" + departamentoRe + "'";
+            Console.WriteLine(conexion.conexion);
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
@@ -35,9 +36,13 @@ namespace Restaurante.Clases
                     this.departamento = dr.GetString(1);
                 }
             }
-            catch (SqlException)
+            catch (SqlException ex)
             {
-                throw;
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             finally
             {

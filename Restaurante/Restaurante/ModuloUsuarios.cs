@@ -120,7 +120,7 @@ namespace Restaurante
             try
             {
                 Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
-                tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
+                tipoAcceso.ObtenerAreaPorDepartamento(cmbDepartamento.SelectedValue.ToString());
 
                 Clases.Usuario usuario = new Clases.Usuario(
                     txtNombre.Text,
@@ -152,7 +152,7 @@ namespace Restaurante
                 try
                 {
                     Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
-                    tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
+                    tipoAcceso.ObtenerAreaPorDepartamento(cmbDepartamento.SelectedValue.ToString());
 
                     Clases.Usuario usuario = new Clases.Usuario(
                         this.usuario,
@@ -234,7 +234,7 @@ namespace Restaurante
             if (respuesta.ToString() == "Yes")
             {
                 Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
-                tipoAcceso.ObtenerPorDepartamento(cmbDepartamento.SelectedValue.ToString());
+                tipoAcceso.ObtenerAreaPorDepartamento(cmbDepartamento.SelectedValue.ToString());
 
                 Clases.Usuario usuario = new Clases.Usuario(
                     this.usuario);

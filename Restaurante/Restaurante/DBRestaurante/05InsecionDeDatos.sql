@@ -4,6 +4,9 @@ GO
 insert into Acceso.TipoAcceso(departamento,moduloUsuario)
 	values('Caja',1);
 
+EXEC SP_InsertarTipoAcceso 'Cocina'
+select * from Acceso.TipoAcceso
+
 --SP_InsertarUsuario(nombre, apellido, usuario, clave, tipoArea)
 EXEC SP_InsertarUsuario 'oscar','toledo','ninguna',1
 
