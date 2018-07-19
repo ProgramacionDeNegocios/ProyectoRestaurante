@@ -164,6 +164,41 @@ namespace Restaurante.Clases
                 conexion.Cerrar();
             }
         }
+
+        public static DataView GenerarDataViewUsuarios()
+        {
+            Clases.Conexion conexion = new Clases.Conexion();
+            //colocar el nombre del area a la cual pertenece el usuario en el strin de conexion
+            string sql = @"SELECT   Acceso.Usuarios.id          as Código,
+                                    Acceso.Usuarios.nombre      as Nombre, 
+                                    Acceso.Usuarios.apellido    as Apellido, 
+                                    Acceso.Usuarios.usuario     as Usuario,
+                                    Acceso.TipoAcceso.departamento as Departamento
+                            FROM Acceso.TipoAcceso 
+                            INNER JOIN Acceso.Usuarios 
+                            ON Acceso.TipoAcceso.id = Acceso.Usuarios.departamento";
+            try
+            {
+                SqlDataAdapter data = new SqlDataAdapter();
+                data.SelectCommand = new SqlCommand(sql, conexion.conexion);
+                DataSet ds = new DataSet();
+                data.Fill(ds, "Acceso.Usuarios");
+                DataTable dt = ds.Tables["Acceso.Usuarios"];
+                DataView dv = new DataView(dt,
+                    "",
+                    "Código",
+                    DataViewRowState.Unchanged);
+                return dv;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
     }
    
 }

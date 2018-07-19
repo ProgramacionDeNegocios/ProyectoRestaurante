@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Restaurante.Clases
 {
@@ -60,6 +61,17 @@ namespace Restaurante.Clases
         public void Eliminar()
         {
 
+        }
+        
+        public static DataTable GenerarDataSourceDepartamentos()
+        {
+            DataTable dt = new DataTable();
+            Clases.Conexion conexion = new Clases.Conexion();
+            string sql = "select * FROM Acceso.TipoAcceso";
+            SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
         }
     }
 }
