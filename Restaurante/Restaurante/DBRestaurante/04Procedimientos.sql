@@ -212,10 +212,8 @@ BEGIN
 END
 GO
 
-
-CREATE PROCEDURE SP_AgregarProveedor
+alter PROCEDURE SP_AgregarProveedor
 (
-	@idProveedor INT,
 	@nombre NVARCHAR(100),
 	@telefono NVARCHAR(9),
 	@direccion NVARCHAR(300)
@@ -225,10 +223,10 @@ BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(Restaurante.Proveedores.idProveedor) FROM Restaurante.Proveedores WHERE idProveedor = @idProveedor;
+	SELECT @existe = COUNT(Restaurante.Proveedores.idProveedor) FROM Restaurante.Proveedores WHERE nombre = @nombre;
 	IF (@existe > 0)
 		BEGIN
-			RAISERROR(N'Ya existe un proveedor con el nombre  "%s"', 16, 1, @idProveedor);
+			RAISERROR(N'Ya existe un proveedor con el nombre  "%s"', 16, 1, @nombre);
 			RETURN 0
 			
 		END
@@ -294,35 +292,34 @@ BEGIN
 END
 GO
 
-EXEC SP_AgregarProveedor 1, 'Coca Cola', '9785-7596', 'Lajas Taulabe'
-SELECT * FROM Restaurante.Proveedores
-EXEC SP_ModificarProveedor 3, 'Coca Cola Honduras', '9785-7596', 'Lajas Taulabe atras gasolinera texaxo'
-exec SP_EliminarProveedor 2
-
 CREATE PROCEDURE SP_AgregarMesero
 (
+	@id INT,
+	@nombre NVARCHAR(25),
+	@apellido NVARCHAR(25)
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+	SELECT @existe = COUNT(Restaurante.Meseros.id) FROM Restaurante.Meseros WHERE @id=id;
 	IF (@existe > 0)
 		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+			RAISERROR(N'Ya existe Un mesero con el id %d"', 16, 1, @id);
 			RETURN 0
 			
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
-				VALUES(	<variable1>, <variable2>,...,<Variable3>)
+			INSERT INTO Restaurante.Meseros(nombre, apellido)
+				VALUES(	@nombre, @apellido)
 			RETURN 1
 		END
 END
 GO
-
+EXEC SP_AgregarMesero 1,'nada','nada'
+go
 CREATE PROCEDURE SP_ModificarMesero
 (
 )

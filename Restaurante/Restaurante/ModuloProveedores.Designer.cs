@@ -109,7 +109,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(161, 137);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(122, 43);
+            this.txtDireccion.Size = new System.Drawing.Size(201, 43);
             this.txtDireccion.TabIndex = 7;
             // 
             // lblId

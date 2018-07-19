@@ -37,7 +37,7 @@ namespace Restaurante.Clases
         public void Agregar()
         {
             Clases.Conexion conexion = new Clases.Conexion();
-            SqlCommand cmd = new SqlCommand("SP_InsertarProveedor", conexion.conexion);
+            SqlCommand cmd = new SqlCommand("SP_AgregarProveedor", conexion.conexion);
             cmd.CommandType = CommandType.StoredProcedure;
             try
             {
