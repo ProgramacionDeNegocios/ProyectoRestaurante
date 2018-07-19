@@ -32,5 +32,11 @@ namespace Restaurante
         {
             this.Close();
         }
+
+        private void btnModuloProveedores_Click(object sender, EventArgs e)
+        {
+            ModuloProveedores moduloProveedores = new ModuloProveedores();
+            moduloProveedores.ShowDialog();
+        }
     }
 }

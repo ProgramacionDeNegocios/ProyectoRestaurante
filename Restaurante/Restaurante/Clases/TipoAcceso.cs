@@ -63,11 +63,11 @@ namespace Restaurante.Clases
 
         }
         
-        public static DataTable GenerarDataSourceDepartamentos()
+        public static DataTable GetDataTableDepartamentos()
         {
             DataTable dt = new DataTable();
             Clases.Conexion conexion = new Clases.Conexion();
-            string sql = "select * FROM Acceso.TipoAcceso";
+            string sql = "select departamento FROM Acceso.TipoAcceso";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);

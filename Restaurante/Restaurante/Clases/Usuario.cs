@@ -68,15 +68,6 @@ namespace Restaurante.Clases
                 ex.Source = "Clase_Usuario";
                 throw ex;
             }
-            catch(Exception excepcion)
-            {
-                Exception ex = new Exception(
-                   String.Format("{0} \n\n{1}",
-                   "no podemos obtener la informacion del usuario", excepcion.Message));
-                ex.HelpLink = "OscarToledo.com";
-                ex.Source = "Clase_Usuario";
-                throw ex;
-            }
             finally
             {
                 conexion.Cerrar();
@@ -165,7 +156,7 @@ namespace Restaurante.Clases
             }
         }
 
-        public static DataView GenerarDataViewUsuarios()
+        public static DataView GetDataView()
         {
             Clases.Conexion conexion = new Clases.Conexion();
             //colocar el nombre del area a la cual pertenece el usuario en el strin de conexion
@@ -190,7 +181,7 @@ namespace Restaurante.Clases
                     DataViewRowState.Unchanged);
                 return dv;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 throw ex;
             }
@@ -198,6 +189,16 @@ namespace Restaurante.Clases
             {
                 conexion.Cerrar();
             }
+        }
+        public static DataTable GetDataTableUsuarios()
+        {
+            DataTable dt = new DataTable();
+            Clases.Conexion conexion = new Clases.Conexion();
+            string sql = "select usuario FROM Acceso.Usuarios";
+            SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
         }
     }
    

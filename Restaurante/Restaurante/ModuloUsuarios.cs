@@ -59,14 +59,14 @@ namespace Restaurante
         {
             cmbDepartamento.DisplayMember = "departamento";
             cmbDepartamento.ValueMember = "departamento";
-            cmbDepartamento.DataSource = Clases.TipoAcceso.GenerarDataSourceDepartamentos();
+            cmbDepartamento.DataSource = Clases.TipoAcceso.GetDataTableDepartamentos();
         }
 
         private void CargarDGWUsuarios()
         {
             try
             {
-                dgwUsuarios.DataSource = Clases.Usuario.GenerarDataViewUsuarios();
+                dgwUsuarios.DataSource = Clases.Usuario.GetDataView();
             }
             catch(Exception ex)
             {
