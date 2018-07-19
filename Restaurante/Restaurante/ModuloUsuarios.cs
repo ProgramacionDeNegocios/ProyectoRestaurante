@@ -57,50 +57,20 @@ namespace Restaurante
 
         private void CargarCMBDepartamento()
         {
-            DataTable dt = new DataTable();
-            Clases.Conexion conexion = new Clases.Conexion();
-                string sql = "select * FROM Acceso.TipoAcceso";
-                SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
             cmbDepartamento.DisplayMember = "departamento";
             cmbDepartamento.ValueMember = "departamento";
-            cmbDepartamento.DataSource = dt;
+            cmbDepartamento.DataSource = Clases.TipoAcceso.GetDataTableDepartamentos();
         }
 
         private void CargarDGWUsuarios()
         {
-            Clases.Conexion conexion = new Clases.Conexion();
-
-            //colocar el nombre del area a la cual pertenece el usuario en el strin de conexion
-            string sql = @"SELECT   Acceso.Usuarios.id          as Código,
-                                    Acceso.Usuarios.nombre      as Nombre, 
-                                    Acceso.Usuarios.apellido    as Apellido, 
-                                    Acceso.Usuarios.usuario     as Usuario,
-                                    Acceso.TipoAcceso.departamento as Departamento
-                            FROM Acceso.TipoAcceso 
-                            INNER JOIN Acceso.Usuarios 
-                            ON Acceso.TipoAcceso.id = Acceso.Usuarios.departamento";
             try
             {
-                SqlDataAdapter data = new SqlDataAdapter();
-                data.SelectCommand = new SqlCommand(sql, conexion.conexion);
-                DataSet ds = new DataSet();
-                data.Fill(ds, "Acceso.Usuarios");
-                DataTable dt = ds.Tables["Acceso.Usuarios"];
-                DataView dv = new DataView(dt,
-                    "",
-                    "Código",
-                    DataViewRowState.Unchanged);
-                dgwUsuarios.DataSource = dv;
+                dgwUsuarios.DataSource = Clases.Usuario.GetDataView();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show(ex.Message + ex.StackTrace, "Informacion");
-            }
-            finally
-            {
-                conexion.Cerrar();
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -134,10 +104,6 @@ namespace Restaurante
             catch(SqlException ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            catch(NullReferenceException)
-            {
-                MessageBox.Show("Escoja el departamento al cual pertenece el usuario");
             }
             
         }
@@ -195,7 +161,6 @@ namespace Restaurante
             dgw.DefaultCellStyle.BackColor = Color.LightBlue;
             dgw.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
-
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -237,7 +202,8 @@ namespace Restaurante
                 tipoAcceso.ObtenerAreaPorDepartamento(cmbDepartamento.SelectedValue.ToString());
 
                 Clases.Usuario usuario = new Clases.Usuario(
-                    this.usuario);
+                    this.usuario
+                    );
                 try
                 {
                     usuario.Eliminar();
@@ -252,6 +218,11 @@ namespace Restaurante
                     ResetFormulario();
                 }
             }
+        }
+
+        private void dgwUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
