@@ -22,6 +22,13 @@ namespace Restaurante.Clases
             Direccion = direccion;
         }
 
+        public Proveedor(int id, string nombre, string telefono, string direccion)
+        {
+            Id = id;
+            Nombre = nombre;
+            Telefono = telefono;
+            Direccion = direccion;
+        }
         public Proveedor(int id)
         {
             Id = id;
@@ -106,7 +113,7 @@ namespace Restaurante.Clases
             }
         }
 
-        public void ObtenerProveedor(string id)
+        public void ObtenerProveedor(int id)
         {
             Conexion conexion = new Conexion();
             string sql = @"SELECT idProveedor, nombre, telefono, direccion FROM Restaurante.Proveedores WHERE idProveedor = '" + id + "';";

@@ -161,7 +161,6 @@ namespace Restaurante
             dgw.DefaultCellStyle.BackColor = Color.LightBlue;
             dgw.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
-
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -219,6 +218,11 @@ namespace Restaurante
                     ResetFormulario();
                 }
             }
+        }
+
+        private void dgwUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
