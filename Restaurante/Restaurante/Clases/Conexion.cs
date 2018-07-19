@@ -9,19 +9,34 @@ namespace Restaurante.Clases
 {
     class Conexion
     {
+        private const string error = "Hay problemas para conectarse a la base de datos";
         // Creamos el string de conexion.
-        public SqlConnection conexion = new SqlConnection(@"server = (local);
+        private SqlConnection con;
+        public SqlConnection conexion {
+            get
+            {
+                return con;
+            }
+        }
+        public Conexion()
+        {
+            this.con = new SqlConnection(@"server = (local)\SQLEXPRESS;
                 integrated security = true; database = DBRestaurante;");
-
+        }
         //Creamos el metodo para abrir la conecion con la base de datos
         public void Abrir()
         {
             try
             {
-                conexion.Open();
+                con.Open();
             }
-            catch (SqlException ex)
+            catch (SqlException excepcion)
             {
+                Exception ex = new Exception(
+                    String.Format("{0} \n\n{1}",
+                    error, excepcion.Message));
+                ex.HelpLink = "OscarToledo.com";
+                ex.Source = "Clase_Conexion";
                 throw ex;
             }
         }
@@ -31,10 +46,15 @@ namespace Restaurante.Clases
         {
             try
             {
-                conexion.Close();
+                con.Close();
             }
-            catch (SqlException ex)
+            catch (SqlException excepcion)
             {
+                Exception ex = new Exception(
+                    String.Format("{0} \n\n{1}",
+                    error, excepcion.Message));
+                ex.HelpLink = "OscarToledo.com";
+                ex.Source = "Clase_Conexion";
                 throw ex;
             }
         }

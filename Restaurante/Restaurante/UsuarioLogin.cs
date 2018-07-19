@@ -19,6 +19,7 @@ namespace Restaurante
         public UsuarioLogin()
         {
             InitializeComponent();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -54,10 +55,9 @@ namespace Restaurante
                         LimpiarFormulario();
                     }
                 }
-                catch(SqlException ex)
+                catch(Exception ex)
                 {
-                    MessageBox.Show(ex.ToString(),"ERROR DE CONEXION", MessageBoxButtons.YesNo, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-
+                    MessageBox.Show(ex.Message +"\n\n Origen del problema '" + ex.Source + "'\n en el metodo '"+ ex.TargetSite + "'");
                 }
                 
                 

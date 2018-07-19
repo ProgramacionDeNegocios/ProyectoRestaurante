@@ -47,6 +47,7 @@ namespace Restaurante.Clases
             try
             {
                 conexion.Abrir();
+                
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -58,8 +59,22 @@ namespace Restaurante.Clases
                     this.departamento = dr.GetInt32(5);
                 }
             }
-            catch (System.Data.SqlClient.SqlException ex)
+            catch (SqlException excepcion)
             {
+                Exception ex = new Exception(
+                   String.Format("{0} \n\n{1}",
+                   "no podemos obtener la informacion del usuario", excepcion.Message));
+                ex.HelpLink = "OscarToledo.com";
+                ex.Source = "Clase_Usuario";
+                throw ex;
+            }
+            catch(Exception excepcion)
+            {
+                Exception ex = new Exception(
+                   String.Format("{0} \n\n{1}",
+                   "no podemos obtener la informacion del usuario", excepcion.Message));
+                ex.HelpLink = "OscarToledo.com";
+                ex.Source = "Clase_Usuario";
                 throw ex;
             }
             finally
