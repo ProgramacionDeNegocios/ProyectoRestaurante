@@ -20,7 +20,7 @@ namespace Restaurante.Clases
         }
         public Conexion()
         {
-            this.con = new SqlConnection(@"server = (local)\SQLEXPRESS;
+            this.con = new SqlConnection(@"server = (local);
                 integrated security = true; database = DBRestaurante;");
         }
         //Creamos el metodo para abrir la conecion con la base de datos
