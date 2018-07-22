@@ -30,6 +30,7 @@
         {
             this.btnModuloUsuarios = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnModuloProveedores = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnModuloUsuarios
@@ -52,11 +53,22 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnModuloProveedores
+            // 
+            this.btnModuloProveedores.Location = new System.Drawing.Point(508, 249);
+            this.btnModuloProveedores.Name = "btnModuloProveedores";
+            this.btnModuloProveedores.Size = new System.Drawing.Size(109, 64);
+            this.btnModuloProveedores.TabIndex = 2;
+            this.btnModuloProveedores.Text = "Proveedores";
+            this.btnModuloProveedores.UseVisualStyleBackColor = true;
+            this.btnModuloProveedores.Click += new System.EventHandler(this.btnModuloProveedores_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 563);
+            this.Controls.Add(this.btnModuloProveedores);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnModuloUsuarios);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -72,5 +84,6 @@
 
         private System.Windows.Forms.Button btnModuloUsuarios;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnModuloProveedores;
     }
 }

@@ -47,6 +47,7 @@ namespace Restaurante.Clases
             try
             {
                 conexion.Abrir();
+                
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -58,8 +59,13 @@ namespace Restaurante.Clases
                     this.departamento = dr.GetInt32(5);
                 }
             }
-            catch (System.Data.SqlClient.SqlException ex)
+            catch (SqlException excepcion)
             {
+                Exception ex = new Exception(
+                   String.Format("{0} \n\n{1}",
+                   "no podemos obtener la informacion del usuario", excepcion.Message));
+                ex.HelpLink = "OscarToledo.com";
+                ex.Source = "Clase_Usuario";
                 throw ex;
             }
             finally
@@ -148,6 +154,51 @@ namespace Restaurante.Clases
             {
                 conexion.Cerrar();
             }
+        }
+
+        public static DataView GetDataView()
+        {
+            Clases.Conexion conexion = new Clases.Conexion();
+            //colocar el nombre del area a la cual pertenece el usuario en el strin de conexion
+            string sql = @"SELECT   Acceso.Usuarios.id          as Código,
+                                    Acceso.Usuarios.nombre      as Nombre, 
+                                    Acceso.Usuarios.apellido    as Apellido, 
+                                    Acceso.Usuarios.usuario     as Usuario,
+                                    Acceso.TipoAcceso.departamento as Departamento
+                            FROM Acceso.TipoAcceso 
+                            INNER JOIN Acceso.Usuarios 
+                            ON Acceso.TipoAcceso.id = Acceso.Usuarios.departamento";
+            try
+            {
+                SqlDataAdapter data = new SqlDataAdapter();
+                data.SelectCommand = new SqlCommand(sql, conexion.conexion);
+                DataSet ds = new DataSet();
+                data.Fill(ds, "Acceso.Usuarios");
+                DataTable dt = ds.Tables["Acceso.Usuarios"];
+                DataView dv = new DataView(dt,
+                    "",
+                    "Código",
+                    DataViewRowState.Unchanged);
+                return dv;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+        }
+        public static DataTable GetDataTableUsuarios()
+        {
+            DataTable dt = new DataTable();
+            Clases.Conexion conexion = new Clases.Conexion();
+            string sql = "select usuario FROM Acceso.Usuarios";
+            SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            return dt;
         }
     }
    
