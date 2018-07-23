@@ -41,147 +41,238 @@
             this.lblTelefono = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.dgvProveedores = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.grpProveedores = new System.Windows.Forms.GroupBox();
+            this.pnlBotones = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.grpProveedores.SuspendLayout();
+            this.pnlBotones.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(438, 79);
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnAgregar.Location = new System.Drawing.Point(22, 47);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(75, 25);
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(438, 108);
+            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnModificar.Location = new System.Drawing.Point(22, 76);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
+            this.btnModificar.Size = new System.Drawing.Size(75, 25);
             this.btnModificar.TabIndex = 1;
             this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(438, 137);
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnEliminar.Location = new System.Drawing.Point(22, 105);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(75, 25);
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(438, 50);
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNuevo.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnNuevo.Location = new System.Drawing.Point(22, 18);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevo.Size = new System.Drawing.Size(75, 25);
             this.btnNuevo.TabIndex = 3;
             this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.UseVisualStyleBackColor = false;
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(161, 50);
+            this.txtId.Location = new System.Drawing.Point(153, 14);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(122, 20);
+            this.txtId.Size = new System.Drawing.Size(210, 23);
             this.txtId.TabIndex = 4;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(161, 76);
+            this.txtNombre.Location = new System.Drawing.Point(153, 43);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(122, 20);
+            this.txtNombre.Size = new System.Drawing.Size(210, 23);
             this.txtNombre.TabIndex = 5;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(161, 102);
+            this.txtTelefono.Location = new System.Drawing.Point(153, 72);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(122, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(169, 23);
             this.txtTelefono.TabIndex = 6;
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(161, 137);
+            this.txtDireccion.Location = new System.Drawing.Point(153, 104);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(122, 43);
+            this.txtDireccion.Size = new System.Drawing.Size(266, 62);
             this.txtDireccion.TabIndex = 7;
             // 
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(51, 57);
+            this.lblId.Location = new System.Drawing.Point(12, 17);
             this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(40, 13);
+            this.lblId.Size = new System.Drawing.Size(52, 17);
             this.lblId.TabIndex = 8;
             this.lblId.Text = "Código";
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(51, 86);
+            this.lblNombre.Location = new System.Drawing.Point(12, 46);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.Size = new System.Drawing.Size(58, 17);
             this.lblNombre.TabIndex = 9;
             this.lblNombre.Text = "Nombre";
             // 
             // lblTelefono
             // 
             this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(51, 115);
+            this.lblTelefono.Location = new System.Drawing.Point(12, 75);
             this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(49, 13);
+            this.lblTelefono.Size = new System.Drawing.Size(64, 17);
             this.lblTelefono.TabIndex = 10;
             this.lblTelefono.Text = "Teléfono";
+            this.lblTelefono.Click += new System.EventHandler(this.lblTelefono_Click);
             // 
             // lblDireccion
             // 
             this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Location = new System.Drawing.Point(51, 156);
+            this.lblDireccion.Location = new System.Drawing.Point(12, 127);
             this.lblDireccion.Name = "lblDireccion";
-            this.lblDireccion.Size = new System.Drawing.Size(52, 13);
+            this.lblDireccion.Size = new System.Drawing.Size(67, 17);
             this.lblDireccion.TabIndex = 11;
             this.lblDireccion.Text = "Direccion";
             // 
             // dgvProveedores
             // 
             this.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProveedores.Location = new System.Drawing.Point(30, 218);
+            this.dgvProveedores.Location = new System.Drawing.Point(27, 272);
             this.dgvProveedores.Name = "dgvProveedores";
-            this.dgvProveedores.Size = new System.Drawing.Size(657, 148);
+            this.dgvProveedores.Size = new System.Drawing.Size(606, 148);
             this.dgvProveedores.TabIndex = 12;
             this.dgvProveedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProveedores_CellClick);
             this.dgvProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProveedores_CellContentClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
+            this.pictureBox1.Location = new System.Drawing.Point(2, 431);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(655, 68);
+            this.pictureBox1.TabIndex = 13;
+            this.pictureBox1.TabStop = false;
+            // 
+            // grpProveedores
+            // 
+            this.grpProveedores.Controls.Add(this.txtId);
+            this.grpProveedores.Controls.Add(this.txtNombre);
+            this.grpProveedores.Controls.Add(this.txtTelefono);
+            this.grpProveedores.Controls.Add(this.lblDireccion);
+            this.grpProveedores.Controls.Add(this.txtDireccion);
+            this.grpProveedores.Controls.Add(this.lblTelefono);
+            this.grpProveedores.Controls.Add(this.lblId);
+            this.grpProveedores.Controls.Add(this.lblNombre);
+            this.grpProveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.grpProveedores.Location = new System.Drawing.Point(40, 92);
+            this.grpProveedores.Name = "grpProveedores";
+            this.grpProveedores.Size = new System.Drawing.Size(430, 168);
+            this.grpProveedores.TabIndex = 14;
+            this.grpProveedores.TabStop = false;
+            // 
+            // pnlBotones
+            // 
+            this.pnlBotones.Controls.Add(this.btnModificar);
+            this.pnlBotones.Controls.Add(this.btnAgregar);
+            this.pnlBotones.Controls.Add(this.btnEliminar);
+            this.pnlBotones.Controls.Add(this.btnNuevo);
+            this.pnlBotones.Location = new System.Drawing.Point(487, 108);
+            this.pnlBotones.Name = "pnlBotones";
+            this.pnlBotones.Size = new System.Drawing.Size(119, 151);
+            this.pnlBotones.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Britannic Bold", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
+            this.label1.Location = new System.Drawing.Point(70, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(428, 37);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Información de Proveedores";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.btnSalir);
+            this.panel1.Location = new System.Drawing.Point(40, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(606, 75);
+            this.panel1.TabIndex = 17;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
+            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalir.Location = new System.Drawing.Point(577, 0);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(29, 29);
+            this.btnSalir.TabIndex = 0;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // ModuloProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 450);
+            this.ClientSize = new System.Drawing.Size(658, 500);
+            this.Controls.Add(this.pnlBotones);
+            this.Controls.Add(this.grpProveedores);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvProveedores);
-            this.Controls.Add(this.lblDireccion);
-            this.Controls.Add(this.lblTelefono);
-            this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.lblId);
-            this.Controls.Add(this.txtDireccion);
-            this.Controls.Add(this.txtTelefono);
-            this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.txtId);
-            this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModuloProveedores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModuloProveedores";
             this.Load += new System.EventHandler(this.ModuloProveedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.grpProveedores.ResumeLayout(false);
+            this.grpProveedores.PerformLayout();
+            this.pnlBotones.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -200,5 +291,11 @@
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.DataGridView dgvProveedores;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox grpProveedores;
+        private System.Windows.Forms.Panel pnlBotones;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
