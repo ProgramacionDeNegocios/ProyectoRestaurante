@@ -318,55 +318,58 @@ BEGIN
 		END
 END
 GO
-EXEC SP_AgregarMesero 1,'nada','nada'
-go
+
 CREATE PROCEDURE SP_ModificarMesero
 (
+	@id INT,
+	@nombre NVARCHAR(25),
+	@apellido NVARCHAR(25)
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+	SELECT @existe = COUNT(Restaurante.Meseros.id) FROM Restaurante.Meseros WHERE id=@id;
 
 	IF (@existe = 0)
 		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+			RAISERROR(N'No existe el mesero con el id %d"', 16, 1, @id);
 			RETURN 0
 		END 	
 	ELSE
 		BEGIN
-			UPDATE <esquema.tabla>
-				SET 	<campos=variables>
-					WHERE <condicion>;
+			UPDATE Restaurante.Meseros
+				SET 	nombre=@nombre,
+						apellido=@apellido
+					WHERE id=@id;
 			RETURN 1
 		END
-	
-	END
 END
 GO
 
 CREATE PROCEDURE SP_EliminarMesero
 (
+	@id INT
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
-		SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+			SELECT @existe = COUNT(Restaurante.Meseros.id) FROM Restaurante.Meseros WHERE id=@id;
 		IF (@existe = 0)
 			BEGIN
-				RAISERROR(N'aqui va el mensaje de error "', 16, 1);
+				RAISERROR(N'No existe el mesero con el id %d"', 16, 1, @id);
 				RETURN 0
 			END 	
 		ELSE
 			BEGIN
-				DELETE FROM <Esquema.tabla>	WHERE <condicion>;
+				DELETE FROM Restaurante.Meseros	WHERE id=@id;
 				RETURN 1
 			END
 END
 GO
+
 
 CREATE PROCEDURE SP_InsertarArea
 (
