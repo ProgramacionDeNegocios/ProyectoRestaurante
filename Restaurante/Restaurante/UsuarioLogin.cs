@@ -49,6 +49,7 @@ namespace Restaurante
                     else
                     {
                         MenuPrincipal menuPrincipal = new MenuPrincipal();
+                        menuPrincipal.rol = 1;
                         this.Hide();
                         menuPrincipal.ShowDialog();
                         this.Show();

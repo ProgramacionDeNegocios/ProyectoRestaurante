@@ -51,7 +51,7 @@
     <Compile Include="Clases\Mesero.cs" />
     <Compile Include="Clases\Proveedor.cs" />
     <Compile Include="Clases\Restaurante.cs" />
-    <Compile Include="Clases\TipoAcceso.cs" />
+    <Compile Include="Clases\Rol.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />
     <Compile Include="MenuPrincipal.cs">

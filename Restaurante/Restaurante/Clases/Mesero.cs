@@ -11,7 +11,6 @@ namespace Restaurante.Clases
     class Mesero
     {
         public int Id { set; get; }
-
         public string Identidad { set; get; }
         public string Nombre { set; get; }
         public string Apellido { set; get; }

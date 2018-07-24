@@ -38,7 +38,7 @@ ELSE
 			usuario NVARCHAR(26) NOT NULL,	--Primera letra del nombre en mayusculas más el apellido
 									--eje: Pedro Picapiedra (PPicapiedra)
 			clave NVARCHAR(20) NOT NULL, --clave de acceso
-			departamento INT  NOT NULL--codigo del area de trabajo a la cual pertenece
+			idRol INT  NOT NULL--codigo del area de trabajo a la cual pertenece
 		);
 	END
 GO
@@ -46,14 +46,25 @@ GO
 /*
 	esta tabla controlara los modulos que seran disponibles por cada departamento
 */
-IF OBJECT_ID('Acceso.TipoAcceso')	IS NOT NULL
-	DROP TABLE Acceso.TipoAcceso
+IF OBJECT_ID('Acceso.Roles')	IS NOT NULL
+	DROP TABLE Acceso.Roles
 ELSE
 	BEGIN
-		CREATE TABLE Acceso.TipoAcceso(
-			id INT IDENTITY (1,10) NOT NULL,
-			departamento NVARCHAR(20),
-			moduloUsuario BIT
+		CREATE TABLE Acceso.Roles(
+			id INT IDENTITY (1,1) NOT NULL,
+			nombreRol NVARCHAR(20),
+			agregarUsuario BIT,
+			modificarUsuario BIT,
+			eliminarUsuario BIT,
+			consultarUsario BIT,
+			agregarProveedor BIT,
+			modificarProveedor BIT,
+			eliminarProveedor BIT,
+			consultarProveedor BIT,
+			agregarMesero BIT,
+			modificarMesero BIT,
+			eliminarMesero BIT,
+			consultarMesero BIT
 			/*
 				falta colorcar los campos de los modulos a los cuales tendra acceso
 			*/

@@ -12,6 +12,9 @@ namespace Restaurante
 {
     public partial class MenuPrincipal : Form
     {
+        //Parametros temporales mientras determinamos los accesos en los usuarios
+        public int rol;
+
         public MenuPrincipal()
         {
             InitializeComponent();
@@ -43,6 +46,18 @@ namespace Restaurante
         {
             ModuloMeseros moduloMeseros = new ModuloMeseros();
             moduloMeseros.ShowDialog();
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+            if (rol==1)
+            {
+                btnModuloUsuarios.Enabled = true;
+            }
+            else
+            {
+                btnModuloUsuarios.Enabled = false;
+            }
         }
     }
 }

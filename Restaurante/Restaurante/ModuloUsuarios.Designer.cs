@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblClave = new System.Windows.Forms.Label();
-            this.cmbDepartamento = new System.Windows.Forms.ComboBox();
-            this.lblDepartamento = new System.Windows.Forms.Label();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.dgwUsuarios = new System.Windows.Forms.DataGridView();
@@ -43,13 +41,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
-            this.btnPermisos = new System.Windows.Forms.Button();
+            this.btnAsignarRol = new System.Windows.Forms.Button();
             this.pnlTitulo = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsuarios)).BeginInit();
             this.grpNuevoUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -120,31 +119,11 @@
             this.lblClave.TabIndex = 4;
             this.lblClave.Text = "Clave";
             // 
-            // cmbDepartamento
-            // 
-            this.cmbDepartamento.BackColor = System.Drawing.Color.White;
-            this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDepartamento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cmbDepartamento.FormattingEnabled = true;
-            this.cmbDepartamento.Location = new System.Drawing.Point(118, 119);
-            this.cmbDepartamento.Name = "cmbDepartamento";
-            this.cmbDepartamento.Size = new System.Drawing.Size(183, 24);
-            this.cmbDepartamento.TabIndex = 5;
-            // 
-            // lblDepartamento
-            // 
-            this.lblDepartamento.AutoSize = true;
-            this.lblDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDepartamento.Location = new System.Drawing.Point(14, 121);
-            this.lblDepartamento.Name = "lblDepartamento";
-            this.lblDepartamento.Size = new System.Drawing.Size(98, 17);
-            this.lblDepartamento.TabIndex = 6;
-            this.lblDepartamento.Text = "Departamento";
-            // 
             // txtClave
             // 
             this.txtClave.Location = new System.Drawing.Point(109, 88);
             this.txtClave.Name = "txtClave";
+            this.txtClave.PasswordChar = '•';
             this.txtClave.Size = new System.Drawing.Size(192, 23);
             this.txtClave.TabIndex = 8;
             // 
@@ -165,14 +144,14 @@
             this.dgwUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgwUsuarios.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgwUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgwUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgwUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgwUsuarios.ColumnHeadersHeight = 30;
             this.dgwUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgwUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -191,14 +170,13 @@
             // 
             // grpNuevoUsuario
             // 
+            this.grpNuevoUsuario.Controls.Add(this.btnCancelar);
             this.grpNuevoUsuario.Controls.Add(this.pictureBox1);
             this.grpNuevoUsuario.Controls.Add(this.txtApellido);
             this.grpNuevoUsuario.Controls.Add(this.lblApellido);
-            this.grpNuevoUsuario.Controls.Add(this.btnPermisos);
+            this.grpNuevoUsuario.Controls.Add(this.btnAsignarRol);
             this.grpNuevoUsuario.Controls.Add(this.txtNombre);
             this.grpNuevoUsuario.Controls.Add(this.txtClave);
-            this.grpNuevoUsuario.Controls.Add(this.lblDepartamento);
-            this.grpNuevoUsuario.Controls.Add(this.cmbDepartamento);
             this.grpNuevoUsuario.Controls.Add(this.lblClave);
             this.grpNuevoUsuario.Controls.Add(this.lblNombre);
             this.grpNuevoUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -210,12 +188,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Restaurante.Properties.Resources.foto;
-            this.pictureBox1.Location = new System.Drawing.Point(327, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(325, 24);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(98, 94);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.Size = new System.Drawing.Size(100, 81);
+            this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // txtApellido
@@ -236,17 +212,17 @@
             this.lblApellido.TabIndex = 13;
             this.lblApellido.Text = "Apellido";
             // 
-            // btnPermisos
+            // btnAsignarRol
             // 
-            this.btnPermisos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
-            this.btnPermisos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPermisos.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnPermisos.Location = new System.Drawing.Point(327, 119);
-            this.btnPermisos.Name = "btnPermisos";
-            this.btnPermisos.Size = new System.Drawing.Size(98, 26);
-            this.btnPermisos.TabIndex = 12;
-            this.btnPermisos.Text = "Permisos";
-            this.btnPermisos.UseVisualStyleBackColor = false;
+            this.btnAsignarRol.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnAsignarRol.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAsignarRol.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnAsignarRol.Location = new System.Drawing.Point(325, 122);
+            this.btnAsignarRol.Name = "btnAsignarRol";
+            this.btnAsignarRol.Size = new System.Drawing.Size(100, 26);
+            this.btnAsignarRol.TabIndex = 12;
+            this.btnAsignarRol.Text = "Asignar Rol";
+            this.btnAsignarRol.UseVisualStyleBackColor = false;
             // 
             // pnlTitulo
             // 
@@ -256,6 +232,17 @@
             this.pnlTitulo.Name = "pnlTitulo";
             this.pnlTitulo.Size = new System.Drawing.Size(605, 87);
             this.pnlTitulo.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Britannic Bold", 25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
+            this.label2.Location = new System.Drawing.Point(89, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(382, 37);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Información del Usuario";
             // 
             // btnSalir
             // 
@@ -295,17 +282,6 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Britannic Bold", 25F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
-            this.label2.Location = new System.Drawing.Point(89, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(382, 37);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Información del Usuario";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Restaurante.Properties.Resources.wave2;
@@ -315,6 +291,19 @@
             this.pictureBox2.Size = new System.Drawing.Size(622, 68);
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCancelar.Location = new System.Drawing.Point(201, 122);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(100, 26);
+            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // ModuloUsuarios
             // 
@@ -350,14 +339,12 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblClave;
-        private System.Windows.Forms.ComboBox cmbDepartamento;
-        private System.Windows.Forms.Label lblDepartamento;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.DataGridView dgwUsuarios;
         private System.Windows.Forms.GroupBox grpNuevoUsuario;
-        private System.Windows.Forms.Button btnPermisos;
+        private System.Windows.Forms.Button btnAsignarRol;
         private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtApellido;
@@ -366,5 +353,6 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

@@ -20,8 +20,7 @@ CREATE PROCEDURE SP_InsertarUsuario
 	@nombre	NVARCHAR(25),
 	@apellido NVARCHAR(25),
 	@clave NVARCHAR(20),
-	@departamento INT
-
+	@idRol INT
 )
 AS
 BEGIN
@@ -45,12 +44,12 @@ BEGIN
 				END 	
 			ELSE
 				BEGIN
-					INSERT INTO Acceso.Usuarios(nombre, apellido, usuario, clave, departamento)
+					INSERT INTO Acceso.Usuarios(nombre, apellido, usuario, clave, idRol)
 						VALUES (	Utilidad.NombrePropios(@nombre),
 									Utilidad.NombrePropios(@apellido), 
 									@usuario, 
 									@clave, 
-									@departamento)
+									@idRol)
 					RETURN 1
 				END
 			
@@ -64,7 +63,7 @@ CREATE PROCEDURE SP_ModificarUsuario
 	@nombre	NVARCHAR(25),
 	@apellido NVARCHAR(25),
 	@clave NVARCHAR(20),
-	@departamento INT
+	@idRol INT
 
 )
 AS
@@ -94,7 +93,7 @@ BEGIN
 								apellido = Utilidad.NombrePropios(@apellido), 
 								usuario =	@usuario, 
 								clave =	@clave, 
-								departamento = @departamento
+								idRol = @idRol
 							WHERE usuario = @usuarioAnterior;
 					RETURN 1
 				END
@@ -106,7 +105,6 @@ GO
 CREATE PROCEDURE SP_EliminarUsuario
 (
 	@usuario NVARCHAR(26)
-
 )
 AS
 BEGIN
@@ -124,8 +122,6 @@ BEGIN
 					DELETE FROM Acceso.Usuarios	WHERE usuario = @usuario;
 					RETURN 1
 				END
-			
-		
 END
 GO
 

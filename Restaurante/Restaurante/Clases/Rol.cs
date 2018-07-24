@@ -8,24 +8,23 @@ using System.Data;
 
 namespace Restaurante.Clases
 {
-    class TipoAcceso
+    class Rol
     {
         public int id { get; set; }
-        public string departamento { get; set; }
+        public string nombre { get; set; }
 
-        //Agregar las propediades para definir a los modulos a los que tenra acceso
-        public TipoAcceso() { }
+        public Rol() { }
 
-        public TipoAcceso(int id, string departamento)
+        public Rol(int id, string nombre)
         {
             this.id = id;
-            this.departamento = departamento;
+            this.nombre = nombre;
         }
 
-        public void ObtenerAreaPorDepartamento( string departamentoRe)
+        public void ObtenerRol( string rolRe)
         {
             Conexion conexion = new Conexion();
-            string sql = @"SELECT id, departamento FROM Acceso.TipoAcceso WHERE departamento = '" + departamentoRe + "'";
+            string sql = @"SELECT id, rol FROM Acceso.Roles WHERE rol = '" + rolRe + "'";
             Console.WriteLine(conexion.conexion);
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
@@ -35,7 +34,7 @@ namespace Restaurante.Clases
                 while (dr.Read())
                 {
                     this.id = dr.GetInt32(0);
-                    this.departamento = dr.GetString(1);
+                    this.nombre = dr.GetString(1);
                 }
             }
             catch (SqlException ex)
@@ -64,7 +63,7 @@ namespace Restaurante.Clases
 
         }
         
-        public static DataTable GetDataTableDepartamentos()
+        public static DataTable GetDataTableRol()
         {
             DataTable dt = new DataTable();
             Clases.Conexion conexion = new Clases.Conexion();

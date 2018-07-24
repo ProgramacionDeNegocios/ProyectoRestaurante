@@ -7,8 +7,8 @@ ALTER TABLE Acceso.Usuarios
 		PRIMARY KEY NONCLUSTERED(id);
 GO
 
-ALTER TABLE Acceso.TipoAcceso
-	ADD CONSTRAINT PK_Acceso_TipoAcceso_id
+ALTER TABLE Acceso.Roles
+	ADD CONSTRAINT PK_Acceso_Roles_id
 		PRIMARY KEY NONCLUSTERED(id);
 GO
 
@@ -86,10 +86,10 @@ GO
 
 
 --DEFINICION DE LLAVES FORANEAS
-ALTER TABLE Acceso.Usuarios
-	ADD CONSTRAINT FK_Acceso_TipoAcceso_id$tiene$Acceso_Usuarios_id
-		FOREIGN KEY	(departamento)
-			REFERENCES Acceso.TipoAcceso(id);
+--ALTER TABLE Acceso.Usuarios
+--	ADD CONSTRAINT FK_Acceso_Roles_id$tiene$Acceso_Usuarios_id
+--		FOREIGN KEY	(departamento)
+--			REFERENCES Acceso.TipoAcceso(id);
 
 ALTER TABLE Restaurante.Mesas
 	ADD CONSTRAINT FK_Restaurante_Mesas_id$TieneUna$Restaurante_Areas_id

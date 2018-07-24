@@ -23,7 +23,6 @@ namespace Restaurante
         private void ModuloUsuarios_Load(object sender, EventArgs e)
         {
             
-            CargarCMBDepartamento();
             ResetFormulario();
         }
 
@@ -34,7 +33,6 @@ namespace Restaurante
             txtNombre.Text = "";
             txtApellido.Text = "";
             txtClave.Text = "";
-            cmbDepartamento.SelectedValue = "";
             dgwUsuarios.DataSource = "";
             CargarDGWUsuarios();
             dgwUsuariosEstilo(dgwUsuarios);
@@ -44,22 +42,14 @@ namespace Restaurante
             btnAgregar.Enabled = true;
             btnModificar.Enabled = false;
             btnEliminar.Enabled = false;
-            btnPermisos.Enabled = false;
+            btnAsignarRol.Enabled = false;
 
             txtNombre.Enabled = true;
             txtApellido.Enabled = true;
             txtClave.Enabled = true;
-            cmbDepartamento.Enabled = true;
 
             txtNombre.Focus();
             
-        }
-
-        private void CargarCMBDepartamento()
-        {
-            cmbDepartamento.DisplayMember = "departamento";
-            cmbDepartamento.ValueMember = "departamento";
-            cmbDepartamento.DataSource = Clases.TipoAcceso.GetDataTableDepartamentos();
         }
 
         private void CargarDGWUsuarios()
@@ -86,17 +76,12 @@ namespace Restaurante
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-           
             try
             {
-                Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
-                tipoAcceso.ObtenerAreaPorDepartamento(cmbDepartamento.SelectedValue.ToString());
-
                 Clases.Usuario usuario = new Clases.Usuario(
                     txtNombre.Text,
                     txtApellido.Text,
-                    txtClave.Text,
-                    tipoAcceso.id);
+                    txtClave.Text);
 
                 usuario.Agregar();
                 ResetFormulario();
@@ -117,15 +102,13 @@ namespace Restaurante
                 
                 try
                 {
-                    Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
-                    tipoAcceso.ObtenerAreaPorDepartamento(cmbDepartamento.SelectedValue.ToString());
 
                     Clases.Usuario usuario = new Clases.Usuario(
                         this.usuario,
                         txtNombre.Text,
                         txtApellido.Text,
-                        txtClave.Text,
-                        tipoAcceso.id);
+                        txtClave.Text
+                        );
 
                     usuario.Modificar();
                     ResetFormulario();
@@ -147,13 +130,12 @@ namespace Restaurante
             txtApellido.Text = usuario.apellido;
             txtClave.Text = usuario.clave;
             this.usuario = usuario.usuario;
-            cmbDepartamento.SelectedIndex = usuario.departamento - 1;
 
             btnNuevo.Enabled = true;
             btnAgregar.Enabled = false;
             btnModificar.Enabled = true;
             btnEliminar.Enabled = true;
-            btnPermisos.Enabled = true;
+            btnAsignarRol.Enabled = true;
         }
 
         private void dgwUsuariosEstilo(DataGridView dgw)
@@ -198,9 +180,6 @@ namespace Restaurante
             DialogResult respuesta = MessageBox.Show("Está seguro de eliminar al usuario" + this.usuario, "Modificar Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (respuesta.ToString() == "Yes")
             {
-                Clases.TipoAcceso tipoAcceso = new Clases.TipoAcceso();
-                tipoAcceso.ObtenerAreaPorDepartamento(cmbDepartamento.SelectedValue.ToString());
-
                 Clases.Usuario usuario = new Clases.Usuario(
                     this.usuario
                     );
@@ -223,6 +202,11 @@ namespace Restaurante
         private void dgwUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ResetFormulario();
         }
     }
 }

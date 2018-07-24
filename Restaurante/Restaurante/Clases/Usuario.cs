@@ -23,26 +23,24 @@ namespace Restaurante.Clases
         {
             this.usuario = usuario;
         }
-        public Usuario(string nombre, string apellido, string clave, int departamento)
+        public Usuario(string nombre, string apellido, string clave)
         {
             this.nombre = nombre;
             this.apellido = apellido;
             this.clave = clave;
-            this.departamento = departamento;
         }
 
-        public Usuario(string usuario, string nombre, string apellido, string clave, int departamento)
+        public Usuario(string usuario, string nombre, string apellido, string clave)
         {
             this.usuario = usuario;
             this.nombre = nombre;
             this.apellido = apellido;
             this.clave = clave;
-            this.departamento = departamento;
         }
 
         public void ObtenerUsuario (string usuarioRe){
             Conexion conexion = new Conexion();
-            string sql = @"SELECT id, nombre, apellido, usuario, clave, departamento FROM Acceso.Usuarios WHERE usuario = '" + usuarioRe  + "';";
+            string sql = @"SELECT id, nombre, apellido, usuario, clave FROM Acceso.Usuarios WHERE usuario = '" + usuarioRe  + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
@@ -56,7 +54,6 @@ namespace Restaurante.Clases
                     this.apellido = dr.GetString(2);
                     this.usuario = dr.GetString(3);
                     this.clave = dr.GetString(4);
-                    this.departamento = dr.GetInt32(5);
                 }
             }
             catch (SqlException excepcion)
@@ -87,8 +84,6 @@ namespace Restaurante.Clases
                 cmd.Parameters["apellido"].Value = this.apellido;
                 cmd.Parameters.Add(new SqlParameter("Clave", SqlDbType.NVarChar, 20));
                 cmd.Parameters["clave"].Value = this.clave;
-                cmd.Parameters.Add(new SqlParameter("Departamento", SqlDbType.Int));
-                cmd.Parameters["departamento"].Value = this.departamento;
                 cmd.ExecuteNonQuery();
 
             }
@@ -118,8 +113,6 @@ namespace Restaurante.Clases
                 cmd.Parameters["apellido"].Value = this.apellido;
                 cmd.Parameters.Add(new SqlParameter("Clave", SqlDbType.NVarChar, 20));
                 cmd.Parameters["clave"].Value = this.clave;
-                cmd.Parameters.Add(new SqlParameter("Departamento", SqlDbType.Int));
-                cmd.Parameters["departamento"].Value = this.departamento;
                 cmd.ExecuteNonQuery();
 
             }
@@ -163,11 +156,8 @@ namespace Restaurante.Clases
             string sql = @"SELECT   Acceso.Usuarios.id          as Código,
                                     Acceso.Usuarios.nombre      as Nombre, 
                                     Acceso.Usuarios.apellido    as Apellido, 
-                                    Acceso.Usuarios.usuario     as Usuario,
-                                    Acceso.TipoAcceso.departamento as Departamento
-                            FROM Acceso.TipoAcceso 
-                            INNER JOIN Acceso.Usuarios 
-                            ON Acceso.TipoAcceso.id = Acceso.Usuarios.departamento";
+                                    Acceso.Usuarios.usuario     as Usuario
+                            FROM Acceso.Usuarios;";
             try
             {
                 SqlDataAdapter data = new SqlDataAdapter();
