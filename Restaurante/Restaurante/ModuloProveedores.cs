@@ -29,7 +29,7 @@ namespace Restaurante
                 Clases.Proveedor proveedor = new Clases.Proveedor(
                     txtNombre.Text,
                     txtTelefono.Text,
-                    txtDireccion.Text.ToString()
+                    txtDireccion.Text
                     );
                 proveedor.Agregar();
             }
@@ -55,7 +55,6 @@ namespace Restaurante
                         );
 
                     proveedor.Modificar();
-                    dgvProveedores.DataSource = Clases.Proveedor.GetDataView();
                 }
                 catch (Exception ex)
                 {
@@ -108,14 +107,14 @@ namespace Restaurante
 
         }
 
-        private void txtId_TextChanged(object sender, EventArgs e)
+        private void lblTelefono_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
