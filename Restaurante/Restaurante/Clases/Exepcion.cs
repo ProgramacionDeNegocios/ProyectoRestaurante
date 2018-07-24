@@ -8,13 +8,17 @@ using System.Data.SqlClient;
 
 namespace Restaurante.Clases
 {
-    class Exepciones: Exception
+    class Exepcion: Exception
     {
-        public Exepciones(string msgError, Exception e)
+        
+        public Exepcion(string msgError, Exception e, string lugar)
             :base(msgError, e)
         {
-            this.HelpLink = "http://msdn.microsoft.com";
-            this.Source = "Clase_Conexion";
+            this.Source = lugar;
+        }
+        public Exepcion(string msgError, Exception e)
+            : base(msgError, e)
+        {
         }
     }
 }

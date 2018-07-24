@@ -212,7 +212,7 @@ BEGIN
 END
 GO
 
-alter PROCEDURE SP_AgregarProveedor
+CREATE PROCEDURE SP_AgregarProveedor
 (
 	@nombre NVARCHAR(100),
 	@telefono NVARCHAR(9),
@@ -294,7 +294,7 @@ GO
 
 CREATE PROCEDURE SP_AgregarMesero
 (
-	@id INT,
+	@identidad NVARCHAR(15),
 	@nombre NVARCHAR(25),
 	@apellido NVARCHAR(25)
 )
@@ -303,25 +303,27 @@ BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(Restaurante.Meseros.id) FROM Restaurante.Meseros WHERE @id=id;
+	SELECT @existe = COUNT(Restaurante.Meseros.identidad) FROM Restaurante.Meseros WHERE identidad = @identidad;
 	IF (@existe > 0)
 		BEGIN
-			RAISERROR(N'Ya existe Un mesero con el id %d"', 16, 1, @id);
+			RAISERROR(N'Ya existe Un mesero con la identidad %s"', 16, 1, @identidad);
 			RETURN 0
 			
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Restaurante.Meseros(nombre, apellido)
-				VALUES(	@nombre, @apellido)
+			INSERT INTO Restaurante.Meseros(identidad, nombre, apellido)
+				VALUES(	@identidad, @nombre, @apellido)
 			RETURN 1
 		END
 END
 GO
 
+
 CREATE PROCEDURE SP_ModificarMesero
 (
 	@id INT,
+	@identidad NVARCHAR(25),
 	@nombre NVARCHAR(25),
 	@apellido NVARCHAR(25)
 )
@@ -330,19 +332,21 @@ BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(Restaurante.Meseros.id) FROM Restaurante.Meseros WHERE id=@id;
+	SELECT @existe = COUNT(Restaurante.Meseros.identidad) FROM Restaurante.Meseros WHERE identidad=@id;
 
 	IF (@existe = 0)
 		BEGIN
-			RAISERROR(N'No existe el mesero con el id %d"', 16, 1, @id);
+			RAISERROR(N'No existe el mesero con la identidad %s"', 16, 1, @identidad);
 			RETURN 0
 		END 	
 	ELSE
 		BEGIN
 			UPDATE Restaurante.Meseros
-				SET 	nombre=@nombre,
-						apellido=@apellido
-					WHERE id=@id;
+				SET 	
+						identidad = @identidad,
+						nombre = @nombre,
+						apellido = @apellido
+					WHERE id = @id;
 			RETURN 1
 		END
 END
@@ -396,8 +400,6 @@ BEGIN
 END
 GO
 
-exec SP_InsertarArea 'Terraza'
-select * from Restaurante.Areas
 
 CREATE PROCEDURE SP_ModificarArea
 (

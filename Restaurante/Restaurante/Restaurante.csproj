@@ -46,9 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Conexion.cs" />
-    <Compile Include="Clases\Exepciones.cs" />
+    <Compile Include="Clases\Exepcion.cs" />
+    <Compile Include="Clases\Mensaje.cs" />
     <Compile Include="Clases\Mesero.cs" />
     <Compile Include="Clases\Proveedor.cs" />
+    <Compile Include="Clases\Restaurante.cs" />
     <Compile Include="Clases\TipoAcceso.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />

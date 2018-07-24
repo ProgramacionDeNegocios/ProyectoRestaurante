@@ -11,19 +11,24 @@ namespace Restaurante.Clases
     class Mesero
     {
         public int Id { set; get; }
+
+        public string Identidad { set; get; }
         public string Nombre { set; get; }
         public string Apellido { set; get; }
         public Mesero() { }
-        public Mesero(string nombre, string apellido)
+        ~Mesero() { }
+        public Mesero(string identidad, string nombre, string apellido)
         {
+            Identidad = identidad;
             Nombre = nombre;
             Apellido = apellido;
 
         }
 
-        public Mesero(int id, string nombre, string apellido)
+        public Mesero(int id, string identidad, string nombre, string apellido)
         {
             Id = id;
+            Identidad = identidad;
             Nombre = nombre;
             Apellido = apellido;
         }
@@ -40,6 +45,8 @@ namespace Restaurante.Clases
             try
             {
                 conexion.Abrir();
+                cmd.Parameters.Add(new SqlParameter("identidad", SqlDbType.NVarChar, 15));
+                cmd.Parameters["identidad"].Value = Identidad;
                 cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
                 cmd.Parameters["nombre"].Value = Nombre;
                 cmd.Parameters.Add(new SqlParameter("apellido", SqlDbType.NVarChar, 25));
@@ -49,13 +56,12 @@ namespace Restaurante.Clases
             }
             catch (SqlException ex)
             {
-                throw ex;
+                throw new Clases.Exepcion(ex.Message, ex, "Clase_Mesero");
             }
             finally
             {
                 conexion.Cerrar();
             }
-
         }
 
         public void Modificar()
@@ -66,6 +72,8 @@ namespace Restaurante.Clases
             try
             {
                 conexion.Abrir();
+                cmd.Parameters.Add(new SqlParameter("identidad", SqlDbType.NVarChar, 15));
+                cmd.Parameters["identidad"].Value = Identidad;
                 cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
                 cmd.Parameters["nombre"].Value = Nombre;
                 cmd.Parameters.Add(new SqlParameter("apellido", SqlDbType.NVarChar, 25));
@@ -108,29 +116,25 @@ namespace Restaurante.Clases
         public void ObtenerMesero(int id)
         {
             Conexion conexion = new Conexion();
-            string sql = @"SELECT id, nombre, apellido FROM Restaurante.Meseroes WHERE id = '" + id + "';";
+            string sql = @"SELECT id, identidad, nombre, apellido FROM Restaurante.Meseros WHERE id = '" + id + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
                 conexion.Abrir();
-
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
                     Id = dr.GetInt32(0);
-                    Nombre = dr.GetString(1);
-                    Apellido = dr.GetString(2);
-
+                    Identidad = dr.GetString(1);
+                    Nombre = dr.GetString(2);
+                    Apellido = dr.GetString(3);
                 }
             }
-            catch (SqlException excepcion)
+            catch (SqlException ex)
             {
-                Exception ex = new Exception(
+                throw new Clases.Exepcion(
                    String.Format("{0} \n\n{1}",
-                   "no podemos obtener la informacion del Mesero", excepcion.Message));
-                ex.HelpLink = "OscarToledo.com";
-                ex.Source = "Clase_Usuario";
-                throw ex;
+                   "no podemos obtener la informacion del Mesero", ex.Message), ex, "Clase_Meseros"); ;
             }
             finally
             {
@@ -143,17 +147,18 @@ namespace Restaurante.Clases
         {
             Clases.Conexion conexion = new Clases.Conexion();
             //colocar el nombre del area a la cual pertenece el usuario en el string de conexion
-            string sql = @"SELECT   Restaurante.Mesero.id          as Código,
-                                    Restaurante.Mesero.nombre      as Mesero, 
-                                    Restaurante.Mesero.apellido    as Apellido
-                            FROM Restaurante.Mesero";
+            string sql = @"SELECT   Restaurante.Meseros.id          as Código,
+                                    Restaurante.Meseros.identidad   as Identidad,
+                                    Restaurante.Meseros.nombre      as Mesero, 
+                                    Restaurante.Meseros.apellido    as Apellido
+                            FROM Restaurante.Meseros";
             try
             {
                 SqlDataAdapter data = new SqlDataAdapter();
                 data.SelectCommand = new SqlCommand(sql, conexion.conexion);
                 DataSet ds = new DataSet();
-                data.Fill(ds, "Restaurante.Mesero");
-                DataTable dt = ds.Tables["Restaurante.Mesero"];
+                data.Fill(ds, "Restaurante.Meseros");
+                DataTable dt = ds.Tables["Restaurante.Meseros"];
                 DataView dv = new DataView(dt,
                     "",
                     "Código",

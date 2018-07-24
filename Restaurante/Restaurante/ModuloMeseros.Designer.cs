@@ -32,7 +32,7 @@
             this.lblTelefono = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.MaskedTextBox();
+            this.txtIdentidad = new System.Windows.Forms.MaskedTextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -43,8 +43,8 @@
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlTitulo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMeseros)).BeginInit();
             this.grpMesero.SuspendLayout();
             this.pnlBotones.SuspendLayout();
@@ -54,12 +54,18 @@
             // 
             // dgvMeseros
             // 
+            this.dgvMeseros.AllowUserToAddRows = false;
+            this.dgvMeseros.AllowUserToDeleteRows = false;
+            this.dgvMeseros.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvMeseros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMeseros.Location = new System.Drawing.Point(27, 254);
             this.dgvMeseros.Name = "dgvMeseros";
+            this.dgvMeseros.ReadOnly = true;
+            this.dgvMeseros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMeseros.Size = new System.Drawing.Size(490, 148);
             this.dgvMeseros.TabIndex = 25;
             this.dgvMeseros.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMeseros_CellClick);
+            this.dgvMeseros.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMeseros_CellContentClick);
             // 
             // lblTelefono
             // 
@@ -88,21 +94,21 @@
             this.lblId.TabIndex = 21;
             this.lblId.Text = "Identidad";
             // 
-            // txtId
+            // txtIdentidad
             // 
-            this.txtId.Location = new System.Drawing.Point(121, 21);
-            this.txtId.Mask = "9999-9999-99999";
-            this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(213, 22);
-            this.txtId.TabIndex = 19;
-            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
+            this.txtIdentidad.Location = new System.Drawing.Point(121, 21);
+            this.txtIdentidad.Mask = "9999-9999-99999";
+            this.txtIdentidad.Name = "txtIdentidad";
+            this.txtIdentidad.Size = new System.Drawing.Size(213, 22);
+            this.txtIdentidad.TabIndex = 1;
+            this.txtIdentidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(121, 69);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(213, 22);
-            this.txtNombre.TabIndex = 18;
+            this.txtNombre.TabIndex = 2;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtApellido
@@ -110,7 +116,7 @@
             this.txtApellido.Location = new System.Drawing.Point(121, 112);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(213, 22);
-            this.txtApellido.TabIndex = 17;
+            this.txtApellido.TabIndex = 3;
             this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // btnNuevo
@@ -121,7 +127,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(13, 11);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 25);
-            this.btnNuevo.TabIndex = 16;
+            this.btnNuevo.TabIndex = 4;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -134,7 +140,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(13, 98);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 25);
-            this.btnEliminar.TabIndex = 15;
+            this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -147,7 +153,7 @@
             this.btnModificar.Location = new System.Drawing.Point(13, 69);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 25);
-            this.btnModificar.TabIndex = 14;
+            this.btnModificar.TabIndex = 6;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -160,7 +166,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(13, 40);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 25);
-            this.btnAgregar.TabIndex = 13;
+            this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -169,7 +175,7 @@
             // 
             this.grpMesero.Controls.Add(this.txtApellido);
             this.grpMesero.Controls.Add(this.txtNombre);
-            this.grpMesero.Controls.Add(this.txtId);
+            this.grpMesero.Controls.Add(this.txtIdentidad);
             this.grpMesero.Controls.Add(this.lblId);
             this.grpMesero.Controls.Add(this.lblNombre);
             this.grpMesero.Controls.Add(this.lblTelefono);
@@ -211,15 +217,6 @@
             this.pnlTitulo.Size = new System.Drawing.Size(479, 79);
             this.pnlTitulo.TabIndex = 30;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 408);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(546, 87);
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnSalir
             // 
             this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
@@ -229,8 +226,18 @@
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(29, 29);
             this.btnSalir.TabIndex = 30;
+            this.btnSalir.TabStop = false;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 408);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(546, 87);
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
             // 
             // ModuloMeseros
             // 
@@ -264,7 +271,7 @@
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.MaskedTextBox txtId;
+        private System.Windows.Forms.MaskedTextBox txtIdentidad;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Button btnNuevo;

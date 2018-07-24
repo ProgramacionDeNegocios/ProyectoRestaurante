@@ -131,7 +131,8 @@ IF OBJECT_ID('Restaurante.Meseros')	IS NOT NULL
 ELSE
 	BEGIN
 		CREATE TABLE Restaurante.Meseros(
-			id INT IDENTITY(1,10) NOT NULL,	--index del mesero
+			id INT IDENTITY(1,10) NOT NULL,		--index del mesero
+			identidad NVARCHAR(15) NOT NULL,	--identidad del mesero con formato (9999-9999-99999)	
 			nombre NVARCHAR (25) NOT NULL,			--primer nombre
 			apellido NVARCHAR (25) NOT NULL			--primer apellido
 		);

@@ -12,6 +12,7 @@ namespace Restaurante
 {
     public partial class ModuloMeseros : Form
     {
+        private int id = 0;
         public ModuloMeseros()
         {
             InitializeComponent();
@@ -39,23 +40,25 @@ namespace Restaurante
 
         private void ModuloMeseros_Load(object sender, EventArgs e)
         {
-            
+            CargarDGWMeseros();
+            ResetFormulario();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-                Clases.Mesero mesero = new Clases.Mesero(
-                    txtNombre.Text,
-                    txtId.Text
+                Clases.Restaurante.AgregarMesero
+                    (
+                        txtIdentidad.Text,
+                        txtNombre.Text,
+                        txtApellido.Text
                     );
-                mesero.Agregar();
-                ResetFormulario();
+                CargarDGWMeseros();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Clases.Mensaje.Advertencia(ex);
             }
         }
 
@@ -68,14 +71,13 @@ namespace Restaurante
                 try
                 {
                     Clases.Mesero mesero = new Clases.Mesero(
-                        Convert.ToInt32(txtApellido.Text),
+                        txtIdentidad.Text,
                         txtNombre.Text,
-                        txtId.Text
+                        txtApellido.Text
                         );
 
                     mesero.Modificar();
                     ResetFormulario();
-                   // dgvMeseros.DataSource = Clases.Mesero.GetDataView();
                 }
                 catch (Exception ex)
                 {
@@ -84,41 +86,20 @@ namespace Restaurante
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            DialogResult respuesta = MessageBox.Show("Está seguro de eliminar al Mesero" + txtNombre.Text, "Modificar Mesero", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (respuesta.ToString() == "Yes")
-            {
-                Clases.Mesero usuario = new Clases.Mesero(
-                    Convert.ToInt32(txtApellido.Text)
-                    );
-                try
-                {
-                    usuario.Eliminar();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    ResetFormulario();
-                }
-            }
-        }
 
         private void dgvMeseros_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Clases.Mesero Mesero = new Clases.Mesero();
-            Mesero.ObtenerMesero(
+            Clases.Mesero mesero = new Clases.Mesero();
+            mesero.ObtenerMesero(
                 Convert.ToInt32(
                     dgvMeseros.Rows[e.RowIndex].Cells["Código"].Value.ToString()
                     )
                 );
             dgvMeseros.Select();
-            txtId.Text = Convert.ToString(Mesero.Id);
-            txtNombre.Text = Mesero.Nombre;
-            txtApellido.Text = Mesero.Apellido;
+            this.id = mesero.Id;
+            txtIdentidad.Text = mesero.Identidad;
+            txtNombre.Text = mesero.Nombre;
+            txtApellido.Text = mesero.Apellido;
 
             btnNuevo.Enabled = true;
             btnAgregar.Enabled = false;
@@ -127,10 +108,8 @@ namespace Restaurante
         }
         private void ResetFormulario()
         {
-            //this.usuario = null;
-            
             txtNombre.Text = "";
-            txtId.Text = "";
+            txtIdentidad.Text = "";
             txtApellido.Text = "";
             CargarDGWMeseros();
             dgwMeseroEstilo(dgvMeseros);
@@ -141,11 +120,10 @@ namespace Restaurante
             btnEliminar.Enabled = false;
 
             txtNombre.Enabled = true;
-            txtId.Enabled = true;
+            txtIdentidad.Enabled = true;
             txtApellido.Enabled = true;
-
-            txtApellido.Focus();
-
+            this.id = 0;
+            txtIdentidad.Focus();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -185,6 +163,33 @@ namespace Restaurante
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dgvMeseros_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("Está seguro de eliminar al Mesero" + txtNombre.Text, "Modificar Mesero", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta.ToString() == "Yes")
+            {
+                Clases.Mesero mesero = new Clases.Mesero(this.id);
+                try
+                {
+                    mesero.Eliminar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    ResetFormulario();
+                }
+            }
+
         }
     }
 }
