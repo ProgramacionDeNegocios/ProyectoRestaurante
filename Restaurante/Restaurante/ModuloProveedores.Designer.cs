@@ -82,6 +82,7 @@
             this.btnNuevo.TabIndex = 3;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // txtId
             // 
@@ -89,6 +90,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(122, 20);
             this.txtId.TabIndex = 4;
+            this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
             // 
             // txtNombre
             // 
@@ -109,7 +111,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(161, 137);
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(122, 43);
+            this.txtDireccion.Size = new System.Drawing.Size(201, 43);
             this.txtDireccion.TabIndex = 7;
             // 
             // lblId

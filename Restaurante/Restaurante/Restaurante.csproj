@@ -46,8 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Conexion.cs" />
-    <Compile Include="Clases\Exepciones.cs" />
+    <Compile Include="Clases\Exepcion.cs" />
+    <Compile Include="Clases\Mensaje.cs" />
+    <Compile Include="Clases\Mesero.cs" />
     <Compile Include="Clases\Proveedor.cs" />
+    <Compile Include="Clases\Restaurante.cs" />
     <Compile Include="Clases\TipoAcceso.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />
@@ -56,6 +59,12 @@
     </Compile>
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloMeseros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloMeseros.Designer.cs">
+      <DependentUpon>ModuloMeseros.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloProveedores.cs">
       <SubType>Form</SubType>
@@ -79,6 +88,9 @@
     </Compile>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloMeseros.resx">
+      <DependentUpon>ModuloMeseros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloProveedores.resx">
       <DependentUpon>ModuloProveedores.cs</DependentUpon>
@@ -126,9 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LogoTenedor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\foto.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\salir.png" />

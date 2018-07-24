@@ -8,28 +8,31 @@ using System.Data;
 
 namespace Restaurante.Clases
 {
-    class Proveedor
+    class Mesero
     {
         public int Id { set; get; }
+
+        public string Identidad { set; get; }
         public string Nombre { set; get; }
-        public string Telefono { set; get; }
-        public string Direccion { set; get; }
-        public Proveedor() { }
-        public Proveedor(string nombre, string telefono, string direccion)
+        public string Apellido { set; get; }
+        public Mesero() { }
+        ~Mesero() { }
+        public Mesero(string identidad, string nombre, string apellido)
         {
+            Identidad = identidad;
             Nombre = nombre;
-            Telefono = telefono;
-            Direccion = direccion;
+            Apellido = apellido;
+
         }
 
-        public Proveedor(int id, string nombre, string telefono, string direccion)
+        public Mesero(int id, string identidad, string nombre, string apellido)
         {
             Id = id;
+            Identidad = identidad;
             Nombre = nombre;
-            Telefono = telefono;
-            Direccion = direccion;
+            Apellido = apellido;
         }
-        public Proveedor(int id)
+        public Mesero(int id)
         {
             Id = id;
         }
@@ -37,47 +40,44 @@ namespace Restaurante.Clases
         public void Agregar()
         {
             Clases.Conexion conexion = new Clases.Conexion();
-            SqlCommand cmd = new SqlCommand("SP_AgregarProveedor", conexion.conexion);
+            SqlCommand cmd = new SqlCommand("SP_AgregarMesero", conexion.conexion);
             cmd.CommandType = CommandType.StoredProcedure;
             try
             {
                 conexion.Abrir();
-                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 100));
+                cmd.Parameters.Add(new SqlParameter("identidad", SqlDbType.NVarChar, 15));
+                cmd.Parameters["identidad"].Value = Identidad;
+                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("telefono", SqlDbType.NVarChar, 9));
-                cmd.Parameters["telefono"].Value = Telefono;
-                cmd.Parameters.Add(new SqlParameter("direccion", SqlDbType.NVarChar, 300));
-                cmd.Parameters["direccion"].Value = Direccion;
+                cmd.Parameters.Add(new SqlParameter("apellido", SqlDbType.NVarChar, 25));
+                cmd.Parameters["apellido"].Value = Apellido;
                 cmd.ExecuteNonQuery();
 
             }
             catch (SqlException ex)
             {
-                throw ex;
+                throw new Clases.Exepcion(ex.Message, ex, "Clase_Mesero");
             }
             finally
             {
                 conexion.Cerrar();
             }
-
         }
 
         public void Modificar()
         {
             Clases.Conexion conexion = new Clases.Conexion();
-            SqlCommand cmd = new SqlCommand("SP_ModificarProveedor", conexion.conexion);
+            SqlCommand cmd = new SqlCommand("SP_ModificarMesero", conexion.conexion);
             cmd.CommandType = CommandType.StoredProcedure;
             try
             {
                 conexion.Abrir();
-                cmd.Parameters.Add(new SqlParameter("idProveedor", SqlDbType.Int));
-                cmd.Parameters["idProveedor"].Value = Id;
-                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 100));
+                cmd.Parameters.Add(new SqlParameter("identidad", SqlDbType.NVarChar, 15));
+                cmd.Parameters["identidad"].Value = Identidad;
+                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("telefono", SqlDbType.NVarChar, 25));
-                cmd.Parameters["telefono"].Value = this.Telefono;
-                cmd.Parameters.Add(new SqlParameter("direccion", SqlDbType.NVarChar, 20));
-                cmd.Parameters["direccion"].Value = this.Direccion;
+                cmd.Parameters.Add(new SqlParameter("apellido", SqlDbType.NVarChar, 25));
+                cmd.Parameters["apellido"].Value = Apellido;
                 cmd.ExecuteNonQuery();
 
             }
@@ -94,13 +94,13 @@ namespace Restaurante.Clases
         public void Eliminar()
         {
             Clases.Conexion conexion = new Clases.Conexion();
-            SqlCommand cmd = new SqlCommand("SP_EliminarProveedor", conexion.conexion);
+            SqlCommand cmd = new SqlCommand("SP_EliminarMesero", conexion.conexion);
             cmd.CommandType = CommandType.StoredProcedure;
             try
             {
                 conexion.Abrir();
-                cmd.Parameters.Add(new SqlParameter("idProveedor", SqlDbType.Int));
-                cmd.Parameters["idProveedor"].Value = Id;
+                cmd.Parameters.Add(new SqlParameter("id", SqlDbType.Int));
+                cmd.Parameters["id"].Value = Id;
                 cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
@@ -113,32 +113,28 @@ namespace Restaurante.Clases
             }
         }
 
-        public void ObtenerProveedor(int id)
+        public void ObtenerMesero(int id)
         {
             Conexion conexion = new Conexion();
-            string sql = @"SELECT idProveedor, nombre, telefono, direccion FROM Restaurante.Proveedores WHERE idProveedor = '" + id + "';";
+            string sql = @"SELECT id, identidad, nombre, apellido FROM Restaurante.Meseros WHERE id = '" + id + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
                 conexion.Abrir();
-
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
                     Id = dr.GetInt32(0);
-                    Nombre = dr.GetString(1);
-                    Telefono = dr.GetString(2);
-                    Direccion = dr.GetString(3);
+                    Identidad = dr.GetString(1);
+                    Nombre = dr.GetString(2);
+                    Apellido = dr.GetString(3);
                 }
             }
-            catch (SqlException excepcion)
+            catch (SqlException ex)
             {
-                Exception ex = new Exception(
+                throw new Clases.Exepcion(
                    String.Format("{0} \n\n{1}",
-                   "no podemos obtener la informacion del proveedor", excepcion.Message));
-                ex.HelpLink = "OscarToledo.com";
-                ex.Source = "Clase_Usuario";
-                throw ex;
+                   "no podemos obtener la informacion del Mesero", ex.Message), ex, "Clase_Meseros"); ;
             }
             finally
             {
@@ -150,19 +146,19 @@ namespace Restaurante.Clases
         public static DataView GetDataView()
         {
             Clases.Conexion conexion = new Clases.Conexion();
-            //colocar el nombre del area a la cual pertenece el usuario en el strin de conexion
-            string sql = @"SELECT   Restaurante.Proveedores.idProveedor          as Código,
-                                    Restaurante.Proveedores.nombre      as Proveedor, 
-                                    Restaurante.Proveedores.telefono    as Teléfono,
-                                    Restaurante.Proveedores.direccion   as Direccion
-                            FROM Restaurante.Proveedores";
+            //colocar el nombre del area a la cual pertenece el usuario en el string de conexion
+            string sql = @"SELECT   Restaurante.Meseros.id          as Código,
+                                    Restaurante.Meseros.identidad   as Identidad,
+                                    Restaurante.Meseros.nombre      as Mesero, 
+                                    Restaurante.Meseros.apellido    as Apellido
+                            FROM Restaurante.Meseros";
             try
             {
                 SqlDataAdapter data = new SqlDataAdapter();
                 data.SelectCommand = new SqlCommand(sql, conexion.conexion);
                 DataSet ds = new DataSet();
-                data.Fill(ds, "Restaurante.Proveedores");
-                DataTable dt = ds.Tables["Restaurante.Proveedores"];
+                data.Fill(ds, "Restaurante.Meseros");
+                DataTable dt = ds.Tables["Restaurante.Meseros"];
                 DataView dv = new DataView(dt,
                     "",
                     "Código",
@@ -179,6 +175,5 @@ namespace Restaurante.Clases
             }
 
         }
-
     }
 }
