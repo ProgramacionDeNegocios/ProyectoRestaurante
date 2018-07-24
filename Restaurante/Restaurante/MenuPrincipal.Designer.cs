@@ -32,6 +32,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnModuloProveedores = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnModuloComandas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnModuloUsuarios
@@ -56,7 +57,7 @@
             // 
             // btnModuloProveedores
             // 
-            this.btnModuloProveedores.Location = new System.Drawing.Point(508, 249);
+            this.btnModuloProveedores.Location = new System.Drawing.Point(804, 241);
             this.btnModuloProveedores.Name = "btnModuloProveedores";
             this.btnModuloProveedores.Size = new System.Drawing.Size(109, 64);
             this.btnModuloProveedores.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(795, 178);
+            this.button1.Location = new System.Drawing.Point(804, 162);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 64);
             this.button1.TabIndex = 3;
@@ -74,11 +75,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnModuloComandas
+            // 
+            this.btnModuloComandas.Location = new System.Drawing.Point(804, 323);
+            this.btnModuloComandas.Name = "btnModuloComandas";
+            this.btnModuloComandas.Size = new System.Drawing.Size(109, 63);
+            this.btnModuloComandas.TabIndex = 4;
+            this.btnModuloComandas.Text = "Comandas";
+            this.btnModuloComandas.UseVisualStyleBackColor = true;
+            this.btnModuloComandas.Click += new System.EventHandler(this.btnModuloComandas_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 563);
+            this.Controls.Add(this.btnModuloComandas);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnModuloProveedores);
             this.Controls.Add(this.btnSalir);
@@ -98,5 +110,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnModuloProveedores;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnModuloComandas;
     }
 }
