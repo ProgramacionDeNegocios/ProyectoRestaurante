@@ -373,7 +373,8 @@ GO
 
 CREATE PROCEDURE SP_InsertarArea
 (
-	@nombre VARCHAR(50)
+	@nombre VARCHAR(50),
+	@numeroMesas TINYINT
 )
 AS
 BEGIN
@@ -389,8 +390,8 @@ BEGIN
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Restaurante.Areas(nombre)
-				VALUES(@nombre)
+			INSERT INTO Restaurante.Areas(nombre,numeroMesas)
+				VALUES(@nombre, @numeroMesas)
 			RETURN 1
 		END
 END
@@ -400,7 +401,8 @@ GO
 CREATE PROCEDURE SP_ModificarArea
 (
 	@id INT,
-	@nombre VARCHAR(50)
+	@nombre VARCHAR(50),
+	@numeroMesas TINYINT
 )
 AS
 BEGIN
@@ -415,7 +417,8 @@ BEGIN
 	ELSE
 		BEGIN
 			UPDATE Restaurante.Areas
-				SET 	nombre = @nombre
+				SET nombre = @nombre, 
+					numeroMesas = @numeroMesas
 					WHERE id = @id;
 			RETURN 1
 		END
@@ -443,7 +446,7 @@ BEGIN
 		END
 END
 GO
-
+/*
 CREATE PROCEDURE SP_AgregarMesa
 (
 )
@@ -740,3 +743,4 @@ BEGIN
 			END
 END
 GO
+*/

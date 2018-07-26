@@ -83,8 +83,10 @@ IF OBJECT_ID('Restaurante.Areas')	IS NOT NULL
 ELSE
 	BEGIN
 		CREATE TABLE Restaurante.Areas(
-			id INT IDENTITY(1,100) NOT NULL, -- index de la tupla
-			nombre NVARCHAR(50) NOT NULL --nombre del area dentro del restaurante
+			id INT IDENTITY(1,1) NOT NULL, -- index de la tupla
+			nombre NVARCHAR(50) NOT NULL, --nombre del area dentro del restaurante
+			numeroMesas TINYINT  NOT NULL-- Maneja el numero de mesas por area
+
 		);
 	END
 GO
