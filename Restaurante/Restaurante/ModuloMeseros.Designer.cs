@@ -43,8 +43,8 @@
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlTitulo = new System.Windows.Forms.Panel();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMeseros)).BeginInit();
             this.grpMesero.SuspendLayout();
             this.pnlBotones.SuspendLayout();
@@ -217,6 +217,15 @@
             this.pnlTitulo.Size = new System.Drawing.Size(479, 79);
             this.pnlTitulo.TabIndex = 30;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 408);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(546, 87);
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnSalir
             // 
             this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
@@ -229,15 +238,6 @@
             this.btnSalir.TabStop = false;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 408);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(546, 87);
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
             // 
             // ModuloMeseros
             // 
