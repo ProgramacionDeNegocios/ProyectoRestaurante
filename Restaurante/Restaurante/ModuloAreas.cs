@@ -17,6 +17,24 @@ namespace Restaurante
             InitializeComponent();
         }
 
+        private void CargarDGWMeseros()
+        {
+            try
+            {
+                dgvAreas.DataSource = Clases.Areas.GetDataView();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dgwMeseroEstilo(DataGridView dgw)
+        {
+            dgw.DefaultCellStyle.BackColor = Color.LightBlue;
+            dgw.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -42,6 +60,30 @@ namespace Restaurante
             {
                 e.Handled = true;
             }
+        }
+        private void ResetFormulario()
+        {
+            txtNombre.Text = "";
+            txtIdentidad.Text = "";
+            txtApellido.Text = "";
+            CargarDGWMeseros();
+            dgwMeseroEstilo(dgvAreas);
+
+            btnNuevo.Enabled = true;
+            btnAgregar.Enabled = true;
+            btnModificar.Enabled = false;
+            btnEliminar.Enabled = false;
+
+            txtNombre.Enabled = true;
+            txtIdentidad.Enabled = true;
+            txtApellido.Enabled = true;
+            //this.id = 0;
+            txtIdentidad.Focus();
+        }
+
+        private void ModuloAreas_Load(object sender, EventArgs e)
+        {
+            CargarDGWMeseros();
         }
     }
 }

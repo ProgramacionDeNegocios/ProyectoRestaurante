@@ -40,16 +40,16 @@
             this.lblId = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblTelefono = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dgvMeseros = new System.Windows.Forms.DataGridView();
+            this.dgvAreas = new System.Windows.Forms.DataGridView();
             this.pnlTitulo = new System.Windows.Forms.Panel();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.pnlBotones.SuspendLayout();
             this.grpMesero.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMeseros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAreas)).BeginInit();
             this.pnlTitulo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlBotones
@@ -177,27 +177,18 @@
             this.lblTelefono.TabIndex = 23;
             this.lblTelefono.Text = "Apellido";
             // 
-            // pictureBox1
+            // dgvAreas
             // 
-            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 393);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(546, 87);
-            this.pictureBox1.TabIndex = 32;
-            this.pictureBox1.TabStop = false;
-            // 
-            // dgvMeseros
-            // 
-            this.dgvMeseros.AllowUserToAddRows = false;
-            this.dgvMeseros.AllowUserToDeleteRows = false;
-            this.dgvMeseros.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvMeseros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMeseros.Location = new System.Drawing.Point(29, 239);
-            this.dgvMeseros.Name = "dgvMeseros";
-            this.dgvMeseros.ReadOnly = true;
-            this.dgvMeseros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMeseros.Size = new System.Drawing.Size(490, 148);
-            this.dgvMeseros.TabIndex = 31;
+            this.dgvAreas.AllowUserToAddRows = false;
+            this.dgvAreas.AllowUserToDeleteRows = false;
+            this.dgvAreas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvAreas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAreas.Location = new System.Drawing.Point(29, 239);
+            this.dgvAreas.Name = "dgvAreas";
+            this.dgvAreas.ReadOnly = true;
+            this.dgvAreas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAreas.Size = new System.Drawing.Size(490, 148);
+            this.dgvAreas.TabIndex = 31;
             // 
             // pnlTitulo
             // 
@@ -207,6 +198,27 @@
             this.pnlTitulo.Name = "pnlTitulo";
             this.pnlTitulo.Size = new System.Drawing.Size(479, 79);
             this.pnlTitulo.TabIndex = 35;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Britannic Bold", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
+            this.label1.Location = new System.Drawing.Point(44, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(329, 37);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Información de Areas";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
+            this.pictureBox1.Location = new System.Drawing.Point(2, 393);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(546, 87);
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
             // 
             // btnSalir
             // 
@@ -221,18 +233,6 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Britannic Bold", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
-            this.label1.Location = new System.Drawing.Point(44, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(329, 37);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Información de Areas";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // ModuloAreas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,17 +241,18 @@
             this.Controls.Add(this.pnlBotones);
             this.Controls.Add(this.grpMesero);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dgvMeseros);
+            this.Controls.Add(this.dgvAreas);
             this.Controls.Add(this.pnlTitulo);
             this.Name = "ModuloAreas";
             this.Text = "ModuloAreas";
+            this.Load += new System.EventHandler(this.ModuloAreas_Load);
             this.pnlBotones.ResumeLayout(false);
             this.grpMesero.ResumeLayout(false);
             this.grpMesero.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMeseros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAreas)).EndInit();
             this.pnlTitulo.ResumeLayout(false);
             this.pnlTitulo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -271,7 +272,7 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dgvMeseros;
+        private System.Windows.Forms.DataGridView dgvAreas;
         private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Label label1;
