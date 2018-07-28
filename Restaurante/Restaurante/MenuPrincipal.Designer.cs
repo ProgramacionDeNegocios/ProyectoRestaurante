@@ -37,8 +37,9 @@
             this.Pedidos = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -137,15 +138,6 @@
             this.tabPage3.Text = "Seguridad";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(13, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 64);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Roles";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.button2);
@@ -155,11 +147,31 @@
             this.panel1.Size = new System.Drawing.Size(662, 71);
             this.panel1.TabIndex = 2;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(13, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(109, 64);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Roles";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(376, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 64);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Areas";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 563);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnModuloProveedores);
@@ -191,5 +203,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

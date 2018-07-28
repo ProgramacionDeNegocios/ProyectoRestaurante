@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Areas.cs" />
+    <Compile Include="Clases\Areas.cs" />
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\Exepcion.cs" />
     <Compile Include="Clases\Mensaje.cs" />

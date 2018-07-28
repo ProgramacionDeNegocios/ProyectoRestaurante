@@ -34,17 +34,15 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.grpMesero = new System.Windows.Forms.GroupBox();
-            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtIdentidad = new System.Windows.Forms.MaskedTextBox();
-            this.lblId = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblTelefono = new System.Windows.Forms.Label();
+            this.lblnumeroMesas = new System.Windows.Forms.Label();
             this.dgvAreas = new System.Windows.Forms.DataGridView();
             this.pnlTitulo = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.pnlBotones.SuspendLayout();
             this.grpMesero.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAreas)).BeginInit();
@@ -74,6 +72,7 @@
             this.btnModificar.TabIndex = 6;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnAgregar
             // 
@@ -86,6 +85,7 @@
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
@@ -98,6 +98,7 @@
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
@@ -110,15 +111,14 @@
             this.btnNuevo.TabIndex = 4;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // grpMesero
             // 
-            this.grpMesero.Controls.Add(this.txtApellido);
+            this.grpMesero.Controls.Add(this.txtNumero);
             this.grpMesero.Controls.Add(this.txtNombre);
-            this.grpMesero.Controls.Add(this.txtIdentidad);
-            this.grpMesero.Controls.Add(this.lblId);
             this.grpMesero.Controls.Add(this.lblNombre);
-            this.grpMesero.Controls.Add(this.lblTelefono);
+            this.grpMesero.Controls.Add(this.lblnumeroMesas);
             this.grpMesero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpMesero.Location = new System.Drawing.Point(29, 83);
             this.grpMesero.Name = "grpMesero";
@@ -126,56 +126,39 @@
             this.grpMesero.TabIndex = 33;
             this.grpMesero.TabStop = false;
             // 
-            // txtApellido
+            // txtNumero
             // 
-            this.txtApellido.Location = new System.Drawing.Point(121, 112);
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(213, 22);
-            this.txtApellido.TabIndex = 3;
+            this.txtNumero.Location = new System.Drawing.Point(136, 88);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(198, 22);
+            this.txtNumero.TabIndex = 3;
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(121, 69);
+            this.txtNombre.Location = new System.Drawing.Point(121, 45);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(213, 22);
             this.txtNombre.TabIndex = 2;
-            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
-            // 
-            // txtIdentidad
-            // 
-            this.txtIdentidad.Location = new System.Drawing.Point(121, 21);
-            this.txtIdentidad.Mask = "9999-9999-99999";
-            this.txtIdentidad.Name = "txtIdentidad";
-            this.txtIdentidad.Size = new System.Drawing.Size(213, 22);
-            this.txtIdentidad.TabIndex = 1;
-            // 
-            // lblId
-            // 
-            this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(15, 24);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(64, 16);
-            this.lblId.TabIndex = 21;
-            this.lblId.Text = "Identidad";
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(16, 72);
+            this.lblNombre.Location = new System.Drawing.Point(16, 48);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(57, 16);
+            this.lblNombre.Size = new System.Drawing.Size(89, 16);
             this.lblNombre.TabIndex = 22;
-            this.lblNombre.Text = "Nombre";
+            this.lblNombre.Text = "Nombre Area";
             // 
-            // lblTelefono
+            // lblnumeroMesas
             // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Location = new System.Drawing.Point(16, 115);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(58, 16);
-            this.lblTelefono.TabIndex = 23;
-            this.lblTelefono.Text = "Apellido";
+            this.lblnumeroMesas.AutoSize = true;
+            this.lblnumeroMesas.Location = new System.Drawing.Point(16, 91);
+            this.lblnumeroMesas.Name = "lblnumeroMesas";
+            this.lblnumeroMesas.Size = new System.Drawing.Size(119, 16);
+            this.lblnumeroMesas.TabIndex = 23;
+            this.lblnumeroMesas.Text = "Número de mesas";
             // 
             // dgvAreas
             // 
@@ -189,6 +172,8 @@
             this.dgvAreas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAreas.Size = new System.Drawing.Size(490, 148);
             this.dgvAreas.TabIndex = 31;
+            this.dgvAreas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAreas_CellClick);
+            this.dgvAreas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAreas_CellContentClick);
             // 
             // pnlTitulo
             // 
@@ -198,6 +183,19 @@
             this.pnlTitulo.Name = "pnlTitulo";
             this.pnlTitulo.Size = new System.Drawing.Size(479, 79);
             this.pnlTitulo.TabIndex = 35;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
+            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalir.Location = new System.Drawing.Point(447, 3);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(29, 29);
+            this.btnSalir.TabIndex = 30;
+            this.btnSalir.TabStop = false;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // label1
             // 
@@ -214,24 +212,11 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 393);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 393);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(546, 87);
+            this.pictureBox1.Size = new System.Drawing.Size(550, 93);
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
-            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSalir.Location = new System.Drawing.Point(447, 3);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(29, 29);
-            this.btnSalir.TabIndex = 30;
-            this.btnSalir.TabStop = false;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // ModuloAreas
             // 
@@ -243,7 +228,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvAreas);
             this.Controls.Add(this.pnlTitulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModuloAreas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModuloAreas";
             this.Load += new System.EventHandler(this.ModuloAreas_Load);
             this.pnlBotones.ResumeLayout(false);
@@ -265,12 +252,10 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.GroupBox grpMesero;
-        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.MaskedTextBox txtIdentidad;
-        private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Label lblTelefono;
+        private System.Windows.Forms.Label lblnumeroMesas;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgvAreas;
         private System.Windows.Forms.Panel pnlTitulo;

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Data.SqlClient;
 using System.Data;
 
@@ -40,7 +38,7 @@ namespace Restaurante.Clases
             try
             {
                 conexion.Abrir();
-                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
+                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 50));
                 cmd.Parameters["nombre"].Value = Nombre;
                 cmd.Parameters.Add(new SqlParameter("numeroMesas", SqlDbType.TinyInt));
                 cmd.Parameters["numeroMesas"].Value = NumeroMesas;
@@ -65,7 +63,7 @@ namespace Restaurante.Clases
             try
             {
                 conexion.Abrir();
-                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
+                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 50));
                 cmd.Parameters["nombre"].Value = Nombre;
                 cmd.Parameters.Add(new SqlParameter("numeroMesas", SqlDbType.TinyInt));
                 cmd.Parameters["numeroMesas"].Value = NumeroMesas;
@@ -115,7 +113,7 @@ namespace Restaurante.Clases
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Id = dr.GetInt32(0);
+                    Id = dr.GetInt16(0);
                     Nombre = dr.GetString(1);
                     NumeroMesas = dr.GetInt16(2);
                 }

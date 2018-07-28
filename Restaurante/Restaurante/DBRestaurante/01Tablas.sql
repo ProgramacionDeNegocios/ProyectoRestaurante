@@ -72,7 +72,6 @@ ELSE
 	END
 GO
 
-
 /*
 	contiene las diferentes areas que contiene el restaurante
 
