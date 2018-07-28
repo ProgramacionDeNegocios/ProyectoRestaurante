@@ -60,10 +60,10 @@ namespace Restaurante
         {
             DataTable dt = new DataTable();
             Clases.Conexion conexion = new Clases.Conexion();
-            string sql = "select * FROM Restaurante.Insumos";
-            SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
+                string sql = "select * FROM Restaurante.Insumos";
+                SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
             cmbProveedor.DisplayMember = "nombre";
             cmbProveedor.ValueMember = "nombre";
             cmbProveedor.DataSource = dt;
@@ -73,13 +73,17 @@ namespace Restaurante
         {
             try
             {
+                Clases.Proveedor proveedor = new Clases.Proveedor();
+                proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
+
                 Clases.Restaurante.AgregarInsumo
                     (
                         txtNombre.Text,
                         Convert.ToDecimal(txtCosto.Text),
+                        //Aregalar el de Unidad
                         cmbUnidad.SelectedIndex,
                         txtDescripcion.Text,
-                        cmbProveedor.SelectedIndex   
+                        proveedor.Id  
                     );
                 CargarDGWInsumos();
             }
@@ -97,6 +101,9 @@ namespace Restaurante
 
                 try
                 {
+                    Clases.Proveedor proveedor = new Clases.Proveedor();
+                    proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
+
                     Clases.Mesero mesero = new Clases.Mesero(
                         //txtIdentidad.Text,
                         //txtNombre.Text,
@@ -114,6 +121,11 @@ namespace Restaurante
 
         }
 
+        private void dgvInsumos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void ResetFormulario()
         {
             txtId.Text = "";
@@ -122,6 +134,8 @@ namespace Restaurante
             cmbUnidad.Text = "";
             txtDescripcion.Text = "";
             cmbProveedor.Text = "";
+            CargarDGWInsumos();
+            dgwInsumoEstilo(dgvInsumos);
 
             btnNuevo.Enabled = true;
             btnAgregar.Enabled = true;
@@ -169,6 +183,9 @@ namespace Restaurante
             this.Close();
         }
 
-        
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

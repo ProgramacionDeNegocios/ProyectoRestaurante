@@ -58,7 +58,7 @@ namespace Restaurante.Clases
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal, 4,2 ));
+                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal, 4));
                 cmd.Parameters["costo"].Value = Costo;
                 cmd.Parameters.Add(new SqlParameter("idTipoUnidad", SqlDbType.Int));
                 cmd.Parameters["idTipoUnidad"].Value = IdTipoUnidad;
@@ -92,7 +92,7 @@ namespace Restaurante.Clases
                 cmd.Parameters["idInsumo"].Value = Id;
                 cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal, 4, 2));
+                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal, 4));
                 cmd.Parameters["costo"].Value = Costo;
                 cmd.Parameters.Add(new SqlParameter("idTipoUnidad", SqlDbType.Int));
                 cmd.Parameters["idTipoUnidad"].Value = IdTipoUnidad;
@@ -175,8 +175,11 @@ namespace Restaurante.Clases
                                     Restaurante.Insumos.costo           as Costo, 
                                     Restaurante.Insumos.idTipoUnidad    as Unidad,
                                     Restaurante.Insumos.descripcion     as Descripción,
-                                    Restaurante.Insumos.idProveedor     as Proveedor
-                            FROM Restaurante.Insumos";
+                                    Restaurante.Proveedores.nombre      as Proveedor
+                            FROM Restaurante.Proveedores
+                            INNER JOIN Restaurante.Insumos
+                            ON Restaurante.Proveedores.idProveedor = Restaurante.Insumos.idProveedor";
+            //Hacer inner join idtipoUnidad
             try
             {
                 SqlDataAdapter data = new SqlDataAdapter();
