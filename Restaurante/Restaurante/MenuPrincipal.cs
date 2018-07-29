@@ -44,5 +44,11 @@ namespace Restaurante
             ModuloMeseros moduloMeseros = new ModuloMeseros();
             moduloMeseros.ShowDialog();
         }
+
+        private void btnModuloTipoUnidad_Click(object sender, EventArgs e)
+        {
+            ModuloTipoUnidad moduloTipoUnidad = new ModuloTipoUnidad();
+            moduloTipoUnidad.ShowDialog();
+        }
     }
 }

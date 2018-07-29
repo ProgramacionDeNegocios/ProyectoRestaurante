@@ -789,7 +789,7 @@ BEGIN
 		BEGIN
 			UPDATE Restaurante.TipoUnidad
 				SET 	descripcion = @descripcion
-					WHERE id = @id;
+					WHERE idTipoUnidad = @id;
 			RETURN 1
 		END
 END
@@ -811,7 +811,7 @@ BEGIN
 		END 	
 	ELSE
 		BEGIN
-			DELETE FROM Restaurante.TipoUnidad	WHERE id = @id;
+			DELETE FROM Restaurante.TipoUnidad	WHERE idTipoUnidad = @id;
 			RETURN 1
 		END
 END

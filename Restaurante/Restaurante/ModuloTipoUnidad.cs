@@ -70,7 +70,7 @@ namespace Restaurante
                 {
                     Clases.Restaurante.ModificarTipoUnidad
                         (
-                            Convert.ToInt32(txtId.Text),
+                            this.id,
                             txtDescripcion.Text
                         );
                     ResetFormulario();
@@ -94,6 +94,7 @@ namespace Restaurante
             dgvTipoUnidad.Select();
             this.id = tipounidad.Id;
 
+            txtId.Text = tipounidad.Id.ToString();
             txtDescripcion.Text = tipounidad.Descripcion;
 
             btnNuevo.Enabled = true;
@@ -114,7 +115,7 @@ namespace Restaurante
             btnModificar.Enabled = false;
             btnEliminar.Enabled = false;
 
-            txtId.Enabled = true;
+            //txtId.Enabled = true;
             txtDescripcion.Enabled = true;
             this.id = 0;
             txtId.Focus();
