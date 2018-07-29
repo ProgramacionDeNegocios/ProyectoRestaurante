@@ -39,6 +39,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnInsumos = new System.Windows.Forms.Button();
+            this.btnTipoUnidad = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -155,11 +157,33 @@
             this.button2.Text = "Roles";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // btnInsumos
+            // 
+            this.btnInsumos.Location = new System.Drawing.Point(376, 19);
+            this.btnInsumos.Name = "btnInsumos";
+            this.btnInsumos.Size = new System.Drawing.Size(109, 64);
+            this.btnInsumos.TabIndex = 5;
+            this.btnInsumos.Text = "Insumos";
+            this.btnInsumos.UseVisualStyleBackColor = true;
+            this.btnInsumos.Click += new System.EventHandler(this.btnInsumos_Click);
+            // 
+            // btnTipoUnidad
+            // 
+            this.btnTipoUnidad.Location = new System.Drawing.Point(491, 19);
+            this.btnTipoUnidad.Name = "btnTipoUnidad";
+            this.btnTipoUnidad.Size = new System.Drawing.Size(109, 64);
+            this.btnTipoUnidad.TabIndex = 6;
+            this.btnTipoUnidad.Text = "Unidades";
+            this.btnTipoUnidad.UseVisualStyleBackColor = true;
+            this.btnTipoUnidad.Click += new System.EventHandler(this.btnTipoUnidad_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 563);
+            this.Controls.Add(this.btnTipoUnidad);
+            this.Controls.Add(this.btnInsumos);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnModuloProveedores);
@@ -191,5 +215,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnInsumos;
+        private System.Windows.Forms.Button btnTipoUnidad;
     }
 }

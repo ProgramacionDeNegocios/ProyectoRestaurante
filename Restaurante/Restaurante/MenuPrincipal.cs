@@ -50,5 +50,17 @@ namespace Restaurante
         {
 
         }
+
+        private void btnInsumos_Click(object sender, EventArgs e)
+        {
+            ModuloInsumos moduloInsumos = new ModuloInsumos();
+            moduloInsumos.ShowDialog();
+
+        }
+
+        private void btnTipoUnidad_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
