@@ -60,7 +60,8 @@ namespace Restaurante
 
         private void btnTipoUnidad_Click(object sender, EventArgs e)
         {
-           
+            ModuloTipoUnidad moduloTipoUnidad = new ModuloTipoUnidad();
+            moduloTipoUnidad.ShowDialog();
         }
     }
 }

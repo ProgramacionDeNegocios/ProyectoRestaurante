@@ -80,6 +80,12 @@
     <Compile Include="ModuloProveedores.Designer.cs">
       <DependentUpon>ModuloProveedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloTipoUnidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloTipoUnidad.Designer.cs">
+      <DependentUpon>ModuloTipoUnidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioLogin.cs">
       <SubType>Form</SubType>
     </Compile>
