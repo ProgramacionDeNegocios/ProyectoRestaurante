@@ -135,6 +135,7 @@ namespace Restaurante
                 {
                     Clases.Restaurante.ModificarAreas
                         (
+                            Convert.ToInt16(this.id),
                             txtNombre.Text,
                             Convert.ToInt16(txtNumero.Text)
                         );

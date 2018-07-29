@@ -105,7 +105,7 @@ namespace Restaurante.Clases
         public void ObtenerAreas(int id)
         {
             Conexion conexion = new Conexion();
-            string sql = @"SELECT id, nombre, numeroMesas  FROM Restaurante.Areas WHERE id = '" + id + "';";
+            string sql = @"SELECT id, nombre, numeroMesas FROM Restaurante.Areas WHERE id = '" + id + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
@@ -113,9 +113,9 @@ namespace Restaurante.Clases
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    Id = dr.GetInt16(0);
+                    Id = dr.GetInt32(0);
                     Nombre = dr.GetString(1);
-                    NumeroMesas = dr.GetInt16(2);
+                    NumeroMesas = dr.GetByte(2);
                 }
             }
             catch (SqlException ex)
@@ -137,7 +137,7 @@ namespace Restaurante.Clases
             //colocar el nombre del area a la cual pertenece el usuario en el string de conexion
             string sql = @"SELECT   Restaurante.Areas.id          as Código,
                                     Restaurante.Areas.nombre      as Areas, 
-                                    Restaurante.Areas.numeroMesas   as Número Mesas
+                                    Restaurante.Areas.numeroMesas   as [Número Mesas]
                             FROM Restaurante.Areas";
             try
             {

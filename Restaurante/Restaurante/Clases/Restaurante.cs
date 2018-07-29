@@ -97,11 +97,12 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
-        public static void ModificarAreas(string nombre, int numeroMesas) {
+        public static void ModificarAreas(int id, string nombre, int numeroMesas) {
             try
             {
                 ValidarArea(nombre, numeroMesas);
                 Clases.Areas area = new Clases.Areas(
+                    id,
                     nombre,
                     numeroMesas
                     );
