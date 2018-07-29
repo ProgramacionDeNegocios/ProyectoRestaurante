@@ -12,6 +12,7 @@ namespace Restaurante
 {
     public partial class MenuPrincipal : Form
     {
+        public int rol = 1;
         public MenuPrincipal()
         {
             InitializeComponent();
@@ -43,6 +44,11 @@ namespace Restaurante
         {
             ModuloMeseros moduloMeseros = new ModuloMeseros();
             moduloMeseros.ShowDialog();
+        }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

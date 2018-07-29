@@ -37,8 +37,8 @@
             this.Pedidos = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -137,15 +137,6 @@
             this.tabPage3.Text = "Seguridad";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(13, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 64);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Roles";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.button2);
@@ -154,6 +145,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(662, 71);
             this.panel1.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(13, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(109, 64);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Roles";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // MenuPrincipal
             // 

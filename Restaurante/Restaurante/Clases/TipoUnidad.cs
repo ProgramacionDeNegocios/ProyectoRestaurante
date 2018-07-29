@@ -41,7 +41,7 @@ namespace Restaurante.Clases
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("descripcion", SqlDbType.NVarChar, 100));
                 cmd.Parameters["descripcion"].Value = Descripcion;
-                
+
             }
             catch (SqlException ex)
             {
@@ -132,7 +132,7 @@ namespace Restaurante.Clases
         {
             Clases.Conexion conexion = new Clases.Conexion();
             string sql = @"SELECT   Restaurante.TipoUnidad.idTipoUnidad     as Código,
-                                    Restaurante.TipoUnidad.descripcion      as Descripción,
+                                    Restaurante.TipoUnidad.descripcion      as Descripción
                             FROM Restaurante.TipoUnidad";
             try
             {

@@ -53,6 +53,7 @@
     <Compile Include="Clases\Proveedor.cs" />
     <Compile Include="Clases\Restaurante.cs" />
     <Compile Include="Clases\Rol.cs" />
+    <Compile Include="Clases\TipoUnidad.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />
     <Compile Include="MenuPrincipal.cs">
