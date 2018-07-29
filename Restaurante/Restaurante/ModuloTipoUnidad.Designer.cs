@@ -227,7 +227,6 @@
             this.Controls.Add(this.pnlTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModuloTipoUnidad";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModuloTipoUnidad";
             this.Load += new System.EventHandler(this.ModuloTipoUnidad_Load);
             this.pnlTitulo.ResumeLayout(false);
