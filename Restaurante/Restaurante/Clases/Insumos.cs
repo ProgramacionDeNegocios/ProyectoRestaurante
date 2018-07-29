@@ -56,9 +56,9 @@ namespace Restaurante.Clases
             try
             {
                 conexion.Abrir();
-                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
+                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 100));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal, 4));
+                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal ));
                 cmd.Parameters["costo"].Value = Costo;
                 cmd.Parameters.Add(new SqlParameter("idTipoUnidad", SqlDbType.Int));
                 cmd.Parameters["idTipoUnidad"].Value = IdTipoUnidad;
@@ -90,9 +90,9 @@ namespace Restaurante.Clases
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("idInsumo", SqlDbType.Int));
                 cmd.Parameters["idInsumo"].Value = Id;
-                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
+                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 100));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal, 4));
+                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal));
                 cmd.Parameters["costo"].Value = Costo;
                 cmd.Parameters.Add(new SqlParameter("idTipoUnidad", SqlDbType.Int));
                 cmd.Parameters["idTipoUnidad"].Value = IdTipoUnidad;

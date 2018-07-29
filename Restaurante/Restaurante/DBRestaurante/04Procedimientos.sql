@@ -235,6 +235,8 @@ BEGIN
 END
 GO
 
+
+
 CREATE PROCEDURE SP_ModificarProveedor
 (
 	@idProveedor INT,
