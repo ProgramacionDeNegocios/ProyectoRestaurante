@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\Exepcion.cs" />
+    <Compile Include="Clases\Insumos.cs" />
     <Compile Include="Clases\Mensaje.cs" />
     <Compile Include="Clases\Mesero.cs" />
     <Compile Include="Clases\Proveedor.cs" />
@@ -60,6 +61,12 @@
     </Compile>
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloInsumos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloInsumos.Designer.cs">
+      <DependentUpon>ModuloInsumos.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloMeseros.cs">
       <SubType>Form</SubType>
@@ -95,6 +102,9 @@
     </Compile>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloInsumos.resx">
+      <DependentUpon>ModuloInsumos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloMeseros.resx">
       <DependentUpon>ModuloMeseros.cs</DependentUpon>
