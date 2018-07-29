@@ -671,23 +671,28 @@ GO
 
 CREATE PROCEDURE SP_AgregarInsumo
 (
+	@nombre NVARCHAR(100),
+	@costo DECIMAL(4,2),
+	@idTipoUnidad INT,
+	@descripcion NVARCHAR(200),
+	@idProveedor INT
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+	SELECT @existe = COUNT(Restaurante.Insumos.idInsumo) FROM Restaurante.Insumos WHERE nombre = @nombre;
 	IF (@existe > 0)
 		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+			RAISERROR(N'Ya existe un Insumo con el nombre %s"', 16, 1,@nombre);
 			RETURN 0
 			
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
-				VALUES(	<variable1>, <variable2>,...,<Variable3>)
+			INSERT INTO Restaurante.Insumos(nombre, costo, idTipoUnidad, descripcion, idProveedor)
+				VALUES(@nombre, @costo, @idTipoUnidad, @descripcion, @idProveedor)
 			RETURN 1
 		END
 END
@@ -695,47 +700,56 @@ GO
 
 CREATE PROCEDURE SP_ModificarInsumo
 (
+	@idInsumo INT,
+	@nombre NVARCHAR(100),
+	@costo DECIMAL(4,2),
+	@idTipoUnidad INT,
+	@descripcion NVARCHAR(200),
+	@idProveedor INT
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+	SELECT @existe = COUNT(Restaurante.Insumos.IdInsumo) FROM Restaurante.Insumos WHERE IdInsumo = @idInsumo;
 
 	IF (@existe = 0)
 		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+			RAISERROR(N'No existe el insumo con el id %d"', 16, 1, @idInsumo);
 			RETURN 0
 		END 	
 	ELSE
 		BEGIN
-			UPDATE <esquema.tabla>
-				SET 	<campos=variables>
-					WHERE <condicion>;
+			UPDATE Restaurante.Insumos
+				SET 	nombre = @nombre,
+						costo = @costo,
+						idTipoUnidad = @idTipoUnidad,
+						descripcion = @descripcion,
+						idProveedor = @idProveedor
+					WHERE idInsumo = @idInsumo;
 			RETURN 1
 		END
-	
-	END
 END
 GO
 
 CREATE PROCEDURE SP_EliminarInsumo
 (
+	@idInsumo INT
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
-		SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+		SELECT @existe = COUNT(Restaurante.Insumos.IdInsumo) FROM Restaurante.Insumos WHERE IdInsumo = @idInsumo;
 		IF (@existe = 0)
 			BEGIN
-				RAISERROR(N'aqui va el mensaje de error "', 16, 1);
+				RAISERROR(N'No existe el insumo con el id %d"', 16, 1, @idInsumo);
 				RETURN 0
 			END 	
 		ELSE
 			BEGIN
-				DELETE FROM <Esquema.tabla>	WHERE <condicion>;
+				DELETE FROM Restaurante.Insumos WHERE idInsumo = @idInsumo;
 				RETURN 1
 			END
 END

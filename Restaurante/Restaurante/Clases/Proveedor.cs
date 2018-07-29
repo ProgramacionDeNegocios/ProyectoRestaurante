@@ -180,5 +180,38 @@ namespace Restaurante.Clases
 
         }
 
+        public void ObtenerProveedorPorNombre(string nombreProveedor)
+        {
+            Conexion conexion = new Conexion();
+            string sql = @"SELECT idProveedor, nombre FROM Restaurante.Proveedores WHERE nombre = '" + nombreProveedor + "';";
+            SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
+            try
+            {
+                conexion.Abrir();
+
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Id = dr.GetInt32(0);
+                    Nombre = dr.GetString(1);
+                }
+            }
+            catch (SqlException excepcion)
+            {
+                Exception ex = new Exception(
+                   String.Format("{0} \n\n{1}",
+                   "no podemos obtener la informacion del proveedor", excepcion.Message));
+                ex.Source = "Clase_Usuario";
+                throw ex;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+        }
+
+
+
     }
 }
