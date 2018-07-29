@@ -63,57 +63,85 @@ namespace Restaurante.Clases
         public static void AgregarUsuario() { }
         public static void ModificarUsuario() { }
         public static void EliminarUsuario() { }
-
-        private static void ValidarInsumo
-            (
-            string nombre,
-            decimal costo,
-            int idtipounidad,
-            string descripcion,
-            int idproveedor
-            )
+        
+        private static void ValidarTipoUnidad
+         (
+            string descripcion
+            
+         )
         {
-            if (nombre.Length == 0 || costo < 0 || idtipounidad <= 0 || descripcion.Length == 0 || idproveedor <= 0)
+            if (descripcion.Length == 0)
             {
                 throw new Clases.Exepcion
                     (
-                    "Error al insertar el insumo. \n\n" +
-                    "Existen datos obligatorios que se necesitan para poder agregar el insumo\n" +
-                    "Nombre   : Tomate\n" +
-                    "Costo    : 12.00\n" +
-                    "Unidad   : Libra\n" +
-                    "Descripción   : Comprado Semanalmente\n" +
-                    "Proveedor : Don Edgardo",
+                    "Error al insertar un Tipo de Unidad. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un tipo de unidad:\n" +
+                    "Descripción   : libras\n",
                     new Exception(),
-                    "Clase_Insumo"
+                    "Clase_Restaurante"
                     );
             }
         }
-        public static void AgregarInsumo
+
+        public static void AgregarTipoUnidad
             (
-            string nombre,
-            decimal costo,
-            int idtipounidad,
-            string descripcion,
-            int idproveedor
+            string descripcion            
             )
         {
             try
             {
-                ValidarInsumo(nombre,costo,idtipounidad,descripcion,idproveedor);
-                Clases.Insumos insumo = new Clases.Insumos(
-                    nombre,
-                    costo,
-                    idtipounidad,
-                    descripcion,
-                    idproveedor
+                ValidarTipoUnidad(descripcion);
+                Clases.TipoUnidad tipounidad = new Clases.TipoUnidad(
+                    descripcion
                     );
-                insumo.Agregar();
+                tipounidad.Agregar();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-    }
+
+        public static void ModificarTipoUnidad
+            (
+            int id,
+            string descripcion
+            )
+        {
+            try
+            {
+                ValidarTipoUnidad(descripcion);
+                Clases.TipoUnidad tipounidad = new Clases.TipoUnidad(
+                    id,
+                    descripcion
+                    );
+                tipounidad.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void EliminarTipoUnidad
+            (
+            int id
+            )
+        {
+            try
+            {
+               Clases.TipoUnidad tipounidad = new Clases.TipoUnidad(
+                    id
+                    );
+                tipounidad.Eliminar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+    } 
+
+
 }
