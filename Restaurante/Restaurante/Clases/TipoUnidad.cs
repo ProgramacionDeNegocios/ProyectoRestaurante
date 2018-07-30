@@ -41,6 +41,7 @@ namespace Restaurante.Clases
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("descripcion", SqlDbType.NVarChar, 100));
                 cmd.Parameters["descripcion"].Value = Descripcion;
+                cmd.ExecuteNonQuery();
 
             }
             catch (SqlException ex)

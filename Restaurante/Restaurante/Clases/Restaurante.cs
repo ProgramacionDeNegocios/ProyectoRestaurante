@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Restaurante.Clases
 {
@@ -95,6 +96,7 @@ namespace Restaurante.Clases
                     descripcion
                     );
                 tipounidad.Agregar();
+                
             }
             catch (Exception ex)
             {
