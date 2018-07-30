@@ -63,14 +63,14 @@ namespace Restaurante.Clases
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("idTipoUnidad", SqlDbType.Int));
                 cmd.Parameters["idTipoUnidad"].Value = Id;
-                cmd.Parameters.Add(new SqlParameter("descripcion", SqlDbType.NVarChar, 25));
+                cmd.Parameters.Add(new SqlParameter("descripcion", SqlDbType.NVarChar, 100));
                 cmd.Parameters["descripcion"].Value = Descripcion;
                 cmd.ExecuteNonQuery();
 
             }
             catch (SqlException ex)
             {
-                throw ex;
+                throw new Clases.Exepcion(ex.Message, ex, "Clase_TipoUnidad");
             }
             finally
             {
@@ -158,7 +158,32 @@ namespace Restaurante.Clases
 
         }
 
+        public void ObtenerTipoUnidadPorNombre(string nombreTipoUnidad)
+        {
+            Conexion conexion = new Conexion();
+            string sql = @"SELECT idTipoUnidad, descripcion FROM Restaurante.TipoUnidad WHERE descripcion = '" + nombreTipoUnidad + "';";
+            SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
+            try
+            {
+                conexion.Abrir();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Id = dr.GetInt32(0);
+                    Descripcion = dr.GetString(1);
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Clases.Exepcion(
+                   String.Format("{0} \n\n{1}",
+                   "no podemos obtener la informacion del Tipo de Unidad", ex.Message), ex, "Clase_TipoUnidad"); ;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
 
-
+        }
     }
 }

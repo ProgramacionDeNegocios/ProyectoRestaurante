@@ -775,7 +775,7 @@ BEGIN
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Restaurante.Areas(nombre)
+			INSERT INTO Restaurante.TipoUnidad(descripcion)
 				VALUES(@descripcion)
 			RETURN 1
 		END
@@ -784,24 +784,24 @@ GO
 
 CREATE PROCEDURE SP_ModificarTipoUnidad
 (
-	@id INT,
+	@idTipoUnidad INT,
 	@descripcion NVARCHAR(100)
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
-	SELECT @existe = COUNT(Restaurante.TipoUnidad.idTipoUnidad) FROM Restaurante.TipoUnidad WHERE idTipoUnidad=@id;
+	SELECT @existe = COUNT(Restaurante.TipoUnidad.idTipoUnidad) FROM Restaurante.TipoUnidad WHERE idTipoUnidad=@idTipoUnidad;
 	IF (@existe = 0)
 		BEGIN
-			RAISERROR(N'No existe ningún Tipo de Unidad con el id "%d"', 16, 1, @id);
+			RAISERROR(N'No existe ningún Tipo de Unidad con el id "%d"', 16, 1, @idTipoUnidad);
 			RETURN 0
 		END 	
 	ELSE
 		BEGIN
 			UPDATE Restaurante.TipoUnidad
 				SET 	descripcion = @descripcion
-					WHERE id = @id;
+					WHERE idTipoUnidad = @idTipoUnidad;
 			RETURN 1
 		END
 END
@@ -809,21 +809,21 @@ GO
 
 CREATE PROCEDURE SP_EliminarTipoUnidad
 (
-	@id INT
+	@idTipoUnidad INT
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
-	SELECT @existe = COUNT(Restaurante.TipoUnidad.idTipoUnidad) FROM Restaurante.TipoUnidad WHERE idTipoUnidad=@id;
+	SELECT @existe = COUNT(Restaurante.TipoUnidad.idTipoUnidad) FROM Restaurante.TipoUnidad WHERE idTipoUnidad=@idTipoUnidad;
 	IF (@existe = 0)
 		BEGIN
-			RAISERROR(N'No existe ningún Tipo de Unidad con el id "%d"', 16, 1, @id);
+			RAISERROR(N'No existe ningún Tipo de Unidad con el id "%d"', 16, 1, @idTipoUnidad);
 			RETURN 0
 		END 	
 	ELSE
 		BEGIN
-			DELETE FROM Restaurante.TipoUnidad	WHERE id = @id;
+			DELETE FROM Restaurante.TipoUnidad	WHERE idTipoUnidad = @idTipoUnidad;
 			RETURN 1
 		END
 END

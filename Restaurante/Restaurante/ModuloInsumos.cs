@@ -41,6 +41,8 @@ namespace Restaurante
         private void ModuloInsumos_Load(object sender, EventArgs e)
         {
             CargarDGWInsumos();
+            CargarCMBTipoUnidad();
+            CargarCMBProveedores();
             ResetFormulario();
         }
 
@@ -60,7 +62,7 @@ namespace Restaurante
         {
             DataTable dt = new DataTable();
             Clases.Conexion conexion = new Clases.Conexion();
-                string sql = "select * FROM Restaurante.Insumos";
+                string sql = "select * FROM Restaurante.Proveedores";
                 SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
@@ -75,13 +77,14 @@ namespace Restaurante
             {
                 Clases.Proveedor proveedor = new Clases.Proveedor();
                 proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
+                Clases.TipoUnidad tipounidad = new Clases.TipoUnidad();
+                tipounidad.ObtenerTipoUnidadPorNombre(cmbUnidad.SelectedValue.ToString());
 
                 Clases.Restaurante.AgregarInsumo
                     (
                         txtNombre.Text,
                         Convert.ToDecimal(txtCosto.Text),
-                        //Aregalar el de Unidad
-                        cmbUnidad.SelectedIndex,
+                        tipounidad.Id,                        
                         txtDescripcion.Text,
                         proveedor.Id  
                     );
@@ -103,19 +106,23 @@ namespace Restaurante
                 {
                     Clases.Proveedor proveedor = new Clases.Proveedor();
                     proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
+                    Clases.TipoUnidad tipounidad = new Clases.TipoUnidad();
+                    tipounidad.ObtenerTipoUnidadPorNombre(cmbUnidad.SelectedValue.ToString());
 
-                    Clases.Mesero mesero = new Clases.Mesero(
-                        //txtIdentidad.Text,
-                        //txtNombre.Text,
-                        //txtApellido.Text
-                        );
-
-                    mesero.Modificar();
+                    Clases.Restaurante.ModificarInsumo
+                        (
+                        this.id,
+                        txtNombre.Text,
+                        Convert.ToDecimal(txtCosto.Text),
+                        tipounidad.Id,
+                        txtDescripcion.Text,
+                        proveedor.Id
+                        );                               
                     ResetFormulario();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    Clases.Mensaje.Advertencia(ex);
                 }
             }
 
@@ -123,6 +130,26 @@ namespace Restaurante
 
         private void dgvInsumos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            Clases.Insumos insumos = new Clases.Insumos();
+            insumos.ObtenerInsumo(
+                Convert.ToInt32(
+                    dgvInsumos.Rows[e.RowIndex].Cells["Código"].Value.ToString()
+                    )
+                );
+            dgvInsumos.Select();
+            this.id = insumos.Id;
+
+            txtId.Text = insumos.Id.ToString();
+            txtNombre.Text = insumos.Nombre;
+            txtCosto.Text = insumos.Costo.ToString();
+            cmbUnidad.SelectedIndex = insumos.IdTipoUnidad -1;
+            txtDescripcion.Text = insumos.Descripcion;
+            cmbProveedor.SelectedIndex = insumos.IdProveedor - 1;
+
+            btnNuevo.Enabled = true;
+            btnAgregar.Enabled = false;
+            btnModificar.Enabled = true;
+            btnEliminar.Enabled = true;
 
         }
 
@@ -131,9 +158,9 @@ namespace Restaurante
             txtId.Text = "";
             txtNombre.Text = "";
             txtCosto.Text = "";
-            cmbUnidad.Text = "";
+            cmbUnidad.SelectedValue = "";
             txtDescripcion.Text = "";
-            cmbProveedor.Text = "";
+            cmbProveedor.SelectedValue = "";
             CargarDGWInsumos();
             dgwInsumoEstilo(dgvInsumos);
 
@@ -146,7 +173,7 @@ namespace Restaurante
             txtCosto.Enabled = true;
             txtDescripcion.Enabled = true;
             this.id = 0;
-            txtId.Focus();
+            txtNombre.Focus();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -168,7 +195,7 @@ namespace Restaurante
 
         private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar))
+            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -185,7 +212,24 @@ namespace Restaurante
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            DialogResult respuesta = MessageBox.Show("Está seguro de Eliminar el Insumo", "Eliminar Insumo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta.ToString() == "Yes")
+            {
+                try
+                {
+                    Clases.Restaurante.EliminarInsumo(this.id);
+                }
+                catch (Exception ex)
+                {
 
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    ResetFormulario();
+                }
+                
+            }
         }
     }
 }

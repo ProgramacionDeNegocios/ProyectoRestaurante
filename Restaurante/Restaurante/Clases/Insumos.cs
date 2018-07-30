@@ -173,12 +173,14 @@ namespace Restaurante.Clases
             string sql = @"SELECT   Restaurante.Insumos.idInsumo        as Código,
                                     Restaurante.Insumos.nombre          as Insumo,
                                     Restaurante.Insumos.costo           as Costo, 
-                                    Restaurante.Insumos.idTipoUnidad    as Unidad,
+                                    Restaurante.TipoUnidad.descripcion  as Unidad,
                                     Restaurante.Insumos.descripcion     as Descripción,
                                     Restaurante.Proveedores.nombre      as Proveedor
                             FROM Restaurante.Proveedores
                             INNER JOIN Restaurante.Insumos
-                            ON Restaurante.Proveedores.idProveedor = Restaurante.Insumos.idProveedor";
+                            ON Restaurante.Proveedores.idProveedor = Restaurante.Insumos.idProveedor
+                            INNER JOIN Restaurante.TipoUnidad
+                            ON Restaurante.TipoUnidad.idTipoUnidad = Restaurante.Insumos.idTipoUnidad";
             //Hacer inner join idtipoUnidad
             try
             {

@@ -192,5 +192,51 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
+
+        public static void ModificarInsumo
+            (
+            int id,
+            string nombre,
+            decimal costo,
+            int idtipounidad,
+            string descripcion,
+            int idproveedor
+            )
+        {
+            try
+            {
+                ValidarInsumo(nombre, costo, idtipounidad, descripcion, idproveedor);
+                Clases.Insumos insumo = new Clases.Insumos(
+                    id,
+                    nombre,
+                    costo,
+                    idtipounidad,
+                    descripcion,
+                    idproveedor)
+                    ;
+                insumo.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void EliminarInsumo
+            (
+            int id
+            )
+        {
+            try
+            {
+                Clases.Insumos insumo = new Clases.Insumos(
+                    id
+                    );
+                insumo.Eliminar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
