@@ -181,7 +181,7 @@ namespace Restaurante.Clases
                             ON Restaurante.Proveedores.idProveedor = Restaurante.Insumos.idProveedor
                             INNER JOIN Restaurante.TipoUnidad
                             ON Restaurante.TipoUnidad.idTipoUnidad = Restaurante.Insumos.idTipoUnidad";
-            //Hacer inner join idtipoUnidad
+            
             try
             {
                 SqlDataAdapter data = new SqlDataAdapter();
