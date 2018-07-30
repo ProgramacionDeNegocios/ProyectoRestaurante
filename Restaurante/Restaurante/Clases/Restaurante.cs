@@ -56,13 +56,79 @@ namespace Restaurante.Clases
         public static void ModificarMesero() { }
         public static void EliminarMesero() { }
 
-        public static void AgregarProveedor() {  }
-        public static void ModificarProveedor() { }
-        public static void EliminarProveedor() { }
+        //Modulo proveedor
+        private static void ValidarProveedor
+    (
+    string nombre,
+    string telefono,
+    string direccion
+    )
+        {
+            if (telefono.Length != 9 || nombre.Length == 0 || direccion.Length == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar un proveedor. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un proveedor:\n" +
+                    "Nombre   : Pedro\n" +
+                    "Telefono  :  9898-9678"+
+                    "Direccion : Piedra dura",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+        }
+
+        public static void AgregarProveedor(string nombre, string telefono, string direccion)
+        {
+            try
+            {
+                ValidarProveedor(nombre, telefono, direccion);
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    nombre,
+                    telefono,
+                    direccion
+                    );
+                proveedor.Agregar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ModificarProveedor(int id,string nombre, string telefono, string direccion) {
+            try
+            {
+                ValidarProveedor(nombre, telefono, direccion);
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    id,
+                    nombre,
+                    telefono,
+                    direccion);
+                proveedor.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            }
+        public static void EliminarProveedor(int id) {
+            try
+            {
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    id);
+                proveedor.Eliminar();
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+        }
 
         public static void AgregarUsuario() { }
         public static void ModificarUsuario() { }
         public static void EliminarUsuario() { }
+
+        //Modulo de Areas
          private static void ValidarArea
          (
             string nombre,

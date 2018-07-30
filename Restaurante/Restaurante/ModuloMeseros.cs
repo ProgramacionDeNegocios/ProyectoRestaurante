@@ -72,6 +72,7 @@ namespace Restaurante
                 try
                 {
                     Clases.Mesero mesero = new Clases.Mesero(
+                        Convert.ToInt32(this.id),
                         txtIdentidad.Text,
                         txtNombre.Text,
                         txtApellido.Text
@@ -98,7 +99,7 @@ namespace Restaurante
                 );
             dgvMeseros.Select();
             this.id = mesero.Id;
-            txtIdentidad.Text = mesero.Identidad;
+            txtIdentidad.Text = Convert.ToString(mesero.Identidad);
             txtNombre.Text = mesero.Nombre;
             txtApellido.Text = mesero.Apellido;
 

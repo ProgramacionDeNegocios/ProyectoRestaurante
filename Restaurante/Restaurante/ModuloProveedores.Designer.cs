@@ -107,6 +107,7 @@
             // 
             // txtId
             // 
+            this.txtId.Enabled = false;
             this.txtId.Location = new System.Drawing.Point(153, 14);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(210, 23);
@@ -122,6 +123,7 @@
             // txtTelefono
             // 
             this.txtTelefono.Location = new System.Drawing.Point(153, 72);
+            this.txtTelefono.Mask = "9999-9999";
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(169, 23);
             this.txtTelefono.TabIndex = 6;

@@ -63,12 +63,13 @@ namespace Restaurante.Clases
             try
             {
                 conexion.Abrir();
+                cmd.Parameters.Add(new SqlParameter("id", SqlDbType.Int));
+                cmd.Parameters["id"].Value = Id;
                 cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 50));
                 cmd.Parameters["nombre"].Value = Nombre;
                 cmd.Parameters.Add(new SqlParameter("numeroMesas", SqlDbType.TinyInt));
                 cmd.Parameters["numeroMesas"].Value = NumeroMesas;
                 cmd.ExecuteNonQuery();
-
             }
             catch (SqlException ex)
             {

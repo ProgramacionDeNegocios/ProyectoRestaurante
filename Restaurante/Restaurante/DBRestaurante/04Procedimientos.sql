@@ -319,7 +319,7 @@ GO
 CREATE PROCEDURE SP_ModificarMesero
 (
 	@id INT,
-	@identidad NVARCHAR(25),
+	@identidad NVARCHAR(15),
 	@nombre NVARCHAR(25),
 	@apellido NVARCHAR(25)
 )

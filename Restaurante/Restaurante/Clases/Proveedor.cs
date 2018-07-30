@@ -74,9 +74,9 @@ namespace Restaurante.Clases
                 cmd.Parameters["idProveedor"].Value = Id;
                 cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 100));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("telefono", SqlDbType.NVarChar, 25));
+                cmd.Parameters.Add(new SqlParameter("telefono", SqlDbType.NVarChar, 9));
                 cmd.Parameters["telefono"].Value = this.Telefono;
-                cmd.Parameters.Add(new SqlParameter("direccion", SqlDbType.NVarChar, 20));
+                cmd.Parameters.Add(new SqlParameter("direccion", SqlDbType.NVarChar, 300));
                 cmd.Parameters["direccion"].Value = this.Direccion;
                 cmd.ExecuteNonQuery();
 
