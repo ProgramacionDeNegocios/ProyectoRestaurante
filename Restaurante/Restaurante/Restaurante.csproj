@@ -48,6 +48,8 @@
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\Exepcion.cs" />
     <Compile Include="Clases\Insumos.cs" />
+    <Compile Include="Clases\InsumosProductos.cs" />
+    <Compile Include="Clases\Inventario.cs" />
     <Compile Include="Clases\Mensaje.cs" />
     <Compile Include="Clases\Mesero.cs" />
     <Compile Include="Clases\Proveedor.cs" />

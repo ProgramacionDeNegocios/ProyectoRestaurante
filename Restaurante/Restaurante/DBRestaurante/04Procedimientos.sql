@@ -616,56 +616,89 @@ GO
 
 CREATE PROCEDURE SP_AgregarInventario
 (
+	@descripcion NVARCHAR(100),
+	@costo DECIMAL(4,2),
+	@precioVenta DECIMAL(4,2),
+	@cantidad DECIMAL(4,2),
+	@idTipoProducto INT,
+	@idProveedor INT
+
 )
 AS
 BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
 
+	SELECT @existe = COUNT(Restaurante.Inventario.idInventario) FROM Restaurante.Inventario WHERE descripcion = @descripcion;
+	IF (@existe > 0)
+		BEGIN
+			RAISERROR(N'Ya existe un Insumo con el nombre %s"', 16, 1,@descripcion);
+			RETURN 0
+			
+		END
+	ELSE
+		BEGIN
+			INSERT INTO Restaurante.Inventario(descripcion, costo, precioVenta, cantidad, idTipoProducto, idProveedor)
+				VALUES(@descripcion, @costo, @precioVenta, @cantidad, @idTipoProducto, @idProveedor)
+			RETURN 1
+		END
 END
 GO
 
 CREATE PROCEDURE SP_ModificarInventario
 (
-)
-AS 
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
-
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-
-	IF (@existe = 0)
-		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
-			RETURN 0
-		END 	
-	ELSE
-		BEGIN
-			UPDATE <esquema.tabla>
-				SET 	<campos=variables>
-					WHERE <condicion>;
-			RETURN 1
-		END
-	
-	END
-END
-GO
-
-CREATE PROCEDURE SP_EliminarInventario
-(
+	@idInventario INT,
+	@descripcion NVARCHAR(100),
+	@costo DECIMAL(4,2),
+	@precioVenta DECIMAL(4,2),
+	@cantidad DECIMAL(4,2),
+	@idTipoProducto INT,
+	@idProveedor INT
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
-		SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+
+	SELECT @existe = COUNT(Restaurante.Inventario.idInventario) FROM Restaurante.Inventario WHERE idInventario = @idInventario;
+
+	IF (@existe = 0)
+		BEGIN
+			RAISERROR(N'No existe el Producto con el id %d"', 16, 1, @idInventario);
+			RETURN 0
+		END 	
+	ELSE
+		BEGIN
+			UPDATE Restaurante.Inventario
+				SET 	descripcion = @descripcion,
+						costo = @costo,
+						precioVenta = @precioVenta,
+						cantidad = @cantidad,
+						idTipoProducto = @idTipoProducto,
+						idProveedor = @idProveedor
+					WHERE idInventario = @idInventario;
+			RETURN 1
+		END
+END
+GO
+
+CREATE PROCEDURE SP_EliminarInventario
+(
+	@idInventario INT
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+		SELECT @existe = COUNT(Restaurante.Inventario.idInventario) FROM Restaurante.Inventario WHERE idInventario = @idInventario;
 		IF (@existe = 0)
 			BEGIN
-				RAISERROR(N'aqui va el mensaje de error "', 16, 1);
+				RAISERROR(N'No existe el Producto con el id %d"', 16, 1, @idInventario);
 				RETURN 0
 			END 	
 		ELSE
 			BEGIN
-				DELETE FROM <Esquema.tabla>	WHERE <condicion>;
+				DELETE FROM Restaurante.Inventario WHERE idInventario = @idInventario;
 				RETURN 1
 			END
 END
@@ -826,5 +859,82 @@ BEGIN
 			DELETE FROM Restaurante.TipoUnidad	WHERE idTipoUnidad = @idTipoUnidad;
 			RETURN 1
 		END
+END
+GO
+
+CREATE PROCEDURE SP_AgregarInsumosProductos
+(
+	@idInsumo INT,
+	@idInventario INT
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+
+	SELECT @existe = COUNT(Restaurante.InsumosProductos.idInsumoProducto) FROM Restaurante.InsumosProductos WHERE idInsumo = @idInsumo AND idInventario = @idInventario;
+	IF (@existe > 0)
+		BEGIN
+			RAISERROR(N'Ya existe ese Insumo', 16, 1);
+			RETURN 0
+			
+		END
+	ELSE
+		BEGIN
+			INSERT INTO Restaurante.InsumosProductos(idInsumo, idInventario)
+				VALUES(@idInsumo, @idInventario)
+			RETURN 1
+		END
+END
+GO
+
+CREATE PROCEDURE SP_ModificarInsumosProductos
+(
+	@idInsumoProducto INT,
+	@idInsumo INT,
+	@idInventario INT
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+
+	SELECT @existe = COUNT(Restaurante.InsumosProductos.idInsumoProducto) FROM Restaurante.InsumosProductos WHERE idInsumoProducto = @idInsumoProducto;
+
+	IF (@existe = 0)
+		BEGIN
+			RAISERROR(N'No existe el insumo en el producto con el id %d"', 16, 1, @idInsumoProducto);
+			RETURN 0
+		END 	
+	ELSE
+		BEGIN
+			UPDATE Restaurante.InsumosProductos
+				SET 	idInsumo = @idInsumo,
+						idInventario = @idInventario
+					WHERE idInsumoProducto = @idInsumoProducto;
+			RETURN 1
+		END
+END
+GO
+
+CREATE PROCEDURE SP_EliminarInsumosProductos
+(
+	@idInsumoProducto INT
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+		SELECT @existe = COUNT(Restaurante.InsumosProductos.idInsumoProducto) FROM Restaurante.InsumosProductos WHERE idInsumoProducto = @idInsumoProducto;
+		IF (@existe = 0)
+			BEGIN
+				RAISERROR(N'No existe el insumo con el id %d"', 16, 1, @idInsumoProducto);
+				RETURN 0
+			END 	
+		ELSE
+			BEGIN
+				DELETE FROM Restaurante.InsumosProductos WHERE idInsumoProducto = @idInsumoProducto;
+				RETURN 1
+			END
 END
 GO

@@ -207,19 +207,7 @@ ELSE
 			precioVenta DECIMAL(4,2) NOT NULL,
 			cantidad DECIMAL(4,2) NOT NULL,
 			idTipoProducto INT NOT NULL,
-			idInsumo INT NOT NULL,
-			idProveedor INT NOT NULL
-		);
-	END
-GO
-
-IF OBJECT_ID('Restaurante.TipoProducto')	IS NOT NULL
-	DROP TABLE Restaurante.TipoProducto
-ELSE
-	BEGIN
-		CREATE TABLE Restaurante.TipoProducto(
-			idTipoProducto INT IDENTITY NOT NULL,
-			nombre NVARCHAR(100)
+			idProveedor INT NULL
 		);
 	END
 GO
