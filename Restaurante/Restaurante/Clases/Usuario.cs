@@ -15,7 +15,8 @@ namespace Restaurante.Clases
         public string apellido { get; set; }
         public string usuario { get; set; }
         public string clave { get; set; }
-        public int departamento { get; set; }
+        public int rol { get; set; }
+
 
         public Usuario() { }
 
@@ -23,24 +24,27 @@ namespace Restaurante.Clases
         {
             this.usuario = usuario;
         }
-        public Usuario(string nombre, string apellido, string clave)
+        public Usuario(string nombre, string apellido, string clave, int rol)
         {
             this.nombre = nombre;
             this.apellido = apellido;
             this.clave = clave;
+            this.rol = rol;
         }
 
-        public Usuario(string usuario, string nombre, string apellido, string clave)
+        public Usuario(string usuario, string nombre, string apellido, string clave, int rol)
         {
             this.usuario = usuario;
             this.nombre = nombre;
             this.apellido = apellido;
             this.clave = clave;
+            this.rol = rol;
         }
+        
 
         public void ObtenerUsuario (string usuarioRe){
             Conexion conexion = new Conexion();
-            string sql = @"SELECT id, nombre, apellido, usuario, clave FROM Acceso.Usuarios WHERE usuario = '" + usuarioRe  + "';";
+            string sql = @"SELECT id, nombre, apellido, usuario, clave, idRol FROM Acceso.Usuarios WHERE usuario = '" + usuarioRe  + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
@@ -54,6 +58,7 @@ namespace Restaurante.Clases
                     this.apellido = dr.GetString(2);
                     this.usuario = dr.GetString(3);
                     this.clave = dr.GetString(4);
+                    this.id = dr.GetInt32(5);
                 }
             }
             catch (SqlException excepcion)
@@ -84,6 +89,8 @@ namespace Restaurante.Clases
                 cmd.Parameters["apellido"].Value = this.apellido;
                 cmd.Parameters.Add(new SqlParameter("Clave", SqlDbType.NVarChar, 20));
                 cmd.Parameters["clave"].Value = this.clave;
+                cmd.Parameters.Add(new SqlParameter("idRol", SqlDbType.Int));
+                cmd.Parameters["idRol"].Value = this.rol;
                 cmd.ExecuteNonQuery();
 
             }
@@ -113,6 +120,8 @@ namespace Restaurante.Clases
                 cmd.Parameters["apellido"].Value = this.apellido;
                 cmd.Parameters.Add(new SqlParameter("Clave", SqlDbType.NVarChar, 20));
                 cmd.Parameters["clave"].Value = this.clave;
+                cmd.Parameters.Add(new SqlParameter("idRol", SqlDbType.Int));
+                cmd.Parameters["idRol"].Value = this.rol;
                 cmd.ExecuteNonQuery();
 
             }

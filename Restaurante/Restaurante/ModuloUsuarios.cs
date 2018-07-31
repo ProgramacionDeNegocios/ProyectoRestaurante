@@ -104,7 +104,7 @@ namespace Restaurante
                 {
 
                     Clases.Restaurante.ModificarUsuario(
-                        Convert.ToInt32(this.usuario),
+                        this.usuario,
                         txtNombre.Text,
                         txtApellido.Text,
                         txtClave.Text
@@ -183,7 +183,7 @@ namespace Restaurante
                 
                 try
                 {
-                    Clases.Restaurante.EliminarUsuario(Convert.ToString this.usuario);
+                    Clases.Restaurante.EliminarUsuario( this.usuario);
                 }
                 catch (SqlException ex)
                 {

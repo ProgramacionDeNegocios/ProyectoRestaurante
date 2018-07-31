@@ -155,13 +155,13 @@ namespace Restaurante.Clases
         /// 
 
         private static void ValidarUsuarios
-(
-string nombre,
-string apellido,
-string clave
-)
+            (
+            string nombre,
+            string apellido,
+            string clave
+            )
         {
-            if (apellido.Length != 9 || nombre.Length == 0 || clave.Length == 0)
+            if (apellido.Length == 0 || nombre.Length == 0 || clave.Length == 0)
             {
                 throw new Clases.Exepcion
                     (
@@ -185,7 +185,8 @@ string clave
                 Clases.Usuario usuario = new Clases.Usuario(
                     nombre,
                     apellido,
-                    clave
+                    clave,
+                    1
                     );
                 usuario.Agregar();
             }
@@ -196,7 +197,7 @@ string clave
             }
         }
         public static void ModificarUsuario(
-            int id,
+            string usu,
             string nombre,
             string apellido,
             string clave)
@@ -205,10 +206,11 @@ string clave
             {
                 ValidarUsuarios(nombre, apellido, clave);
                 Clases.Usuario usuario = new Clases.Usuario(
-                    id,
+                    usu,
                     nombre,
                     apellido,
-                    clave
+                    clave,
+                    1
                     );
                 usuario.Modificar();
             }
@@ -218,10 +220,10 @@ string clave
                 throw ex;
             }
         }
-        public static void EliminarUsuario(int id) {
+        public static void EliminarUsuario(string usu) {
             try
             {
-                Clases.Usuario usuarios = new Clases.Usuario(usuario);
+                Clases.Usuario usuarios = new Clases.Usuario(usu);
 
             }
             catch (Exception es)
