@@ -72,8 +72,6 @@ namespace Restaurante
                     txtTelefono.Text,
                     txtDireccion.Text
                         );
-
-                    proveedor.Modificar();
                     ResetFormulario();
 
                 }
@@ -90,10 +88,10 @@ namespace Restaurante
             DialogResult respuesta = MessageBox.Show("Está seguro de eliminar al Proveedor" + txtNombre.Text, "Modificar Proveedor", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (respuesta.ToString() == "Yes")
             {
-                Clases.Proveedor usuario = new Clases.Proveedor(this.id);
+                
                 try
                 {
-                   usuario.Eliminar();
+                    Clases.Restaurante.EliminarProveedor(this.id);
                 }
                 catch (Exception ex)
                 {
@@ -157,6 +155,11 @@ namespace Restaurante
             private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            ResetFormulario();
         }
     }
 }

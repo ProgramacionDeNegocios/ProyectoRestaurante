@@ -65,20 +65,18 @@ namespace Restaurante
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("Está seguro de modificar al Mesero", "Modificar Mesero", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult respuesta = MessageBox.Show("Está seguro de modificar al Mesero ", "Modificar Mesero", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (respuesta.ToString() == "Yes")
             {
 
                 try
                 {
-                    Clases.Mesero mesero = new Clases.Mesero(
+                    Clases.Restaurante.ModificarMesero(
                         Convert.ToInt32(this.id),
                         txtIdentidad.Text,
                         txtNombre.Text,
                         txtApellido.Text
                         );
-
-                    mesero.Modificar();
                     ResetFormulario();
                 }
                 catch (Exception ex)
@@ -174,13 +172,12 @@ namespace Restaurante
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("Está seguro de eliminar al Mesero" + txtNombre.Text, "Modificar Mesero", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult respuesta = MessageBox.Show("Está seguro de eliminar al Mesero " + txtNombre.Text, " Eliminar Mesero", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (respuesta.ToString() == "Yes")
             {
-                Clases.Mesero mesero = new Clases.Mesero(this.id);
                 try
                 {
-                    mesero.Eliminar();
+                    Clases.Restaurante.EliminarMesero(this.id);
                 }
                 catch (Exception ex)
                 {

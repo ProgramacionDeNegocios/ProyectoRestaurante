@@ -53,8 +53,34 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
-        public static void ModificarMesero() { }
-        public static void EliminarMesero() { }
+        public static void ModificarMesero(
+            int id,
+            string identidad,
+            string nombre,
+            string apellido) {
+            try {
+                ValidarMesero(identidad, nombre, apellido);
+                Clases.Mesero mesero = new Clases.Mesero(
+                    id,
+                    identidad,
+                    nombre,
+                   apellido);
+                mesero.Modificar();
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public static void EliminarMesero(int id) {
+            try {
+                Clases.Mesero mesero = new Clases.Mesero(id);
+                mesero.Eliminar();
+            }
+            catch (Exception ex) {
+                throw ex;
+            } }
 
         //Modulo proveedor
         private static void ValidarProveedor
@@ -71,7 +97,7 @@ namespace Restaurante.Clases
                     "Error al insertar un proveedor. \n\n" +
                     "Existen datos obligatorios que se necesitan para poder agregar un proveedor:\n" +
                     "Nombre   : Pedro\n" +
-                    "Telefono  :  9898-9678"+
+                    "Telefono  :  9898-9678\n" +
                     "Direccion : Piedra dura",
                     new Exception(),
                     "Clase_Restaurante"
@@ -123,10 +149,87 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
+        /// <summary>
+        /// Modulo Usuario
+        /// </summary>
+        /// 
 
-        public static void AgregarUsuario() { }
-        public static void ModificarUsuario() { }
-        public static void EliminarUsuario() { }
+        private static void ValidarUsuarios
+(
+string nombre,
+string apellido,
+string clave
+)
+        {
+            if (apellido.Length != 9 || nombre.Length == 0 || clave.Length == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar el usuario \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un usuario:\n" +
+                    "Nombre   : Pedro\n" +
+                    "Apellido  :  Picapiedra\n" +
+                    "Clave : yabadabadu",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+        }
+        public static void AgregarUsuario(
+            string nombre, 
+            string apellido,
+            string clave) {
+            try
+            {
+                ValidarUsuarios(nombre, apellido, clave);
+                Clases.Usuario usuario = new Clases.Usuario(
+                    nombre,
+                    apellido,
+                    clave
+                    );
+                usuario.Agregar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public static void ModificarUsuario(
+            int id,
+            string nombre,
+            string apellido,
+            string clave)
+        {
+            try
+            {
+                ValidarUsuarios(nombre, apellido, clave);
+                Clases.Usuario usuario = new Clases.Usuario(
+                    id,
+                    nombre,
+                    apellido,
+                    clave
+                    );
+                usuario.Modificar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public static void EliminarUsuario(int id) {
+            try
+            {
+                Clases.Usuario usuarios = new Clases.Usuario(usuario);
+
+            }
+            catch (Exception es)
+            {
+
+                throw es ;
+            }
+        }
 
         //Modulo de Areas
          private static void ValidarArea

@@ -316,8 +316,8 @@ END
 GO
 
 
-CREATE PROCEDURE SP_ModificarMesero
-(
+Create PROCEDURE SP_ModificarMesero
+(	
 	@id INT,
 	@identidad NVARCHAR(15),
 	@nombre NVARCHAR(25),
@@ -328,7 +328,7 @@ BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(Restaurante.Meseros.identidad) FROM Restaurante.Meseros WHERE identidad=@id;
+	SELECT @existe = COUNT(Restaurante.Meseros.identidad) FROM Restaurante.Meseros WHERE identidad=@identidad;
 
 	IF (@existe = 0)
 		BEGIN
@@ -339,10 +339,9 @@ BEGIN
 		BEGIN
 			UPDATE Restaurante.Meseros
 				SET 	
-						identidad = @identidad,
 						nombre = @nombre,
 						apellido = @apellido
-					WHERE id = @id;
+					WHERE identidad = @identidad;
 			RETURN 1
 		END
 END

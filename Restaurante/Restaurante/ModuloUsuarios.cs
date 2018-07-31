@@ -78,17 +78,17 @@ namespace Restaurante
         {
             try
             {
-                Clases.Usuario usuario = new Clases.Usuario(
+                Clases.Restaurante.AgregarUsuario(
                     txtNombre.Text,
                     txtApellido.Text,
                     txtClave.Text);
 
-                usuario.Agregar();
+                
                 ResetFormulario();
             }
             catch(SqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                Clases.Mensaje.Advertencia(ex);
             }
             
         }
@@ -103,14 +103,14 @@ namespace Restaurante
                 try
                 {
 
-                    Clases.Usuario usuario = new Clases.Usuario(
-                        this.usuario,
+                    Clases.Restaurante.ModificarUsuario(
+                        Convert.ToInt32(this.usuario),
                         txtNombre.Text,
                         txtApellido.Text,
                         txtClave.Text
                         );
 
-                    usuario.Modificar();
+
                     ResetFormulario();
                 }
                 catch (SqlException ex)
@@ -180,12 +180,10 @@ namespace Restaurante
             DialogResult respuesta = MessageBox.Show("Está seguro de eliminar al usuario" + this.usuario, "Modificar Usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (respuesta.ToString() == "Yes")
             {
-                Clases.Usuario usuario = new Clases.Usuario(
-                    this.usuario
-                    );
+                
                 try
                 {
-                    usuario.Eliminar();
+                    Clases.Restaurante.EliminarUsuario(Convert.ToString this.usuario);
                 }
                 catch (SqlException ex)
                 {
