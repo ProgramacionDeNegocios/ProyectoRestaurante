@@ -41,151 +41,257 @@ namespace Restaurante.Clases
             try
             {
                 ValidarMesero(identidad, nombre, apellido);
-                Clases.Mesero mesero = new Clases.Mesero(
-                    identidad,
-                    nombre,
-                    apellido
-                    );
-                mesero.Agregar();
+                    Clases.Mesero mesero = new Clases.Mesero(
+                        identidad,
+                        nombre,
+                        apellido
+                        );
+                    mesero.Agregar();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 throw ex;
             }
         }
-        public static void ModificarMesero() { }
-        public static void EliminarMesero() { }
+        public static void ModificarMesero(
+            int id,
+            string identidad,
+            string nombre,
+            string apellido) {
+            try {
+                ValidarMesero(identidad, nombre, apellido);
+                Clases.Mesero mesero = new Clases.Mesero(
+                    id,
+                    identidad,
+                    nombre,
+                   apellido);
+                mesero.Modificar();
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-        public static void AgregarProveedor() { }
-        public static void ModificarProveedor() { }
-        public static void EliminarProveedor() { }
 
-        public static void AgregarUsuario() { }
-        public static void ModificarUsuario() { }
-        public static void EliminarUsuario() { }
+        public static void EliminarMesero(int id) {
+            try {
+                Clases.Mesero mesero = new Clases.Mesero(id);
+                mesero.Eliminar();
+            }
+            catch (Exception ex) {
+                throw ex;
+            } }
 
-        private static void ValidarTipoUnidad
-         (
-            string descripcion
-
-         )
+        //Modulo proveedor
+        private static void ValidarProveedor
+    (
+    string nombre,
+    string telefono,
+    string direccion
+    )
         {
-            if (descripcion.Length == 0)
+            if (telefono.Length != 9 || nombre.Length == 0 || direccion.Length == 0)
             {
                 throw new Clases.Exepcion
                     (
-                    "Error al insertar un Tipo de Unidad. \n\n" +
-                    "Existen datos obligatorios que se necesitan para poder agregar un tipo de unidad:\n" +
-                    "Descripción   : libras\n",
+                    "Error al insertar un proveedor. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un proveedor:\n" +
+                    "Nombre   : Pedro\n" +
+                    "Telefono  :  9898-9678\n" +
+                    "Direccion : Piedra dura",
                     new Exception(),
                     "Clase_Restaurante"
                     );
             }
         }
 
-        public static void AgregarTipoUnidad
-            (
-            string descripcion
-            )
+        public static void AgregarProveedor(string nombre, string telefono, string direccion)
         {
             try
             {
-                ValidarTipoUnidad(descripcion);
-                Clases.TipoUnidad tipounidad = new Clases.TipoUnidad(
-                    descripcion
+                ValidarProveedor(nombre, telefono, direccion);
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    nombre,
+                    telefono,
+                    direccion
                     );
-                tipounidad.Agregar();
+                proveedor.Agregar();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        public static void ModificarTipoUnidad
-            (
-            int id,
-            string descripcion
-            )
-        {
+        public static void ModificarProveedor(int id,string nombre, string telefono, string direccion) {
             try
             {
-                ValidarTipoUnidad(descripcion);
-                Clases.TipoUnidad tipounidad = new Clases.TipoUnidad(
+                ValidarProveedor(nombre, telefono, direccion);
+                Clases.Proveedor proveedor = new Clases.Proveedor(
                     id,
-                    descripcion
-                    );
-                tipounidad.Modificar();
+                    nombre,
+                    telefono,
+                    direccion);
+                proveedor.Modificar();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-        }
-
-        public static void EliminarTipoUnidad
-            (
-            int id
-            )
-        {
+            }
+        public static void EliminarProveedor(int id) {
             try
             {
-                Clases.TipoUnidad tipounidad = new Clases.TipoUnidad(
-                     id
-                     );
-                tipounidad.Eliminar();
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    id);
+                proveedor.Eliminar();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 throw ex;
             }
         }
+        /// <summary>
+        /// Modulo Usuario
+        /// </summary>
+        /// 
 
-        private static void ValidarInsumo
-                (
-                string nombre,
-                decimal costo,
-                int idtipounidad,
-                string descripcion,
-                int idproveedor
-                )
+        private static void ValidarUsuarios
+            (
+            string nombre,
+            string apellido,
+            string clave
+            )
         {
-            if (nombre.Length == 0 || costo < 0 || idtipounidad <= 0 || descripcion.Length == 0 || idproveedor <= 0)
+            if (apellido.Length == 0 || nombre.Length == 0 || clave.Length == 0)
             {
                 throw new Clases.Exepcion
                     (
-                    "Error al insertar el insumo. \n\n" +
-                    "Existen datos obligatorios que se necesitan para poder agregar el insumo\n" +
-                    "Nombre   : Tomate\n" +
-                    "Costo    : 12.00\n" +
-                    "Unidad   : Libra\n" +
-                    "Descripción   : Comprado Semanalmente\n" +
-                    "Proveedor : Don Edgardo",
+                    "Error al insertar el usuario \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un usuario:\n" +
+                    "Nombre   : Pedro\n" +
+                    "Apellido  :  Picapiedra\n" +
+                    "Clave : yabadabadu",
                     new Exception(),
-                    "Clase_Insumo"
+                    "Clase_Restaurante"
                     );
             }
         }
-        public static void AgregarInsumo
-            (
+        public static void AgregarUsuario(
+            string nombre, 
+            string apellido,
+            string clave) {
+            try
+            {
+                ValidarUsuarios(nombre, apellido, clave);
+                Clases.Usuario usuario = new Clases.Usuario(
+                    nombre,
+                    apellido,
+                    clave,
+                    1
+                    );
+                usuario.Agregar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public static void ModificarUsuario(
+            string usu,
             string nombre,
-            decimal costo,
-            int idtipounidad,
-            string descripcion,
-            int idproveedor
-            )
+            string apellido,
+            string clave)
         {
             try
             {
-                ValidarInsumo(nombre, costo, idtipounidad, descripcion, idproveedor);
-                Clases.Insumos insumo = new Clases.Insumos(
+                ValidarUsuarios(nombre, apellido, clave);
+                Clases.Usuario usuario = new Clases.Usuario(
+                    usu,
                     nombre,
-                    costo,
-                    idtipounidad,
-                    descripcion,
-                    idproveedor
+                    apellido,
+                    clave,
+                    1
                     );
-                insumo.Agregar();
+                usuario.Modificar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public static void EliminarUsuario(string usu) {
+            try
+            {
+                Clases.Usuario usuarios = new Clases.Usuario(usu);
+
+            }
+            catch (Exception es)
+            {
+
+                throw es ;
+            }
+        }
+
+        //Modulo de Areas
+         private static void ValidarArea
+         (
+            string nombre,
+            int numeroMesas
+         )
+         {
+            if ( nombre.Length == 0 || numeroMesas == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar una Area. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar una area:\n" +
+                    "Nombre   : Area Familiar\n" +
+                    "Número Mesas : 10",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+         }
+        public static void AgregarAreas(string nombre, int numeroMesas) {
+            try
+            {
+                ValidarArea(nombre, numeroMesas);
+                Clases.Areas area = new Clases.Areas(
+                    nombre,
+                    numeroMesas
+                    );
+                area.Agregar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ModificarAreas(int id, string nombre, int numeroMesas) {
+            try
+            {
+                ValidarArea(nombre, numeroMesas);
+                Clases.Areas area = new Clases.Areas(
+                    id,
+                    nombre,
+                    numeroMesas
+                    );
+                area.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void EliminarAreas(int id) {
+            try
+            {
+                //ValidarArea(id);
+                Clases.Areas area = new Clases.Areas(
+                    id
+                    );
+                area.Eliminar();
             }
             catch (Exception ex)
             {

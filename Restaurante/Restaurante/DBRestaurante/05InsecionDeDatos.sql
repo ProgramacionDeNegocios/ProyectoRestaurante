@@ -14,7 +14,8 @@ insert into Acceso.Roles
 
 --SP_InsertarUsuario(nombre, apellido, usuario, clave, tipoArea)
 EXEC SP_InsertarUsuario 'oscar','toledo','ninguna', 1
-
+EXEC SP_InsertarUsuario 'eduardo','calix','nose', 1
+EXEC SP_InsertarUsuario 'sonia','villeda','ninguna', 1
 
 
 
