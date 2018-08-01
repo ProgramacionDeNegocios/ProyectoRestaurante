@@ -144,14 +144,14 @@ namespace Restaurante.Clases
                                     Restaurante.InsumosProductos.idInventario        as Producto
                             FROM Restaurante.TipoUnidad";
 
-            string sql2 = @"SELECT  Restaurante.InsumosProductos.idInsumoProducto    as Código,
-                                    Restaurante.Insumos.nombre                       as Insumo,
-                                    Restaurante.Inventario.descripcion               as Producto                                    
-                             FROM Restaurante.Inventario
-                             INNER JOIN Restaurante.InsumosProductos
-                             ON Restaurante.Inventario.idInventario = Restaurante.InsumosProductos.idInventario
-                             INNER JOIN Restaurante.Insumos
-                             ON Restaurante.Insumos.idInsumo = Restaurante.InsumosProductos.idInsumo";
+            //string sql2 = @"SELECT  Restaurante.InsumosProductos.idInsumoProducto    as Código,
+            //                        Restaurante.Insumos.nombre                       as Insumo,
+            //                        Restaurante.Inventario.descripcion               as Producto                                    
+            //                 FROM Restaurante.Inventario
+            //                 INNER JOIN Restaurante.InsumosProductos
+            //                 ON Restaurante.Inventario.idInventario = Restaurante.InsumosProductos.idInventario
+            //                 INNER JOIN Restaurante.Insumos
+            //                 ON Restaurante.Insumos.idInsumo = Restaurante.InsumosProductos.idInsumo";
 
             try
             {

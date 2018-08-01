@@ -117,6 +117,7 @@
             this.Pedidos.TabIndex = 5;
             this.Pedidos.Text = "Inventario";
             this.Pedidos.UseVisualStyleBackColor = true;
+            this.Pedidos.Click += new System.EventHandler(this.Pedidos_Click);
             // 
             // tabPage2
             // 
