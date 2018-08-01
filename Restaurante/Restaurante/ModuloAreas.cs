@@ -47,18 +47,6 @@ namespace Restaurante
         }
 
 
-
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
         private void ResetFormulario()
         {
             txtNombre.Text = "";
@@ -75,12 +63,6 @@ namespace Restaurante
             txtNumero.Enabled = true;
             this.id = 0;
             txtNombre.Focus();
-        }
-
-        private void ModuloAreas_Load(object sender, EventArgs e)
-        {
-            ResetFormulario();
-            CargarDGWAreas();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -149,26 +131,8 @@ namespace Restaurante
             }
         }
 
-        private void dgvAreas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-
-
-        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsDigit(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void dgvAreas_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAreas_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             Clases.Areas area = new Clases.Areas();
             area.ObtenerAreas(
@@ -185,6 +149,36 @@ namespace Restaurante
             btnAgregar.Enabled = false;
             btnModificar.Enabled = true;
             btnEliminar.Enabled = true;
+        }
+
+        private void txtNombre_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ModuloAreas_Load_1(object sender, EventArgs e)
+        {
+            ResetFormulario();
+            CargarDGWAreas();
         }
     }
 }
