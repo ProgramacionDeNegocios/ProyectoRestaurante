@@ -90,6 +90,7 @@
             this.label1.Size = new System.Drawing.Size(373, 37);
             this.label1.TabIndex = 29;
             this.label1.Text = "Información de Insumos";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pnlBotones
             // 
