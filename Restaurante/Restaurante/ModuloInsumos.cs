@@ -161,6 +161,7 @@ namespace Restaurante
             cmbUnidad.SelectedValue = "";
             txtDescripcion.Text = "";
             cmbProveedor.SelectedValue = "";
+            cmbProveedor.SelectedValue = "";
             CargarDGWInsumos();
             dgwInsumoEstilo(dgvInsumos);
 

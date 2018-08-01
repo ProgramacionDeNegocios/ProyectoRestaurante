@@ -241,7 +241,7 @@ namespace Restaurante.Clases
                 int idproveedor
                 )
         {
-            if (descripcion.Length == 0 || costo < 0 || precioventa < 0 || cantidad < 0 || idtipoproducto <= 0 ||idproveedor <= 0)
+            if (descripcion.Length == 0 || costo < 0 || precioventa < 0 || cantidad < 0 || idtipoproducto < 0 ||idproveedor < 0)
             {
                 throw new Clases.Exepcion
                     (

@@ -617,9 +617,9 @@ GO
 CREATE PROCEDURE SP_AgregarInventario
 (
 	@descripcion NVARCHAR(100),
-	@costo DECIMAL(4,2),
-	@precioVenta DECIMAL(4,2),
-	@cantidad DECIMAL(4,2),
+	@costo DECIMAL(8,2),
+	@precioVenta DECIMAL(8,2),
+	@cantidad DECIMAL(8,2),
 	@idTipoProducto INT,
 	@idProveedor INT
 
@@ -649,9 +649,9 @@ CREATE PROCEDURE SP_ModificarInventario
 (
 	@idInventario INT,
 	@descripcion NVARCHAR(100),
-	@costo DECIMAL(4,2),
-	@precioVenta DECIMAL(4,2),
-	@cantidad DECIMAL(4,2),
+	@costo DECIMAL(8,2),
+	@precioVenta DECIMAL(8,2),
+	@cantidad DECIMAL(8,2),
 	@idTipoProducto INT,
 	@idProveedor INT
 )
@@ -707,7 +707,7 @@ GO
 CREATE PROCEDURE SP_AgregarInsumo
 (
 	@nombre NVARCHAR(100),
-	@costo DECIMAL(4,2),
+	@costo DECIMAL(8,2),
 	@idTipoUnidad INT,
 	@descripcion NVARCHAR(200),
 	@idProveedor INT
@@ -737,7 +737,7 @@ CREATE PROCEDURE SP_ModificarInsumo
 (
 	@idInsumo INT,
 	@nombre NVARCHAR(100),
-	@costo DECIMAL(4,2),
+	@costo DECIMAL(8,2),
 	@idTipoUnidad INT,
 	@descripcion NVARCHAR(200),
 	@idProveedor INT

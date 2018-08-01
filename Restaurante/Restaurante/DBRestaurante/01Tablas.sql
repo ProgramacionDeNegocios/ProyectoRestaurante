@@ -203,9 +203,9 @@ ELSE
 		CREATE TABLE Restaurante.Inventario(
 			idInventario INT IDENTITY NOT NULL,
 			descripcion	NVARCHAR(100) NOT NULL,
-			costo DECIMAL(4,2) NOT NULL,
-			precioVenta DECIMAL(4,2) NOT NULL,
-			cantidad DECIMAL(4,2) NOT NULL,
+			costo DECIMAL(8,2) NOT NULL,
+			precioVenta DECIMAL(8,2) NOT NULL,
+			cantidad DECIMAL(8,2) NOT NULL,
 			idTipoProducto INT NOT NULL,
 			idProveedor INT NULL
 		);
@@ -219,7 +219,7 @@ ELSE
 		CREATE TABLE Restaurante.Insumos(
 			idInsumo INT IDENTITY NOT NULL,
 			nombre NVARCHAR(100) NOT NULL,
-			costo DECIMAL(4,2) NOT NULL,
+			costo DECIMAL(8,2) NOT NULL,
 			idTipoUnidad INT NOT NULL,
 			descripcion NVARCHAR(200) NOT NULL,
 			idProveedor INT
