@@ -287,7 +287,7 @@ namespace Restaurante.Clases
         public static void EliminarAreas(int id) {
             try
             {
-                //ValidarArea(id);
+
                 Clases.Areas area = new Clases.Areas(
                     id
                     );
@@ -298,6 +298,86 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
+
+
+        private static void ValidarTipoUnidad
+     (
+        string descripcion
+
+     )
+        {
+            if (descripcion.Length == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar un Tipo de Unidad. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un tipo de unidad:\n" +
+                    "Descripción   : libras\n",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+        }
+
+        public static void AgregarTipoUnidad
+            (
+            string descripcion
+            )
+        {
+            try
+            {
+                ValidarTipoUnidad(descripcion);
+                Clases.TipoUnidad tipounidad = new Clases.TipoUnidad(
+                    descripcion
+                    );
+                tipounidad.Agregar();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ModificarTipoUnidad
+            (
+            int id,
+            string descripcion
+            )
+        {
+            try
+            {
+                ValidarTipoUnidad(descripcion);
+                Clases.TipoUnidad tipounidad = new Clases.TipoUnidad(
+                    id,
+                    descripcion
+                    );
+                tipounidad.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void EliminarTipoUnidad
+            (
+            int id
+            )
+        {
+            try
+            {
+                Clases.TipoUnidad tipounidad = new Clases.TipoUnidad(
+                     id
+                     );
+                tipounidad.Eliminar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private static void ValidarInsumo
                 (
                 string nombre,

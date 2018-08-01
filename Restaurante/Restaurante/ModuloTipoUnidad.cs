@@ -16,5 +16,30 @@ namespace Restaurante
         {
             InitializeComponent();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ModuloTipoUnidad_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvTipoUnidad_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

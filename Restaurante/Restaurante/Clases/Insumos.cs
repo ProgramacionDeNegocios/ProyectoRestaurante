@@ -56,9 +56,9 @@ namespace Restaurante.Clases
             try
             {
                 conexion.Abrir();
-                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
+                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 100));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal, 4));
+                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal));
                 cmd.Parameters["costo"].Value = Costo;
                 cmd.Parameters.Add(new SqlParameter("idTipoUnidad", SqlDbType.Int));
                 cmd.Parameters["idTipoUnidad"].Value = IdTipoUnidad;
@@ -90,9 +90,9 @@ namespace Restaurante.Clases
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("idInsumo", SqlDbType.Int));
                 cmd.Parameters["idInsumo"].Value = Id;
-                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 25));
+                cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 100));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal, 4));
+                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal));
                 cmd.Parameters["costo"].Value = Costo;
                 cmd.Parameters.Add(new SqlParameter("idTipoUnidad", SqlDbType.Int));
                 cmd.Parameters["idTipoUnidad"].Value = IdTipoUnidad;
@@ -173,13 +173,15 @@ namespace Restaurante.Clases
             string sql = @"SELECT   Restaurante.Insumos.idInsumo        as Código,
                                     Restaurante.Insumos.nombre          as Insumo,
                                     Restaurante.Insumos.costo           as Costo, 
-                                    Restaurante.Insumos.idTipoUnidad    as Unidad,
+                                    Restaurante.TipoUnidad.descripcion  as Unidad,
                                     Restaurante.Insumos.descripcion     as Descripción,
                                     Restaurante.Proveedores.nombre      as Proveedor
                             FROM Restaurante.Proveedores
                             INNER JOIN Restaurante.Insumos
-                            ON Restaurante.Proveedores.idProveedor = Restaurante.Insumos.idProveedor";
-            //Hacer inner join idtipoUnidad
+                            ON Restaurante.Proveedores.idProveedor = Restaurante.Insumos.idProveedor
+                            INNER JOIN Restaurante.TipoUnidad
+                            ON Restaurante.TipoUnidad.idTipoUnidad = Restaurante.Insumos.idTipoUnidad";
+
             try
             {
                 SqlDataAdapter data = new SqlDataAdapter();
@@ -203,6 +205,8 @@ namespace Restaurante.Clases
             }
 
         }
+
+
 
 
 

@@ -140,7 +140,7 @@
             this.dgvTipoUnidad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTipoUnidad.Size = new System.Drawing.Size(315, 123);
             this.dgvTipoUnidad.TabIndex = 33;
-           
+            this.dgvTipoUnidad.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTipoUnidad_CellClick);
             // 
             // pnlBotones
             // 
@@ -164,7 +164,7 @@
             this.btnModificar.TabIndex = 6;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
-            
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnAgregar
             // 
@@ -177,7 +177,7 @@
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
-            
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
@@ -190,7 +190,7 @@
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
-            
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
@@ -203,7 +203,6 @@
             this.btnNuevo.TabIndex = 4;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
-            
             // 
             // pictureBox1
             // 
@@ -228,6 +227,7 @@
             this.Name = "ModuloTipoUnidad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModuloTipoUnidad";
+            this.Load += new System.EventHandler(this.ModuloTipoUnidad_Load);
             this.pnlTitulo.ResumeLayout(false);
             this.pnlTitulo.PerformLayout();
             this.grpTipoUnidad.ResumeLayout(false);

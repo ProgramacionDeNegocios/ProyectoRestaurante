@@ -445,6 +445,163 @@ BEGIN
 		END
 END
 GO
+CREATE PROCEDURE SP_AgregarInsumo
+(
+    @nombre NVARCHAR(100),
+    @costo DECIMAL(4,2),
+    @idTipoUnidad INT,
+    @descripcion NVARCHAR(200),
+    @idProveedor INT
+)
+AS
+BEGIN
+    DECLARE @existe int;
+    SET @existe = 0;
+
+    SELECT @existe = COUNT(Restaurante.Insumos.idInsumo) FROM Restaurante.Insumos WHERE nombre = @nombre;
+    IF (@existe > 0)
+        BEGIN
+            RAISERROR(N'Ya existe un Insumo con el nombre %s"', 16, 1,@nombre);
+            RETURN 0
+            
+        END
+    ELSE
+        BEGIN
+            INSERT INTO Restaurante.Insumos(nombre, costo, idTipoUnidad, descripcion, idProveedor)
+                VALUES(@nombre, @costo, @idTipoUnidad, @descripcion, @idProveedor)
+            RETURN 1
+        END
+END
+GO
+
+CREATE PROCEDURE SP_ModificarInsumo
+(
+    @idInsumo INT,
+    @nombre NVARCHAR(100),
+    @costo DECIMAL(4,2),
+    @idTipoUnidad INT,
+    @descripcion NVARCHAR(200),
+    @idProveedor INT
+)
+AS
+BEGIN
+    DECLARE @existe int;
+    SET @existe = 0;
+
+    SELECT @existe = COUNT(Restaurante.Insumos.IdInsumo) FROM Restaurante.Insumos WHERE IdInsumo = @idInsumo;
+
+    IF (@existe = 0)
+        BEGIN
+            RAISERROR(N'No existe el insumo con el id %d"', 16, 1, @idInsumo);
+            RETURN 0
+        END     
+    ELSE
+        BEGIN
+            UPDATE Restaurante.Insumos
+                SET     nombre = @nombre,
+                        costo = @costo,
+                        idTipoUnidad = @idTipoUnidad,
+                        descripcion = @descripcion,
+                        idProveedor = @idProveedor
+                    WHERE idInsumo = @idInsumo;
+            RETURN 1
+        END
+END
+GO
+
+CREATE PROCEDURE SP_EliminarInsumo
+(
+    @idInsumo INT
+)
+AS
+BEGIN
+    DECLARE @existe int;
+    SET @existe = 0;
+        SELECT @existe = COUNT(Restaurante.Insumos.IdInsumo) FROM Restaurante.Insumos WHERE IdInsumo = @idInsumo;
+        IF (@existe = 0)
+            BEGIN
+                RAISERROR(N'No existe el insumo con el id %d"', 16, 1, @idInsumo);
+                RETURN 0
+            END     
+        ELSE
+            BEGIN
+                DELETE FROM Restaurante.Insumos WHERE idInsumo = @idInsumo;
+                RETURN 1
+            END
+END
+GO
+
+CREATE PROCEDURE SP_InsertarTipoUnidad
+(
+    @descripcion NVARCHAR(100)
+)
+AS
+BEGIN
+    DECLARE @existe int;
+    SET @existe = 0;
+
+    SELECT @existe = COUNT(Restaurante.TipoUnidad.idTipoUnidad) FROM Restaurante.TipoUnidad WHERE descripcion=@descripcion;
+    IF (@existe > 0)
+        BEGIN
+            RAISERROR(N'Ya existe un Tipo de Unidad con el nombre "%s"', 16, 1,@descripcion);
+            RETURN 0
+            
+        END
+    ELSE
+        BEGIN
+            INSERT INTO Restaurante.TipoUnidad(descripcion)
+                VALUES(@descripcion)
+            RETURN 1
+        END
+END
+GO
+
+CREATE PROCEDURE SP_ModificarTipoUnidad
+(
+    @idTipoUnidad INT,
+    @descripcion NVARCHAR(100)
+)
+AS
+BEGIN
+    DECLARE @existe int;
+    SET @existe = 0;
+    SELECT @existe = COUNT(Restaurante.TipoUnidad.idTipoUnidad) FROM Restaurante.TipoUnidad WHERE idTipoUnidad=@idTipoUnidad;
+    IF (@existe = 0)
+        BEGIN
+            RAISERROR(N'No existe ningún Tipo de Unidad con el id "%d"', 16, 1, @idTipoUnidad);
+            RETURN 0
+        END     
+    ELSE
+        BEGIN
+            UPDATE Restaurante.TipoUnidad
+                SET     descripcion = @descripcion
+                    WHERE idTipoUnidad = @idTipoUnidad;
+            RETURN 1
+        END
+END
+GO
+
+CREATE PROCEDURE SP_EliminarTipoUnidad
+(
+    @idTipoUnidad INT
+)
+AS
+BEGIN
+    DECLARE @existe int;
+    SET @existe = 0;
+    SELECT @existe = COUNT(Restaurante.TipoUnidad.idTipoUnidad) FROM Restaurante.TipoUnidad WHERE idTipoUnidad=@idTipoUnidad;
+    IF (@existe = 0)
+        BEGIN
+            RAISERROR(N'No existe ningún Tipo de Unidad con el id "%d"', 16, 1, @idTipoUnidad);
+            RETURN 0
+        END     
+    ELSE
+        BEGIN
+            DELETE FROM Restaurante.TipoUnidad  WHERE idTipoUnidad = @idTipoUnidad;
+            RETURN 1
+        END
+END
+GO
 /*
 CREATE PROCEDURE SP_AgregarMesa
 (
@@ -671,75 +828,4 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE SP_AgregarInsumo
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
-
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-	IF (@existe > 0)
-		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
-			RETURN 0
-			
-		END
-	ELSE
-		BEGIN
-			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
-				VALUES(	<variable1>, <variable2>,...,<Variable3>)
-			RETURN 1
-		END
-END
-GO
-
-CREATE PROCEDURE SP_ModificarInsumo
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
-
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-
-	IF (@existe = 0)
-		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
-			RETURN 0
-		END 	
-	ELSE
-		BEGIN
-			UPDATE <esquema.tabla>
-				SET 	<campos=variables>
-					WHERE <condicion>;
-			RETURN 1
-		END
-	
-	END
-END
-GO
-
-CREATE PROCEDURE SP_EliminarInsumo
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
-		SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-		IF (@existe = 0)
-			BEGIN
-				RAISERROR(N'aqui va el mensaje de error "', 16, 1);
-				RETURN 0
-			END 	
-		ELSE
-			BEGIN
-				DELETE FROM <Esquema.tabla>	WHERE <condicion>;
-				RETURN 1
-			END
-END
-GO
 */
