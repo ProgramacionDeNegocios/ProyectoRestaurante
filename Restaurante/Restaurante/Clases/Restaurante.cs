@@ -298,5 +298,102 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
+        private static void ValidarInsumo
+                (
+                string nombre,
+                decimal costo,
+                int idtipounidad,
+                string descripcion,
+                int idproveedor
+                )
+        {
+            if (nombre.Length == 0 || costo < 0 || idtipounidad <= 0 || descripcion.Length == 0 || idproveedor <= 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar el insumo. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar el insumo\n" +
+                    "Nombre   : Tomate\n" +
+                    "Costo    : 12.00\n" +
+                    "Unidad   : Libra\n" +
+                    "Descripción   : Comprado Semanalmente\n" +
+                    "Proveedor : Don Edgardo",
+                    new Exception(),
+                    "Clase_Insumo"
+                    );
+            }
+        }
+        public static void AgregarInsumo
+            (
+            string nombre,
+            decimal costo,
+            int idtipounidad,
+            string descripcion,
+            int idproveedor
+            )
+        {
+            try
+            {
+                ValidarInsumo(nombre, costo, idtipounidad, descripcion, idproveedor);
+                Clases.Insumos insumo = new Clases.Insumos(
+                    nombre,
+                    costo,
+                    idtipounidad,
+                    descripcion,
+                    idproveedor
+                    );
+                insumo.Agregar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ModificarInsumo
+            (
+            int id,
+            string nombre,
+            decimal costo,
+            int idtipounidad,
+            string descripcion,
+            int idproveedor
+            )
+        {
+            try
+            {
+                ValidarInsumo(nombre, costo, idtipounidad, descripcion, idproveedor);
+                Clases.Insumos insumo = new Clases.Insumos(
+                    id,
+                    nombre,
+                    costo,
+                    idtipounidad,
+                    descripcion,
+                    idproveedor)
+                    ;
+                insumo.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void EliminarInsumo
+            (
+            int id
+            )
+        {
+            try
+            {
+                Clases.Insumos insumo = new Clases.Insumos(
+                    id
+                    );
+                insumo.Eliminar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

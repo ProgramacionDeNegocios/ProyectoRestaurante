@@ -58,7 +58,7 @@ namespace Restaurante.Clases
                     this.apellido = dr.GetString(2);
                     this.usuario = dr.GetString(3);
                     this.clave = dr.GetString(4);
-                    this.id = dr.GetInt32(5);
+                    this.rol = dr.GetInt32(5);
                 }
             }
             catch (SqlException excepcion)

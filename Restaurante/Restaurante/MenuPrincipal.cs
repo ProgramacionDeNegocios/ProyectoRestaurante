@@ -18,10 +18,6 @@ namespace Restaurante
             InitializeComponent();
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
 
         private void btnModuloUsuarios_Click(object sender, EventArgs e)
         {
@@ -46,10 +42,6 @@ namespace Restaurante
             moduloMeseros.ShowDialog();
         }
 
-        private void MenuPrincipal_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnInsumos_Click(object sender, EventArgs e)
         {
@@ -64,7 +56,8 @@ namespace Restaurante
             moduloTipoUnidad.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+
+        private void btnAreas_Click(object sender, EventArgs e)
         {
             ModuloAreas moduloAreas = new ModuloAreas();
             moduloAreas.ShowDialog();
