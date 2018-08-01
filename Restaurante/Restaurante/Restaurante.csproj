@@ -63,6 +63,12 @@
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloAreas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloAreas.Designer.cs">
+      <DependentUpon>ModuloAreas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloInsumos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </Compile>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloAreas.resx">
+      <DependentUpon>ModuloAreas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloInsumos.resx">
       <DependentUpon>ModuloInsumos.cs</DependentUpon>
