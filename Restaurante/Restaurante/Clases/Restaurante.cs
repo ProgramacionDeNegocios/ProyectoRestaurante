@@ -54,16 +54,6 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
-        public static void ModificarMesero() { }
-        public static void EliminarMesero() { }
-
-        public static void AgregarProveedor() { }
-        public static void ModificarProveedor() { }
-        public static void EliminarProveedor() { }
-
-        public static void AgregarUsuario() { }
-        public static void ModificarUsuario() { }
-        public static void EliminarUsuario() { }
 
         private static void ValidarTipoUnidad
          (
@@ -240,5 +230,113 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
+
+        private static void ValidarInventario
+                (
+                string descripcion,
+                decimal costo,
+                decimal precioventa,
+                decimal cantidad,
+                int idtipoproducto,
+                int idproveedor
+                )
+        {
+            if (descripcion.Length == 0 || costo < 0 || precioventa < 0 || cantidad < 0 || idtipoproducto <= 0 ||idproveedor <= 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar el insumo. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar el Inventario\n" +
+                    "Producto : Pescado Frito\n" +
+                    "Costo    : 80.00\n" +
+                    "Precio Venta   : 100.00\n" +
+                    "Cantidad   : 20\n" +
+                    "Unidad   : Libra\n" +
+                    "Tipo Producto : Preparado\n" +
+                    "Proveedor : Don Edgardo",
+                    new Exception(),
+                    "Clase_Inventario"
+                    );
+            }
+        }
+
+        public static void AgregarInventario
+            (
+            string descripcion,
+            decimal costo,
+            decimal precioventa,
+            decimal cantidad,
+            int idtipoproducto,
+            int idproveedor
+            )
+        {
+            try
+            {
+                ValidarInventario(descripcion, costo, precioventa, cantidad, idtipoproducto, idproveedor);
+                Clases.Inventario inventario = new Clases.Inventario(
+                    descripcion,
+                    costo,
+                    precioventa,
+                    cantidad,
+                    idtipoproducto,
+                    idproveedor);
+                inventario.Agregar();             
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ModificarInventario
+            (
+            int id,
+            string descripcion,
+            decimal costo,
+            decimal precioventa,
+            decimal cantidad,
+            int idtipoproducto,
+            int idproveedor
+            )
+        {
+            try
+            {
+                ValidarInventario(descripcion, costo, precioventa, cantidad, idtipoproducto, idproveedor);
+                Clases.Inventario inventario = new Clases.Inventario(
+                    id,
+                    descripcion,
+                    costo,
+                    precioventa,
+                    cantidad,
+                    idtipoproducto,
+                    idproveedor);
+                inventario.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void EliminarInventario
+            (
+            int id
+            )
+        {
+            try
+            {
+                Clases.Inventario inventario = new Clases.Inventario(
+                    id);
+                inventario.Eliminar();
+                               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
     }
 }

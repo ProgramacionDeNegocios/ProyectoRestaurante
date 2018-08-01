@@ -70,6 +70,12 @@
     <Compile Include="ModuloInsumos.Designer.cs">
       <DependentUpon>ModuloInsumos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloInventario.Designer.cs">
+      <DependentUpon>ModuloInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloMeseros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloInsumos.resx">
       <DependentUpon>ModuloInsumos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloInventario.resx">
+      <DependentUpon>ModuloInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloMeseros.resx">
       <DependentUpon>ModuloMeseros.cs</DependentUpon>
