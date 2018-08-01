@@ -70,6 +70,7 @@
             this.btnSalir.TabIndex = 30;
             this.btnSalir.TabStop = false;
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // label1
             // 
@@ -203,6 +204,7 @@
             this.btnNuevo.TabIndex = 4;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click_1);
             // 
             // pictureBox1
             // 
