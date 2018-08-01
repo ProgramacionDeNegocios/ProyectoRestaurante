@@ -43,23 +43,7 @@ namespace Restaurante
             ResetFormulario();
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Clases.Restaurante.AgregarTipoUnidad
-                    (
-                        txtDescripcion.Text
-                    );
-                CargarDGWTipoUnidad();
 
-            }
-            catch (Exception ex)
-            {
-
-                Clases.Mensaje.Advertencia(ex);
-            }
-        }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -155,6 +139,24 @@ namespace Restaurante
         private void btnNuevo_Click_1(object sender, EventArgs e)
         {
             ResetFormulario();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clases.Restaurante.AgregarTipoUnidad
+                    (
+                        txtDescripcion.Text
+                    );
+                CargarDGWTipoUnidad();
+
+            }
+            catch (Exception ex)
+            {
+
+                Clases.Mensaje.Advertencia(ex);
+            }
         }
     }
 }
