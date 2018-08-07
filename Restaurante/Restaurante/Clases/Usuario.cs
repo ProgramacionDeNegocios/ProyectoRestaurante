@@ -40,16 +40,17 @@ namespace Restaurante.Clases
             this.clave = clave;
             this.rol = rol;
         }
-        
 
-        public void ObtenerUsuario (string usuarioRe){
+
+        public void ObtenerUsuario(string usuarioRe)
+        {
             Conexion conexion = new Conexion();
-            string sql = @"SELECT id, nombre, apellido, usuario, clave, idRol FROM Acceso.Usuarios WHERE usuario = '" + usuarioRe  + "';";
+            string sql = @"SELECT id, nombre, apellido, usuario, clave, idRol FROM Acceso.Usuarios WHERE usuario = '" + usuarioRe + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
                 conexion.Abrir();
-                
+
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -58,7 +59,7 @@ namespace Restaurante.Clases
                     this.apellido = dr.GetString(2);
                     this.usuario = dr.GetString(3);
                     this.clave = dr.GetString(4);
-                    this.rol = dr.GetInt32(5);
+                    this.id = dr.GetInt32(5);
                 }
             }
             catch (SqlException excepcion)
@@ -94,7 +95,7 @@ namespace Restaurante.Clases
                 cmd.ExecuteNonQuery();
 
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
             }
