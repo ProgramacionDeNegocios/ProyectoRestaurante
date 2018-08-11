@@ -69,5 +69,11 @@ namespace Restaurante
             ModuloInventario moduloInventario = new ModuloInventario();
             moduloInventario.ShowDialog();
         }
+
+        private void btnTipoProducto_Click(object sender, EventArgs e)
+        {
+            ModuloTipoProducto moduloTipoProducto = new ModuloTipoProducto();
+            moduloTipoProducto.ShowDialog();
+        }
     }
 }

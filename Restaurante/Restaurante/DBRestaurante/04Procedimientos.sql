@@ -446,173 +446,173 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE SP_AgregarMesa
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
+--CREATE PROCEDURE SP_AgregarMesa
+--(
+--)
+--AS
+--BEGIN
+--	DECLARE @existe int;
+--	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-	IF (@existe > 0)
-		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
-			RETURN 0
+--	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+--	IF (@existe > 0)
+--		BEGIN
+--			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+--			RETURN 0
 			
-		END
-	ELSE
-		BEGIN
-			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
-				VALUES(	<variable1>, <variable2>,...,<Variable3>)
-			RETURN 1
-		END
-END
-GO
+--		END
+--	ELSE
+--		BEGIN
+--			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
+--				VALUES(	<variable1>, <variable2>,...,<Variable3>)
+--			RETURN 1
+--		END
+--END
+--GO
 
-CREATE PROCEDURE SP_ModificarMesa
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
+--CREATE PROCEDURE SP_ModificarMesa
+--(
+--)
+--AS
+--BEGIN
+--	DECLARE @existe int;
+--	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+--	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
 
-	IF (@existe = 0)
-		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
-			RETURN 0
-		END 	
-	ELSE
-		BEGIN
-			UPDATE <esquema.tabla>
-				SET 	<campos=variables>
-					WHERE <condicion>;
-			RETURN 1
-		END
+--	IF (@existe = 0)
+--		BEGIN
+--			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+--			RETURN 0
+--		END 	
+--	ELSE
+--		BEGIN
+--			UPDATE <esquema.tabla>
+--				SET 	<campos=variables>
+--					WHERE <condicion>;
+--			RETURN 1
+--		END
 	
-	END
-END
-GO
+--	END
+--END
+--GO
 
-CREATE PROCEDURE SP_EliminarMesa
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
-		SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-		IF (@existe = 0)
-			BEGIN
-				RAISERROR(N'aqui va el mensaje de error "', 16, 1);
-				RETURN 0
-			END 	
-		ELSE
-			BEGIN
-				DELETE FROM <Esquema.tabla>	WHERE <condicion>;
-				RETURN 1
-			END
-END
-GO
+--CREATE PROCEDURE SP_EliminarMesa
+--(
+--)
+--AS
+--BEGIN
+--	DECLARE @existe int;
+--	SET @existe = 0;
+--		SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+--		IF (@existe = 0)
+--			BEGIN
+--				RAISERROR(N'aqui va el mensaje de error "', 16, 1);
+--				RETURN 0
+--			END 	
+--		ELSE
+--			BEGIN
+--				DELETE FROM <Esquema.tabla>	WHERE <condicion>;
+--				RETURN 1
+--			END
+--END
+--GO
 
-CREATE PROCEDURE SP_AgregarPedido
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
+--CREATE PROCEDURE SP_AgregarPedido
+--(
+--)
+--AS
+--BEGIN
+--	DECLARE @existe int;
+--	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-	IF (@existe > 0)
-		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
-			RETURN 0
+--	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+--	IF (@existe > 0)
+--		BEGIN
+--			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+--			RETURN 0
 			
-		END
-	ELSE
-		BEGIN
-			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
-				VALUES(	<variable1>, <variable2>,...,<Variable3>)
-			RETURN 1
-		END
-END
-GO
+--		END
+--	ELSE
+--		BEGIN
+--			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
+--				VALUES(	<variable1>, <variable2>,...,<Variable3>)
+--			RETURN 1
+--		END
+--END
+--GO
 
-CREATE PROCEDURE SP_ModificarPedido
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
+--CREATE PROCEDURE SP_ModificarPedido
+--(
+--)
+--AS
+--BEGIN
+--	DECLARE @existe int;
+--	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+--	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
 
-	IF (@existe = 0)
-		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
-			RETURN 0
-		END 	
-	ELSE
-		BEGIN
-			UPDATE <esquema.tabla>
-				SET 	<campos=variables>
-					WHERE <condicion>;
-			RETURN 1
-		END
+--	IF (@existe = 0)
+--		BEGIN
+--			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+--			RETURN 0
+--		END 	
+--	ELSE
+--		BEGIN
+--			UPDATE <esquema.tabla>
+--				SET 	<campos=variables>
+--					WHERE <condicion>;
+--			RETURN 1
+--		END
 	
-	END
-END
-GO
+--	END
+--END
+--GO
 
-CREATE PROCEDURE SP_EliminarPedido
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
-		SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-		IF (@existe = 0)
-			BEGIN
-				RAISERROR(N'aqui va el mensaje de error "', 16, 1);
-				RETURN 0
-			END 	
-		ELSE
-			BEGIN
-				DELETE FROM <Esquema.tabla>	WHERE <condicion>;
-				RETURN 1
-			END
-END
-GO
+--CREATE PROCEDURE SP_EliminarPedido
+--(
+--)
+--AS
+--BEGIN
+--	DECLARE @existe int;
+--	SET @existe = 0;
+--		SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+--		IF (@existe = 0)
+--			BEGIN
+--				RAISERROR(N'aqui va el mensaje de error "', 16, 1);
+--				RETURN 0
+--			END 	
+--		ELSE
+--			BEGIN
+--				DELETE FROM <Esquema.tabla>	WHERE <condicion>;
+--				RETURN 1
+--			END
+--END
+--GO
 
-CREATE PROCEDURE SP_AgregarFactura
-(
-)
-AS
-BEGIN
-	DECLARE @existe int;
-	SET @existe = 0;
+--CREATE PROCEDURE SP_AgregarFactura
+--(
+--)
+--AS
+--BEGIN
+--	DECLARE @existe int;
+--	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-	IF (@existe > 0)
-		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
-			RETURN 0
+--	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+--	IF (@existe > 0)
+--		BEGIN
+--			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+--			RETURN 0
 			
-		END
-	ELSE
-		BEGIN
-			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
-				VALUES(	<variable1>, <variable2>,...,<Variable3>)
-			RETURN 1
-		END
-END
-GO
+--		END
+--	ELSE
+--		BEGIN
+--			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
+--				VALUES(	<variable1>, <variable2>,...,<Variable3>)
+--			RETURN 1
+--		END
+--END
+--GO
 
 CREATE PROCEDURE SP_AgregarInventario
 (
