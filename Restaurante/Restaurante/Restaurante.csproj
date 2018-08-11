@@ -55,6 +55,7 @@
     <Compile Include="Clases\Proveedor.cs" />
     <Compile Include="Clases\Restaurante.cs" />
     <Compile Include="Clases\Rol.cs" />
+    <Compile Include="Clases\TipoProducto.cs" />
     <Compile Include="Clases\TipoUnidad.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />
@@ -87,6 +88,12 @@
     </Compile>
     <Compile Include="ModuloProveedores.Designer.cs">
       <DependentUpon>ModuloProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloTipoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloTipoProducto.Designer.cs">
+      <DependentUpon>ModuloTipoProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloTipoUnidad.cs">
       <SubType>Form</SubType>
@@ -122,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloProveedores.resx">
       <DependentUpon>ModuloProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloTipoProducto.resx">
+      <DependentUpon>ModuloTipoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloTipoUnidad.resx">
       <DependentUpon>ModuloTipoUnidad.cs</DependentUpon>
