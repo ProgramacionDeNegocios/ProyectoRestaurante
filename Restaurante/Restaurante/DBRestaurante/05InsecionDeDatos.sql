@@ -21,6 +21,9 @@ EXEC SP_AgregarProveedor 'Pedro','9889-8987','Siguatepeque'
 --SP_InsertarTipoUnidad
 EXEC SP_InsertarTipoUnidad 'Onza'
 
+--SP_InsertarTipoProducto
+EXEC SP_InsertarTipoProducto 'Elaborado'
+
 --AREA DE PRUEBA DE LA INFORMACION
 SELECT * FROM Acceso.Usuarios
 SELECT * FROM Acceso.TipoAcceso

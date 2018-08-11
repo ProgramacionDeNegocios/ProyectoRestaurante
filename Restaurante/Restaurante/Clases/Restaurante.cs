@@ -240,5 +240,83 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
+
+        private static void ValidarTipoProducto
+         (
+            string nombre
+
+         )
+        {
+            if (nombre.Length == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar un Tipo de Producto. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un tipo de Producto:\n" +
+                    "Nombre   : Elaborado\n",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+        }
+
+        public static void AgregarTipoProducto
+            (
+            string nombre
+            )
+        {
+            try
+            {
+                ValidarTipoProducto(nombre);
+                Clases.TipoProducto tipoproducto = new Clases.TipoProducto(
+                    nombre
+                    );
+                tipoproducto.Agregar();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ModificarTipoProducto
+            (
+            int id,
+            string nombre
+            )
+        {
+            try
+            {
+                ValidarTipoProducto(nombre);
+                Clases.TipoProducto tipoproducto = new Clases.TipoProducto(
+                    id,
+                    nombre
+                    );
+                tipoproducto.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void EliminarTipoProducto
+            (
+            int id
+            )
+        {
+            try
+            {
+                Clases.TipoProducto tipoproducto = new Clases.TipoProducto(
+                    id
+                    );
+                tipoproducto.Eliminar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

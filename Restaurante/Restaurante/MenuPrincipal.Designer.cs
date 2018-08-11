@@ -41,6 +41,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnInsumos = new System.Windows.Forms.Button();
             this.btnTipoUnidad = new System.Windows.Forms.Button();
+            this.btnTipoProducto = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -100,6 +101,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnTipoProducto);
             this.tabPage1.Controls.Add(this.Pedidos);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -177,6 +179,16 @@
             this.btnTipoUnidad.UseVisualStyleBackColor = true;
             this.btnTipoUnidad.Click += new System.EventHandler(this.btnTipoUnidad_Click);
             // 
+            // btnTipoProducto
+            // 
+            this.btnTipoProducto.Location = new System.Drawing.Point(151, 21);
+            this.btnTipoProducto.Name = "btnTipoProducto";
+            this.btnTipoProducto.Size = new System.Drawing.Size(109, 64);
+            this.btnTipoProducto.TabIndex = 6;
+            this.btnTipoProducto.Text = "Productos";
+            this.btnTipoProducto.UseVisualStyleBackColor = true;
+            this.btnTipoProducto.Click += new System.EventHandler(this.btnTipoProducto_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,5 +229,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnInsumos;
         private System.Windows.Forms.Button btnTipoUnidad;
+        private System.Windows.Forms.Button btnTipoProducto;
     }
 }

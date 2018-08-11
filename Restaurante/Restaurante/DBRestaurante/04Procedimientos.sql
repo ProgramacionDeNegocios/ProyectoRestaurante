@@ -828,3 +828,75 @@ BEGIN
 		END
 END
 GO
+
+CREATE PROCEDURE SP_InsertarTipoProducto
+(
+	@nombre NVARCHAR(100)
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+
+	SELECT @existe = COUNT(Restaurante.TipoProducto.idTipoProducto) FROM Restaurante.TipoProducto WHERE nombre=@nombre;
+	IF (@existe > 0)
+		BEGIN
+			RAISERROR(N'Ya existe un Tipo de Producto con el nombre "%s"', 16, 1,@nombre);
+			RETURN 0
+			
+		END
+	ELSE
+		BEGIN
+			INSERT INTO Restaurante.TipoProducto(nombre)
+				VALUES(@nombre)
+			RETURN 1
+		END
+END
+GO
+
+CREATE PROCEDURE SP_ModificarTipoProducto
+(
+	@idTipoProducto INT,
+	@nombre NVARCHAR(100)
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+	SELECT @existe = COUNT(Restaurante.TipoProducto.idTipoProducto) FROM Restaurante.TipoProducto WHERE idTipoProducto=@idTipoProducto;
+	IF (@existe = 0)
+		BEGIN
+			RAISERROR(N'No existe ningún Tipo de Producto con el id "%d"', 16, 1, @idTipoProducto);
+			RETURN 0
+		END 	
+	ELSE
+		BEGIN
+			UPDATE Restaurante.TipoProducto
+				SET 	nombre = @nombre
+					WHERE idTipoProducto = @idTipoProducto;
+			RETURN 1
+		END
+END
+GO
+
+CREATE PROCEDURE SP_EliminarTipoProducto
+(
+	@idTipoProducto INT
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+	SELECT @existe = COUNT(Restaurante.TipoProducto.idTipoProducto) FROM Restaurante.TipoProducto WHERE idTipoProducto=@idTipoProducto;
+	IF (@existe = 0)
+		BEGIN
+			RAISERROR(N'No existe ningún Tipo de Producto con el id "%d"', 16, 1, @idTipoProducto);
+			RETURN 0
+		END 	
+	ELSE
+		BEGIN
+			DELETE FROM Restaurante.TipoProducto WHERE idTipoProducto = @idTipoProducto;
+			RETURN 1
+		END
+END
+GO
