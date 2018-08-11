@@ -57,6 +57,12 @@
     <Compile Include="Clases\TipoUnidad.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />
+    <Compile Include="ControlMesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlMesas.Designer.cs">
+      <DependentUpon>ControlMesas.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="ModuloUsuarios.Designer.cs">
       <DependentUpon>ModuloUsuarios.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ControlMesas.resx">
+      <DependentUpon>ControlMesas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
