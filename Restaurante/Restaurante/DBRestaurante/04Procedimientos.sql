@@ -830,3 +830,138 @@ END
 GO
 
 */
+
+--SP para actualizar el stock dela Tabla Inventario.Articulos 
+CREATE PROCEDURE Inventario.SPActualizarArticulos(
+	@CodigoArticulo VARCHAR(15),
+	@Stock INT
+  )
+AS
+BEGIN
+	DECLARE @Codigo INT
+	DECLARE @CodigoProducto VARCHAR(15) = @CodigoArticulo
+
+	EXEC @Codigo = Inventario.SPEstadoDelArticulo @CodigoProducto
+	IF @Codigo = 1
+		PRINT 'Debe ingresar el codigo del Articulo'
+	ELSE
+		IF @Codigo = 2
+			PRINT 'El Codigo del producto ingresado no es válido'
+		ELSE
+			IF @Codigo = 3
+				PRINT 'No hay existencia de este producto'
+			ELSE
+				IF @Codigo = 0
+					PRINT 'Producto encontrado'
+
+	DECLARE @Stock1 INT 
+	SELECT @Stock1 = Stock FROM Inventario.Articulos
+			WHERE Codigo = @CodigoProducto
+
+UPDATE Inventario.Articulos
+SET Stock = @Stock1 + @Stock
+FROM Inventario.Articulos
+WHERE Codigo = @CodigoProducto
+
+END
+--Probando con valores Incorrectos
+EXEC Inventario.SPActualizarArticulos '3 154141 194108';
+--Probando Valores Correctos
+EXEC Inventario.SPActualizarArticulos '3 154141 194108',4;
+
+------------------------------------------------------------------------------------------------
+	-- Creación de un Stored Procedure que se encarga de ingresar
+	-- valores a la tabla Factura 
+CREATE PROCEDURE SP_sFacturas(
+	@IdCliente CHAR(15)=NULL ,
+	@IdVendedor INT = NULL
+)
+AS
+BEGIN
+	IF (@IdVendedor IS NULL) OR (@IdCliente IS NULL) 
+		BEGIN
+			RAISERROR('El Codigo de Vendedor, Cliente son requeridos.', 16, 1)
+			RETURN 0
+		END
+	ELSE
+		BEGIN
+		--Declaramos las Variables las cuales nos serviran al momento de la inserción
+		DECLARE @Vendedor INT  = @IdVendedor
+		DECLARE @Cliente CHAR (15) = @IdCliente
+		DECLARE @ImporteISV DECIMAL(10,2) = 0
+		DECLARE @Impuesto DECIMAL(10,2) = 0
+		DECLARE @Total DECIMAL(10,2) = 0
+		INSERT INTO Facturacion.Factura(IdVendedor,IdCliente, ImporteISV,Impuesto,Total )
+				VALUES(@Vendedor,@Cliente,@ImporteISV,@Impuesto,@Total)
+			RETURN 1
+		END
+END
+GO
+
+
+
+---------------------------------------------------------------------------------------
+    -- Creación de un Stored Procedure que se encarga de ingresar
+	-- valores a la tabla Detalle Factura 
+CREATE PROCEDURE Facturacion.SPDetalleFacturas(
+	@CodigoArticulo VARCHAR (15) = NULL, 
+	@CantidadArticulo INT = NULL
+)
+AS
+BEGIN
+	IF (@CodigoArticulo IS NULL) OR (@CantidadArticulo IS NULL)
+		BEGIN
+			RAISERROR('El Codigo de Producto e igual que la Cantidad son requeridos.', 16, 1)
+			RETURN 0
+		END
+	ELSE
+--Declaramos las variables a utilizar
+	DECLARE @NumeroFactura INT
+	DECLARE @Codigo INT
+	DECLARE @CodigoArticulo1 VARCHAR(15) = @CodigoArticulo
+	DECLARE @PrecioUnitario DECIMAL (10,2)
+	DECLARE @SubTotal DECIMAL (10,2)
+
+-- Verificar Codigo de Producto
+	EXEC @Codigo = Inventario.SPEstadoDelArticulo @CodigoArticulo1
+	IF @Codigo = 1
+		PRINT 'Debe ingresar el codigo del Articulo'
+	ELSE
+		IF @Codigo = 2
+			PRINT 'El Codigo del producto ingresado no es válido'
+		ELSE
+			IF @Codigo = 3
+				PRINT 'No hay existencia de este producto'
+			ELSE
+				IF @Codigo = 0
+					PRINT 'Producto encontrado'
+--BUSCANDO VALORES
+		SET @NumeroFactura = (SELECT MAX(Numero) FROM Facturacion.Factura)
+		SELECT @PrecioUnitario = PrecioVenta FROM Inventario.Articulos
+		WHERE Codigo = @CodigoArticulo
+		SET @SubTotal = @PrecioUnitario * @CantidadArticulo
+		DECLARE @Impuesto DECIMAL(10,2)
+		DECLARE @Importe DECIMAL(10,2)
+--Ejecutamos los Stored Procedure de calculo de impuesto e importe
+		EXEC Facturacion.SPCalculoImporte @CodigoArticulo,@SubTotal,@Importe OUTPUT
+		EXEC Facturacion.SPExcentoImpuesto @CodigoArticulo,@Importe,@Impuesto OUTPUT
+--Insertamos los datos en la tabla Detalle Factura
+		INSERT INTO Facturacion.DetalleFactura(NumeroFactura,CodigoArticulo,CantidadArticulo,PrecioUnitario,Subtotal) 
+			VALUES (@NumeroFactura,@CodigoArticulo1,@CantidadArticulo,@PrecioUnitario,@SubTotal)
+		
+				IF ((SELECT Stock FROM Inventario.Articulos 
+					WHERE Codigo = @CodigoArticulo1)<=(SELECT CantidadMinima FROM Inventario.Articulos
+					WHERE Codigo = @CodigoArticulo1))
+				BEGIN
+					PRINT 'Se ha alcanzado el inventario minimo para el producto '+ @CodigoArticulo1 +'. Considere contactar a su proveedor.'
+				END
+--Actualizamos nuestro encabezado en la Tabla Factura para los campos
+--IMPUESTO,IMPORTEISV,TOTAL		
+		UPDATE Facturacion.Factura
+		SET ImporteISV=@Importe,Impuesto = @Impuesto, Total = @SubTotal
+		FROM Facturacion.Factura
+		INNER JOIN Facturacion.DetalleFactura
+		ON @NumeroFactura=Numero
+		WHERE Numero= @NumeroFactura
+END
+GO
