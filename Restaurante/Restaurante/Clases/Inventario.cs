@@ -178,11 +178,13 @@ namespace Restaurante.Clases
                                     Restaurante.Inventario.costo            as Costo,
                                     Restaurante.Inventario.precioVenta      as PrecioVenta,
                                     Restaurante.Inventario.cantidad         as Cantidad,
-                                    Restaurante.Inventario.idTipoProducto   as TipoProducto,
-                                    Restaurante.Proveedores.idProveedor     as Proveedor
+                                    Restaurante.TipoProducto.nombre         as TipoProducto,
+                                    Restaurante.Proveedores.nombre          as Proveedor
                             FROM Restaurante.Proveedores
                             INNER JOIN Restaurante.Inventario
-                            ON Restaurante.Proveedores.idProveedor = Restaurante.Inventario.idProveedor";
+                            ON Restaurante.Proveedores.idProveedor = Restaurante.Inventario.idProveedor
+                            INNER JOIN Restaurante.TipoProducto
+                            ON Restaurante.TipoProducto.idTipoProducto = Restaurante.Inventario.idTipoProducto";
 
             try
             {
@@ -207,10 +209,6 @@ namespace Restaurante.Clases
             }
 
         }
-
-
-
-
 
     }
 }

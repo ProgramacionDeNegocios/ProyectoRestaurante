@@ -43,6 +43,7 @@ namespace Restaurante
         {
             CargarDGWInventario();
             CargarCMBProveedores();
+            CargarCMBTipoProducto();
             ResetFormulario();
         }
 
@@ -59,6 +60,19 @@ namespace Restaurante
             cmbProveedor.DataSource = dt;
         }
 
+        private void CargarCMBTipoProducto()
+        {
+            DataTable dt2 = new DataTable();
+            Clases.Conexion conexion = new Clases.Conexion();
+            string sql = "select * FROM Restaurante.TipoProducto";
+            SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt2);
+            cmbTipoProducto.DisplayMember = "nombre";
+            cmbTipoProducto.ValueMember = "nombre";
+            cmbTipoProducto.DataSource = dt2;
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -66,13 +80,16 @@ namespace Restaurante
                 Clases.Proveedor proveedor = new Clases.Proveedor();
                 proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
 
+                Clases.TipoProducto tipoproducto = new Clases.TipoProducto();
+                tipoproducto.ObtenerTipoProductoPorNombre(cmbTipoProducto.SelectedValue.ToString());
+
                 Clases.Restaurante.AgregarInventario
                     (
                         txtDescripcion.Text,
                         Convert.ToDecimal(txtCosto.Text),
                         Convert.ToDecimal(txtPrecioVenta.Text),
                         Convert.ToDecimal(txtCantidad.Text),
-                        cmbTipoProducto.SelectedIndex,
+                        tipoproducto.Id,
                         proveedor.Id
                     );
                 CargarDGWInventario();
@@ -92,6 +109,9 @@ namespace Restaurante
                     Clases.Proveedor proveedor = new Clases.Proveedor();
                     proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
 
+                    Clases.TipoProducto tipoproducto = new Clases.TipoProducto();
+                    tipoproducto.ObtenerTipoProductoPorNombre(cmbTipoProducto.SelectedValue.ToString());
+
                     Clases.Restaurante.ModificarInventario
                         ( 
                         this.id,
@@ -99,7 +119,7 @@ namespace Restaurante
                         Convert.ToDecimal(txtCosto.Text),
                         Convert.ToDecimal(txtPrecioVenta.Text),
                         Convert.ToDecimal(txtCantidad.Text),
-                        cmbTipoProducto.SelectedIndex,
+                        tipoproducto.Id,
                         proveedor.Id
                         );
                     ResetFormulario();
@@ -128,7 +148,7 @@ namespace Restaurante
             txtCosto.Text = inventario.Costo.ToString();
             txtPrecioVenta.Text = inventario.PrecioVenta.ToString();
             txtCantidad.Text = inventario.Cantidad.ToString();
-            cmbTipoProducto.SelectedIndex = inventario.IdTipoProducto;
+            cmbTipoProducto.SelectedIndex = inventario.IdTipoProducto - 1;
             cmbProveedor.SelectedIndex = inventario.IdProveedor - 1;
 
             btnNuevo.Enabled = true;
@@ -144,7 +164,6 @@ namespace Restaurante
             txtCosto.Text = "";
             txtPrecioVenta.Text = "";
             txtCantidad.Text = "";
-            cmbTipoProducto.SelectedIndex = -1;
             cmbTipoProducto.SelectedValue = "";
             cmbProveedor.SelectedValue = "";
             CargarDGWInventario();
@@ -228,6 +247,18 @@ namespace Restaurante
                     ResetFormulario();
                 }
 
+            }
+        }
+
+        private void cmbTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTipoProducto.Text == "Elaborado")
+            {
+                panel1.Visible = true;
+            }
+            else
+            {
+                panel1.Visible = false;
             }
         }
     }

@@ -251,6 +251,17 @@ ELSE
 	END
 GO
 
+IF OBJECT_ID('Restaurante.TipoProducto')	IS NOT NULL
+	DROP TABLE Restaurante.TipoProducto
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.TipoProducto(
+			idTipoProducto INT IDENTITY NOT NULL,
+			nombre NVARCHAR(100)
+		);
+	END
+GO
+
 IF OBJECT_ID('Restaurante.InsumosProductos')	IS NOT NULL
 	DROP TABLE Restaurante.InsumosProductos
 ELSE

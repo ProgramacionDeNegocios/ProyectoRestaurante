@@ -30,6 +30,7 @@
         {
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.grpInventario = new System.Windows.Forms.GroupBox();
             this.cmbTipoProducto = new System.Windows.Forms.ComboBox();
@@ -53,12 +54,12 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dgvInsumoInv = new System.Windows.Forms.DataGridView();
             this.btnAgregarInsumo = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSalir = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.pnlTitulo.SuspendLayout();
             this.grpInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
@@ -66,16 +67,15 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInsumoInv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTitulo
             // 
-            this.pnlTitulo.Controls.Add(this.label2);
-            this.pnlTitulo.Controls.Add(this.btnSalir);
             this.pnlTitulo.Controls.Add(this.label1);
             this.pnlTitulo.Location = new System.Drawing.Point(12, 1);
             this.pnlTitulo.Name = "pnlTitulo";
-            this.pnlTitulo.Size = new System.Drawing.Size(846, 62);
+            this.pnlTitulo.Size = new System.Drawing.Size(337, 62);
             this.pnlTitulo.TabIndex = 32;
             // 
             // label2
@@ -83,18 +83,31 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Britannic Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
-            this.label2.Location = new System.Drawing.Point(460, 29);
+            this.label2.Location = new System.Drawing.Point(48, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(304, 30);
             this.label2.TabIndex = 30;
             this.label2.Text = "Información de Insumos";
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
+            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalir.Location = new System.Drawing.Point(852, 1);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(29, 29);
+            this.btnSalir.TabIndex = 12;
+            this.btnSalir.TabStop = false;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Britannic Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
-            this.label1.Location = new System.Drawing.Point(0, 27);
+            this.label1.Location = new System.Drawing.Point(3, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(326, 30);
             this.label1.TabIndex = 29;
@@ -126,13 +139,11 @@
             // cmbTipoProducto
             // 
             this.cmbTipoProducto.FormattingEnabled = true;
-            this.cmbTipoProducto.Items.AddRange(new object[] {
-            "Elaborado",
-            "No Elaborado"});
             this.cmbTipoProducto.Location = new System.Drawing.Point(102, 220);
             this.cmbTipoProducto.Name = "cmbTipoProducto";
             this.cmbTipoProducto.Size = new System.Drawing.Size(213, 24);
             this.cmbTipoProducto.TabIndex = 38;
+            this.cmbTipoProducto.SelectedIndexChanged += new System.EventHandler(this.cmbTipoProducto_SelectedIndexChanged);
             // 
             // lblTipoProducto
             // 
@@ -324,37 +335,22 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.dgvInsumoInv);
             this.panel1.Controls.Add(this.btnAgregarInsumo);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.panel1.Location = new System.Drawing.Point(454, 77);
+            this.panel1.Location = new System.Drawing.Point(454, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(392, 426);
+            this.panel1.Size = new System.Drawing.Size(392, 502);
             this.panel1.TabIndex = 38;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 16);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "Descripción";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(118, 28);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(213, 46);
-            this.textBox1.TabIndex = 33;
+            this.panel1.Visible = false;
             // 
             // dgvInsumoInv
             // 
             this.dgvInsumoInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInsumoInv.Location = new System.Drawing.Point(4, 150);
+            this.dgvInsumoInv.Location = new System.Drawing.Point(3, 229);
             this.dgvInsumoInv.Name = "dgvInsumoInv";
             this.dgvInsumoInv.Size = new System.Drawing.Size(383, 273);
             this.dgvInsumoInv.TabIndex = 39;
@@ -364,39 +360,52 @@
             this.btnAgregarInsumo.BackgroundImage = global::Restaurante.Properties.Resources.add;
             this.btnAgregarInsumo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregarInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAgregarInsumo.Location = new System.Drawing.Point(33, 71);
+            this.btnAgregarInsumo.Location = new System.Drawing.Point(15, 130);
             this.btnAgregarInsumo.Name = "btnAgregarInsumo";
             this.btnAgregarInsumo.Size = new System.Drawing.Size(20, 20);
             this.btnAgregarInsumo.TabIndex = 35;
             this.btnAgregarInsumo.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 16);
+            this.label3.TabIndex = 34;
+            this.label3.Text = "Descripción";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(153, 101);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(213, 46);
+            this.textBox1.TabIndex = 33;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
             this.pictureBox1.Location = new System.Drawing.Point(6, 509);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(792, 94);
+            this.pictureBox1.Size = new System.Drawing.Size(875, 94);
             this.pictureBox1.TabIndex = 37;
             this.pictureBox1.TabStop = false;
             // 
-            // btnSalir
+            // panel2
             // 
-            this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
-            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSalir.Location = new System.Drawing.Point(817, 0);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(29, 29);
-            this.btnSalir.TabIndex = 12;
-            this.btnSalir.TabStop = false;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(383, 62);
+            this.panel2.TabIndex = 39;
             // 
             // ModuloInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(870, 608);
+            this.ClientSize = new System.Drawing.Size(889, 608);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlBotones);
@@ -418,6 +427,8 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInsumoInv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -456,5 +467,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dgvInsumoInv;
         private System.Windows.Forms.Button btnAgregarInsumo;
+        private System.Windows.Forms.Panel panel2;
     }
 }
