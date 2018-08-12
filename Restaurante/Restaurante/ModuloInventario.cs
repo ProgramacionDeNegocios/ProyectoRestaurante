@@ -82,9 +82,9 @@ namespace Restaurante
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt3);
-            cmbTipoProducto.DisplayMember = "nombre";
-            cmbTipoProducto.ValueMember = "nombre";
-            cmbTipoProducto.DataSource = dt3;
+            cmbCategoriaProducto.DisplayMember = "descripcion";
+            cmbCategoriaProducto.ValueMember = "descripcion";
+            cmbCategoriaProducto.DataSource = dt3;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace Restaurante
         private void dgvInventario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Clases.Inventario inventario = new Clases.Inventario();
-            inventario.ObtenerInsumo(
+            inventario.ObtenerInventario(
                 Convert.ToInt32(
                     dgvInventario.Rows[e.RowIndex].Cells["Código"].Value.ToString()
                     )
@@ -172,6 +172,7 @@ namespace Restaurante
             txtCantidad.Text = inventario.Cantidad.ToString();
             cmbTipoProducto.SelectedIndex = inventario.IdTipoProducto - 1;
             cmbProveedor.SelectedIndex = inventario.IdProveedor - 1;
+            cmbCategoriaProducto.SelectedIndex = inventario.IdCategoria - 1;
 
             btnNuevo.Enabled = true;
             btnAgregar.Enabled = false;
@@ -188,6 +189,7 @@ namespace Restaurante
             txtCantidad.Text = "";
             cmbTipoProducto.SelectedValue = "";
             cmbProveedor.SelectedValue = "";
+            cmbCategoriaProducto.SelectedValue = "";
             CargarDGWInventario();
             dgwInventarioEstilo(dgvInventario);
 
@@ -277,10 +279,14 @@ namespace Restaurante
             if (cmbTipoProducto.Text == "Elaborado")
             {
                 panel1.Visible = true;
+                cmbProveedor.Visible = false;
+                lblProveedor.Visible = false;
             }
             else
             {
                 panel1.Visible = false;
+                cmbProveedor.Visible = true;
+                lblProveedor.Visible = true;
             }
         }
     }

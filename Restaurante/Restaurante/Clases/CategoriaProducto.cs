@@ -65,7 +65,7 @@ namespace Restaurante.Clases
                 cmd.Parameters.Add(new SqlParameter("idCategoria", SqlDbType.Int));
                 cmd.Parameters["idCategoria"].Value = Id;
                 cmd.Parameters.Add(new SqlParameter("descripcion", SqlDbType.NVarChar, 100));
-                cmd.Parameters["decripcion"].Value = Descripcion;
+                cmd.Parameters["descripcion"].Value = Descripcion;
                 cmd.ExecuteNonQuery();
 
             }
@@ -160,7 +160,7 @@ namespace Restaurante.Clases
         public void ObtenerCategoriaProductoPorNombre(string nombreCategoria)
         {
             Conexion conexion = new Conexion();
-            string sql = @"SELECT idCategoria, descripcion FROM Restaurante.CategoriaProducto WHERE nombre = '" + nombreCategoria + "';";
+            string sql = @"SELECT idCategoria, descripcion FROM Restaurante.CategoriaProducto WHERE descripcion = '" + nombreCategoria + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {

@@ -144,7 +144,7 @@ namespace Restaurante.Clases
             }
         }
 
-        public void ObtenerInsumo(int id)
+        public void ObtenerInventario(int id)
         {
             Conexion conexion = new Conexion();
             string sql = @"SELECT idInventario, descripcion, costo, precioVenta, cantidad, idCategoria, idTipoProducto, idProveedor FROM Restaurante.Inventario WHERE idInventario = '" + id + "';";
@@ -186,7 +186,7 @@ namespace Restaurante.Clases
                                     Restaurante.Inventario.costo                as Costo,
                                     Restaurante.Inventario.precioVenta          as PrecioVenta,
                                     Restaurante.Inventario.cantidad             as Cantidad,
-                                    Restaurante.CategoriaProducto.descripcion   as Categoría
+                                    Restaurante.CategoriaProducto.descripcion   as Categoría,
                                     Restaurante.TipoProducto.nombre             as TipoProducto,
                                     Restaurante.Proveedores.nombre              as Proveedor
                             FROM Restaurante.Proveedores
@@ -194,8 +194,8 @@ namespace Restaurante.Clases
                             ON Restaurante.Proveedores.idProveedor = Restaurante.Inventario.idProveedor
                             INNER JOIN Restaurante.TipoProducto
                             ON Restaurante.TipoProducto.idTipoProducto = Restaurante.Inventario.idTipoProducto
-                            INNER JOIN Restaurante.CategoriaPeoducto
-                            ON Restaurante.CategoriaProducto.idCategoria = Restaurante.Inventario.idCategpria";
+                            INNER JOIN Restaurante.CategoriaProducto
+                            ON Restaurante.CategoriaProducto.idCategoria = Restaurante.Inventario.idCategoria";
 
             try
             {

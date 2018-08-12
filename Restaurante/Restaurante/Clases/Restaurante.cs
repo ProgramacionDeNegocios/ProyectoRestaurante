@@ -246,14 +246,14 @@ namespace Restaurante.Clases
             {
                 throw new Clases.Exepcion
                     (
-                    "Error al insertar el insumo. \n\n" +
+                    "Error al insertar el Producto. \n\n" +
                     "Existen datos obligatorios que se necesitan para poder agregar el Inventario\n" +
                     "Producto : Pescado Frito\n" +
                     "Costo    : 80.00\n" +
                     "Precio Venta   : 100.00\n" +
                     "Cantidad   : 20\n" +
-                    "Unidad   : Libra\n" +
-                    "Tipo Producto : Preparado\n" +
+                    "Categoria   : Plato\n" +
+                    "Tipo Producto : Elaborado\n" +
                     "Proveedor : Don Edgardo",
                     new Exception(),
                     "Clase_Inventario"
@@ -274,7 +274,7 @@ namespace Restaurante.Clases
         {
             try
             {
-                ValidarInventario(descripcion, costo, precioventa, cantidad, idtipoproducto, idtipoproducto, idproveedor);
+                ValidarInventario(descripcion, costo, precioventa, cantidad, idcategoria, idtipoproducto, idproveedor);
                 Clases.Inventario inventario = new Clases.Inventario(
                     descripcion,
                     costo,
@@ -283,7 +283,7 @@ namespace Restaurante.Clases
                     idcategoria,
                     idtipoproducto,
                     idproveedor);
-                inventario.Agregar();             
+                inventario.Agregar();
             }
             catch (Exception ex)
             {
