@@ -99,6 +99,12 @@
     <Compile Include="ModuloTipoUnidad.Designer.cs">
       <DependentUpon>ModuloTipoUnidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeleccionarMesero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionarMesero.Designer.cs">
+      <DependentUpon>SeleccionarMesero.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SeleccionarMesero.resx">
+      <DependentUpon>SeleccionarMesero.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsuarioLogin.resx">
       <DependentUpon>UsuarioLogin.cs</DependentUpon>
     </EmbeddedResource>
