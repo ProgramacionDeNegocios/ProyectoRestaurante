@@ -41,6 +41,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnInsumos = new System.Windows.Forms.Button();
             this.btnTipoUnidad = new System.Windows.Forms.Button();
+            this.btnAreas = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -177,11 +178,22 @@
             this.btnTipoUnidad.UseVisualStyleBackColor = true;
             this.btnTipoUnidad.Click += new System.EventHandler(this.btnTipoUnidad_Click);
             // 
+            // btnAreas
+            // 
+            this.btnAreas.Location = new System.Drawing.Point(615, 19);
+            this.btnAreas.Name = "btnAreas";
+            this.btnAreas.Size = new System.Drawing.Size(109, 64);
+            this.btnAreas.TabIndex = 7;
+            this.btnAreas.Text = "Areas";
+            this.btnAreas.UseVisualStyleBackColor = true;
+            this.btnAreas.Click += new System.EventHandler(this.btnAreas_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 563);
+            this.Controls.Add(this.btnAreas);
             this.Controls.Add(this.btnTipoUnidad);
             this.Controls.Add(this.btnInsumos);
             this.Controls.Add(this.tabControl1);
@@ -193,7 +205,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -217,5 +228,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnInsumos;
         private System.Windows.Forms.Button btnTipoUnidad;
+        private System.Windows.Forms.Button btnAreas;
     }
 }
