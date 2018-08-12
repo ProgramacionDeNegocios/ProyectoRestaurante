@@ -216,6 +216,7 @@
             this.cmbUnidad.Name = "cmbUnidad";
             this.cmbUnidad.Size = new System.Drawing.Size(213, 24);
             this.cmbUnidad.TabIndex = 4;
+            this.cmbUnidad.SelectedIndexChanged += new System.EventHandler(this.cmbUnidad_SelectedIndexChanged);
             // 
             // lblUnidad
             // 

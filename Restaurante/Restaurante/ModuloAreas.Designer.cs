@@ -173,6 +173,7 @@
             this.dgvAreas.Size = new System.Drawing.Size(490, 148);
             this.dgvAreas.TabIndex = 31;
             this.dgvAreas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAreas_CellClick_1);
+            this.dgvAreas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAreas_CellContentClick);
             // 
             // pnlTitulo
             // 

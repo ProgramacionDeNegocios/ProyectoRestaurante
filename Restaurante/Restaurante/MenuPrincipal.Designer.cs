@@ -42,6 +42,7 @@
             this.btnInsumos = new System.Windows.Forms.Button();
             this.btnTipoUnidad = new System.Windows.Forms.Button();
             this.btnAreas = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -101,6 +102,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.Pedidos);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -188,6 +190,16 @@
             this.btnAreas.UseVisualStyleBackColor = true;
             this.btnAreas.Click += new System.EventHandler(this.btnAreas_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(149, 21);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 64);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Control de Mesas";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +241,6 @@
         private System.Windows.Forms.Button btnInsumos;
         private System.Windows.Forms.Button btnTipoUnidad;
         private System.Windows.Forms.Button btnAreas;
+        private System.Windows.Forms.Button button3;
     }
 }
