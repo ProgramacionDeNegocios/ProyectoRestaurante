@@ -44,6 +44,7 @@ namespace Restaurante
             CargarDGWInventario();
             CargarCMBProveedores();
             CargarCMBTipoProducto();
+            CargarCMBCategoriaProducto();
             ResetFormulario();
         }
 
@@ -73,6 +74,19 @@ namespace Restaurante
             cmbTipoProducto.DataSource = dt2;
         }
 
+        private void CargarCMBCategoriaProducto()
+        {
+            DataTable dt3 = new DataTable();
+            Clases.Conexion conexion = new Clases.Conexion();
+            string sql = "select * FROM Restaurante.CategoriaProducto";
+            SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt3);
+            cmbTipoProducto.DisplayMember = "nombre";
+            cmbTipoProducto.ValueMember = "nombre";
+            cmbTipoProducto.DataSource = dt3;
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -83,12 +97,16 @@ namespace Restaurante
                 Clases.TipoProducto tipoproducto = new Clases.TipoProducto();
                 tipoproducto.ObtenerTipoProductoPorNombre(cmbTipoProducto.SelectedValue.ToString());
 
+                Clases.CategoriaProducto categoria = new Clases.CategoriaProducto();
+                categoria.ObtenerCategoriaProductoPorNombre(cmbCategoriaProducto.SelectedValue.ToString());
+
                 Clases.Restaurante.AgregarInventario
                     (
                         txtDescripcion.Text,
                         Convert.ToDecimal(txtCosto.Text),
                         Convert.ToDecimal(txtPrecioVenta.Text),
                         Convert.ToDecimal(txtCantidad.Text),
+                        categoria.Id,
                         tipoproducto.Id,
                         proveedor.Id
                     );
@@ -112,13 +130,17 @@ namespace Restaurante
                     Clases.TipoProducto tipoproducto = new Clases.TipoProducto();
                     tipoproducto.ObtenerTipoProductoPorNombre(cmbTipoProducto.SelectedValue.ToString());
 
+                    Clases.CategoriaProducto categoria = new Clases.CategoriaProducto();
+                    categoria.ObtenerCategoriaProductoPorNombre(cmbCategoriaProducto.SelectedValue.ToString());
+
                     Clases.Restaurante.ModificarInventario
-                        ( 
+                        (
                         this.id,
                         txtDescripcion.Text,
                         Convert.ToDecimal(txtCosto.Text),
                         Convert.ToDecimal(txtPrecioVenta.Text),
                         Convert.ToDecimal(txtCantidad.Text),
+                        categoria.Id,
                         tipoproducto.Id,
                         proveedor.Id
                         );

@@ -206,6 +206,7 @@ ELSE
 			costo DECIMAL(8,2) NOT NULL,
 			precioVenta DECIMAL(8,2) NOT NULL,
 			cantidad DECIMAL(8,2) NOT NULL,
+			idCategoria INT NOT NULL,
 			idTipoProducto INT NOT NULL,
 			idProveedor INT NULL
 		);
@@ -270,6 +271,17 @@ ELSE
 			idInsumoProducto INT IDENTITY(1,1) NOT NULL,
 			idInsumo INT NOT NULL,
 			idInventario INT NOT NULL
+		);
+	END
+GO
+
+IF OBJECT_ID('Restaurante.CategoriaProducto')	IS NOT NULL
+	DROP TABLE Restaurante.CategoriaProducto
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.CategoriaProducto(
+			idCategoria INT IDENTITY NOT NULL,
+			descripcion NVARCHAR(100)
 		);
 	END
 GO

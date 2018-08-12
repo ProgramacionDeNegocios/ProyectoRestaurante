@@ -82,6 +82,10 @@ ALTER TABLE Restaurante.InsumosProductos
 		PRIMARY KEY CLUSTERED(idInsumoProducto)
 GO
 
+ALTER TABLE Restaurante.CategoriaProducto
+	ADD CONSTRAINT PK_Restaurante_CategoriaProducto_idCategoria
+		PRIMARY KEY CLUSTERED(idCategoria)
+
 
 
 
@@ -143,6 +147,11 @@ ALTER TABLE	Restaurante.Inventario
 		FOREIGN KEY (idTipoProducto)
 			REFERENCES Restaurante.TipoProducto(idTipoProducto)
 GO
+
+ALTER TABLE	Restaurante.Inventario
+	ADD CONSTRAINT FK_Restaurante_Inventario_idInventario$TienenUn$Restaurante_CategoriaProducto_idCategoria
+		FOREIGN KEY (idCategoria)
+			REFERENCES Restaurante.CategoriaProducto(idCategoria)
 
 ALTER TABLE	Restaurante.Insumos
 	ADD CONSTRAINT FK_Restaurante_Proveedores_idProveedor$TienenVarios$Restaurante_Inventario_idInventario

@@ -24,6 +24,9 @@ EXEC SP_InsertarTipoUnidad 'Onza'
 --SP_InsertarTipoProducto
 EXEC SP_InsertarTipoProducto 'Elaborado'
 
+--SP_InsertarCategoriaProducto
+EXEC SP_InsertarCategoriaProducto 'Bebida'
+
 --AREA DE PRUEBA DE LA INFORMACION
 SELECT * FROM Acceso.Usuarios
 SELECT * FROM Acceso.TipoAcceso

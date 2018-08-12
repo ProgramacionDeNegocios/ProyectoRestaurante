@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\CategoriaProducto.cs" />
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\Exepcion.cs" />
     <Compile Include="Clases\Insumos.cs" />
@@ -64,6 +65,12 @@
     </Compile>
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCategoriaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCategoriaProducto.Designer.cs">
+      <DependentUpon>ModuloCategoriaProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloInsumos.cs">
       <SubType>Form</SubType>
@@ -117,6 +124,9 @@
     </Compile>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCategoriaProducto.resx">
+      <DependentUpon>ModuloCategoriaProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloInsumos.resx">
       <DependentUpon>ModuloInsumos.cs</DependentUpon>

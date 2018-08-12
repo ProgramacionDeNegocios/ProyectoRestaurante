@@ -75,5 +75,11 @@ namespace Restaurante
             ModuloTipoProducto moduloTipoProducto = new ModuloTipoProducto();
             moduloTipoProducto.ShowDialog();
         }
+
+        private void btnCategoria_Click(object sender, EventArgs e)
+        {
+            ModuloCategoriaProducto moduloCategoriaProducto = new ModuloCategoriaProducto();
+            moduloCategoriaProducto.ShowDialog();
+        }
     }
 }

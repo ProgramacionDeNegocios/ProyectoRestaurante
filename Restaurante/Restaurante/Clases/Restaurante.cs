@@ -237,11 +237,12 @@ namespace Restaurante.Clases
                 decimal costo,
                 decimal precioventa,
                 decimal cantidad,
+                int idcategoria,
                 int idtipoproducto,
                 int idproveedor
                 )
         {
-            if (descripcion.Length == 0 || costo < 0 || precioventa < 0 || cantidad < 0 || idtipoproducto < 0 ||idproveedor < 0)
+            if (descripcion.Length == 0 || costo < 0 || precioventa < 0 || cantidad < 0 || idcategoria <0 || idtipoproducto < 0 ||idproveedor < 0)
             {
                 throw new Clases.Exepcion
                     (
@@ -266,18 +267,20 @@ namespace Restaurante.Clases
             decimal costo,
             decimal precioventa,
             decimal cantidad,
+            int idcategoria,
             int idtipoproducto,
             int idproveedor
             )
         {
             try
             {
-                ValidarInventario(descripcion, costo, precioventa, cantidad, idtipoproducto, idproveedor);
+                ValidarInventario(descripcion, costo, precioventa, cantidad, idtipoproducto, idtipoproducto, idproveedor);
                 Clases.Inventario inventario = new Clases.Inventario(
                     descripcion,
                     costo,
                     precioventa,
                     cantidad,
+                    idcategoria,
                     idtipoproducto,
                     idproveedor);
                 inventario.Agregar();             
@@ -295,19 +298,21 @@ namespace Restaurante.Clases
             decimal costo,
             decimal precioventa,
             decimal cantidad,
+            int idcategoria,
             int idtipoproducto,
             int idproveedor
             )
         {
             try
             {
-                ValidarInventario(descripcion, costo, precioventa, cantidad, idtipoproducto, idproveedor);
+                ValidarInventario(descripcion, costo, precioventa, cantidad, idcategoria, idtipoproducto, idproveedor);
                 Clases.Inventario inventario = new Clases.Inventario(
                     id,
                     descripcion,
                     costo,
                     precioventa,
                     cantidad,
+                    idcategoria,
                     idtipoproducto,
                     idproveedor);
                 inventario.Modificar();
@@ -407,6 +412,84 @@ namespace Restaurante.Clases
                     id
                     );
                 tipoproducto.Eliminar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private static void ValidarCategoriaProducto
+         (
+            string nombre
+
+         )
+        {
+            if (nombre.Length == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar una Categoria de Producto. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar una Categoria de Producto:\n" +
+                    "Nombre   : Bebida\n",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+        }
+
+        public static void AgregarCategoriaProducto
+            (
+            string nombre
+            )
+        {
+            try
+            {
+                ValidarCategoriaProducto(nombre);
+                Clases.CategoriaProducto categoria = new Clases.CategoriaProducto(
+                    nombre
+                    );
+                categoria.Agregar();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ModificarCategoriaProducto
+            (
+            int id,
+            string nombre
+            )
+        {
+            try
+            {
+                ValidarCategoriaProducto(nombre);
+                Clases.CategoriaProducto categoria = new Clases.CategoriaProducto(
+                    id,
+                    nombre
+                    );
+                categoria.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void EliminarCategoriaProducto
+            (
+            int id
+            )
+        {
+            try
+            {
+                Clases.CategoriaProducto categoria = new Clases.CategoriaProducto(
+                    id
+                    );
+                categoria.Eliminar();
             }
             catch (Exception ex)
             {

@@ -620,6 +620,7 @@ CREATE PROCEDURE SP_AgregarInventario
 	@costo DECIMAL(8,2),
 	@precioVenta DECIMAL(8,2),
 	@cantidad DECIMAL(8,2),
+	@idCategoria INT,
 	@idTipoProducto INT,
 	@idProveedor INT
 
@@ -638,8 +639,8 @@ BEGIN
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Restaurante.Inventario(descripcion, costo, precioVenta, cantidad, idTipoProducto, idProveedor)
-				VALUES(@descripcion, @costo, @precioVenta, @cantidad, @idTipoProducto, @idProveedor)
+			INSERT INTO Restaurante.Inventario(descripcion, costo, precioVenta, cantidad, idCategoria, idTipoProducto, idProveedor)
+				VALUES(@descripcion, @costo, @precioVenta, @cantidad, @idCategoria, @idTipoProducto, @idProveedor)
 			RETURN 1
 		END
 END
@@ -652,6 +653,7 @@ CREATE PROCEDURE SP_ModificarInventario
 	@costo DECIMAL(8,2),
 	@precioVenta DECIMAL(8,2),
 	@cantidad DECIMAL(8,2),
+	@idCategoria INT,
 	@idTipoProducto INT,
 	@idProveedor INT
 )
@@ -674,6 +676,7 @@ BEGIN
 						costo = @costo,
 						precioVenta = @precioVenta,
 						cantidad = @cantidad,
+						idCategoria = @idCategoria,
 						idTipoProducto = @idTipoProducto,
 						idProveedor = @idProveedor
 					WHERE idInventario = @idInventario;
@@ -1006,6 +1009,78 @@ BEGIN
 	ELSE
 		BEGIN
 			DELETE FROM Restaurante.TipoProducto WHERE idTipoProducto = @idTipoProducto;
+			RETURN 1
+		END
+END
+GO
+
+CREATE PROCEDURE SP_InsertarCategoriaProducto
+(
+	@descripcion NVARCHAR(100)
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+
+	SELECT @existe = COUNT(Restaurante.CategoriaProducto.idCategoria) FROM Restaurante.CategoriaProducto WHERE descripcion=@descripcion;
+	IF (@existe > 0)
+		BEGIN
+			RAISERROR(N'Ya existe una Categoria con el nombre "%s"', 16, 1,@descripcion);
+			RETURN 0
+			
+		END
+	ELSE
+		BEGIN
+			INSERT INTO Restaurante.CategoriaProducto(descripcion)
+				VALUES(@descripcion)
+			RETURN 1
+		END
+END
+GO
+
+CREATE PROCEDURE SP_ModificarCategoriaProducto
+(
+	@idCategoria INT,
+	@descripcion NVARCHAR(100)
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+	SELECT @existe = COUNT(Restaurante.CategoriaProducto.idCategoria) FROM Restaurante.CategoriaProducto WHERE idCategoria=@idCategoria;
+	IF (@existe = 0)
+		BEGIN
+			RAISERROR(N'No existe ninguna Categoria con el id "%d"', 16, 1, @idCategoria);
+			RETURN 0
+		END 	
+	ELSE
+		BEGIN
+			UPDATE Restaurante.CategoriaProducto
+				SET 	descripcion = @descripcion
+					WHERE idCategoria = @idCategoria;
+			RETURN 1
+		END
+END
+GO
+
+CREATE PROCEDURE SP_EliminarCategoriaProducto
+(
+	@idCategoria INT
+)
+AS
+BEGIN
+	DECLARE @existe int;
+	SET @existe = 0;
+	SELECT @existe = COUNT(Restaurante.CategoriaProducto.idCategoria) FROM Restaurante.CategoriaProducto WHERE idCategoria=@idCategoria;
+	IF (@existe = 0)
+		BEGIN
+			RAISERROR(N'No existe ninguna Categoría con el id "%d"', 16, 1, @idCategoria);
+			RETURN 0
+		END 	
+	ELSE
+		BEGIN
+			DELETE FROM Restaurante.CategoriaProducto WHERE idCategoria = @idCategoria;
 			RETURN 1
 		END
 END

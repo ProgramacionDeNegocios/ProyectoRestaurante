@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.pnlTitulo = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.grpInventario = new System.Windows.Forms.GroupBox();
             this.cmbTipoProducto = new System.Windows.Forms.ComboBox();
             this.lblTipoProducto = new System.Windows.Forms.Label();
@@ -54,20 +54,22 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dgvInsumoInv = new System.Windows.Forms.DataGridView();
             this.btnAgregarInsumo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.cmbCategoriaProducto = new System.Windows.Forms.ComboBox();
+            this.lblCategoria = new System.Windows.Forms.Label();
             this.pnlTitulo.SuspendLayout();
             this.grpInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
             this.pnlBotones.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInsumoInv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTitulo
@@ -77,6 +79,17 @@
             this.pnlTitulo.Name = "pnlTitulo";
             this.pnlTitulo.Size = new System.Drawing.Size(337, 62);
             this.pnlTitulo.TabIndex = 32;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Britannic Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
+            this.label1.Location = new System.Drawing.Point(3, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(326, 30);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Información de Productos";
             // 
             // label2
             // 
@@ -102,19 +115,10 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Britannic Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
-            this.label1.Location = new System.Drawing.Point(3, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(326, 30);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Información de Productos";
-            // 
             // grpInventario
             // 
+            this.grpInventario.Controls.Add(this.cmbCategoriaProducto);
+            this.grpInventario.Controls.Add(this.lblCategoria);
             this.grpInventario.Controls.Add(this.cmbTipoProducto);
             this.grpInventario.Controls.Add(this.lblTipoProducto);
             this.grpInventario.Controls.Add(this.txtCantidad);
@@ -132,14 +136,14 @@
             this.grpInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.grpInventario.Location = new System.Drawing.Point(12, 63);
             this.grpInventario.Name = "grpInventario";
-            this.grpInventario.Size = new System.Drawing.Size(324, 294);
+            this.grpInventario.Size = new System.Drawing.Size(324, 327);
             this.grpInventario.TabIndex = 34;
             this.grpInventario.TabStop = false;
             // 
             // cmbTipoProducto
             // 
             this.cmbTipoProducto.FormattingEnabled = true;
-            this.cmbTipoProducto.Location = new System.Drawing.Point(102, 220);
+            this.cmbTipoProducto.Location = new System.Drawing.Point(102, 256);
             this.cmbTipoProducto.Name = "cmbTipoProducto";
             this.cmbTipoProducto.Size = new System.Drawing.Size(213, 24);
             this.cmbTipoProducto.TabIndex = 38;
@@ -148,7 +152,7 @@
             // lblTipoProducto
             // 
             this.lblTipoProducto.AutoSize = true;
-            this.lblTipoProducto.Location = new System.Drawing.Point(11, 223);
+            this.lblTipoProducto.Location = new System.Drawing.Point(3, 259);
             this.lblTipoProducto.Name = "lblTipoProducto";
             this.lblTipoProducto.Size = new System.Drawing.Size(93, 16);
             this.lblTipoProducto.TabIndex = 39;
@@ -191,7 +195,7 @@
             // cmbProveedor
             // 
             this.cmbProveedor.FormattingEnabled = true;
-            this.cmbProveedor.Location = new System.Drawing.Point(102, 259);
+            this.cmbProveedor.Location = new System.Drawing.Point(102, 297);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(213, 24);
             this.cmbProveedor.TabIndex = 6;
@@ -199,7 +203,7 @@
             // lblProveedor
             // 
             this.lblProveedor.AutoSize = true;
-            this.lblProveedor.Location = new System.Drawing.Point(11, 262);
+            this.lblProveedor.Location = new System.Drawing.Point(11, 300);
             this.lblProveedor.Name = "lblProveedor";
             this.lblProveedor.Size = new System.Drawing.Size(72, 16);
             this.lblProveedor.TabIndex = 33;
@@ -262,11 +266,11 @@
             this.dgvInventario.AllowUserToDeleteRows = false;
             this.dgvInventario.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventario.Location = new System.Drawing.Point(12, 363);
+            this.dgvInventario.Location = new System.Drawing.Point(12, 396);
             this.dgvInventario.Name = "dgvInventario";
             this.dgvInventario.ReadOnly = true;
             this.dgvInventario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvInventario.Size = new System.Drawing.Size(326, 127);
+            this.dgvInventario.Size = new System.Drawing.Size(869, 127);
             this.dgvInventario.TabIndex = 35;
             this.dgvInventario.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInventario_CellClick);
             // 
@@ -276,7 +280,7 @@
             this.pnlBotones.Controls.Add(this.btnAgregar);
             this.pnlBotones.Controls.Add(this.btnEliminar);
             this.pnlBotones.Controls.Add(this.btnNuevo);
-            this.pnlBotones.Location = new System.Drawing.Point(342, 148);
+            this.pnlBotones.Location = new System.Drawing.Point(349, 105);
             this.pnlBotones.Name = "pnlBotones";
             this.pnlBotones.Size = new System.Drawing.Size(102, 134);
             this.pnlBotones.TabIndex = 36;
@@ -343,16 +347,24 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.panel1.Location = new System.Drawing.Point(454, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(392, 502);
+            this.panel1.Size = new System.Drawing.Size(392, 356);
             this.panel1.TabIndex = 38;
             this.panel1.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(383, 62);
+            this.panel2.TabIndex = 39;
             // 
             // dgvInsumoInv
             // 
             this.dgvInsumoInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvInsumoInv.Location = new System.Drawing.Point(3, 229);
             this.dgvInsumoInv.Name = "dgvInsumoInv";
-            this.dgvInsumoInv.Size = new System.Drawing.Size(383, 273);
+            this.dgvInsumoInv.Size = new System.Drawing.Size(383, 116);
             this.dgvInsumoInv.TabIndex = 39;
             // 
             // btnAgregarInsumo
@@ -386,25 +398,34 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 509);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 529);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(875, 94);
+            this.pictureBox1.Size = new System.Drawing.Size(875, 74);
             this.pictureBox1.TabIndex = 37;
             this.pictureBox1.TabStop = false;
             // 
-            // panel2
+            // cmbCategoriaProducto
             // 
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(383, 62);
-            this.panel2.TabIndex = 39;
+            this.cmbCategoriaProducto.FormattingEnabled = true;
+            this.cmbCategoriaProducto.Location = new System.Drawing.Point(102, 217);
+            this.cmbCategoriaProducto.Name = "cmbCategoriaProducto";
+            this.cmbCategoriaProducto.Size = new System.Drawing.Size(213, 24);
+            this.cmbCategoriaProducto.TabIndex = 40;
+            // 
+            // lblCategoria
+            // 
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Location = new System.Drawing.Point(11, 220);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(67, 16);
+            this.lblCategoria.TabIndex = 41;
+            this.lblCategoria.Text = "Categoría";
             // 
             // ModuloInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 608);
+            this.ClientSize = new System.Drawing.Size(900, 608);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
@@ -425,10 +446,10 @@
             this.pnlBotones.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInsumoInv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInsumoInv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -468,5 +489,7 @@
         private System.Windows.Forms.DataGridView dgvInsumoInv;
         private System.Windows.Forms.Button btnAgregarInsumo;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox cmbCategoriaProducto;
+        private System.Windows.Forms.Label lblCategoria;
     }
 }
