@@ -65,14 +65,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Areas.cs" />
+    <Compile Include="Clases\CategoriaProducto.cs" />
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\Exepcion.cs" />
     <Compile Include="Clases\Insumos.cs" />
+    <Compile Include="Clases\InsumosProductos.cs" />
+    <Compile Include="Clases\Inventario.cs" />
     <Compile Include="Clases\Mensaje.cs" />
     <Compile Include="Clases\Mesero.cs" />
     <Compile Include="Clases\Proveedor.cs" />
     <Compile Include="Clases\Restaurante.cs" />
     <Compile Include="Clases\Rol.cs" />
+    <Compile Include="Clases\TipoProducto.cs" />
     <Compile Include="Clases\TipoUnidad.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />
@@ -98,6 +102,12 @@
     <Compile Include="ModuloAreas.Designer.cs">
       <DependentUpon>ModuloAreas.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloCategoriaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloCategoriaProducto.Designer.cs">
+      <DependentUpon>ModuloCategoriaProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +120,12 @@
     <Compile Include="ModuloInsumos.Designer.cs">
       <DependentUpon>ModuloInsumos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModuloInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloInventario.Designer.cs">
+      <DependentUpon>ModuloInventario.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModuloMeseros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +137,12 @@
     </Compile>
     <Compile Include="ModuloProveedores.Designer.cs">
       <DependentUpon>ModuloProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloTipoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloTipoProducto.Designer.cs">
+      <DependentUpon>ModuloTipoProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloTipoUnidad.cs">
       <SubType>Form</SubType>
@@ -161,17 +183,26 @@
     <EmbeddedResource Include="ModuloAreas.resx">
       <DependentUpon>ModuloAreas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloCategoriaProducto.resx">
+      <DependentUpon>ModuloCategoriaProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloFacturas.resx">
       <DependentUpon>ModuloFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloInsumos.resx">
       <DependentUpon>ModuloInsumos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModuloInventario.resx">
+      <DependentUpon>ModuloInventario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModuloMeseros.resx">
       <DependentUpon>ModuloMeseros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloProveedores.resx">
       <DependentUpon>ModuloProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloTipoProducto.resx">
+      <DependentUpon>ModuloTipoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloTipoUnidad.resx">
       <DependentUpon>ModuloTipoUnidad.cs</DependentUpon>
