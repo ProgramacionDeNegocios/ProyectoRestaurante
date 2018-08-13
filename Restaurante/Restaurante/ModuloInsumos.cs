@@ -19,14 +19,6 @@ namespace Restaurante
             InitializeComponent();
         }
 
-        private void ModuloInsumos_Load(object sender, EventArgs e)
-        {
-            CargarDGWInsumos();
-            CargarCMBTipoUnidad();
-            CargarCMBProveedores();
-            ResetFormulario();
-        }
-
         private void CargarDGWInsumos()
         {
             try
@@ -46,7 +38,13 @@ namespace Restaurante
             dgw.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
         }
 
-
+        private void ModuloInsumos_Load(object sender, EventArgs e)
+        {
+            CargarDGWInsumos();
+            CargarCMBTipoUnidad();
+            CargarCMBProveedores();
+            ResetFormulario();
+        }
 
         private void CargarCMBTipoUnidad()
         {
@@ -64,10 +62,10 @@ namespace Restaurante
         {
             DataTable dt = new DataTable();
             Clases.Conexion conexion = new Clases.Conexion();
-            string sql = "select * FROM Restaurante.Proveedores";
-            SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
+                string sql = "select * FROM Restaurante.Proveedores";
+                SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
             cmbProveedor.DisplayMember = "nombre";
             cmbProveedor.ValueMember = "nombre";
             cmbProveedor.DataSource = dt;
@@ -86,9 +84,9 @@ namespace Restaurante
                     (
                         txtNombre.Text,
                         Convert.ToDecimal(txtCosto.Text),
-                        tipounidad.Id,
+                        tipounidad.Id,                        
                         txtDescripcion.Text,
-                        proveedor.Id
+                        proveedor.Id  
                     );
                 CargarDGWInsumos();
             }
@@ -119,7 +117,7 @@ namespace Restaurante
                         tipounidad.Id,
                         txtDescripcion.Text,
                         proveedor.Id
-                        );
+                        );                               
                     ResetFormulario();
                 }
                 catch (Exception ex)
@@ -144,7 +142,7 @@ namespace Restaurante
             txtId.Text = insumos.Id.ToString();
             txtNombre.Text = insumos.Nombre;
             txtCosto.Text = insumos.Costo.ToString();
-            cmbUnidad.SelectedIndex = insumos.IdTipoUnidad - 1;
+            cmbUnidad.SelectedIndex = insumos.IdTipoUnidad -1;
             txtDescripcion.Text = insumos.Descripcion;
             cmbProveedor.SelectedIndex = insumos.IdProveedor - 1;
 
@@ -152,6 +150,7 @@ namespace Restaurante
             btnAgregar.Enabled = false;
             btnModificar.Enabled = true;
             btnEliminar.Enabled = true;
+
         }
 
         private void ResetFormulario()
@@ -196,7 +195,7 @@ namespace Restaurante
 
         private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar))
+            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsPunctuation(e.KeyChar))
             {
                 e.Handled = false;
             }
@@ -229,7 +228,7 @@ namespace Restaurante
                 {
                     ResetFormulario();
                 }
-
+                
             }
         }
     }

@@ -262,6 +262,7 @@
             // 
             // txtId
             // 
+            this.txtId.Enabled = false;
             this.txtId.Location = new System.Drawing.Point(102, 14);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(213, 22);
@@ -312,7 +313,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ModuloInsumos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ModuloInsumos";
+            this.Text = "3";
             this.Load += new System.EventHandler(this.ModuloInsumos_Load);
             this.pnlTitulo.ResumeLayout(false);
             this.pnlTitulo.PerformLayout();

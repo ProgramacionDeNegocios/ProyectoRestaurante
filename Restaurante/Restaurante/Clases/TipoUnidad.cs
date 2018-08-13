@@ -64,14 +64,14 @@ namespace Restaurante.Clases
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("idTipoUnidad", SqlDbType.Int));
                 cmd.Parameters["idTipoUnidad"].Value = Id;
-                cmd.Parameters.Add(new SqlParameter("descripcion", SqlDbType.NVarChar, 25));
+                cmd.Parameters.Add(new SqlParameter("descripcion", SqlDbType.NVarChar, 100));
                 cmd.Parameters["descripcion"].Value = Descripcion;
                 cmd.ExecuteNonQuery();
 
             }
             catch (SqlException ex)
             {
-                throw ex;
+                throw new Clases.Exepcion(ex.Message, ex, "Clase_TipoUnidad");
             }
             finally
             {
@@ -186,6 +186,5 @@ namespace Restaurante.Clases
             }
 
         }
-
     }
 }

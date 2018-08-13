@@ -43,7 +43,23 @@ namespace Restaurante
             ResetFormulario();
         }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clases.Restaurante.AgregarTipoUnidad
+                    (
+                        txtDescripcion.Text
+                    );
+                CargarDGWTipoUnidad();
 
+            }
+            catch (Exception ex)
+            {
+
+                Clases.Mensaje.Advertencia(ex);
+            }
+        }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -54,7 +70,7 @@ namespace Restaurante
                 {
                     Clases.Restaurante.ModificarTipoUnidad
                         (
-                            this.id,
+                            this.id, 
                             txtDescripcion.Text
                         );
                     ResetFormulario();
@@ -107,6 +123,10 @@ namespace Restaurante
 
         }
 
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            ResetFormulario();
+        }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -129,34 +149,9 @@ namespace Restaurante
             }
         }
 
-
-
-        private void btnSalir_Click_1(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void btnNuevo_Click_1(object sender, EventArgs e)
-        {
-            ResetFormulario();
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Clases.Restaurante.AgregarTipoUnidad
-                    (
-                        txtDescripcion.Text
-                    );
-                CargarDGWTipoUnidad();
-
-            }
-            catch (Exception ex)
-            {
-
-                Clases.Mensaje.Advertencia(ex);
-            }
         }
     }
 }
