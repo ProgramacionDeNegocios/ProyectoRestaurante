@@ -16,7 +16,7 @@ namespace Restaurante
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ModuloFacturas());
+            Application.Run(new ModuloUsuarios());
         }
     }
 }

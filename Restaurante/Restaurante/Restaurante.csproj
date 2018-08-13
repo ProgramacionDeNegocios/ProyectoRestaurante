@@ -81,6 +81,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Insumos.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DDataSet\PreFactura.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreFactura.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +133,12 @@
     </Compile>
     <Compile Include="ReporteInsumos.Designer.cs">
       <DependentUpon>ReporteInsumos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePreFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportePreFactura.Designer.cs">
+      <DependentUpon>ReportePreFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UsuarioLogin.cs">
@@ -178,6 +189,10 @@
     <EmbeddedResource Include="ReporteInsumos.resx">
       <DependentUpon>ReporteInsumos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportePreFactura.resx">
+      <DependentUpon>ReportePreFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PreFactura.rdlc" />
     <EmbeddedResource Include="Reportes\reportInsumos.rdlc" />
     <EmbeddedResource Include="UsuarioLogin.resx">
       <DependentUpon>UsuarioLogin.cs</DependentUpon>
@@ -195,6 +210,17 @@
     </None>
     <None Include="DDataSet\Insumos.xss">
       <DependentUpon>Insumos.xsd</DependentUpon>
+    </None>
+    <None Include="DDataSet\PreFactura.xsc">
+      <DependentUpon>PreFactura.xsd</DependentUpon>
+    </None>
+    <None Include="DDataSet\PreFactura.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PreFactura.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DDataSet\PreFactura.xss">
+      <DependentUpon>PreFactura.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
