@@ -13,11 +13,14 @@ namespace Restaurante
 {
     public partial class ControlMesas : Form
     {
+        public static Color valorColor;
+        //string color1;
         public ControlMesas()
         {
             InitializeComponent();
-        }
 
+        }
+        string nombre;
         private void label4_Click(object sender, EventArgs e)
         {
 
@@ -42,6 +45,7 @@ namespace Restaurante
         {
             habilitartodos();
             CargarAreas();
+  
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -73,7 +77,7 @@ namespace Restaurante
         private void CargarAreas()
         {
             Clases.Areas area = new Clases.Areas();
-            for (int i = 0; i <= 3; i++)
+            for (int i = 1; i <= 4; i++)
             {
                 area.ObtenerAreas(i);
                 switch (i)
@@ -1115,7 +1119,7 @@ namespace Restaurante
                         }
                             break;
                     case 4:
-                        if (tabPage4.Text == "")
+                        if (mesas.SelectedIndex == 3 && tabPage4.Text == "")
                         {
                             this.mesas.TabPages.Remove(this.tabPage4);
                             me1.Visible = false;
@@ -1146,9 +1150,9 @@ namespace Restaurante
                         }
                         else
                         {
-                            this.mes.TabPages.Add(this.tabPage4);
+                            this.mesas.TabPages.Add(this.tabPage4);
                             tabPage4.Text = area.Nombre;
-                            numero3 = area.Numeromes;
+                            numero3 = area.NumeroMesas;
                             if (numero2 >= 1 && numero2 <= 24)
                             {
 
@@ -1541,146 +1545,529 @@ namespace Restaurante
         {
 
         }
-        public void je()
+        public void area()
         {
+            switch (mesas.SelectedIndex)
+            {
+                case 0:
+                    this.nombre = "";
+                    this.nombre = tabPage1.Text;
+                    break;
+                case 1:
+                    this.nombre = "";
+                    this.nombre = tabPage2.Text;
+                    break;
+                case 2:
+                    this.nombre = "";
+                    this.nombre = tabPage3.Text;
+                    break;
+                case 3:
+                    this.nombre = "";
+                    this.nombre = tabPage4.Text;
+                    break;
+            }
+        }
+
+
+
+
+        public void je(int n, string j)
+        {
+            area();
             SeleccionarMesero seleccionarMesero = new SeleccionarMesero();
+            seleccionarMesero.valorArea = j;
+            seleccionarMesero.valorMesa = n;
             seleccionarMesero.ShowDialog();
+            estadoMesas();
+            
+
+        }
+        public void estadoMesas()
+        {
+            mesa1.BackColor = valorColor;
+            mesa2.BackColor = valorColor;
+            mesa3.BackColor = valorColor;
+            mesa4.BackColor = valorColor;
         }
         private void mesa1_Click(object sender, EventArgs e)
         {
-            SeleccionarMesero seleccionarMesero = new SeleccionarMesero();
-            seleccionarMesero.ShowDialog();
+            je(1,this.nombre);
+            
         }
 
         private void mesa2_Click(object sender, EventArgs e)
         {
-            SeleccionarMesero seleccionarMesero = new SeleccionarMesero();
-            seleccionarMesero.ShowDialog();
+            je(2, this.nombre);
         }
 
         private void mesa3_Click(object sender, EventArgs e)
         {
-            SeleccionarMesero seleccionarMesero = new SeleccionarMesero();
-            seleccionarMesero.ShowDialog();
+            je(3, this.nombre);
         }
 
         private void mesa4_Click(object sender, EventArgs e)
         {
-            SeleccionarMesero seleccionarMesero2 = new SeleccionarMesero();
-            seleccionarMesero2.ShowDialog();
+            je(4,this.nombre);
         }
-
+        
         private void mesa5_Click(object sender, EventArgs e)
         {
-            SeleccionarMesero seleccionarMesero = new SeleccionarMesero();
-            seleccionarMesero.ShowDialog();
+            je(5,this.nombre);
         }
 
         private void mesa6_Click(object sender, EventArgs e)
         {
-            SeleccionarMesero seleccionarMesero = new SeleccionarMesero();
-            seleccionarMesero.ShowDialog();
+            je(6,this.nombre);
         }
 
         private void mesa7_Click(object sender, EventArgs e)
         {
-            SeleccionarMesero seleccionarMesero = new SeleccionarMesero();
-            seleccionarMesero.ShowDialog();
+            je(7,this.nombre);
         }
 
         private void pictureBox14_Click(object sender, EventArgs e)
         {
-            je();
+            je(13, this.nombre);
         }
 
         private void pictureBox64_Click(object sender, EventArgs e)
         {
-            je();
+            je(11, this.nombre);
         }
 
         private void mesa8_Click(object sender, EventArgs e)
         {
-            je();
+            je(8,this.nombre);
         }
 
         private void mesa9_Click(object sender, EventArgs e)
         {
-            je();
+            je(9,this.nombre);
         }
 
         private void mesa10_Click(object sender, EventArgs e)
         {
-            je();
+            je(10,this.nombre);
         }
 
         private void mesa11_Click(object sender, EventArgs e)
         {
-            je();
+            je(11,this.nombre);
         }
 
         private void mesa12_Click(object sender, EventArgs e)
         {
-            je();
+            je(12,this.nombre);
         }
 
         private void mesa13_Click(object sender, EventArgs e)
         {
-            je();
+            je(13,this.nombre);
         }
 
         private void mesa14_Click(object sender, EventArgs e)
         {
-            je();
+            je(14,this.nombre);
         }
 
         private void mesa15_Click(object sender, EventArgs e)
         {
-            je();
+            je(15,this.nombre);
         }
 
         private void mesa16_Click(object sender, EventArgs e)
         {
-            je();
+            je(16,this.nombre);
         }
 
         private void mesa17_Click(object sender, EventArgs e)
         {
-            je();
+            je(17,this.nombre);
         }
 
         private void mesa18_Click(object sender, EventArgs e)
         {
-            je();
+            je(18,this.nombre);
         }
 
         private void mesa19_Click(object sender, EventArgs e)
         {
-            je();
+            je(19,this.nombre);
         }
 
         private void mesa20_Click(object sender, EventArgs e)
         {
-            je();
+            je(20,this.nombre);
         }
 
         private void mesa21_Click(object sender, EventArgs e)
         {
-            je();
+            je(21,this.nombre);
         }
 
         private void mesa22_Click(object sender, EventArgs e)
         {
-            je();
+            je(22,this.nombre);
         }
 
         private void mesa23_Click(object sender, EventArgs e)
         {
-            je();
+            je(23,this.nombre);
         }
 
         private void mesa24_Click(object sender, EventArgs e)
         {
-            je();
+            je(24,this.nombre);
+        }
+
+        private void mes1_Click(object sender, EventArgs e)
+        {
+            je(1, this.nombre);
+        }
+
+        private void mes2_Click(object sender, EventArgs e)
+        {
+            je(2, this.nombre);
+        }
+
+        private void mes3_Click(object sender, EventArgs e)
+        {
+            je(3, this.nombre);
+        }
+
+        private void mes4_Click(object sender, EventArgs e)
+        {
+            je(4, this.nombre);
+        }
+
+        private void mes5_Click(object sender, EventArgs e)
+        {
+            je(5, this.nombre);
+        }
+
+        private void mes6_Click(object sender, EventArgs e)
+        {
+            je(6, this.nombre);
+        }
+
+        private void mes7_Click(object sender, EventArgs e)
+        {
+            je(7, this.nombre);
+        }
+
+        private void mes8_Click(object sender, EventArgs e)
+        {
+            je(8, this.nombre);
+        }
+
+        private void mes9_Click(object sender, EventArgs e)
+        {
+            je(9, this.nombre);
+        }
+
+        private void mes10_Click(object sender, EventArgs e)
+        {
+            je(10, this.nombre);
+        }
+
+        private void mes11_Click(object sender, EventArgs e)
+        {
+            je(11, this.nombre);
+        }
+
+        private void mes12_Click(object sender, EventArgs e)
+        {
+            je(12, this.nombre);
+        }
+
+        private void mes14_Click(object sender, EventArgs e)
+        {
+            je(14, this.nombre);
+        }
+
+        private void mes15_Click(object sender, EventArgs e)
+        {
+            je(15, this.nombre);
+        }
+
+        private void mes16_Click(object sender, EventArgs e)
+        {
+            je(16, this.nombre);
+        }
+
+        private void mes17_Click(object sender, EventArgs e)
+        {
+            je(17, this.nombre);
+        }
+
+        private void mes18_Click(object sender, EventArgs e)
+        {
+            je(18, this.nombre);
+        }
+
+        private void mes19_Click(object sender, EventArgs e)
+        {
+            je(19, this.nombre);
+        }
+
+        private void mes20_Click(object sender, EventArgs e)
+        {
+            je(20, this.nombre);
+        }
+
+        private void mes21_Click(object sender, EventArgs e)
+        {
+            je(21, this.nombre);
+        }
+
+        private void mes22_Click(object sender, EventArgs e)
+        {
+            je(22, this.nombre);
+        }
+
+        private void mes23_Click(object sender, EventArgs e)
+        {
+            je(23, this.nombre);
+        }
+
+        private void mes24_Click(object sender, EventArgs e)
+        {
+            je(24, this.nombre);
+        }
+
+        private void mesas1_Click(object sender, EventArgs e)
+        {
+            je(1, this.nombre);
+        }
+
+        private void mesas2_Click(object sender, EventArgs e)
+        {
+            je(2, this.nombre);
+        }
+
+        private void mesas3_Click(object sender, EventArgs e)
+        {
+            je(3, this.nombre);
+        }
+
+        private void mesas4_Click(object sender, EventArgs e)
+        {
+            je(4, this.nombre);
+        }
+
+        private void mesas5_Click(object sender, EventArgs e)
+        {
+            je(5, this.nombre);
+        }
+
+        private void mesas6_Click(object sender, EventArgs e)
+        {
+            je(6, this.nombre);
+        }
+
+        private void mesas7_Click(object sender, EventArgs e)
+        {
+            je(7, this.nombre);
+        }
+
+        private void mesas8_Click(object sender, EventArgs e)
+        {
+            je(8, this.nombre);
+        }
+
+        private void mesas9_Click(object sender, EventArgs e)
+        {
+            je(9, this.nombre);
+        }
+
+        private void mesas10_Click(object sender, EventArgs e)
+        {
+            je(10, this.nombre);
+        }
+
+        private void mesas11_Click(object sender, EventArgs e)
+        {
+            je(11, this.nombre);
+        }
+
+        private void mesas12_Click(object sender, EventArgs e)
+        {
+            je(12, this.nombre);
+        }
+
+        private void mesas13_Click(object sender, EventArgs e)
+        {
+            je(13, this.nombre);
+        }
+
+        private void mesas14_Click(object sender, EventArgs e)
+        {
+            je(14, this.nombre);
+        }
+
+        private void mesas15_Click(object sender, EventArgs e)
+        {
+            je(15, this.nombre);
+        }
+
+        private void mesas16_Click(object sender, EventArgs e)
+        {
+            je(16, this.nombre);
+        }
+
+        private void mesas17_Click(object sender, EventArgs e)
+        {
+            je(17, this.nombre);
+        }
+
+        private void mesas18_Click(object sender, EventArgs e)
+        {
+            je(18, this.nombre);
+        }
+
+        private void mesas19_Click(object sender, EventArgs e)
+        {
+            je(19, this.nombre);
+        }
+
+        private void mesas20_Click(object sender, EventArgs e)
+        {
+            je(20, this.nombre);
+        }
+
+        private void mesas21_Click(object sender, EventArgs e)
+        {
+            je(21, this.nombre);
+        }
+
+        private void mesas22_Click(object sender, EventArgs e)
+        {
+            je(22, this.nombre);
+        }
+
+        private void mesas23_Click(object sender, EventArgs e)
+        {
+            je(23, this.nombre);
+        }
+
+        private void mesas24_Click(object sender, EventArgs e)
+        {
+            je(24, this.nombre);
+        }
+
+        private void me1_Click(object sender, EventArgs e)
+        {
+            je(1, this.nombre);
+        }
+
+        private void me2_Click(object sender, EventArgs e)
+        {
+            je(2, this.nombre);
+        }
+
+        private void me3_Click(object sender, EventArgs e)
+        {
+            je(3, this.nombre);
+        }
+
+        private void me4_Click(object sender, EventArgs e)
+        {
+            je(4, this.nombre);
+        }
+
+        private void me5_Click(object sender, EventArgs e)
+        {
+            je(5, this.nombre);
+        }
+
+        private void me6_Click(object sender, EventArgs e)
+        {
+            je(6, this.nombre);
+        }
+
+        private void me7_Click(object sender, EventArgs e)
+        {
+            je(7, this.nombre);
+        }
+
+        private void me8_Click(object sender, EventArgs e)
+        {
+            je(8, this.nombre);
+        }
+
+        private void me9_Click(object sender, EventArgs e)
+        {
+            je(9, this.nombre);
+        }
+
+        private void me10_Click(object sender, EventArgs e)
+        {
+            je(10, this.nombre);
+        }
+
+        private void me12_Click(object sender, EventArgs e)
+        {
+            je(12, this.nombre);
+        }
+
+        private void me13_Click(object sender, EventArgs e)
+        {
+            je(13, this.nombre);
+        }
+
+        private void me14_Click(object sender, EventArgs e)
+        {
+            je(14, this.nombre);
+        }
+
+        private void me15_Click(object sender, EventArgs e)
+        {
+            je(15, this.nombre);
+        }
+
+        private void me16_Click(object sender, EventArgs e)
+        {
+            je(16, this.nombre);
+        }
+
+        private void me17_Click(object sender, EventArgs e)
+        {
+            je(17, this.nombre);
+        }
+
+        private void me18_Click(object sender, EventArgs e)
+        {
+            je(18, this.nombre);
+        }
+
+        private void me19_Click(object sender, EventArgs e)
+        {
+            je(19, this.nombre);
+        }
+
+        private void me20_Click(object sender, EventArgs e)
+        {
+            je(20, this.nombre);
+        }
+
+        private void me21_Click(object sender, EventArgs e)
+        {
+            je(21, this.nombre);
+        }
+
+        private void me22_Click(object sender, EventArgs e)
+        {
+            je(22, this.nombre);
+        }
+
+        private void me23_Click(object sender, EventArgs e)
+        {
+            je(23, this.nombre);
+        }
+
+        private void me24_Click(object sender, EventArgs e)
+        {
+            je(24, this.nombre);
         }
     }
 }

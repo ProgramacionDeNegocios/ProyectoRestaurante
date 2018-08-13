@@ -603,26 +603,28 @@ BEGIN
         END
 END
 GO
-/*
+
 CREATE PROCEDURE SP_AgregarMesa
 (
+@idArea INT,
+@estado NVARCHAR(21)
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+	SELECT @existe = COUNT(Restaurante.Mesas.estado) FROM Restaurante.Mesas WHERE estado=@estado;
 	IF (@existe > 0)
 		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+			RAISERROR(N'Ya existe una area con el nombre "%s"', 16, 1,@estado);
 			RETURN 0
 			
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Acceso.TipoAcceso(<campo1>, <campo2>,.... ,<campoN>)
-				VALUES(	<variable1>, <variable2>,...,<Variable3>)
+			INSERT INTO Restaurante.Mesas(idArea,estado)
+				VALUES(@idArea, @estado)
 			RETURN 1
 		END
 END
@@ -630,52 +632,53 @@ GO
 
 CREATE PROCEDURE SP_ModificarMesa
 (
+@id INT,
+@idArea INT,
+@estado NVARCHAR(21)
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
-
-	SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
-
+	SELECT @existe = COUNT(Restaurante.Mesas.id) FROM Restaurante.Mesas WHERE id=@id;
 	IF (@existe = 0)
 		BEGIN
-			RAISERROR(N'Aqui va el mensaje de error"', 16, 1);
+			RAISERROR(N'No existe ninguna Mesa con el id "%d"', 16, 1, @id);
 			RETURN 0
 		END 	
 	ELSE
 		BEGIN
-			UPDATE <esquema.tabla>
-				SET 	<campos=variables>
-					WHERE <condicion>;
+			UPDATE Restaurante.Mesas
+				SET idArea = @idArea, 
+					estado = @estado
+					WHERE id = @id;
 			RETURN 1
 		END
-	
-	END
 END
 GO
 
 CREATE PROCEDURE SP_EliminarMesa
 (
+@id INT
 )
 AS
 BEGIN
 	DECLARE @existe int;
 	SET @existe = 0;
-		SELECT @existe = COUNT(<esquema.tabla.campo>) FROM <Esquema.tabla> WHERE <condicion>;
+		SELECT @existe = COUNT(Restaurante.Mesas.id) FROM Restaurante.Mesas WHERE id=@id;
 		IF (@existe = 0)
 			BEGIN
-				RAISERROR(N'aqui va el mensaje de error "', 16, 1);
+				RAISERROR(N'No existe ninguna Mesa con el id "%d"', 16, 1);
 				RETURN 0
 			END 	
 		ELSE
 			BEGIN
-				DELETE FROM <Esquema.tabla>	WHERE <condicion>;
+				DELETE FROM Restaurante.Mesas WHERE id=@id;
 				RETURN 1
 			END
 END
 GO
-
+/*
 CREATE PROCEDURE SP_AgregarPedido
 (
 )
@@ -868,7 +871,7 @@ END
 EXEC Inventario.SPActualizarArticulos '3 154141 194108';
 --Probando Valores Correctos
 EXEC Inventario.SPActualizarArticulos '3 154141 194108',4;
-
+GO
 ------------------------------------------------------------------------------------------------
 	-- Creación de un Stored Procedure que se encarga de ingresar
 	-- valores a la tabla Factura 

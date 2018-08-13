@@ -68,6 +68,7 @@
     <Compile Include="Clases\Exepcion.cs" />
     <Compile Include="Clases\Insumos.cs" />
     <Compile Include="Clases\Mensaje.cs" />
+    <Compile Include="Clases\Mesas.cs" />
     <Compile Include="Clases\Mesero.cs" />
     <Compile Include="Clases\Proveedor.cs" />
     <Compile Include="Clases\Restaurante.cs" />
