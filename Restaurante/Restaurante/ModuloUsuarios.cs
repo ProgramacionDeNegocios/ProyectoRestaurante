@@ -37,7 +37,8 @@ namespace Restaurante
             CargarDGWUsuarios();
             dgwUsuariosEstilo(dgwUsuarios);
 
-           
+            picFoto.Image = Image.FromFile(@"\\DESKTOP-7HRFF62\Fotos2\Ninguna.jpg");
+
             btnNuevo.Enabled = true;
             btnAgregar.Enabled = true;
             btnModificar.Enabled = false;
@@ -130,6 +131,16 @@ namespace Restaurante
             txtApellido.Text = usuario.apellido;
             txtClave.Text = usuario.clave;
             this.usuario = usuario.usuario;
+
+            
+            try
+            {
+                picFoto.Image = Image.FromFile(@"\\DESKTOP-7HRFF62\Fotos2\" + this.usuario + ".jpg");
+            }
+            catch
+            {
+                picFoto.Image = Image.FromFile(@"\\DESKTOP-7HRFF62\Fotos2\Ninguna.jpg");
+            }
 
             btnNuevo.Enabled = true;
             btnAgregar.Enabled = false;
