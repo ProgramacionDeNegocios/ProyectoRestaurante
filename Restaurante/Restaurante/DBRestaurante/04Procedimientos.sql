@@ -646,6 +646,36 @@ BEGIN
 END
 GO
 
+--CREATE PROCEDURE SP_AgregarInventarioElaborado
+--(
+--	@descripcion NVARCHAR(100),
+--	@costo DECIMAL(8,2),
+--	@precioVenta DECIMAL(8,2),
+--	@cantidad DECIMAL(8,2),
+--	@idCategoria INT,
+--	@idTipoProducto INT
+--)
+--AS
+--BEGIN
+--	DECLARE @existe int;
+--	SET @existe = 0;
+
+--	SELECT @existe = COUNT(Restaurante.Inventario.idInventario) FROM Restaurante.Inventario WHERE descripcion = @descripcion;
+--	IF (@existe > 0)
+--		BEGIN
+--			RAISERROR(N'Ya existe un Insumo con el nombre %s"', 16, 1,@descripcion);
+--			RETURN 0
+			
+--		END
+--	ELSE
+--		BEGIN
+--			INSERT INTO Restaurante.Inventario(descripcion, costo, precioVenta, cantidad, idCategoria, idTipoProducto)
+--				VALUES(@descripcion, @costo, @precioVenta, @cantidad, @idCategoria, @idTipoProducto)
+--			RETURN 1
+--		END
+--END
+--GO
+
 CREATE PROCEDURE SP_ModificarInventario
 (
 	@idInventario INT,
@@ -684,6 +714,43 @@ BEGIN
 		END
 END
 GO
+
+--CREATE PROCEDURE SP_ModificarInventarioElaborado
+--(
+--	@idInventario INT,
+--	@descripcion NVARCHAR(100),
+--	@costo DECIMAL(8,2),
+--	@precioVenta DECIMAL(8,2),
+--	@cantidad DECIMAL(8,2),
+--	@idCategoria INT,
+--	@idTipoProducto INT
+--)
+--AS
+--BEGIN
+--	DECLARE @existe int;
+--	SET @existe = 0;
+
+--	SELECT @existe = COUNT(Restaurante.Inventario.idInventario) FROM Restaurante.Inventario WHERE idInventario = @idInventario;
+
+--	IF (@existe = 0)
+--		BEGIN
+--			RAISERROR(N'No existe el Producto con el id %d"', 16, 1, @idInventario);
+--			RETURN 0
+--		END 	
+--	ELSE
+--		BEGIN
+--			UPDATE Restaurante.Inventario
+--				SET 	descripcion = @descripcion,
+--						costo = @costo,
+--						precioVenta = @precioVenta,
+--						cantidad = @cantidad,
+--						idCategoria = @idCategoria,
+--						idTipoProducto = @idTipoProducto
+--					WHERE idInventario = @idInventario;
+--			RETURN 1
+--		END
+--END
+--GO
 
 CREATE PROCEDURE SP_EliminarInventario
 (

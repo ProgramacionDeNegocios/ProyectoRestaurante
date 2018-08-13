@@ -56,17 +56,17 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtCantidadInsumo = new System.Windows.Forms.TextBox();
+            this.lblCantidadInsumo = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvBuscarInsumo = new System.Windows.Forms.DataGridView();
             this.btnAgregarInsumo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvInsumosInv = new System.Windows.Forms.DataGridView();
-            this.txtCantidadInsumo = new System.Windows.Forms.TextBox();
-            this.lblCantidadInsumo = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlTitulo.SuspendLayout();
             this.grpInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
@@ -148,6 +148,7 @@
             // 
             // cmbCategoriaProducto
             // 
+            this.cmbCategoriaProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoriaProducto.FormattingEnabled = true;
             this.cmbCategoriaProducto.Location = new System.Drawing.Point(102, 217);
             this.cmbCategoriaProducto.Name = "cmbCategoriaProducto";
@@ -165,6 +166,7 @@
             // 
             // cmbTipoProducto
             // 
+            this.cmbTipoProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoProducto.FormattingEnabled = true;
             this.cmbTipoProducto.Location = new System.Drawing.Point(102, 256);
             this.cmbTipoProducto.Name = "cmbTipoProducto";
@@ -217,6 +219,7 @@
             // 
             // cmbProveedor
             // 
+            this.cmbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProveedor.FormattingEnabled = true;
             this.cmbProveedor.Location = new System.Drawing.Point(102, 297);
             this.cmbProveedor.Name = "cmbProveedor";
@@ -378,6 +381,34 @@
             this.panel1.TabIndex = 38;
             this.panel1.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.button1.Location = new System.Drawing.Point(252, 144);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 25);
+            this.button1.TabIndex = 42;
+            this.button1.Text = "Nuevo";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // txtCantidadInsumo
+            // 
+            this.txtCantidadInsumo.Location = new System.Drawing.Point(114, 147);
+            this.txtCantidadInsumo.Name = "txtCantidadInsumo";
+            this.txtCantidadInsumo.Size = new System.Drawing.Size(109, 22);
+            this.txtCantidadInsumo.TabIndex = 40;
+            // 
+            // lblCantidadInsumo
+            // 
+            this.lblCantidadInsumo.AutoSize = true;
+            this.lblCantidadInsumo.Location = new System.Drawing.Point(15, 150);
+            this.lblCantidadInsumo.Name = "lblCantidadInsumo";
+            this.lblCantidadInsumo.Size = new System.Drawing.Size(62, 16);
+            this.lblCantidadInsumo.TabIndex = 41;
+            this.lblCantidadInsumo.Text = "Cantidad";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label2);
@@ -421,6 +452,14 @@
             this.textBox1.Size = new System.Drawing.Size(213, 22);
             this.textBox1.TabIndex = 33;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(11, 71);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 312);
+            this.groupBox1.TabIndex = 43;
+            this.groupBox1.TabStop = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
@@ -442,42 +481,6 @@
             this.dgvInsumosInv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInsumosInv.Size = new System.Drawing.Size(339, 127);
             this.dgvInsumosInv.TabIndex = 39;
-            // 
-            // txtCantidadInsumo
-            // 
-            this.txtCantidadInsumo.Location = new System.Drawing.Point(114, 147);
-            this.txtCantidadInsumo.Name = "txtCantidadInsumo";
-            this.txtCantidadInsumo.Size = new System.Drawing.Size(109, 22);
-            this.txtCantidadInsumo.TabIndex = 40;
-            // 
-            // lblCantidadInsumo
-            // 
-            this.lblCantidadInsumo.AutoSize = true;
-            this.lblCantidadInsumo.Location = new System.Drawing.Point(15, 150);
-            this.lblCantidadInsumo.Name = "lblCantidadInsumo";
-            this.lblCantidadInsumo.Size = new System.Drawing.Size(62, 16);
-            this.lblCantidadInsumo.TabIndex = 41;
-            this.lblCantidadInsumo.Text = "Cantidad";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.button1.Location = new System.Drawing.Point(252, 144);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 42;
-            this.button1.Text = "Nuevo";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Location = new System.Drawing.Point(11, 71);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 312);
-            this.groupBox1.TabIndex = 43;
-            this.groupBox1.TabStop = false;
             // 
             // ModuloInventario
             // 

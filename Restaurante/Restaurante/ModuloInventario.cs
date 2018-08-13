@@ -91,16 +91,19 @@ namespace Restaurante
         {
             try
             {
-                Clases.Proveedor proveedor = new Clases.Proveedor();
-                proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
-
+                
                 Clases.TipoProducto tipoproducto = new Clases.TipoProducto();
                 tipoproducto.ObtenerTipoProductoPorNombre(cmbTipoProducto.SelectedValue.ToString());
 
                 Clases.CategoriaProducto categoria = new Clases.CategoriaProducto();
                 categoria.ObtenerCategoriaProductoPorNombre(cmbCategoriaProducto.SelectedValue.ToString());
+                Clases.Proveedor proveedor = new Clases.Proveedor();
 
-                Clases.Restaurante.AgregarInventario
+                if (cmbTipoProducto.Text == "Elaborado")
+                {
+                    proveedor.Id = 1;
+                    
+                    Clases.Restaurante.AgregarInventario
                     (
                         txtDescripcion.Text,
                         Convert.ToDecimal(txtCosto.Text),
@@ -110,7 +113,28 @@ namespace Restaurante
                         tipoproducto.Id,
                         proveedor.Id
                     );
-                CargarDGWInventario();
+                    CargarDGWInventario();
+                }
+                else
+                {
+                    
+                    proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
+
+                    MessageBox.Show("Id" + proveedor.Id);
+
+                    Clases.Restaurante.AgregarInventario
+                    (
+                        txtDescripcion.Text,
+                        Convert.ToDecimal(txtCosto.Text),
+                        Convert.ToDecimal(txtPrecioVenta.Text),
+                        Convert.ToDecimal(txtCantidad.Text),
+                        categoria.Id,
+                        tipoproducto.Id,
+                        proveedor.Id
+                    );
+                    CargarDGWInventario();
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -125,15 +149,17 @@ namespace Restaurante
                 try
                 {
                     Clases.Proveedor proveedor = new Clases.Proveedor();
-                    proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
-
+                    
                     Clases.TipoProducto tipoproducto = new Clases.TipoProducto();
                     tipoproducto.ObtenerTipoProductoPorNombre(cmbTipoProducto.SelectedValue.ToString());
 
                     Clases.CategoriaProducto categoria = new Clases.CategoriaProducto();
                     categoria.ObtenerCategoriaProductoPorNombre(cmbCategoriaProducto.SelectedValue.ToString());
 
-                    Clases.Restaurante.ModificarInventario
+                    if (cmbTipoProducto.Text == "Elaborado")
+                    {
+                        proveedor.Id = 1;
+                        Clases.Restaurante.ModificarInventario
                         (
                         this.id,
                         txtDescripcion.Text,
@@ -144,7 +170,25 @@ namespace Restaurante
                         tipoproducto.Id,
                         proveedor.Id
                         );
-                    ResetFormulario();
+                        ResetFormulario();
+                    }
+                    else
+                    {
+                        proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
+                        Clases.Restaurante.ModificarInventario
+                        (
+                        this.id,
+                        txtDescripcion.Text,
+                        Convert.ToDecimal(txtCosto.Text),
+                        Convert.ToDecimal(txtPrecioVenta.Text),
+                        Convert.ToDecimal(txtCantidad.Text),
+                        categoria.Id,
+                        tipoproducto.Id,
+                        proveedor.Id
+                        );
+                        ResetFormulario();
+                    }
+                                            
                 }
                 catch (Exception ex)
                 {

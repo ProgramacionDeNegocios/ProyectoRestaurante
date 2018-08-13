@@ -260,7 +260,7 @@ namespace Restaurante.Clases
                     );
             }
         }
-
+        
         public static void AgregarInventario
             (
             string descripcion,

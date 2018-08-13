@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Restaurante.Clases
 {
@@ -71,7 +72,7 @@ namespace Restaurante.Clases
                 cmd.Parameters["idTipoProducto"].Value = IdTipoProducto;
                 cmd.Parameters.Add(new SqlParameter("idProveedor", SqlDbType.Int));
                 cmd.Parameters["idProveedor"].Value = IdProveedor;
-
+                MessageBox.Show("hata aui esta bueno");
                 cmd.ExecuteNonQuery();
 
             }
