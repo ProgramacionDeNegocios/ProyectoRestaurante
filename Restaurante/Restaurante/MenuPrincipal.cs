@@ -18,6 +18,10 @@ namespace Restaurante
             InitializeComponent();
         }
 
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
 
         private void btnModuloUsuarios_Click(object sender, EventArgs e)
         {
@@ -42,6 +46,10 @@ namespace Restaurante
             moduloMeseros.ShowDialog();
         }
 
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void btnInsumos_Click(object sender, EventArgs e)
         {
@@ -56,11 +64,22 @@ namespace Restaurante
             moduloTipoUnidad.ShowDialog();
         }
 
-
-        private void btnAreas_Click(object sender, EventArgs e)
+        private void Pedidos_Click(object sender, EventArgs e)
         {
-            ModuloAreas moduloAreas = new ModuloAreas();
-            moduloAreas.ShowDialog();
+            ModuloInventario moduloInventario = new ModuloInventario();
+            moduloInventario.ShowDialog();
+        }
+
+        private void btnTipoProducto_Click(object sender, EventArgs e)
+        {
+            ModuloTipoProducto moduloTipoProducto = new ModuloTipoProducto();
+            moduloTipoProducto.ShowDialog();
+        }
+
+        private void btnCategoria_Click(object sender, EventArgs e)
+        {
+            ModuloCategoriaProducto moduloCategoriaProducto = new ModuloCategoriaProducto();
+            moduloCategoriaProducto.ShowDialog();
         }
     }
 }

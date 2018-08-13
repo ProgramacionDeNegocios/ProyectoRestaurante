@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnTipoProducto = new System.Windows.Forms.Button();
             this.Pedidos = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -41,7 +42,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnInsumos = new System.Windows.Forms.Button();
             this.btnTipoUnidad = new System.Windows.Forms.Button();
-            this.btnAreas = new System.Windows.Forms.Button();
+            this.btnCategoria = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -101,6 +102,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnCategoria);
+            this.tabPage1.Controls.Add(this.btnTipoProducto);
             this.tabPage1.Controls.Add(this.Pedidos);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -110,6 +113,16 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnTipoProducto
+            // 
+            this.btnTipoProducto.Location = new System.Drawing.Point(151, 21);
+            this.btnTipoProducto.Name = "btnTipoProducto";
+            this.btnTipoProducto.Size = new System.Drawing.Size(109, 64);
+            this.btnTipoProducto.TabIndex = 6;
+            this.btnTipoProducto.Text = "Productos";
+            this.btnTipoProducto.UseVisualStyleBackColor = true;
+            this.btnTipoProducto.Click += new System.EventHandler(this.btnTipoProducto_Click);
+            // 
             // Pedidos
             // 
             this.Pedidos.Location = new System.Drawing.Point(22, 21);
@@ -118,6 +131,7 @@
             this.Pedidos.TabIndex = 5;
             this.Pedidos.Text = "Inventario";
             this.Pedidos.UseVisualStyleBackColor = true;
+            this.Pedidos.Click += new System.EventHandler(this.Pedidos_Click);
             // 
             // tabPage2
             // 
@@ -178,22 +192,21 @@
             this.btnTipoUnidad.UseVisualStyleBackColor = true;
             this.btnTipoUnidad.Click += new System.EventHandler(this.btnTipoUnidad_Click);
             // 
-            // btnAreas
+            // btnCategoria
             // 
-            this.btnAreas.Location = new System.Drawing.Point(615, 19);
-            this.btnAreas.Name = "btnAreas";
-            this.btnAreas.Size = new System.Drawing.Size(109, 64);
-            this.btnAreas.TabIndex = 7;
-            this.btnAreas.Text = "Areas";
-            this.btnAreas.UseVisualStyleBackColor = true;
-            this.btnAreas.Click += new System.EventHandler(this.btnAreas_Click);
+            this.btnCategoria.Location = new System.Drawing.Point(278, 22);
+            this.btnCategoria.Name = "btnCategoria";
+            this.btnCategoria.Size = new System.Drawing.Size(109, 64);
+            this.btnCategoria.TabIndex = 7;
+            this.btnCategoria.Text = "Categoría";
+            this.btnCategoria.UseVisualStyleBackColor = true;
+            this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1124, 563);
-            this.Controls.Add(this.btnAreas);
             this.Controls.Add(this.btnTipoUnidad);
             this.Controls.Add(this.btnInsumos);
             this.Controls.Add(this.tabControl1);
@@ -205,6 +218,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
@@ -228,6 +242,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnInsumos;
         private System.Windows.Forms.Button btnTipoUnidad;
-        private System.Windows.Forms.Button btnAreas;
+        private System.Windows.Forms.Button btnTipoProducto;
+        private System.Windows.Forms.Button btnCategoria;
     }
 }

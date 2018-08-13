@@ -204,23 +204,13 @@ ELSE
 		CREATE TABLE Restaurante.Inventario(
 			idInventario INT IDENTITY NOT NULL,
 			descripcion	NVARCHAR(100) NOT NULL,
-			costo DECIMAL(4,2) NOT NULL,
-			precioVenta DECIMAL(4,2) NOT NULL,
-			cantidad DECIMAL(4,2) NOT NULL,
+			costo DECIMAL(8,2) NOT NULL,
+			precioVenta DECIMAL(8,2) NOT NULL,
+			cantidad DECIMAL(8,2) NOT NULL,
+			cantidadMinima DECIMAL(8,2) NOT NULL,
+			idCategoria INT NOT NULL,
 			idTipoProducto INT NOT NULL,
-			idInsumo INT NOT NULL,
-			idProveedor INT NOT NULL
-		);
-	END
-GO
-
-IF OBJECT_ID('Restaurante.TipoProducto')	IS NOT NULL
-	DROP TABLE Restaurante.TipoProducto
-ELSE
-	BEGIN
-		CREATE TABLE Restaurante.TipoProducto(
-			idTipoProducto INT IDENTITY NOT NULL,
-			nombre NVARCHAR(100)
+			idProveedor INT NULL
 		);
 	END
 GO
@@ -232,7 +222,9 @@ ELSE
 		CREATE TABLE Restaurante.Insumos(
 			idInsumo INT IDENTITY NOT NULL,
 			nombre NVARCHAR(100) NOT NULL,
-			costo DECIMAL(4,2) NOT NULL,
+			costo DECIMAL(8,2) NOT NULL,
+			cantidad DECIMAL(8,2) NOT NULL,
+			cantidadMinima DECIMAL(8,2) NOT NULL,
 			idTipoUnidad INT NOT NULL,
 			descripcion NVARCHAR(200) NOT NULL,
 			idProveedor INT
@@ -264,6 +256,17 @@ ELSE
 	END
 GO
 
+IF OBJECT_ID('Restaurante.TipoProducto')	IS NOT NULL
+	DROP TABLE Restaurante.TipoProducto
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.TipoProducto(
+			idTipoProducto INT IDENTITY NOT NULL,
+			nombre NVARCHAR(100)
+		);
+	END
+GO
+
 IF OBJECT_ID('Restaurante.InsumosProductos')	IS NOT NULL
 	DROP TABLE Restaurante.InsumosProductos
 ELSE
@@ -271,7 +274,19 @@ ELSE
 		CREATE TABLE Restaurante.InsumosProductos(
 			idInsumoProducto INT IDENTITY(1,1) NOT NULL,
 			idInsumo INT NOT NULL,
-			idInventario INT NOT NULL
+			idInventario INT NOT NULL,
+			cantidad DECIMAL(8,2) NOT NULL
+		);
+	END
+GO
+
+IF OBJECT_ID('Restaurante.CategoriaProducto')	IS NOT NULL
+	DROP TABLE Restaurante.CategoriaProducto
+ELSE
+	BEGIN
+		CREATE TABLE Restaurante.CategoriaProducto(
+			idCategoria INT IDENTITY NOT NULL,
+			descripcion NVARCHAR(100)
 		);
 	END
 GO
