@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Restaurante.Clases
 {
@@ -42,12 +41,257 @@ namespace Restaurante.Clases
             try
             {
                 ValidarMesero(identidad, nombre, apellido);
+                    Clases.Mesero mesero = new Clases.Mesero(
+                        identidad,
+                        nombre,
+                        apellido
+                        );
+                    mesero.Agregar();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ModificarMesero(
+            int id,
+            string identidad,
+            string nombre,
+            string apellido) {
+            try {
+                ValidarMesero(identidad, nombre, apellido);
                 Clases.Mesero mesero = new Clases.Mesero(
+                    id,
                     identidad,
                     nombre,
-                    apellido
+                   apellido);
+                mesero.Modificar();
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public static void EliminarMesero(int id) {
+            try {
+                Clases.Mesero mesero = new Clases.Mesero(id);
+                mesero.Eliminar();
+            }
+            catch (Exception ex) {
+                throw ex;
+            } }
+
+        //Modulo proveedor
+        private static void ValidarProveedor
+    (
+    string nombre,
+    string telefono,
+    string direccion
+    )
+        {
+            if (telefono.Length != 9 || nombre.Length == 0 || direccion.Length == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar un proveedor. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un proveedor:\n" +
+                    "Nombre   : Pedro\n" +
+                    "Telefono  :  9898-9678\n" +
+                    "Direccion : Piedra dura",
+                    new Exception(),
+                    "Clase_Restaurante"
                     );
-                mesero.Agregar();
+            }
+        }
+
+        public static void AgregarProveedor(string nombre, string telefono, string direccion)
+        {
+            try
+            {
+                ValidarProveedor(nombre, telefono, direccion);
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    nombre,
+                    telefono,
+                    direccion
+                    );
+                proveedor.Agregar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ModificarProveedor(int id,string nombre, string telefono, string direccion) {
+            try
+            {
+                ValidarProveedor(nombre, telefono, direccion);
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    id,
+                    nombre,
+                    telefono,
+                    direccion);
+                proveedor.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            }
+        public static void EliminarProveedor(int id) {
+            try
+            {
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    id);
+                proveedor.Eliminar();
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+        }
+        /// <summary>
+        /// Modulo Usuario
+        /// </summary>
+        /// 
+
+        private static void ValidarUsuarios
+            (
+            string nombre,
+            string apellido,
+            string clave
+            )
+        {
+            if (apellido.Length == 0 || nombre.Length == 0 || clave.Length == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar el usuario \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un usuario:\n" +
+                    "Nombre   : Pedro\n" +
+                    "Apellido  :  Picapiedra\n" +
+                    "Clave : yabadabadu",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+        }
+        public static void AgregarUsuario(
+            string nombre, 
+            string apellido,
+            string clave) {
+            try
+            {
+                ValidarUsuarios(nombre, apellido, clave);
+                Clases.Usuario usuario = new Clases.Usuario(
+                    nombre,
+                    apellido,
+                    clave,
+                    1
+                    );
+                usuario.Agregar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public static void ModificarUsuario(
+            string usu,
+            string nombre,
+            string apellido,
+            string clave)
+        {
+            try
+            {
+                ValidarUsuarios(nombre, apellido, clave);
+                Clases.Usuario usuario = new Clases.Usuario(
+                    usu,
+                    nombre,
+                    apellido,
+                    clave,
+                    1
+                    );
+                usuario.Modificar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public static void EliminarUsuario(string usu) {
+            try
+            {
+                Clases.Usuario usuarios = new Clases.Usuario(usu);
+
+            }
+            catch (Exception es)
+            {
+
+                throw es ;
+            }
+        }
+
+        //Modulo de Areas
+         private static void ValidarArea
+         (
+            string nombre,
+            int numeroMesas
+         )
+         {
+            if ( nombre.Length == 0 || numeroMesas == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar una Area. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar una area:\n" +
+                    "Nombre   : Area Familiar\n" +
+                    "Número Mesas : 10",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+         }
+        public static void AgregarAreas(string nombre, int numeroMesas) {
+            try
+            {
+                ValidarArea(nombre, numeroMesas);
+                Clases.Areas area = new Clases.Areas(
+                    nombre,
+                    numeroMesas
+                    );
+                area.Agregar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ModificarAreas(int id, string nombre, int numeroMesas) {
+            try
+            {
+                ValidarArea(nombre, numeroMesas);
+                Clases.Areas area = new Clases.Areas(
+                    id,
+                    nombre,
+                    numeroMesas
+                    );
+                area.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void EliminarAreas(int id) {
+            try
+            {
+
+                Clases.Areas area = new Clases.Areas(
+                    id
+                    );
+                area.Eliminar();
             }
             catch (Exception ex)
             {
@@ -55,11 +299,12 @@ namespace Restaurante.Clases
             }
         }
 
-        private static void ValidarTipoUnidad
-         (
-            string descripcion
 
-         )
+        private static void ValidarTipoUnidad
+     (
+        string descripcion
+
+     )
         {
             if (descripcion.Length == 0)
             {
@@ -86,7 +331,7 @@ namespace Restaurante.Clases
                     descripcion
                     );
                 tipounidad.Agregar();
-                
+
             }
             catch (Exception ex)
             {
@@ -230,113 +475,5 @@ namespace Restaurante.Clases
                 throw ex;
             }
         }
-
-        private static void ValidarInventario
-                (
-                string descripcion,
-                decimal costo,
-                decimal precioventa,
-                decimal cantidad,
-                int idtipoproducto,
-                int idproveedor
-                )
-        {
-            if (descripcion.Length == 0 || costo < 0 || precioventa < 0 || cantidad < 0 || idtipoproducto < 0 ||idproveedor < 0)
-            {
-                throw new Clases.Exepcion
-                    (
-                    "Error al insertar el insumo. \n\n" +
-                    "Existen datos obligatorios que se necesitan para poder agregar el Inventario\n" +
-                    "Producto : Pescado Frito\n" +
-                    "Costo    : 80.00\n" +
-                    "Precio Venta   : 100.00\n" +
-                    "Cantidad   : 20\n" +
-                    "Unidad   : Libra\n" +
-                    "Tipo Producto : Preparado\n" +
-                    "Proveedor : Don Edgardo",
-                    new Exception(),
-                    "Clase_Inventario"
-                    );
-            }
-        }
-
-        public static void AgregarInventario
-            (
-            string descripcion,
-            decimal costo,
-            decimal precioventa,
-            decimal cantidad,
-            int idtipoproducto,
-            int idproveedor
-            )
-        {
-            try
-            {
-                ValidarInventario(descripcion, costo, precioventa, cantidad, idtipoproducto, idproveedor);
-                Clases.Inventario inventario = new Clases.Inventario(
-                    descripcion,
-                    costo,
-                    precioventa,
-                    cantidad,
-                    idtipoproducto,
-                    idproveedor);
-                inventario.Agregar();             
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public static void ModificarInventario
-            (
-            int id,
-            string descripcion,
-            decimal costo,
-            decimal precioventa,
-            decimal cantidad,
-            int idtipoproducto,
-            int idproveedor
-            )
-        {
-            try
-            {
-                ValidarInventario(descripcion, costo, precioventa, cantidad, idtipoproducto, idproveedor);
-                Clases.Inventario inventario = new Clases.Inventario(
-                    id,
-                    descripcion,
-                    costo,
-                    precioventa,
-                    cantidad,
-                    idtipoproducto,
-                    idproveedor);
-                inventario.Modificar();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public static void EliminarInventario
-            (
-            int id
-            )
-        {
-            try
-            {
-                Clases.Inventario inventario = new Clases.Inventario(
-                    id);
-                inventario.Eliminar();
-                               
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-
     }
 }

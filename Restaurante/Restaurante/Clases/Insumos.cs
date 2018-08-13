@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.Sql;
 using System.Data;
 
 namespace Restaurante.Clases
@@ -58,7 +59,7 @@ namespace Restaurante.Clases
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("nombre", SqlDbType.NVarChar, 100));
                 cmd.Parameters["nombre"].Value = Nombre;
-                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal ));
+                cmd.Parameters.Add(new SqlParameter("costo", SqlDbType.Decimal));
                 cmd.Parameters["costo"].Value = Costo;
                 cmd.Parameters.Add(new SqlParameter("idTipoUnidad", SqlDbType.Int));
                 cmd.Parameters["idTipoUnidad"].Value = IdTipoUnidad;
@@ -181,7 +182,7 @@ namespace Restaurante.Clases
                             ON Restaurante.Proveedores.idProveedor = Restaurante.Insumos.idProveedor
                             INNER JOIN Restaurante.TipoUnidad
                             ON Restaurante.TipoUnidad.idTipoUnidad = Restaurante.Insumos.idTipoUnidad";
-            
+
             try
             {
                 SqlDataAdapter data = new SqlDataAdapter();
@@ -205,6 +206,8 @@ namespace Restaurante.Clases
             }
 
         }
+
+
 
 
 

@@ -20,8 +20,8 @@ namespace Restaurante.Clases
         }
         public Conexion()
         {
-            this.con = new SqlConnection(@"server = (local);
-                integrated security = true; database = DBRestaurante;");
+            this.con = new SqlConnection("data source=192.168.0.254,1433; initial catalog=DBRestaurante; user id=CISCO; password=asd123;");
+            
         }
         //Creamos el metodo para abrir la conecion con la base de datos
         public void Abrir()
