@@ -125,6 +125,12 @@
       <DependentUpon>SeleccionarMesero.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="UnirMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnirMesa.Designer.cs">
+      <DependentUpon>UnirMesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     </Compile>
     <EmbeddedResource Include="SeleccionarMesero.resx">
       <DependentUpon>SeleccionarMesero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UnirMesa.resx">
+      <DependentUpon>UnirMesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UsuarioLogin.resx">
       <DependentUpon>UsuarioLogin.cs</DependentUpon>
