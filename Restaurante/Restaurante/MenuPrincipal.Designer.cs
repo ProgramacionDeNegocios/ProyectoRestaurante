@@ -35,6 +35,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.btnCategoria = new System.Windows.Forms.Button();
             this.btnTipoUnidad = new System.Windows.Forms.Button();
             this.btnTipoProducto = new System.Windows.Forms.Button();
@@ -46,8 +48,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -109,6 +110,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.btnCategoria);
@@ -123,6 +125,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Productos";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(405, 109);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(109, 64);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Prefactura";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(278, 109);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(109, 64);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Reporte Insumos";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnCategoria
             // 
@@ -235,25 +257,15 @@
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
             // 
-            // button4
+            // button6
             // 
-            this.button4.Location = new System.Drawing.Point(278, 109);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 64);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Reporte Insumos";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(405, 109);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(109, 64);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Prefactura";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button6.Location = new System.Drawing.Point(405, 21);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(109, 64);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Areas";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // MenuPrincipal
             // 
@@ -300,5 +312,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
     }
 }

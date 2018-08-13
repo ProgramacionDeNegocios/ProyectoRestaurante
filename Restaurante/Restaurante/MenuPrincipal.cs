@@ -106,5 +106,11 @@ namespace Restaurante
             ReportePreFactura preFractura = new ReportePreFactura();
             preFractura.ShowDialog();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ModuloAreas areas = new ModuloAreas();
+            areas.ShowDialog();
+        }
     }
 }
