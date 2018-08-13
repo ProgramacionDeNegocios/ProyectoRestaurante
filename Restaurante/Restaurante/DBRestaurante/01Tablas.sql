@@ -270,7 +270,8 @@ ELSE
 		CREATE TABLE Restaurante.InsumosProductos(
 			idInsumoProducto INT IDENTITY(1,1) NOT NULL,
 			idInsumo INT NOT NULL,
-			idInventario INT NOT NULL
+			idInventario INT NOT NULL,
+			cantidad DECIMAL(8,2) NOT NULL
 		);
 	END
 GO

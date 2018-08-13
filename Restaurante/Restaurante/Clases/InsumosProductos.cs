@@ -13,25 +13,30 @@ namespace Restaurante.Clases
         public int IdInsumoProducto { set; get; }
         public int IdInsumo { set; get; }
         public int IdInventario { set; get; }
+        public decimal Cantidad { set; get; }
+        public string Nombre { set; get; }
         public InsumosProductos() { }
         ~InsumosProductos() { }
 
-        public InsumosProductos(int idinsumo, int idinventario)
+        public InsumosProductos(int idinsumo, int idinventario, decimal cantidad)
         {
             IdInsumo = idinsumo;
             IdInventario = idinventario;
+            Cantidad = cantidad;
         }
 
-        public InsumosProductos(int idinsumoproducto, int idinsumo, int idinventario)
+        public InsumosProductos(int idinsumoproducto, int idinsumo, int idinventario, decimal cantidad)
         {
             IdInsumoProducto = idinsumoproducto;
             IdInsumo = idinsumo;
             IdInventario = idinventario;
+            Cantidad = cantidad;
         }
 
-        public InsumosProductos(int idinsumoproducto)
+        public InsumosProductos(int idinsumoproducto, int idInventario)
         {
             IdInsumoProducto = idinsumoproducto;
+            IdInventario = idInventario;
         }
 
         public void Agregar()
@@ -45,7 +50,9 @@ namespace Restaurante.Clases
                 cmd.Parameters.Add(new SqlParameter("idInsumo", SqlDbType.Int));
                 cmd.Parameters["idInsumo"].Value = IdInsumo;
                 cmd.Parameters.Add(new SqlParameter("idInventario", SqlDbType.Int));
-                cmd.Parameters["idInventario"].Value = IdInsumo;
+                cmd.Parameters["idInventario"].Value = IdInventario;
+                cmd.Parameters.Add(new SqlParameter("cantidad", SqlDbType.Decimal));
+                cmd.Parameters["cantidad"].Value = Cantidad;
                 cmd.ExecuteNonQuery();
 
             }
@@ -72,7 +79,9 @@ namespace Restaurante.Clases
                 cmd.Parameters.Add(new SqlParameter("idInsumo", SqlDbType.Int));
                 cmd.Parameters["idInsumo"].Value = IdInsumo;
                 cmd.Parameters.Add(new SqlParameter("idInventario", SqlDbType.Int));
-                cmd.Parameters["idInventario"].Value = IdInsumo;
+                cmd.Parameters["idInventario"].Value = IdInventario;
+                cmd.Parameters.Add(new SqlParameter("cantidad", SqlDbType.Decimal));
+                cmd.Parameters["cantidad"].Value = Cantidad;
                 cmd.ExecuteNonQuery();
 
             }
@@ -96,6 +105,8 @@ namespace Restaurante.Clases
                 conexion.Abrir();
                 cmd.Parameters.Add(new SqlParameter("idInsumoProducto", SqlDbType.Int));
                 cmd.Parameters["idInsumoProducto"].Value = IdInsumoProducto;
+                cmd.Parameters.Add(new SqlParameter("idInventario", SqlDbType.Int));
+                cmd.Parameters["idInventario"].Value = IdInventario;
                 cmd.ExecuteNonQuery();
             }
             catch (SqlException ex)
@@ -111,7 +122,9 @@ namespace Restaurante.Clases
         public void ObtenerInsumosProductos(int id)
         {
             Conexion conexion = new Conexion();
-            string sql = @"SELECT idInsumoProducto, idInsumo, idInventario FROM Restaurante.InsumosProductos WHERE idInsumoProducto = '" + id + "';";
+            string sql = @"SELECT IP.idInsumoProducto, IP.idInsumo, IP.idInventario, IP.cantidad, I.nombre FROM Restaurante.InsumosProductos AS IP 
+                           INNER JOIN Restaurante.Insumos AS I ON IP.idInsumo = I.idInsumo
+                            WHERE IP.idInsumoProducto = '" + id + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
@@ -122,6 +135,8 @@ namespace Restaurante.Clases
                     IdInsumoProducto = dr.GetInt32(0);
                     IdInsumo = dr.GetInt32(1);
                     IdInventario = dr.GetInt32(2);
+                    Cantidad = dr.GetDecimal(3);
+                    Nombre = dr.GetString(4);
                 }
             }
             catch (Exception ex)
@@ -136,22 +151,26 @@ namespace Restaurante.Clases
             }
         }
 
-        public static DataView GetDataView()
+        public static DataView GetDataView(int IdInventario)
         {
             Clases.Conexion conexion = new Clases.Conexion();
-            string sql = @"SELECT   Restaurante.InsumosProductos.idInsumoProducto    as Código,
-                                    Restaurante.InsumosProductos.idInsumo            as Insumo,
-                                    Restaurante.InsumosProductos.idInventario        as Producto
-                            FROM Restaurante.TipoUnidad";
+            //string sql = @"SELECT   Restaurante.InsumosProductos.idInsumoProducto    as Código,
+            //                        Restaurante.InsumosProductos.idInsumo            as Insumo,
+            //                        Restaurante.InsumosProductos.idInventario        as Producto,
+            //                        Restaurante.InsumosProductos.cantidad            as Cantidad
+            //                FROM Restaurante.InsumosProductos
+            //                WHERE idInventario = '" + IdInventario + "'; ";
 
-            //string sql2 = @"SELECT  Restaurante.InsumosProductos.idInsumoProducto    as Código,
-            //                        Restaurante.Insumos.nombre                       as Insumo,
-            //                        Restaurante.Inventario.descripcion               as Producto                                    
-            //                 FROM Restaurante.Inventario
-            //                 INNER JOIN Restaurante.InsumosProductos
-            //                 ON Restaurante.Inventario.idInventario = Restaurante.InsumosProductos.idInventario
-            //                 INNER JOIN Restaurante.Insumos
-            //                 ON Restaurante.Insumos.idInsumo = Restaurante.InsumosProductos.idInsumo";
+            string sql = @"SELECT  Restaurante.InsumosProductos.idInsumoProducto    as Código,
+                                    Restaurante.Insumos.nombre                       as Insumo,
+                                    Restaurante.Inventario.descripcion               as Producto,
+                                    Restaurante.InsumosProductos.cantidad            as Cantidad
+                             FROM Restaurante.Inventario
+                             INNER JOIN Restaurante.InsumosProductos
+                             ON Restaurante.Inventario.idInventario = Restaurante.InsumosProductos.idInventario
+                             INNER JOIN Restaurante.Insumos
+                             ON Restaurante.Insumos.idInsumo = Restaurante.InsumosProductos.idInsumo
+                             WHERE Restaurante.InsumosProductos.idInventario = '" + IdInventario + "'; ";
 
             try
             {

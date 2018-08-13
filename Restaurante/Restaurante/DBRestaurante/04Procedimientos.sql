@@ -932,17 +932,20 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE SP_AgregarInsumosProductos
+Alter PROCEDURE SP_AgregarInsumosProductos
 (
 	@idInsumo INT,
-	@idInventario INT
+	@idInventario INT,
+	@cantidad DECIMAL(8,2)
 )
 AS
 BEGIN
 	DECLARE @existe int;
+	DECLARE @TotalCosto DECIMAL (8,2);
+	SET @TotalCosto=0;
 	SET @existe = 0;
 
-	SELECT @existe = COUNT(Restaurante.InsumosProductos.idInsumoProducto) FROM Restaurante.InsumosProductos WHERE idInsumo = @idInsumo AND idInventario = @idInventario;
+	SELECT @existe = COUNT(Restaurante.InsumosProductos.idInsumo) FROM Restaurante.InsumosProductos WHERE (idInsumo = @idInsumo AND idInventario = @idInventario);
 	IF (@existe > 0)
 		BEGIN
 			RAISERROR(N'Ya existe ese Insumo', 16, 1);
@@ -951,22 +954,39 @@ BEGIN
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Restaurante.InsumosProductos(idInsumo, idInventario)
-				VALUES(@idInsumo, @idInventario)
+
+		INSERT INTO Restaurante.InsumosProductos(idInsumo, idInventario, cantidad)
+				VALUES(@idInsumo, @idInventario, @cantidad)
+
+			SELECT @TotalCosto= SUM( Restaurante.Insumos.costo * Restaurante.InsumosProductos.cantidad)
+FROM       Restaurante.Insumos INNER JOIN
+           Restaurante.InsumosProductos ON Restaurante.Insumos.idInsumo = Restaurante.InsumosProductos.idInsumo INNER JOIN
+           Restaurante.Inventario ON Restaurante.InsumosProductos.idInventario = Restaurante.Inventario.idInventario
+		   Where Restaurante.InsumosProductos.idInventario = @idInventario
+		   GROUP BY Restaurante.InsumosProductos.idInventario
+		   	   		
+
+			update Restaurante.Inventario
+			SET costo=@TotalCosto
+				WHERE idInventario=@idInventario;
+			
 			RETURN 1
 		END
 END
 GO
 
-CREATE PROCEDURE SP_ModificarInsumosProductos
+ALTER PROCEDURE SP_ModificarInsumosProductos
 (
 	@idInsumoProducto INT,
 	@idInsumo INT,
-	@idInventario INT
+	@idInventario INT,
+	@cantidad DECIMAL(8,2)
 )
 AS
 BEGIN
 	DECLARE @existe int;
+	DECLARE @TotalCosto DECIMAL (8,2);
+	SET @TotalCosto=0;
 	SET @existe = 0;
 
 	SELECT @existe = COUNT(Restaurante.InsumosProductos.idInsumoProducto) FROM Restaurante.InsumosProductos WHERE idInsumoProducto = @idInsumoProducto;
@@ -980,20 +1000,37 @@ BEGIN
 		BEGIN
 			UPDATE Restaurante.InsumosProductos
 				SET 	idInsumo = @idInsumo,
-						idInventario = @idInventario
+						idInventario = @idInventario,
+						cantidad = @cantidad
 					WHERE idInsumoProducto = @idInsumoProducto;
+
+			SELECT @TotalCosto= SUM( Restaurante.Insumos.costo * Restaurante.InsumosProductos.cantidad)
+FROM       Restaurante.Insumos INNER JOIN
+           Restaurante.InsumosProductos ON Restaurante.Insumos.idInsumo = Restaurante.InsumosProductos.idInsumo INNER JOIN
+           Restaurante.Inventario ON Restaurante.InsumosProductos.idInventario = Restaurante.Inventario.idInventario
+		   Where Restaurante.InsumosProductos.idInventario = @idInventario
+		   GROUP BY Restaurante.InsumosProductos.idInventario
+		   	   		
+
+			update Restaurante.Inventario
+			SET costo=@TotalCosto
+				WHERE idInventario=@idInventario;
+
 			RETURN 1
 		END
 END
 GO
 
-CREATE PROCEDURE SP_EliminarInsumosProductos
+ALTER PROCEDURE SP_EliminarInsumosProductos
 (
-	@idInsumoProducto INT
+	@idInsumoProducto INT,
+	@idInventario INT
 )
 AS
 BEGIN
 	DECLARE @existe int;
+	DECLARE @TotalCosto DECIMAL (8,2);
+	SET @TotalCosto=0;
 	SET @existe = 0;
 		SELECT @existe = COUNT(Restaurante.InsumosProductos.idInsumoProducto) FROM Restaurante.InsumosProductos WHERE idInsumoProducto = @idInsumoProducto;
 		IF (@existe = 0)
@@ -1004,6 +1041,19 @@ BEGIN
 		ELSE
 			BEGIN
 				DELETE FROM Restaurante.InsumosProductos WHERE idInsumoProducto = @idInsumoProducto;
+
+			SELECT @TotalCosto= SUM( Restaurante.Insumos.costo * Restaurante.InsumosProductos.cantidad)
+FROM       Restaurante.Insumos INNER JOIN
+           Restaurante.InsumosProductos ON Restaurante.Insumos.idInsumo = Restaurante.InsumosProductos.idInsumo INNER JOIN
+           Restaurante.Inventario ON Restaurante.InsumosProductos.idInventario = Restaurante.Inventario.idInventario
+		   Where Restaurante.InsumosProductos.idInventario = @idInventario
+		   GROUP BY Restaurante.InsumosProductos.idInventario
+		   	   		
+
+			update Restaurante.Inventario
+			SET costo=@TotalCosto
+				WHERE idInventario=@idInventario;
+
 				RETURN 1
 			END
 END

@@ -207,6 +207,43 @@ namespace Restaurante.Clases
         }
 
 
+        public static DataView GetDataViewInsumo(string descripcion)
+        {
+            Clases.Conexion conexion = new Clases.Conexion();
+            string sql = @"SELECT   Restaurante.Insumos.idInsumo        as Código,
+                                    Restaurante.Insumos.nombre          as Insumo,
+                                    Restaurante.Insumos.costo           as Costo, 
+                                    Restaurante.TipoUnidad.descripcion  as Unidad
+                            FROM Restaurante.TipoUnidad
+                            INNER JOIN Restaurante.Insumos
+                            ON Restaurante.TipoUnidad.idTipoUnidad = Restaurante.Insumos.idTipoUnidad
+                            WHERE nombre = '" + descripcion + "'; ";
+            try
+            {
+                SqlDataAdapter data = new SqlDataAdapter();
+                data.SelectCommand = new SqlCommand(sql, conexion.conexion);
+                DataSet ds = new DataSet();
+                data.Fill(ds, "Restaurante.Insumos");
+                DataTable dt = ds.Tables["Restaurante.Insumos"];
+                DataView dv = new DataView(dt,
+                    "",
+                    "Código",
+                    DataViewRowState.Unchanged);
+                return dv;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Cerrar();
+            }
+
+        }
+
+
+
 
 
     }

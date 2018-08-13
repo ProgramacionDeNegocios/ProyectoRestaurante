@@ -14,6 +14,8 @@ namespace Restaurante
     public partial class ModuloInventario : Form
     {
         private int id = 0;
+        private int idInsumoInventario = 0;
+        private int idInsumo = 0;
         public ModuloInventario()
         {
             InitializeComponent();
@@ -114,6 +116,7 @@ namespace Restaurante
                         proveedor.Id
                     );
                     CargarDGWInventario();
+                    
                 }
                 else
                 {
@@ -208,6 +211,7 @@ namespace Restaurante
                 );
             dgvInventario.Select();
             this.id = inventario.IdInventario;
+            CargarDGWInsumosInventario();
 
             txtId.Text = inventario.IdInventario.ToString();
             txtDescripcion.Text = inventario.Descripcion.ToString();
@@ -236,6 +240,9 @@ namespace Restaurante
             cmbCategoriaProducto.SelectedValue = "";
             CargarDGWInventario();
             dgwInventarioEstilo(dgvInventario);
+
+            txtNombreInsumo.Text = "";
+            txtCantidadInsumo.Text = "";
 
             btnNuevo.Enabled = true;
             btnAgregar.Enabled = true;
@@ -308,7 +315,7 @@ namespace Restaurante
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    Clases.Mensaje.Advertencia(ex);
                 }
                 finally
                 {
@@ -323,14 +330,175 @@ namespace Restaurante
             if (cmbTipoProducto.Text == "Elaborado")
             {
                 panel1.Visible = true;
+                dgvInsumosInv.Visible = true;
                 cmbProveedor.Visible = false;
                 lblProveedor.Visible = false;
             }
             else
             {
                 panel1.Visible = false;
+                dgvInsumosInv.Visible = false;
                 cmbProveedor.Visible = true;
                 lblProveedor.Visible = true;
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            dgvBuscarInsumo.DataSource = Clases.Insumos.GetDataViewInsumo(txtNombreInsumo.Text);
+        }
+
+        private void txtNombreInsumo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCantidadInsumo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void ObtenerIdInventario()
+        {
+            Clases.Inventario inventario = new Clases.Inventario();
+            inventario.ObtenerIdInventario(this.txtDescripcion.Text);
+            this.id = inventario.IdInventario;
+        }
+
+
+        private void CargarDGWInsumosInventario()
+        {
+            try
+            {
+                dgvInsumosInv.DataSource = Clases.InsumosProductos.GetDataView(this.id);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnAgregarInsumo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //MessageBox.Show(this.idInsumo.ToString());
+                //MessageBox.Show(this.id.ToString());
+                //MessageBox.Show(txtCantidadInsumo.Text.ToString());
+                Clases.Restaurante.AgregarInsumoProducto
+                    (
+                        this.idInsumo,
+                        this.id,
+                        Convert.ToDecimal(txtCantidadInsumo.Text)
+                    );
+                CargarDGWInsumosInventario();
+                CargarDGWInventario();
+                txtNombreInsumo.Text = "";
+                txtCantidadInsumo.Text = "";
+
+            }
+            catch (Exception ex)
+            {
+
+                Clases.Mensaje.Advertencia(ex);
+            }
+        }
+
+        private void dgvBuscarInsumo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Clases.Insumos insumos = new Clases.Insumos();
+            insumos.ObtenerInsumo(
+                Convert.ToInt32(
+                    dgvBuscarInsumo.Rows[e.RowIndex].Cells["Código"].Value.ToString()
+                    )
+                );
+            dgvBuscarInsumo.Select();
+            this.idInsumo = insumos.Id;
+            ObtenerIdInventario();
+        }
+
+        private void dgvInsumosInv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Clases.InsumosProductos insumoproducto = new Clases.InsumosProductos();
+            insumoproducto.ObtenerInsumosProductos(
+                Convert.ToInt32(
+                    dgvInsumosInv.Rows[e.RowIndex].Cells["Código"].Value.ToString()
+                    )
+                );
+            dgvInsumosInv.Select();
+
+            this.idInsumoInventario = insumoproducto.IdInsumoProducto;
+            this.idInsumo = insumoproducto.IdInsumo;
+            this.id = insumoproducto.IdInventario;
+            txtCantidadInsumo.Text = insumoproducto.Cantidad.ToString();
+            txtNombreInsumo.Text = insumoproducto.Nombre;
+
+
+        }
+
+        private void btnModificarInsumo_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("Está seguro de modificar los Insumos", "Modificar Insumo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta.ToString() == "Yes")
+            {
+                try
+                {
+                    Clases.Restaurante.ModificarInsumoProducto
+                    (
+                        this.idInsumoInventario,
+                        this.idInsumo,
+                        this.id,
+                        Convert.ToDecimal(txtCantidadInsumo.Text)
+                    );
+                    CargarDGWInsumosInventario();
+                    CargarDGWInventario();
+                    txtNombreInsumo.Text = "";
+                    txtCantidadInsumo.Text = "";
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+        }
+
+        private void btnEliminarInsumo_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("Está seguro de Eliminar el Insumi", "Eliminar Insumo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (respuesta.ToString() == "Yes")
+            {
+                try
+                {
+                    Clases.Restaurante.EliminarInsumoProducto(this.idInsumoInventario, this.id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    ResetFormulario();
+                }
+
             }
         }
     }

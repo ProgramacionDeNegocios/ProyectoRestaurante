@@ -39,4 +39,4 @@ SELECT * FROM Acceso.TipoAcceso
 
 --SELECT * FROM Restaurante.Inventario
 
-SELECT * FROM Restaurante.Proveedores
+SELECT * FROM Restaurante.InsumosProductos

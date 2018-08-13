@@ -497,5 +497,95 @@ namespace Restaurante.Clases
             }
         }
 
+        private static void ValidarInsumoProducto
+                (
+                int idInsumo,
+                int idInventario,
+                decimal cantidad
+                )
+        {
+            if (idInsumo <= 0 || idInventario <=0 || cantidad <0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar el insumo del Producto. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar el insumo del Producto\n" +
+                    "idInsumo  : Tomate\n" +
+                    "idInventario   : Pescado\n" +
+                    "Cantidad : 4",
+                    new Exception(),
+                    "Clase_Insumo"
+                    );
+            }
+        }
+        public static void AgregarInsumoProducto
+            (
+            int idInsumo,
+            int idInventario,
+            decimal cantidad
+            )
+        {
+            try
+            {
+                ValidarInsumoProducto(idInsumo, idInventario, cantidad);
+                Clases.InsumosProductos insumoproducto = new Clases.InsumosProductos(
+                    idInsumo,
+                    idInventario,
+                    cantidad
+                    );
+                insumoproducto.Agregar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ModificarInsumoProducto
+            (
+            int idInsumoProducto,
+            int idInsumo,
+            int idInventario,
+            decimal cantidad
+            )
+        {
+            try
+            {
+                ValidarInsumoProducto(idInsumo, idInventario, cantidad);
+                Clases.InsumosProductos insumoproducto = new Clases.InsumosProductos(
+                    idInsumoProducto,
+                    idInsumo,
+                    idInventario,
+                    cantidad
+                    );
+                insumoproducto.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void EliminarInsumoProducto
+            (
+            int idInsumoProducto,
+            int idInventario
+            )
+        {
+            try
+            {
+                Clases.InsumosProductos insumoproducto = new Clases.InsumosProductos(
+                    idInsumoProducto,
+                    idInventario
+                    );
+                insumoproducto.Eliminar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
     }
 }
