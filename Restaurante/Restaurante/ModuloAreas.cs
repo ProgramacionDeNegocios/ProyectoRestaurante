@@ -23,6 +23,12 @@ namespace Restaurante
             try
             {
                 dgvAreas.DataSource = Clases.Areas.GetDataView();
+                if (dgvAreas.RowCount >= 3)
+                {
+                    btnAgregar.Enabled = false;
+                }
+                else { btnAgregar.Enabled = true;
+                }
             }
             catch (Exception ex)
             {

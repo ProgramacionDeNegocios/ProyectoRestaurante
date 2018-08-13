@@ -607,6 +607,7 @@ GO
 CREATE PROCEDURE SP_AgregarMesa
 (
 @idArea INT,
+@numeroMesa INT,
 @estado NVARCHAR(21)
 )
 AS
@@ -623,8 +624,8 @@ BEGIN
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Restaurante.Mesas(idArea,estado)
-				VALUES(@idArea, @estado)
+			INSERT INTO Restaurante.Mesas(idArea,numeroMesa,estado)
+				VALUES(@idArea, @numeroMesa,@estado)
 			RETURN 1
 		END
 END
@@ -634,6 +635,7 @@ CREATE PROCEDURE SP_ModificarMesa
 (
 @id INT,
 @idArea INT,
+@numeroMesa INT,
 @estado NVARCHAR(21)
 )
 AS
@@ -649,7 +651,8 @@ BEGIN
 	ELSE
 		BEGIN
 			UPDATE Restaurante.Mesas
-				SET idArea = @idArea, 
+				SET idArea = @idArea,
+					numeroMesa = @numeroMesa,
 					estado = @estado
 					WHERE id = @id;
 			RETURN 1

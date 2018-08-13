@@ -224,6 +224,10 @@
     <None Include="Resources\verde3.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\agregar-editar-icono-6607-32.png" />
+    <None Include="Resources\editar-icono-6607-32.png" />
+    <None Include="Resources\equiis.png" />
+    <None Include="Resources\editar-icono-6607-321.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

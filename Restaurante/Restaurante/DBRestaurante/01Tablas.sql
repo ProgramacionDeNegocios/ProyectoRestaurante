@@ -101,6 +101,7 @@ ELSE
 		CREATE TABLE Restaurante.Mesas(
 			id INT IDENTITY (1, 100) NOT NULL, --index de las mesas
 			idArea INT NOT NULL,
+			numeroMesa INT NOT NULL,
 			estado NVARCHAR(21) NOT NULL --estados que puede tener una mesa
 								--libre, ocupado, reservado, saliendo
 		);
