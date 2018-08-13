@@ -111,6 +111,7 @@ namespace Restaurante
                         Convert.ToDecimal(txtCosto.Text),
                         Convert.ToDecimal(txtPrecioVenta.Text),
                         Convert.ToDecimal(txtCantidad.Text),
+                        Convert.ToDecimal(txtCantMinima.Text),
                         categoria.Id,
                         tipoproducto.Id,
                         proveedor.Id
@@ -122,15 +123,14 @@ namespace Restaurante
                 {
                     
                     proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
-
-                    MessageBox.Show("Id" + proveedor.Id);
-
+                    //txtCantMinima.Text = "0";
                     Clases.Restaurante.AgregarInventario
                     (
                         txtDescripcion.Text,
                         Convert.ToDecimal(txtCosto.Text),
                         Convert.ToDecimal(txtPrecioVenta.Text),
                         Convert.ToDecimal(txtCantidad.Text),
+                        Convert.ToDecimal(txtCantMinima.Text),
                         categoria.Id,
                         tipoproducto.Id,
                         proveedor.Id
@@ -169,6 +169,7 @@ namespace Restaurante
                         Convert.ToDecimal(txtCosto.Text),
                         Convert.ToDecimal(txtPrecioVenta.Text),
                         Convert.ToDecimal(txtCantidad.Text),
+                        Convert.ToDecimal(txtCantMinima.Text),
                         categoria.Id,
                         tipoproducto.Id,
                         proveedor.Id
@@ -178,6 +179,7 @@ namespace Restaurante
                     else
                     {
                         proveedor.ObtenerProveedorPorNombre(cmbProveedor.SelectedValue.ToString());
+                        //txtCantMinima.Text = "0";
                         Clases.Restaurante.ModificarInventario
                         (
                         this.id,
@@ -185,6 +187,7 @@ namespace Restaurante
                         Convert.ToDecimal(txtCosto.Text),
                         Convert.ToDecimal(txtPrecioVenta.Text),
                         Convert.ToDecimal(txtCantidad.Text),
+                        Convert.ToDecimal(txtCantMinima.Text),
                         categoria.Id,
                         tipoproducto.Id,
                         proveedor.Id
@@ -218,6 +221,7 @@ namespace Restaurante
             txtCosto.Text = inventario.Costo.ToString();
             txtPrecioVenta.Text = inventario.PrecioVenta.ToString();
             txtCantidad.Text = inventario.Cantidad.ToString();
+            txtCantMinima.Text = inventario.CantidadMinima.ToString();
             cmbTipoProducto.SelectedIndex = inventario.IdTipoProducto - 1;
             cmbProveedor.SelectedIndex = inventario.IdProveedor - 1;
             cmbCategoriaProducto.SelectedIndex = inventario.IdCategoria - 1;
@@ -235,6 +239,7 @@ namespace Restaurante
             txtCosto.Text = "";
             txtPrecioVenta.Text = "";
             txtCantidad.Text = "";
+            txtCantMinima.Text = "";
             cmbTipoProducto.SelectedValue = "";
             cmbProveedor.SelectedValue = "";
             cmbCategoriaProducto.SelectedValue = "";
@@ -398,9 +403,6 @@ namespace Restaurante
         {
             try
             {
-                //MessageBox.Show(this.idInsumo.ToString());
-                //MessageBox.Show(this.id.ToString());
-                //MessageBox.Show(txtCantidadInsumo.Text.ToString());
                 Clases.Restaurante.AgregarInsumoProducto
                     (
                         this.idInsumo,
@@ -483,7 +485,7 @@ namespace Restaurante
 
         private void btnEliminarInsumo_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("Está seguro de Eliminar el Insumi", "Eliminar Insumo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult respuesta = MessageBox.Show("Está seguro de Eliminar el Insumo", "Eliminar Insumo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (respuesta.ToString() == "Yes")
             {
                 try
@@ -500,6 +502,24 @@ namespace Restaurante
                 }
 
             }
+        }
+
+        private void txtCantMinima_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnNuevoInsumo_Click(object sender, EventArgs e)
+        {
+            txtNombreInsumo.Text = "";
+            txtCantidadInsumo.Text = "";
         }
     }
 }

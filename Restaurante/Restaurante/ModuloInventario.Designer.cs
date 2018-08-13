@@ -59,17 +59,20 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvBuscarInsumo = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnModificarInsumo = new System.Windows.Forms.Button();
+            this.btnEliminarInsumo = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCantidadInsumo = new System.Windows.Forms.TextBox();
             this.txtNombreInsumo = new System.Windows.Forms.TextBox();
+            this.btnAgregarInsumo = new System.Windows.Forms.Button();
             this.lblCantidadInsumo = new System.Windows.Forms.Label();
             this.dgvInsumosInv = new System.Windows.Forms.DataGridView();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnModificarInsumo = new System.Windows.Forms.Button();
-            this.btnEliminarInsumo = new System.Windows.Forms.Button();
-            this.btnAgregarInsumo = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtCantMinima = new System.Windows.Forms.TextBox();
+            this.lblCantMinima = new System.Windows.Forms.Label();
+            this.btnNuevoInsumo = new System.Windows.Forms.Button();
             this.pnlTitulo.SuspendLayout();
             this.grpInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
@@ -114,6 +117,8 @@
             // 
             // grpInventario
             // 
+            this.grpInventario.Controls.Add(this.txtCantMinima);
+            this.grpInventario.Controls.Add(this.lblCantMinima);
             this.grpInventario.Controls.Add(this.cmbCategoriaProducto);
             this.grpInventario.Controls.Add(this.lblCategoria);
             this.grpInventario.Controls.Add(this.cmbTipoProducto);
@@ -133,7 +138,7 @@
             this.grpInventario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.grpInventario.Location = new System.Drawing.Point(12, 63);
             this.grpInventario.Name = "grpInventario";
-            this.grpInventario.Size = new System.Drawing.Size(324, 327);
+            this.grpInventario.Size = new System.Drawing.Size(324, 358);
             this.grpInventario.TabIndex = 34;
             this.grpInventario.TabStop = false;
             // 
@@ -141,15 +146,15 @@
             // 
             this.cmbCategoriaProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoriaProducto.FormattingEnabled = true;
-            this.cmbCategoriaProducto.Location = new System.Drawing.Point(102, 217);
+            this.cmbCategoriaProducto.Location = new System.Drawing.Point(102, 248);
             this.cmbCategoriaProducto.Name = "cmbCategoriaProducto";
             this.cmbCategoriaProducto.Size = new System.Drawing.Size(213, 24);
-            this.cmbCategoriaProducto.TabIndex = 40;
+            this.cmbCategoriaProducto.TabIndex = 7;
             // 
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(11, 220);
+            this.lblCategoria.Location = new System.Drawing.Point(11, 251);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(67, 16);
             this.lblCategoria.TabIndex = 41;
@@ -159,16 +164,16 @@
             // 
             this.cmbTipoProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoProducto.FormattingEnabled = true;
-            this.cmbTipoProducto.Location = new System.Drawing.Point(102, 256);
+            this.cmbTipoProducto.Location = new System.Drawing.Point(102, 287);
             this.cmbTipoProducto.Name = "cmbTipoProducto";
             this.cmbTipoProducto.Size = new System.Drawing.Size(213, 24);
-            this.cmbTipoProducto.TabIndex = 38;
+            this.cmbTipoProducto.TabIndex = 8;
             this.cmbTipoProducto.SelectedIndexChanged += new System.EventHandler(this.cmbTipoProducto_SelectedIndexChanged);
             // 
             // lblTipoProducto
             // 
             this.lblTipoProducto.AutoSize = true;
-            this.lblTipoProducto.Location = new System.Drawing.Point(3, 259);
+            this.lblTipoProducto.Location = new System.Drawing.Point(3, 290);
             this.lblTipoProducto.Name = "lblTipoProducto";
             this.lblTipoProducto.Size = new System.Drawing.Size(93, 16);
             this.lblTipoProducto.TabIndex = 39;
@@ -179,7 +184,7 @@
             this.txtCantidad.Location = new System.Drawing.Point(102, 178);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(109, 22);
-            this.txtCantidad.TabIndex = 36;
+            this.txtCantidad.TabIndex = 5;
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // lblCantidad
@@ -196,7 +201,7 @@
             this.txtPrecioVenta.Location = new System.Drawing.Point(102, 136);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(109, 22);
-            this.txtPrecioVenta.TabIndex = 34;
+            this.txtPrecioVenta.TabIndex = 4;
             this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // lblPrecioVenta
@@ -212,15 +217,15 @@
             // 
             this.cmbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProveedor.FormattingEnabled = true;
-            this.cmbProveedor.Location = new System.Drawing.Point(102, 297);
+            this.cmbProveedor.Location = new System.Drawing.Point(102, 328);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(213, 24);
-            this.cmbProveedor.TabIndex = 6;
+            this.cmbProveedor.TabIndex = 9;
             // 
             // lblProveedor
             // 
             this.lblProveedor.AutoSize = true;
-            this.lblProveedor.Location = new System.Drawing.Point(11, 300);
+            this.lblProveedor.Location = new System.Drawing.Point(11, 331);
             this.lblProveedor.Name = "lblProveedor";
             this.lblProveedor.Size = new System.Drawing.Size(72, 16);
             this.lblProveedor.TabIndex = 33;
@@ -283,7 +288,7 @@
             this.dgvInventario.AllowUserToDeleteRows = false;
             this.dgvInventario.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvInventario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInventario.Location = new System.Drawing.Point(12, 396);
+            this.dgvInventario.Location = new System.Drawing.Point(9, 427);
             this.dgvInventario.Name = "dgvInventario";
             this.dgvInventario.ReadOnly = true;
             this.dgvInventario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -311,7 +316,7 @@
             this.btnReportes.Location = new System.Drawing.Point(13, 129);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Size = new System.Drawing.Size(75, 25);
-            this.btnReportes.TabIndex = 11;
+            this.btnReportes.TabIndex = 14;
             this.btnReportes.Text = "Reportes";
             this.btnReportes.UseVisualStyleBackColor = false;
             // 
@@ -323,7 +328,7 @@
             this.btnModificar.Location = new System.Drawing.Point(13, 69);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 25);
-            this.btnModificar.TabIndex = 9;
+            this.btnModificar.TabIndex = 12;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -336,7 +341,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(13, 40);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 25);
-            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.TabIndex = 11;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -349,7 +354,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(13, 98);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 25);
-            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.TabIndex = 13;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -362,7 +367,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(13, 11);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 25);
-            this.btnNuevo.TabIndex = 7;
+            this.btnNuevo.TabIndex = 10;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -393,11 +398,12 @@
             this.dgvBuscarInsumo.Location = new System.Drawing.Point(18, 262);
             this.dgvBuscarInsumo.Name = "dgvBuscarInsumo";
             this.dgvBuscarInsumo.Size = new System.Drawing.Size(302, 116);
-            this.dgvBuscarInsumo.TabIndex = 39;
+            this.dgvBuscarInsumo.TabIndex = 18;
             this.dgvBuscarInsumo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBuscarInsumo_CellClick);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnNuevoInsumo);
             this.groupBox1.Controls.Add(this.btnModificarInsumo);
             this.groupBox1.Controls.Add(this.btnEliminarInsumo);
             this.groupBox1.Controls.Add(this.btnBuscar);
@@ -412,15 +418,43 @@
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
             // 
+            // btnModificarInsumo
+            // 
+            this.btnModificarInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnModificarInsumo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnModificarInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnModificarInsumo.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnModificarInsumo.Location = new System.Drawing.Point(125, 142);
+            this.btnModificarInsumo.Name = "btnModificarInsumo";
+            this.btnModificarInsumo.Size = new System.Drawing.Size(75, 25);
+            this.btnModificarInsumo.TabIndex = 19;
+            this.btnModificarInsumo.Text = "Modificar";
+            this.btnModificarInsumo.UseVisualStyleBackColor = false;
+            this.btnModificarInsumo.Click += new System.EventHandler(this.btnModificarInsumo_Click);
+            // 
+            // btnEliminarInsumo
+            // 
+            this.btnEliminarInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnEliminarInsumo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminarInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEliminarInsumo.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnEliminarInsumo.Location = new System.Drawing.Point(234, 142);
+            this.btnEliminarInsumo.Name = "btnEliminarInsumo";
+            this.btnEliminarInsumo.Size = new System.Drawing.Size(75, 25);
+            this.btnEliminarInsumo.TabIndex = 20;
+            this.btnEliminarInsumo.Text = "Eliminar";
+            this.btnEliminarInsumo.UseVisualStyleBackColor = false;
+            this.btnEliminarInsumo.Click += new System.EventHandler(this.btnEliminarInsumo_Click);
+            // 
             // btnBuscar
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnBuscar.Location = new System.Drawing.Point(125, 54);
+            this.btnBuscar.Location = new System.Drawing.Point(74, 54);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 25);
-            this.btnBuscar.TabIndex = 42;
+            this.btnBuscar.TabIndex = 16;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -439,7 +473,7 @@
             this.txtCantidadInsumo.Location = new System.Drawing.Point(91, 92);
             this.txtCantidadInsumo.Name = "txtCantidadInsumo";
             this.txtCantidadInsumo.Size = new System.Drawing.Size(109, 22);
-            this.txtCantidadInsumo.TabIndex = 40;
+            this.txtCantidadInsumo.TabIndex = 17;
             this.txtCantidadInsumo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadInsumo_KeyPress);
             // 
             // txtNombreInsumo
@@ -447,8 +481,22 @@
             this.txtNombreInsumo.Location = new System.Drawing.Point(103, 21);
             this.txtNombreInsumo.Name = "txtNombreInsumo";
             this.txtNombreInsumo.Size = new System.Drawing.Size(213, 22);
-            this.txtNombreInsumo.TabIndex = 33;
+            this.txtNombreInsumo.TabIndex = 15;
             this.txtNombreInsumo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreInsumo_KeyPress);
+            // 
+            // btnAgregarInsumo
+            // 
+            this.btnAgregarInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnAgregarInsumo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregarInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAgregarInsumo.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnAgregarInsumo.Location = new System.Drawing.Point(11, 142);
+            this.btnAgregarInsumo.Name = "btnAgregarInsumo";
+            this.btnAgregarInsumo.Size = new System.Drawing.Size(75, 25);
+            this.btnAgregarInsumo.TabIndex = 18;
+            this.btnAgregarInsumo.Text = "Agregar";
+            this.btnAgregarInsumo.UseVisualStyleBackColor = false;
+            this.btnAgregarInsumo.Click += new System.EventHandler(this.btnAgregarInsumo_Click);
             // 
             // lblCantidadInsumo
             // 
@@ -465,7 +513,7 @@
             this.dgvInsumosInv.AllowUserToDeleteRows = false;
             this.dgvInsumosInv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvInsumosInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInsumosInv.Location = new System.Drawing.Point(457, 396);
+            this.dgvInsumosInv.Location = new System.Drawing.Point(454, 427);
             this.dgvInsumosInv.Name = "dgvInsumosInv";
             this.dgvInsumosInv.ReadOnly = true;
             this.dgvInsumosInv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -486,62 +534,50 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // btnModificarInsumo
-            // 
-            this.btnModificarInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
-            this.btnModificarInsumo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnModificarInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnModificarInsumo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnModificarInsumo.Location = new System.Drawing.Point(125, 142);
-            this.btnModificarInsumo.Name = "btnModificarInsumo";
-            this.btnModificarInsumo.Size = new System.Drawing.Size(75, 25);
-            this.btnModificarInsumo.TabIndex = 44;
-            this.btnModificarInsumo.Text = "Modificar";
-            this.btnModificarInsumo.UseVisualStyleBackColor = false;
-            this.btnModificarInsumo.Click += new System.EventHandler(this.btnModificarInsumo_Click);
-            // 
-            // btnEliminarInsumo
-            // 
-            this.btnEliminarInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
-            this.btnEliminarInsumo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEliminarInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEliminarInsumo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnEliminarInsumo.Location = new System.Drawing.Point(234, 142);
-            this.btnEliminarInsumo.Name = "btnEliminarInsumo";
-            this.btnEliminarInsumo.Size = new System.Drawing.Size(75, 25);
-            this.btnEliminarInsumo.TabIndex = 43;
-            this.btnEliminarInsumo.Text = "Eliminar";
-            this.btnEliminarInsumo.UseVisualStyleBackColor = false;
-            this.btnEliminarInsumo.Click += new System.EventHandler(this.btnEliminarInsumo_Click);
-            // 
-            // btnAgregarInsumo
-            // 
-            this.btnAgregarInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
-            this.btnAgregarInsumo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregarInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAgregarInsumo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnAgregarInsumo.Location = new System.Drawing.Point(11, 142);
-            this.btnAgregarInsumo.Name = "btnAgregarInsumo";
-            this.btnAgregarInsumo.Size = new System.Drawing.Size(75, 25);
-            this.btnAgregarInsumo.TabIndex = 35;
-            this.btnAgregarInsumo.Text = "Agregar";
-            this.btnAgregarInsumo.UseVisualStyleBackColor = false;
-            this.btnAgregarInsumo.Click += new System.EventHandler(this.btnAgregarInsumo_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 550);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 581);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(790, 74);
             this.pictureBox1.TabIndex = 37;
             this.pictureBox1.TabStop = false;
             // 
+            // txtCantMinima
+            // 
+            this.txtCantMinima.Location = new System.Drawing.Point(102, 215);
+            this.txtCantMinima.Name = "txtCantMinima";
+            this.txtCantMinima.Size = new System.Drawing.Size(109, 22);
+            this.txtCantMinima.TabIndex = 6;
+            this.txtCantMinima.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantMinima_KeyPress);
+            // 
+            // lblCantMinima
+            // 
+            this.lblCantMinima.AutoSize = true;
+            this.lblCantMinima.Location = new System.Drawing.Point(11, 218);
+            this.lblCantMinima.Name = "lblCantMinima";
+            this.lblCantMinima.Size = new System.Drawing.Size(62, 16);
+            this.lblCantMinima.TabIndex = 43;
+            this.lblCantMinima.Text = "Cant. Min";
+            // 
+            // btnNuevoInsumo
+            // 
+            this.btnNuevoInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnNuevoInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNuevoInsumo.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnNuevoInsumo.Location = new System.Drawing.Point(175, 54);
+            this.btnNuevoInsumo.Name = "btnNuevoInsumo";
+            this.btnNuevoInsumo.Size = new System.Drawing.Size(75, 25);
+            this.btnNuevoInsumo.TabIndex = 42;
+            this.btnNuevoInsumo.Text = "Nuevo";
+            this.btnNuevoInsumo.UseVisualStyleBackColor = false;
+            this.btnNuevoInsumo.Click += new System.EventHandler(this.btnNuevoInsumo_Click);
+            // 
             // ModuloInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 635);
+            this.ClientSize = new System.Drawing.Size(837, 667);
             this.Controls.Add(this.dgvInsumosInv);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.panel1);
@@ -618,5 +654,8 @@
         private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Button btnModificarInsumo;
         private System.Windows.Forms.Button btnEliminarInsumo;
+        private System.Windows.Forms.TextBox txtCantMinima;
+        private System.Windows.Forms.Label lblCantMinima;
+        private System.Windows.Forms.Button btnNuevoInsumo;
     }
 }

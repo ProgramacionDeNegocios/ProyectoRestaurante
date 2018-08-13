@@ -16,30 +16,33 @@ namespace Restaurante.Clases
         public decimal Costo { set; get; }
         public decimal PrecioVenta { set; get; }
         public decimal Cantidad { set; get; }
+        public decimal CantidadMinima { set; get; }
         public int IdCategoria { set; get; }
         public int IdTipoProducto { set; get; }
         public int IdProveedor { set; get; }
 
         public Inventario() { }
 
-        public Inventario(string descripcion, decimal costo, decimal precioventa, decimal cantidad, int categoria, int idtipoproducto, int idproveedor)
+        public Inventario(string descripcion, decimal costo, decimal precioventa, decimal cantidad, decimal cantidadminima, int categoria, int idtipoproducto, int idproveedor)
         {
             Descripcion = descripcion;
             Costo = costo;
             PrecioVenta = precioventa;
             Cantidad = cantidad;
+            CantidadMinima = cantidadminima;
             IdCategoria = categoria;
             IdTipoProducto = idtipoproducto;
             IdProveedor = idproveedor;
         }
 
-        public Inventario(int idinventario, string descripcion, decimal costo, decimal precioventa, decimal cantidad, int categoria, int idtipoproducto, int idproveedor)
+        public Inventario(int idinventario, string descripcion, decimal costo, decimal precioventa, decimal cantidad, decimal cantidadminima, int categoria, int idtipoproducto, int idproveedor)
         {
             IdInventario = idinventario;
             Descripcion = descripcion;
             Costo = costo;
             PrecioVenta = precioventa;
             Cantidad = cantidad;
+            CantidadMinima = cantidadminima;
             IdCategoria = categoria;
             IdTipoProducto = idtipoproducto;
             IdProveedor = idproveedor;
@@ -66,6 +69,8 @@ namespace Restaurante.Clases
                 cmd.Parameters["precioVenta"].Value = PrecioVenta;
                 cmd.Parameters.Add(new SqlParameter("cantidad", SqlDbType.Decimal));
                 cmd.Parameters["cantidad"].Value = Cantidad;
+                cmd.Parameters.Add(new SqlParameter("cantidadMinima", SqlDbType.Decimal));
+                cmd.Parameters["cantidadMinima"].Value = CantidadMinima;
                 cmd.Parameters.Add(new SqlParameter("idCategoria", SqlDbType.Int));
                 cmd.Parameters["idCategoria"].Value = IdCategoria;
                 cmd.Parameters.Add(new SqlParameter("idTipoProducto", SqlDbType.Int));
@@ -104,6 +109,8 @@ namespace Restaurante.Clases
                 cmd.Parameters["precioVenta"].Value = PrecioVenta;
                 cmd.Parameters.Add(new SqlParameter("cantidad", SqlDbType.Decimal));
                 cmd.Parameters["cantidad"].Value = Cantidad;
+                cmd.Parameters.Add(new SqlParameter("cantidadMinima", SqlDbType.Decimal));
+                cmd.Parameters["cantidadMinima"].Value = CantidadMinima;
                 cmd.Parameters.Add(new SqlParameter("idCategoria", SqlDbType.Int));
                 cmd.Parameters["idCategoria"].Value = IdCategoria;
                 cmd.Parameters.Add(new SqlParameter("idTipoProducto", SqlDbType.Int));
@@ -148,7 +155,7 @@ namespace Restaurante.Clases
         public void ObtenerInventario(int id)
         {
             Conexion conexion = new Conexion();
-            string sql = @"SELECT idInventario, descripcion, costo, precioVenta, cantidad, idCategoria, idTipoProducto, idProveedor FROM Restaurante.Inventario WHERE idInventario = '" + id + "';";
+            string sql = @"SELECT idInventario, descripcion, costo, precioVenta, cantidad, cantidadMinima, idCategoria, idTipoProducto, idProveedor FROM Restaurante.Inventario WHERE idInventario = '" + id + "';";
             SqlCommand cmd = new SqlCommand(sql, conexion.conexion);
             try
             {
@@ -161,9 +168,10 @@ namespace Restaurante.Clases
                     Costo = dr.GetDecimal(2);
                     PrecioVenta = dr.GetDecimal(3);
                     Cantidad = dr.GetDecimal(4);
-                    IdCategoria = dr.GetInt32(5);
-                    IdTipoProducto = dr.GetInt32(6);
-                    IdProveedor = dr.GetInt32(7);
+                    CantidadMinima = dr.GetDecimal(5);
+                    IdCategoria = dr.GetInt32(6);
+                    IdTipoProducto = dr.GetInt32(7);
+                    IdProveedor = dr.GetInt32(8);
                 }
             }
             catch (SqlException ex)
@@ -215,6 +223,7 @@ namespace Restaurante.Clases
                                     Restaurante.Inventario.costo                as Costo,
                                     Restaurante.Inventario.precioVenta          as PrecioVenta,
                                     Restaurante.Inventario.cantidad             as Cantidad,
+                                    Restaurante.Inventario.cantidadMinima       as CantidadMin,
                                     Restaurante.CategoriaProducto.descripcion   as Categoría,
                                     Restaurante.TipoProducto.nombre             as TipoProducto,
                                     Restaurante.Proveedores.nombre              as Proveedor

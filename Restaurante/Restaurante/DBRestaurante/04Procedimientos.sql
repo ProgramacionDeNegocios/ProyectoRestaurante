@@ -620,6 +620,7 @@ CREATE PROCEDURE SP_AgregarInventario
 	@costo DECIMAL(8,2),
 	@precioVenta DECIMAL(8,2),
 	@cantidad DECIMAL(8,2),
+	@cantidadMinima DECIMAL(8,2),
 	@idCategoria INT,
 	@idTipoProducto INT,
 	@idProveedor INT
@@ -639,42 +640,12 @@ BEGIN
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Restaurante.Inventario(descripcion, costo, precioVenta, cantidad, idCategoria, idTipoProducto, idProveedor)
-				VALUES(@descripcion, @costo, @precioVenta, @cantidad, @idCategoria, @idTipoProducto, @idProveedor)
+			INSERT INTO Restaurante.Inventario(descripcion, costo, precioVenta, cantidad, cantidadMinima, idCategoria, idTipoProducto, idProveedor)
+				VALUES(@descripcion, @costo, @precioVenta, @cantidad, @cantidadMinima, @idCategoria, @idTipoProducto, @idProveedor)
 			RETURN 1
 		END
 END
 GO
-
---CREATE PROCEDURE SP_AgregarInventarioElaborado
---(
---	@descripcion NVARCHAR(100),
---	@costo DECIMAL(8,2),
---	@precioVenta DECIMAL(8,2),
---	@cantidad DECIMAL(8,2),
---	@idCategoria INT,
---	@idTipoProducto INT
---)
---AS
---BEGIN
---	DECLARE @existe int;
---	SET @existe = 0;
-
---	SELECT @existe = COUNT(Restaurante.Inventario.idInventario) FROM Restaurante.Inventario WHERE descripcion = @descripcion;
---	IF (@existe > 0)
---		BEGIN
---			RAISERROR(N'Ya existe un Insumo con el nombre %s"', 16, 1,@descripcion);
---			RETURN 0
-			
---		END
---	ELSE
---		BEGIN
---			INSERT INTO Restaurante.Inventario(descripcion, costo, precioVenta, cantidad, idCategoria, idTipoProducto)
---				VALUES(@descripcion, @costo, @precioVenta, @cantidad, @idCategoria, @idTipoProducto)
---			RETURN 1
---		END
---END
---GO
 
 CREATE PROCEDURE SP_ModificarInventario
 (
@@ -683,6 +654,7 @@ CREATE PROCEDURE SP_ModificarInventario
 	@costo DECIMAL(8,2),
 	@precioVenta DECIMAL(8,2),
 	@cantidad DECIMAL(8,2),
+	@cantidadMinima DECIMAL(8,2),
 	@idCategoria INT,
 	@idTipoProducto INT,
 	@idProveedor INT
@@ -706,6 +678,7 @@ BEGIN
 						costo = @costo,
 						precioVenta = @precioVenta,
 						cantidad = @cantidad,
+						cantidadMinima = @cantidadMinima,
 						idCategoria = @idCategoria,
 						idTipoProducto = @idTipoProducto,
 						idProveedor = @idProveedor
@@ -715,42 +688,6 @@ BEGIN
 END
 GO
 
---CREATE PROCEDURE SP_ModificarInventarioElaborado
---(
---	@idInventario INT,
---	@descripcion NVARCHAR(100),
---	@costo DECIMAL(8,2),
---	@precioVenta DECIMAL(8,2),
---	@cantidad DECIMAL(8,2),
---	@idCategoria INT,
---	@idTipoProducto INT
---)
---AS
---BEGIN
---	DECLARE @existe int;
---	SET @existe = 0;
-
---	SELECT @existe = COUNT(Restaurante.Inventario.idInventario) FROM Restaurante.Inventario WHERE idInventario = @idInventario;
-
---	IF (@existe = 0)
---		BEGIN
---			RAISERROR(N'No existe el Producto con el id %d"', 16, 1, @idInventario);
---			RETURN 0
---		END 	
---	ELSE
---		BEGIN
---			UPDATE Restaurante.Inventario
---				SET 	descripcion = @descripcion,
---						costo = @costo,
---						precioVenta = @precioVenta,
---						cantidad = @cantidad,
---						idCategoria = @idCategoria,
---						idTipoProducto = @idTipoProducto
---					WHERE idInventario = @idInventario;
---			RETURN 1
---		END
---END
---GO
 
 CREATE PROCEDURE SP_EliminarInventario
 (
@@ -778,6 +715,8 @@ CREATE PROCEDURE SP_AgregarInsumo
 (
 	@nombre NVARCHAR(100),
 	@costo DECIMAL(8,2),
+	@cantidad DECIMAL(8,2),
+	@cantidadMinima DECIMAL(8,2),
 	@idTipoUnidad INT,
 	@descripcion NVARCHAR(200),
 	@idProveedor INT
@@ -796,8 +735,8 @@ BEGIN
 		END
 	ELSE
 		BEGIN
-			INSERT INTO Restaurante.Insumos(nombre, costo, idTipoUnidad, descripcion, idProveedor)
-				VALUES(@nombre, @costo, @idTipoUnidad, @descripcion, @idProveedor)
+			INSERT INTO Restaurante.Insumos(nombre, costo, cantidad, cantidadMinima, idTipoUnidad, descripcion, idProveedor)
+				VALUES(@nombre, @costo, @cantidad, @cantidadMinima, @idTipoUnidad, @descripcion, @idProveedor)
 			RETURN 1
 		END
 END
@@ -808,6 +747,8 @@ CREATE PROCEDURE SP_ModificarInsumo
 	@idInsumo INT,
 	@nombre NVARCHAR(100),
 	@costo DECIMAL(8,2),
+	@cantidad DECIMAL(8,2),
+	@cantidadMinima DECIMAL(8,2),
 	@idTipoUnidad INT,
 	@descripcion NVARCHAR(200),
 	@idProveedor INT
@@ -829,6 +770,8 @@ BEGIN
 			UPDATE Restaurante.Insumos
 				SET 	nombre = @nombre,
 						costo = @costo,
+						cantidad = @cantidad,
+						cantidadMinima = @cantidadMinima,
 						idTipoUnidad = @idTipoUnidad,
 						descripcion = @descripcion,
 						idProveedor = @idProveedor
@@ -932,7 +875,7 @@ BEGIN
 END
 GO
 
-Alter PROCEDURE SP_AgregarInsumosProductos
+CREATE PROCEDURE SP_AgregarInsumosProductos
 (
 	@idInsumo INT,
 	@idInventario INT,
@@ -975,7 +918,7 @@ FROM       Restaurante.Insumos INNER JOIN
 END
 GO
 
-ALTER PROCEDURE SP_ModificarInsumosProductos
+CREATE PROCEDURE SP_ModificarInsumosProductos
 (
 	@idInsumoProducto INT,
 	@idInsumo INT,
@@ -1021,7 +964,7 @@ FROM       Restaurante.Insumos INNER JOIN
 END
 GO
 
-ALTER PROCEDURE SP_EliminarInsumosProductos
+CREATE PROCEDURE SP_EliminarInsumosProductos
 (
 	@idInsumoProducto INT,
 	@idInventario INT

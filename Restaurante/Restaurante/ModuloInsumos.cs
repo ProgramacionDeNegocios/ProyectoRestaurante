@@ -84,6 +84,8 @@ namespace Restaurante
                     (
                         txtNombre.Text,
                         Convert.ToDecimal(txtCosto.Text),
+                        Convert.ToDecimal(txtCantidad.Text),
+                        Convert.ToDecimal(txtCantMinima.Text),
                         tipounidad.Id,                        
                         txtDescripcion.Text,
                         proveedor.Id  
@@ -114,6 +116,8 @@ namespace Restaurante
                         this.id,
                         txtNombre.Text,
                         Convert.ToDecimal(txtCosto.Text),
+                        Convert.ToDecimal(txtCantidad.Text),
+                        Convert.ToDecimal(txtCantMinima.Text),
                         tipounidad.Id,
                         txtDescripcion.Text,
                         proveedor.Id
@@ -142,6 +146,8 @@ namespace Restaurante
             txtId.Text = insumos.Id.ToString();
             txtNombre.Text = insumos.Nombre;
             txtCosto.Text = insumos.Costo.ToString();
+            txtCantidad.Text = insumos.Cantidad.ToString();
+            txtCantMinima.Text = insumos.CantidadMinima.ToString();
             cmbUnidad.SelectedIndex = insumos.IdTipoUnidad -1;
             txtDescripcion.Text = insumos.Descripcion;
             cmbProveedor.SelectedIndex = insumos.IdProveedor - 1;
@@ -158,6 +164,8 @@ namespace Restaurante
             txtId.Text = "";
             txtNombre.Text = "";
             txtCosto.Text = "";
+            txtCantidad.Text = "";
+            txtCantMinima.Text = "";
             cmbUnidad.SelectedValue = "";
             txtDescripcion.Text = "";
             cmbProveedor.SelectedValue = "";
@@ -230,6 +238,30 @@ namespace Restaurante
                     ResetFormulario();
                 }
                 
+            }
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCantMinima_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) || char.IsControl(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }

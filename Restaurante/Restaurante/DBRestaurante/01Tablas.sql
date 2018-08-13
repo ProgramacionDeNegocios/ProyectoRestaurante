@@ -206,6 +206,7 @@ ELSE
 			costo DECIMAL(8,2) NOT NULL,
 			precioVenta DECIMAL(8,2) NOT NULL,
 			cantidad DECIMAL(8,2) NOT NULL,
+			cantidadMinima DECIMAL(8,2) NOT NULL,
 			idCategoria INT NOT NULL,
 			idTipoProducto INT NOT NULL,
 			idProveedor INT NULL
@@ -221,6 +222,8 @@ ELSE
 			idInsumo INT IDENTITY NOT NULL,
 			nombre NVARCHAR(100) NOT NULL,
 			costo DECIMAL(8,2) NOT NULL,
+			cantidad DECIMAL(8,2) NOT NULL,
+			cantidadMinima DECIMAL(8,2) NOT NULL,
 			idTipoUnidad INT NOT NULL,
 			descripcion NVARCHAR(200) NOT NULL,
 			idProveedor INT

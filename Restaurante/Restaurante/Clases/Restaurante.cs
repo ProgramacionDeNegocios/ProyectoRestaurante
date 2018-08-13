@@ -137,12 +137,14 @@ namespace Restaurante.Clases
                 (
                 string nombre,
                 decimal costo,
+                decimal cantidad,
+                decimal cantidadminima,
                 int idtipounidad,
                 string descripcion,
                 int idproveedor
                 )
         {
-            if (nombre.Length == 0 || costo < 0 || idtipounidad <= 0 || descripcion.Length == 0 || idproveedor <= 0)
+            if (nombre.Length == 0 || costo < 0 || cantidad < 0 || cantidadminima < 0 || idtipounidad <= 0 || descripcion.Length == 0 || idproveedor <= 0)
             {
                 throw new Clases.Exepcion
                     (
@@ -150,6 +152,8 @@ namespace Restaurante.Clases
                     "Existen datos obligatorios que se necesitan para poder agregar el insumo\n" +
                     "Nombre   : Tomate\n" +
                     "Costo    : 12.00\n" +
+                    "Cantidad : 12.00\n" +
+                    "Cantidad Minima    : 2.00\n" +
                     "Unidad   : Libra\n" +
                     "Descripción   : Comprado Semanalmente\n" +
                     "Proveedor : Don Edgardo",
@@ -162,6 +166,8 @@ namespace Restaurante.Clases
             (
             string nombre,
             decimal costo,
+            decimal cantidad,
+            decimal cantidadminima,
             int idtipounidad,
             string descripcion,
             int idproveedor
@@ -169,10 +175,12 @@ namespace Restaurante.Clases
         {
             try
             {
-                ValidarInsumo(nombre, costo, idtipounidad, descripcion, idproveedor);
+                ValidarInsumo(nombre, costo, cantidad, cantidadminima, idtipounidad, descripcion, idproveedor);
                 Clases.Insumos insumo = new Clases.Insumos(
                     nombre,
                     costo,
+                    cantidad,
+                    cantidadminima,
                     idtipounidad,
                     descripcion,
                     idproveedor
@@ -190,6 +198,8 @@ namespace Restaurante.Clases
             int id,
             string nombre,
             decimal costo,
+            decimal cantidad,
+            decimal cantidadminima,
             int idtipounidad,
             string descripcion,
             int idproveedor
@@ -197,11 +207,13 @@ namespace Restaurante.Clases
         {
             try
             {
-                ValidarInsumo(nombre, costo, idtipounidad, descripcion, idproveedor);
+                ValidarInsumo(nombre, costo, cantidad, cantidadminima, idtipounidad, descripcion, idproveedor);
                 Clases.Insumos insumo = new Clases.Insumos(
                     id,
                     nombre,
                     costo,
+                    cantidad,
+                    cantidadminima,
                     idtipounidad,
                     descripcion,
                     idproveedor)
@@ -237,12 +249,13 @@ namespace Restaurante.Clases
                 decimal costo,
                 decimal precioventa,
                 decimal cantidad,
+                decimal cantidadminima,
                 int idcategoria,
                 int idtipoproducto,
                 int idproveedor
                 )
         {
-            if (descripcion.Length == 0 || costo < 0 || precioventa < 0 || cantidad < 0 || idcategoria <0 || idtipoproducto < 0 ||idproveedor < 0)
+            if (descripcion.Length == 0 || costo < 0 || precioventa < 0 || cantidad < 0 || cantidadminima <0 || idcategoria <0 || idtipoproducto < 0 ||idproveedor < 0)
             {
                 throw new Clases.Exepcion
                     (
@@ -252,6 +265,7 @@ namespace Restaurante.Clases
                     "Costo    : 80.00\n" +
                     "Precio Venta   : 100.00\n" +
                     "Cantidad   : 20\n" +
+                    "Cantidad Min   : 10\n" +
                     "Categoria   : Plato\n" +
                     "Tipo Producto : Elaborado\n" +
                     "Proveedor : Don Edgardo",
@@ -267,6 +281,7 @@ namespace Restaurante.Clases
             decimal costo,
             decimal precioventa,
             decimal cantidad,
+            decimal cantidadminima,
             int idcategoria,
             int idtipoproducto,
             int idproveedor
@@ -274,12 +289,13 @@ namespace Restaurante.Clases
         {
             try
             {
-                ValidarInventario(descripcion, costo, precioventa, cantidad, idcategoria, idtipoproducto, idproveedor);
+                ValidarInventario(descripcion, costo, precioventa, cantidad, cantidadminima, idcategoria, idtipoproducto, idproveedor);
                 Clases.Inventario inventario = new Clases.Inventario(
                     descripcion,
                     costo,
                     precioventa,
                     cantidad,
+                    cantidadminima,
                     idcategoria,
                     idtipoproducto,
                     idproveedor);
@@ -298,6 +314,7 @@ namespace Restaurante.Clases
             decimal costo,
             decimal precioventa,
             decimal cantidad,
+            decimal cantidadminima,
             int idcategoria,
             int idtipoproducto,
             int idproveedor
@@ -305,13 +322,14 @@ namespace Restaurante.Clases
         {
             try
             {
-                ValidarInventario(descripcion, costo, precioventa, cantidad, idcategoria, idtipoproducto, idproveedor);
+                ValidarInventario(descripcion, costo, precioventa, cantidad, cantidadminima, idcategoria, idtipoproducto, idproveedor);
                 Clases.Inventario inventario = new Clases.Inventario(
                     id,
                     descripcion,
                     costo,
                     precioventa,
                     cantidad,
+                    cantidadminima,
                     idcategoria,
                     idtipoproducto,
                     idproveedor);
