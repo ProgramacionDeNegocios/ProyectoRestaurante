@@ -133,6 +133,88 @@ namespace Restaurante.Clases
             }
         }
 
+        private static void ValidarUsuarios
+    (
+    string nombre,
+    string apellido,
+    string clave
+    )
+        {
+            if (apellido.Length == 0 || nombre.Length == 0 || clave.Length == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar el usuario \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un usuario:\n" +
+                    "Nombre   : Pedro\n" +
+                    "Apellido  :  Picapiedra\n" +
+                    "Clave : yabadabadu",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+        }
+        public static void AgregarUsuario(
+            string nombre,
+            string apellido,
+            string clave)
+        {
+            try
+            {
+                ValidarUsuarios(nombre, apellido, clave);
+                Clases.Usuario usuario = new Clases.Usuario(
+                    nombre,
+                    apellido,
+                    clave,
+                    1
+                    );
+                usuario.Agregar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public static void ModificarUsuario(
+            string usu,
+            string nombre,
+            string apellido,
+            string clave)
+        {
+            try
+            {
+                ValidarUsuarios(nombre, apellido, clave);
+                Clases.Usuario usuario = new Clases.Usuario(
+                    usu,
+                    nombre,
+                    apellido,
+                    clave,
+                    1
+                    );
+                usuario.Modificar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public static void EliminarUsuario(string usu)
+        {
+            try
+            {
+                Clases.Usuario usuarios = new Clases.Usuario(usu);
+
+            }
+            catch (Exception es)
+            {
+
+                throw es;
+            }
+        }
+
+
         private static void ValidarInsumo
                 (
                 string nombre,
