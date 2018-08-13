@@ -131,6 +131,17 @@ namespace Restaurante
             txtClave.Text = usuario.clave;
             this.usuario = usuario.usuario;
 
+
+            try
+            {
+                picFoto.Image = Image.FromFile(@"\\DESKTOP-7HRFF62\Fotos2\" + this.usuario + ".jpg");
+            }
+            catch
+            {
+                picFoto.Image = Image.FromFile(@"\\DESKTOP-7HRFF62\Fotos2\Ninguna.jpg");
+            }
+            
+
             btnNuevo.Enabled = true;
             btnAgregar.Enabled = false;
             btnModificar.Enabled = true;
@@ -205,6 +216,11 @@ namespace Restaurante
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             ResetFormulario();
+        }
+
+        private void dgwUsuarios_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

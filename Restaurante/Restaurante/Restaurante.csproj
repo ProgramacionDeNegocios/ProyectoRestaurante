@@ -32,8 +32,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,44 +64,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\CategoriaProducto.cs" />
+    <Compile Include="Clases\Areas.cs" />
     <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Clases\Exepcion.cs" />
     <Compile Include="Clases\Insumos.cs" />
-    <Compile Include="Clases\InsumosProductos.cs" />
-    <Compile Include="Clases\Inventario.cs" />
     <Compile Include="Clases\Mensaje.cs" />
     <Compile Include="Clases\Mesero.cs" />
     <Compile Include="Clases\Proveedor.cs" />
     <Compile Include="Clases\Restaurante.cs" />
     <Compile Include="Clases\Rol.cs" />
-    <Compile Include="Clases\TipoProducto.cs" />
     <Compile Include="Clases\TipoUnidad.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />
+    <Compile Include="DDataSet\Insumos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Insumos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DDataSet\PreFactura.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreFactura.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModuloCategoriaProducto.cs">
+    <Compile Include="ModuloAreas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ModuloCategoriaProducto.Designer.cs">
-      <DependentUpon>ModuloCategoriaProducto.cs</DependentUpon>
+    <Compile Include="ModuloAreas.Designer.cs">
+      <DependentUpon>ModuloAreas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuloFacturas.Designer.cs">
+      <DependentUpon>ModuloFacturas.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloInsumos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuloInsumos.Designer.cs">
       <DependentUpon>ModuloInsumos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModuloInventario.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModuloInventario.Designer.cs">
-      <DependentUpon>ModuloInventario.cs</DependentUpon>
     </Compile>
     <Compile Include="ModuloMeseros.cs">
       <SubType>Form</SubType>
@@ -96,18 +122,25 @@
     <Compile Include="ModuloProveedores.Designer.cs">
       <DependentUpon>ModuloProveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModuloTipoProducto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModuloTipoProducto.Designer.cs">
-      <DependentUpon>ModuloTipoProducto.cs</DependentUpon>
-    </Compile>
     <Compile Include="ModuloTipoUnidad.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ModuloTipoUnidad.Designer.cs">
       <DependentUpon>ModuloTipoUnidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReporteInsumos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteInsumos.Designer.cs">
+      <DependentUpon>ReporteInsumos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportePreFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportePreFactura.Designer.cs">
+      <DependentUpon>ReportePreFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UsuarioLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,23 +158,20 @@
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModuloCategoriaProducto.resx">
-      <DependentUpon>ModuloCategoriaProducto.cs</DependentUpon>
+    <EmbeddedResource Include="ModuloAreas.resx">
+      <DependentUpon>ModuloAreas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuloFacturas.resx">
+      <DependentUpon>ModuloFacturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloInsumos.resx">
       <DependentUpon>ModuloInsumos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModuloInventario.resx">
-      <DependentUpon>ModuloInventario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloMeseros.resx">
       <DependentUpon>ModuloMeseros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloProveedores.resx">
       <DependentUpon>ModuloProveedores.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModuloTipoProducto.resx">
-      <DependentUpon>ModuloTipoProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloTipoUnidad.resx">
       <DependentUpon>ModuloTipoUnidad.cs</DependentUpon>
@@ -156,12 +186,43 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReporteInsumos.resx">
+      <DependentUpon>ReporteInsumos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportePreFactura.resx">
+      <DependentUpon>ReportePreFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PreFactura.rdlc" />
+    <EmbeddedResource Include="Reportes\reportInsumos.rdlc" />
     <EmbeddedResource Include="UsuarioLogin.resx">
       <DependentUpon>UsuarioLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModuloUsuarios.resx">
       <DependentUpon>ModuloUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DDataSet\Insumos.xsc">
+      <DependentUpon>Insumos.xsd</DependentUpon>
+    </None>
+    <None Include="DDataSet\Insumos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Insumos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DDataSet\Insumos.xss">
+      <DependentUpon>Insumos.xsd</DependentUpon>
+    </None>
+    <None Include="DDataSet\PreFactura.xsc">
+      <DependentUpon>PreFactura.xsd</DependentUpon>
+    </None>
+    <None Include="DDataSet\PreFactura.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PreFactura.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DDataSet\PreFactura.xss">
+      <DependentUpon>PreFactura.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -194,13 +255,22 @@
     <None Include="Resources\salir.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\add.png" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\update32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete32.png" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
