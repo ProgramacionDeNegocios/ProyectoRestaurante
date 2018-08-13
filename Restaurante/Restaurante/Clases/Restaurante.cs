@@ -10,7 +10,7 @@ namespace Restaurante.Clases
     class Restaurante
     {
         public Restaurante() { }
-
+         
         private static void ValidarMesero
             (
             string identidad,
@@ -48,6 +48,113 @@ namespace Restaurante.Clases
                     apellido
                     );
                 mesero.Agregar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ModificarMesero(
+            int id,
+            string identidad,
+            string nombre,
+            string apellido)
+        {
+            try
+            {
+                ValidarMesero(identidad, nombre, apellido);
+                Clases.Mesero mesero = new Clases.Mesero(
+                    id,
+                    identidad,
+                    nombre,
+                   apellido);
+                mesero.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public static void EliminarMesero(int id)
+        {
+            try
+            {
+                Clases.Mesero mesero = new Clases.Mesero(id);
+                mesero.Eliminar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        //Modulo proveedor
+        private static void ValidarProveedor
+    (
+    string nombre,
+    string telefono,
+    string direccion
+    )
+        {
+            if (telefono.Length != 9 || nombre.Length == 0 || direccion.Length == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar un proveedor. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar un proveedor:\n" +
+                    "Nombre   : Pedro\n" +
+                    "Telefono  :  9898-9678\n" +
+                    "Direccion : Piedra dura",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+        }
+
+        public static void AgregarProveedor(string nombre, string telefono, string direccion)
+        {
+            try
+            {
+                ValidarProveedor(nombre, telefono, direccion);
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    nombre,
+                    telefono,
+                    direccion
+                    );
+                proveedor.Agregar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ModificarProveedor(int id, string nombre, string telefono, string direccion)
+        {
+            try
+            {
+                ValidarProveedor(nombre, telefono, direccion);
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    id,
+                    nombre,
+                    telefono,
+                    direccion);
+                proveedor.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void EliminarProveedor(int id)
+        {
+            try
+            {
+                Clases.Proveedor proveedor = new Clases.Proveedor(
+                    id);
+                proveedor.Eliminar();
             }
             catch (Exception ex)
             {
