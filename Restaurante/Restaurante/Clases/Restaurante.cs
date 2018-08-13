@@ -603,6 +603,74 @@ namespace Restaurante.Clases
             }
         }
 
+        private static void ValidarArea
+(
+   string nombre,
+   int numeroMesas
+)
+        {
+            if (nombre.Length == 0 || numeroMesas == 0)
+            {
+                throw new Clases.Exepcion
+                    (
+                    "Error al insertar una Area. \n\n" +
+                    "Existen datos obligatorios que se necesitan para poder agregar una area:\n" +
+                    "Nombre   : Area Familiar\n" +
+                    "Número Mesas : 10",
+                    new Exception(),
+                    "Clase_Restaurante"
+                    );
+            }
+        }
+        public static void AgregarAreas(string nombre, int numeroMesas)
+        {
+            try
+            {
+                ValidarArea(nombre, numeroMesas);
+                Clases.Areas area = new Clases.Areas(
+                    nombre,
+                    numeroMesas
+                    );
+                area.Agregar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ModificarAreas(int id, string nombre, int numeroMesas)
+        {
+            try
+            {
+                ValidarArea(nombre, numeroMesas);
+                Clases.Areas area = new Clases.Areas(
+                    id,
+                    nombre,
+                    numeroMesas
+                    );
+                area.Modificar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void EliminarAreas(int id)
+        {
+            try
+            {
+
+                Clases.Areas area = new Clases.Areas(
+                    id
+                    );
+                area.Eliminar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
 
     }
