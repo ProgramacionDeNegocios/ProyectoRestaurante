@@ -31,9 +31,7 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.Insumos = new Restaurante.Insumos();
             this.DataTable1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DataTable1TableAdapter = new Restaurante.InsumosTableAdapters.DataTable1TableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.Insumos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable1BindingSource)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +81,7 @@
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource DataTable1BindingSource;
-        private Insumos Insumos;
-        private InsumosTableAdapters.DataTable1TableAdapter DataTable1TableAdapter;
+        private DDataSet.Insumos Insumos;
+        private DDataSet.InsumosTableAdapters.DataTable1TableAdapter DataTable1TableAdapter;
     }
 }

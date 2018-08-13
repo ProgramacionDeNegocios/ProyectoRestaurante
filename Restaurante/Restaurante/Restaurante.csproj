@@ -76,7 +76,7 @@
     <Compile Include="Clases\TipoUnidad.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />
-    <Compile Include="Insumos.Designer.cs">
+    <Compile Include="DDataSet\Insumos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Insumos.xsd</DependentUpon>
@@ -185,15 +185,15 @@
     <EmbeddedResource Include="ModuloUsuarios.resx">
       <DependentUpon>ModuloUsuarios.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Insumos.xsc">
+    <None Include="DDataSet\Insumos.xsc">
       <DependentUpon>Insumos.xsd</DependentUpon>
     </None>
-    <None Include="Insumos.xsd">
+    <None Include="DDataSet\Insumos.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>Insumos.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Insumos.xss">
+    <None Include="DDataSet\Insumos.xss">
       <DependentUpon>Insumos.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />

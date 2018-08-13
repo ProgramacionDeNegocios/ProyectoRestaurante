@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Restaurante {
+namespace Restaurante.DDataSet {
     
     
     /// <summary>
@@ -745,7 +745,7 @@ namespace Restaurante {
         }
     }
 }
-namespace Restaurante.InsumosTableAdapters {
+namespace Restaurante.DDataSet.InsumosTableAdapters {
     
     
     /// <summary>
