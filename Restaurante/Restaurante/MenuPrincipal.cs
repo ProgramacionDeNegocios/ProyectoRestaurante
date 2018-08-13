@@ -112,5 +112,11 @@ namespace Restaurante
             ModuloAreas areas = new ModuloAreas();
             areas.ShowDialog();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ModuloFacturas factura = new ModuloFacturas();
+            factura.ShowDialog();
+        }
     }
 }
