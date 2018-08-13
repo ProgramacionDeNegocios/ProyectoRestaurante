@@ -264,5 +264,10 @@ namespace Restaurante
                 e.Handled = true;
             }
         }
+
+        private void cmbUnidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

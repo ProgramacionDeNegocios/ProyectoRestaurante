@@ -180,5 +180,10 @@ namespace Restaurante
             ResetFormulario();
             CargarDGWAreas();
         }
+
+        private void dgvAreas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

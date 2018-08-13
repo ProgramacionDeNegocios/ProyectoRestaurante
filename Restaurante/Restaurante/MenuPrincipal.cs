@@ -81,5 +81,13 @@ namespace Restaurante
             ModuloCategoriaProducto moduloCategoriaProducto = new ModuloCategoriaProducto();
             moduloCategoriaProducto.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+
+        {
+            
+            ControlMesas controlMesas = new ControlMesas();
+            controlMesas.ShowDialog();
+        }
     }
 }
