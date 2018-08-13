@@ -538,7 +538,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Insumos</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\CISCO\Source\Repos\ProyectoRestaurante\Restaurante\Restaurante\Insumos.xsd</rd:SchemaPath>
+        <rd:SchemaPath>C:\Users\CISCO\Source\Repos\ProyectoRestaurante\Restaurante\Restaurante\DDataSet\Insumos.xsd</rd:SchemaPath>
         <rd:TableName>DataTable1</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

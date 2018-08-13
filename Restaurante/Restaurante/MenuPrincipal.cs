@@ -94,5 +94,17 @@ namespace Restaurante
             ControlMesas controlMesas = new ControlMesas();
             controlMesas.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ReporteInsumos reporteInsumos = new ReporteInsumos();
+            reporteInsumos.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ReportePreFactura preFractura = new ReportePreFactura();
+            preFractura.ShowDialog();
+        }
     }
 }

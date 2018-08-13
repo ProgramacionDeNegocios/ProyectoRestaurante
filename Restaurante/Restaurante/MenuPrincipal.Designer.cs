@@ -36,16 +36,18 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnCategoria = new System.Windows.Forms.Button();
+            this.btnTipoUnidad = new System.Windows.Forms.Button();
             this.btnTipoProducto = new System.Windows.Forms.Button();
+            this.btnInsumos = new System.Windows.Forms.Button();
             this.Pedidos = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.btnInsumos = new System.Windows.Forms.Button();
-            this.btnTipoUnidad = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -107,6 +109,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button5);
+            this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.btnCategoria);
             this.tabPage1.Controls.Add(this.btnTipoUnidad);
             this.tabPage1.Controls.Add(this.btnTipoProducto);
@@ -130,6 +134,16 @@
             this.btnCategoria.UseVisualStyleBackColor = true;
             this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
             // 
+            // btnTipoUnidad
+            // 
+            this.btnTipoUnidad.Location = new System.Drawing.Point(151, 109);
+            this.btnTipoUnidad.Name = "btnTipoUnidad";
+            this.btnTipoUnidad.Size = new System.Drawing.Size(109, 64);
+            this.btnTipoUnidad.TabIndex = 6;
+            this.btnTipoUnidad.Text = "Unidades";
+            this.btnTipoUnidad.UseVisualStyleBackColor = true;
+            this.btnTipoUnidad.Click += new System.EventHandler(this.btnTipoUnidad_Click);
+            // 
             // btnTipoProducto
             // 
             this.btnTipoProducto.Location = new System.Drawing.Point(151, 21);
@@ -139,6 +153,16 @@
             this.btnTipoProducto.Text = "Productos";
             this.btnTipoProducto.UseVisualStyleBackColor = true;
             this.btnTipoProducto.Click += new System.EventHandler(this.btnTipoProducto_Click);
+            // 
+            // btnInsumos
+            // 
+            this.btnInsumos.Location = new System.Drawing.Point(22, 109);
+            this.btnInsumos.Name = "btnInsumos";
+            this.btnInsumos.Size = new System.Drawing.Size(109, 64);
+            this.btnInsumos.TabIndex = 5;
+            this.btnInsumos.Text = "Insumos";
+            this.btnInsumos.UseVisualStyleBackColor = true;
+            this.btnInsumos.Click += new System.EventHandler(this.btnInsumos_Click);
             // 
             // Pedidos
             // 
@@ -162,6 +186,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Restaurante";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(34, 22);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 64);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Control de mesas";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // tabPage3
             // 
@@ -192,26 +226,6 @@
             this.button2.Text = "Roles";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnInsumos
-            // 
-            this.btnInsumos.Location = new System.Drawing.Point(22, 109);
-            this.btnInsumos.Name = "btnInsumos";
-            this.btnInsumos.Size = new System.Drawing.Size(109, 64);
-            this.btnInsumos.TabIndex = 5;
-            this.btnInsumos.Text = "Insumos";
-            this.btnInsumos.UseVisualStyleBackColor = true;
-            this.btnInsumos.Click += new System.EventHandler(this.btnInsumos_Click);
-            // 
-            // btnTipoUnidad
-            // 
-            this.btnTipoUnidad.Location = new System.Drawing.Point(151, 109);
-            this.btnTipoUnidad.Name = "btnTipoUnidad";
-            this.btnTipoUnidad.Size = new System.Drawing.Size(109, 64);
-            this.btnTipoUnidad.TabIndex = 6;
-            this.btnTipoUnidad.Text = "Unidades";
-            this.btnTipoUnidad.UseVisualStyleBackColor = true;
-            this.btnTipoUnidad.Click += new System.EventHandler(this.btnTipoUnidad_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -221,15 +235,25 @@
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
             // 
-            // button3
+            // button4
             // 
-            this.button3.Location = new System.Drawing.Point(34, 22);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 64);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Control de mesas";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            this.button4.Location = new System.Drawing.Point(278, 109);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(109, 64);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Reporte Insumos";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(405, 109);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(109, 64);
+            this.button5.TabIndex = 9;
+            this.button5.Text = "Prefactura";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // MenuPrincipal
             // 
@@ -274,5 +298,7 @@
         private System.Windows.Forms.Button btnCategoria;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
     }
 }
