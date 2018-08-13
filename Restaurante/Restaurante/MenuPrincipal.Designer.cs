@@ -112,7 +112,7 @@
             // 
             // Pedidos
             // 
-            this.Pedidos.Location = new System.Drawing.Point(22, 21);
+            this.Pedidos.Location = new System.Drawing.Point(31, 29);
             this.Pedidos.Name = "Pedidos";
             this.Pedidos.Size = new System.Drawing.Size(109, 64);
             this.Pedidos.TabIndex = 5;
