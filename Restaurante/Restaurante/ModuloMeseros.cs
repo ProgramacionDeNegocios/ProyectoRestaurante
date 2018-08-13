@@ -162,7 +162,7 @@ namespace Restaurante
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            
         }
 
         private void dgvMeseros_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -189,6 +189,11 @@ namespace Restaurante
                 }
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

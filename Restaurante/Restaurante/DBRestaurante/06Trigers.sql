@@ -168,3 +168,77 @@ BEGIN
 			END CATCH
 END
 GO
+
+
+CREATE TRIGGER Restaurante.InsumoProductos$Insert
+ON Restaurante.InsumosProductos
+AFTER INSERT AS
+BEGIN
+	SET NOCOUNT ON
+	SET ROWCOUNT 0
+	DECLARE @msg VARCHAR(2000),
+		@rowsAffected INT = (SELECT COUNT(*) FROM inserted)
+	IF @rowsAffected = 0 RETURN;
+	BEGIN TRY
+		DECLARE @stock DECIMAL
+			SELECT @stock = Restaurante.Insumos.cantidad FROM Restaurante.Insumos
+			INNER JOIN inserted
+			ON inserted.idInsumo = Insumos.idInsumo
+			WHERE Insumos.idInsumo = inserted.idInsumo
+		DECLARE @Cantidad DECIMAL
+		SELECT @Cantidad = cantidad FROM inserted
+		IF(@stock> =@Cantidad)
+			UPDATE Restaurante.Insumos
+			SET cantidad = Restaurante.Insumos.cantidad-@Cantidad
+			FROM Restaurante.Insumos
+			INNER JOIN inserted
+			ON inserted.idInsumo = Insumos.idInsumo
+			WHERE Insumos.idInsumo = inserted.idInsumo
+		ELSE
+			BEGIN
+				RAISERROR('La cantidad en existencia es insuficiente',16,1)
+			END
+	END TRY
+		BEGIN CATCH
+			IF @@TRANCOUNT > 0
+				ROLLBACK TRANSACTION;
+				THROW;
+		END CATCH
+END
+GO
+
+CREATE TRIGGER Restaurante.DetallePedidos$Insert
+ON Restaurante.DetallePedidos
+AFTER INSERT AS
+BEGIN
+	SET NOCOUNT ON
+	SET ROWCOUNT 0
+	DECLARE @msg VARCHAR(2000),
+		@rowsAffected INT = (SELECT COUNT(*) FROM inserted)
+	IF @rowsAffected = 0 RETURN;
+	BEGIN TRY
+		DECLARE @stock DECIMAL
+			SELECT @stock = Restaurante.Inventario.cantidad FROM Restaurante.Inventario
+			INNER JOIN inserted
+			ON inserted.idInventario = Inventario.idInventario
+			WHERE Inventario.idInventario = inserted.idInventario
+		DECLARE @Cantidad DECIMAL
+		SELECT @Cantidad = cantidad FROM inserted
+		IF(@stock> =@Cantidad)
+			UPDATE Restaurante.Inventario
+			SET cantidad = Restaurante.Inventario.cantidad-@Cantidad
+			FROM Restaurante.Inventario
+			INNER JOIN inserted
+			ON inserted.idInventario = Inventario.idInventario
+			WHERE Inventario.idInventario = inserted.idInventario
+		ELSE
+			BEGIN
+				RAISERROR('La cantidad en existencia es insuficiente',16,1)
+			END
+	END TRY
+		BEGIN CATCH
+			IF @@TRANCOUNT > 0
+				ROLLBACK TRANSACTION;
+				THROW;
+		END CATCH
+END		

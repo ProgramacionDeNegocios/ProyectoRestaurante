@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloCategoriaProducto));
             this.pnlTitulo = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlBotones = new System.Windows.Forms.Panel();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -61,11 +62,21 @@
             this.pnlTitulo.Size = new System.Drawing.Size(481, 79);
             this.pnlTitulo.TabIndex = 33;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Britannic Bold", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
+            this.label2.Location = new System.Drawing.Point(124, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(195, 37);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "de Producto";
+            // 
             // btnSalir
             // 
-            this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
-            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
             this.btnSalir.Location = new System.Drawing.Point(447, 3);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(29, 29);
@@ -84,17 +95,6 @@
             this.label1.Size = new System.Drawing.Size(345, 37);
             this.label1.TabIndex = 29;
             this.label1.Text = "Información Categoría";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Britannic Bold", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(125)))));
-            this.label2.Location = new System.Drawing.Point(124, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(195, 37);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "de Producto";
             // 
             // pnlBotones
             // 
@@ -207,11 +207,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 362);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-4, 376);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(499, 94);
-            this.pictureBox1.TabIndex = 40;
+            this.pictureBox1.Size = new System.Drawing.Size(536, 93);
+            this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // dgvCategoriaProducto

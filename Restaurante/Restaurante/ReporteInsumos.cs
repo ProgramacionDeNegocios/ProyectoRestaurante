@@ -20,8 +20,8 @@ namespace Restaurante
         private void ReporteInsumos_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'Insumos.DataTable1' Puede moverla o quitarla según sea necesario.
-            this.DataTable1TableAdapter.Fill(this.Insumos.DataTable1);
 
+            this.reportViewer1.RefreshReport();
             this.reportViewer1.RefreshReport();
         }
     }

@@ -14,7 +14,7 @@ namespace Restaurante
     public partial class SeleccionarMesero : Form
     {
         public int valorMesa;
-        public string valorArea;
+        public static string valorArea;
         public SeleccionarMesero()
         {
             InitializeComponent();

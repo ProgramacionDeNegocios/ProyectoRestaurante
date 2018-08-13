@@ -86,6 +86,11 @@ namespace Restaurante
 
         {
             
+            
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
             ControlMesas controlMesas = new ControlMesas();
             controlMesas.ShowDialog();
         }

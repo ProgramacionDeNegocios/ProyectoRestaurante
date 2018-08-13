@@ -80,6 +80,12 @@
     <Compile Include="Clases\TipoUnidad.cs" />
     <Compile Include="Clases\Usuario.cs" />
     <Compile Include="Clases\UsuariosPorArea.cs" />
+    <Compile Include="ControlMesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlMesas.designer.cs">
+      <DependentUpon>ControlMesas.cs</DependentUpon>
+    </Compile>
     <Compile Include="DDataSet\Insumos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,6 +168,12 @@
     <Compile Include="ReportePreFactura.Designer.cs">
       <DependentUpon>ReportePreFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeleccionarMesero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionarMesero.Designer.cs">
+      <DependentUpon>SeleccionarMesero.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UsuarioLogin.cs">
       <SubType>Form</SubType>
@@ -177,6 +189,9 @@
     <Compile Include="ModuloUsuarios.Designer.cs">
       <DependentUpon>ModuloUsuarios.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ControlMesas.resx">
+      <DependentUpon>ControlMesas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\PreFactura.rdlc" />
     <EmbeddedResource Include="Reportes\reportInsumos.rdlc" />
+    <EmbeddedResource Include="SeleccionarMesero.resx">
+      <DependentUpon>SeleccionarMesero.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UsuarioLogin.resx">
       <DependentUpon>UsuarioLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +304,7 @@
     <None Include="Resources\salir.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\verde3.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloInsumos));
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,6 +38,10 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.grpInsumos = new System.Windows.Forms.GroupBox();
+            this.txtCantMinima = new System.Windows.Forms.TextBox();
+            this.lblCantiMinima = new System.Windows.Forms.Label();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.lblCantidad = new System.Windows.Forms.Label();
             this.cmbProveedor = new System.Windows.Forms.ComboBox();
             this.lblProveedor = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -51,10 +56,6 @@
             this.lblId = new System.Windows.Forms.Label();
             this.dgvInsumos = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.txtCantMinima = new System.Windows.Forms.TextBox();
-            this.lblCantiMinima = new System.Windows.Forms.Label();
             this.pnlTitulo.SuspendLayout();
             this.pnlBotones.SuspendLayout();
             this.grpInsumos.SuspendLayout();
@@ -73,8 +74,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
-            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalir.BackgroundImage")));
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Location = new System.Drawing.Point(447, 3);
             this.btnSalir.Name = "btnSalir";
@@ -182,6 +182,40 @@
             this.grpInsumos.Size = new System.Drawing.Size(346, 379);
             this.grpInsumos.TabIndex = 33;
             this.grpInsumos.TabStop = false;
+            // 
+            // txtCantMinima
+            // 
+            this.txtCantMinima.Location = new System.Drawing.Point(102, 176);
+            this.txtCantMinima.Name = "txtCantMinima";
+            this.txtCantMinima.Size = new System.Drawing.Size(109, 22);
+            this.txtCantMinima.TabIndex = 5;
+            this.txtCantMinima.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantMinima_KeyPress);
+            // 
+            // lblCantiMinima
+            // 
+            this.lblCantiMinima.AutoSize = true;
+            this.lblCantiMinima.Location = new System.Drawing.Point(11, 179);
+            this.lblCantiMinima.Name = "lblCantiMinima";
+            this.lblCantiMinima.Size = new System.Drawing.Size(84, 16);
+            this.lblCantiMinima.TabIndex = 37;
+            this.lblCantiMinima.Text = "Cant. Minima";
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Location = new System.Drawing.Point(102, 135);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(109, 22);
+            this.txtCantidad.TabIndex = 4;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Location = new System.Drawing.Point(11, 138);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(62, 16);
+            this.lblCantidad.TabIndex = 35;
+            this.lblCantidad.Text = "Cantidad";
             // 
             // cmbProveedor
             // 
@@ -301,46 +335,12 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 545);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-6, 547);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(634, 66);
-            this.pictureBox1.TabIndex = 35;
+            this.pictureBox1.Size = new System.Drawing.Size(645, 91);
+            this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Location = new System.Drawing.Point(102, 135);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(109, 22);
-            this.txtCantidad.TabIndex = 4;
-            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
-            // 
-            // lblCantidad
-            // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(11, 138);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(62, 16);
-            this.lblCantidad.TabIndex = 35;
-            this.lblCantidad.Text = "Cantidad";
-            // 
-            // txtCantMinima
-            // 
-            this.txtCantMinima.Location = new System.Drawing.Point(102, 176);
-            this.txtCantMinima.Name = "txtCantMinima";
-            this.txtCantMinima.Size = new System.Drawing.Size(109, 22);
-            this.txtCantMinima.TabIndex = 5;
-            this.txtCantMinima.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantMinima_KeyPress);
-            // 
-            // lblCantiMinima
-            // 
-            this.lblCantiMinima.AutoSize = true;
-            this.lblCantiMinima.Location = new System.Drawing.Point(11, 179);
-            this.lblCantiMinima.Name = "lblCantiMinima";
-            this.lblCantiMinima.Size = new System.Drawing.Size(84, 16);
-            this.lblCantiMinima.TabIndex = 37;
-            this.lblCantiMinima.Text = "Cant. Minima";
             // 
             // ModuloInsumos
             // 

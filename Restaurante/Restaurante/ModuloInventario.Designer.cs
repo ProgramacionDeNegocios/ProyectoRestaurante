@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloInventario));
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.grpInventario = new System.Windows.Forms.GroupBox();
+            this.txtCantMinima = new System.Windows.Forms.TextBox();
+            this.lblCantMinima = new System.Windows.Forms.Label();
             this.cmbCategoriaProducto = new System.Windows.Forms.ComboBox();
             this.lblCategoria = new System.Windows.Forms.Label();
             this.cmbTipoProducto = new System.Windows.Forms.ComboBox();
@@ -59,6 +62,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvBuscarInsumo = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnNuevoInsumo = new System.Windows.Forms.Button();
             this.btnModificarInsumo = new System.Windows.Forms.Button();
             this.btnEliminarInsumo = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -70,9 +74,6 @@
             this.dgvInsumosInv = new System.Windows.Forms.DataGridView();
             this.btnSalir = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtCantMinima = new System.Windows.Forms.TextBox();
-            this.lblCantMinima = new System.Windows.Forms.Label();
-            this.btnNuevoInsumo = new System.Windows.Forms.Button();
             this.pnlTitulo.SuspendLayout();
             this.grpInventario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInventario)).BeginInit();
@@ -141,6 +142,23 @@
             this.grpInventario.Size = new System.Drawing.Size(324, 358);
             this.grpInventario.TabIndex = 34;
             this.grpInventario.TabStop = false;
+            // 
+            // txtCantMinima
+            // 
+            this.txtCantMinima.Location = new System.Drawing.Point(102, 215);
+            this.txtCantMinima.Name = "txtCantMinima";
+            this.txtCantMinima.Size = new System.Drawing.Size(109, 22);
+            this.txtCantMinima.TabIndex = 6;
+            this.txtCantMinima.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantMinima_KeyPress);
+            // 
+            // lblCantMinima
+            // 
+            this.lblCantMinima.AutoSize = true;
+            this.lblCantMinima.Location = new System.Drawing.Point(11, 218);
+            this.lblCantMinima.Name = "lblCantMinima";
+            this.lblCantMinima.Size = new System.Drawing.Size(62, 16);
+            this.lblCantMinima.TabIndex = 43;
+            this.lblCantMinima.Text = "Cant. Min";
             // 
             // cmbCategoriaProducto
             // 
@@ -418,6 +436,19 @@
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
             // 
+            // btnNuevoInsumo
+            // 
+            this.btnNuevoInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
+            this.btnNuevoInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNuevoInsumo.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnNuevoInsumo.Location = new System.Drawing.Point(175, 54);
+            this.btnNuevoInsumo.Name = "btnNuevoInsumo";
+            this.btnNuevoInsumo.Size = new System.Drawing.Size(75, 25);
+            this.btnNuevoInsumo.TabIndex = 42;
+            this.btnNuevoInsumo.Text = "Nuevo";
+            this.btnNuevoInsumo.UseVisualStyleBackColor = false;
+            this.btnNuevoInsumo.Click += new System.EventHandler(this.btnNuevoInsumo_Click);
+            // 
             // btnModificarInsumo
             // 
             this.btnModificarInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
@@ -523,8 +554,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.BackgroundImage = global::Restaurante.Properties.Resources.salir;
-            this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalir.BackgroundImage")));
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Location = new System.Drawing.Point(802, 4);
             this.btnSalir.Name = "btnSalir";
@@ -536,52 +566,22 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Restaurante.Properties.Resources.wave2;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 581);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-7, 598);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(790, 74);
-            this.pictureBox1.TabIndex = 37;
+            this.pictureBox1.Size = new System.Drawing.Size(853, 79);
+            this.pictureBox1.TabIndex = 40;
             this.pictureBox1.TabStop = false;
-            // 
-            // txtCantMinima
-            // 
-            this.txtCantMinima.Location = new System.Drawing.Point(102, 215);
-            this.txtCantMinima.Name = "txtCantMinima";
-            this.txtCantMinima.Size = new System.Drawing.Size(109, 22);
-            this.txtCantMinima.TabIndex = 6;
-            this.txtCantMinima.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantMinima_KeyPress);
-            // 
-            // lblCantMinima
-            // 
-            this.lblCantMinima.AutoSize = true;
-            this.lblCantMinima.Location = new System.Drawing.Point(11, 218);
-            this.lblCantMinima.Name = "lblCantMinima";
-            this.lblCantMinima.Size = new System.Drawing.Size(62, 16);
-            this.lblCantMinima.TabIndex = 43;
-            this.lblCantMinima.Text = "Cant. Min";
-            // 
-            // btnNuevoInsumo
-            // 
-            this.btnNuevoInsumo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(126)))));
-            this.btnNuevoInsumo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNuevoInsumo.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnNuevoInsumo.Location = new System.Drawing.Point(175, 54);
-            this.btnNuevoInsumo.Name = "btnNuevoInsumo";
-            this.btnNuevoInsumo.Size = new System.Drawing.Size(75, 25);
-            this.btnNuevoInsumo.TabIndex = 42;
-            this.btnNuevoInsumo.Text = "Nuevo";
-            this.btnNuevoInsumo.UseVisualStyleBackColor = false;
-            this.btnNuevoInsumo.Click += new System.EventHandler(this.btnNuevoInsumo_Click);
             // 
             // ModuloInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 667);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dgvInsumosInv);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlBotones);
             this.Controls.Add(this.dgvInventario);
             this.Controls.Add(this.grpInventario);
@@ -636,7 +636,6 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -657,5 +656,6 @@
         private System.Windows.Forms.TextBox txtCantMinima;
         private System.Windows.Forms.Label lblCantMinima;
         private System.Windows.Forms.Button btnNuevoInsumo;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

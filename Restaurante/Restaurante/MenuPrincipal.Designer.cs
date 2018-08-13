@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.btnModuloUsuarios = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnModuloProveedores = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnCategoria = new System.Windows.Forms.Button();
             this.btnTipoProducto = new System.Windows.Forms.Button();
             this.Pedidos = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -42,11 +44,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnInsumos = new System.Windows.Forms.Button();
             this.btnTipoUnidad = new System.Windows.Forms.Button();
-            this.btnCategoria = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnModuloUsuarios
@@ -61,7 +66,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(1037, 12);
+            this.btnSalir.Location = new System.Drawing.Point(916, 12);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 28);
             this.btnSalir.TabIndex = 1;
@@ -71,7 +76,7 @@
             // 
             // btnModuloProveedores
             // 
-            this.btnModuloProveedores.Location = new System.Drawing.Point(261, 19);
+            this.btnModuloProveedores.Location = new System.Drawing.Point(264, 22);
             this.btnModuloProveedores.Name = "btnModuloProveedores";
             this.btnModuloProveedores.Size = new System.Drawing.Size(109, 64);
             this.btnModuloProveedores.TabIndex = 2;
@@ -81,7 +86,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(146, 19);
+            this.button1.Location = new System.Drawing.Point(149, 22);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 64);
             this.button1.TabIndex = 3;
@@ -94,24 +99,36 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(33, 125);
+            this.tabControl1.Location = new System.Drawing.Point(33, 46);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(958, 370);
+            this.tabControl1.Size = new System.Drawing.Size(958, 290);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.btnCategoria);
+            this.tabPage1.Controls.Add(this.btnTipoUnidad);
             this.tabPage1.Controls.Add(this.btnTipoProducto);
+            this.tabPage1.Controls.Add(this.btnInsumos);
             this.tabPage1.Controls.Add(this.Pedidos);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(950, 344);
+            this.tabPage1.Size = new System.Drawing.Size(950, 264);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Productos";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnCategoria
+            // 
+            this.btnCategoria.Location = new System.Drawing.Point(278, 22);
+            this.btnCategoria.Name = "btnCategoria";
+            this.btnCategoria.Size = new System.Drawing.Size(109, 64);
+            this.btnCategoria.TabIndex = 7;
+            this.btnCategoria.Text = "Categoría";
+            this.btnCategoria.UseVisualStyleBackColor = true;
+            this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
             // 
             // btnTipoProducto
             // 
@@ -135,12 +152,15 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.btnModuloProveedores);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(950, 344);
+            this.tabPage2.Size = new System.Drawing.Size(950, 264);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Restaurante";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
@@ -149,7 +169,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(950, 344);
+            this.tabPage3.Size = new System.Drawing.Size(950, 264);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Seguridad";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -174,7 +194,7 @@
             // 
             // btnInsumos
             // 
-            this.btnInsumos.Location = new System.Drawing.Point(376, 19);
+            this.btnInsumos.Location = new System.Drawing.Point(22, 109);
             this.btnInsumos.Name = "btnInsumos";
             this.btnInsumos.Size = new System.Drawing.Size(109, 64);
             this.btnInsumos.TabIndex = 5;
@@ -184,7 +204,7 @@
             // 
             // btnTipoUnidad
             // 
-            this.btnTipoUnidad.Location = new System.Drawing.Point(491, 19);
+            this.btnTipoUnidad.Location = new System.Drawing.Point(151, 109);
             this.btnTipoUnidad.Name = "btnTipoUnidad";
             this.btnTipoUnidad.Size = new System.Drawing.Size(109, 64);
             this.btnTipoUnidad.TabIndex = 6;
@@ -192,26 +212,32 @@
             this.btnTipoUnidad.UseVisualStyleBackColor = true;
             this.btnTipoUnidad.Click += new System.EventHandler(this.btnTipoUnidad_Click);
             // 
-            // btnCategoria
+            // pictureBox1
             // 
-            this.btnCategoria.Location = new System.Drawing.Point(278, 22);
-            this.btnCategoria.Name = "btnCategoria";
-            this.btnCategoria.Size = new System.Drawing.Size(109, 64);
-            this.btnCategoria.TabIndex = 7;
-            this.btnCategoria.Text = "Categoría";
-            this.btnCategoria.UseVisualStyleBackColor = true;
-            this.btnCategoria.Click += new System.EventHandler(this.btnCategoria_Click);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-45, 389);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1130, 120);
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(34, 22);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 64);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Control de mesas";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 563);
-            this.Controls.Add(this.btnTipoUnidad);
-            this.Controls.Add(this.btnInsumos);
+            this.ClientSize = new System.Drawing.Size(1006, 504);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnModuloProveedores);
             this.Controls.Add(this.btnSalir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MenuPrincipal";
@@ -221,8 +247,10 @@
             this.Load += new System.EventHandler(this.MenuPrincipal_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,5 +272,7 @@
         private System.Windows.Forms.Button btnTipoUnidad;
         private System.Windows.Forms.Button btnTipoProducto;
         private System.Windows.Forms.Button btnCategoria;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button3;
     }
 }
