@@ -48,6 +48,8 @@ namespace Restaurante
             txtApellido.Enabled = true;
             txtClave.Enabled = true;
 
+            picFoto.Image = Image.FromFile(@"\\DESKTOP-7HRFF62\Fotos2\Ninguna.jpg");
+
             txtNombre.Focus();
             
         }
